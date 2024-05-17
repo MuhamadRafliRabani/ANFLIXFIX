@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#section-form {
+  background-image: url("/bg-form1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 767px) {
+  #carousell {
+    display: none;
+  }
+}
+
+#sw {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.white-palace::-webkit-input-placeholder {
+  color: white;
+}
+
+.main-transition {
+  transition: all 0.2s ease-in-out;
+}
+.form-backdrop {
+  backdrop-filter: blur(4px);
+}
+
+.effect-btn {
+  cursor: pointer; /* Ubah cursor menjadi pointer */
+  transition: background-color 0.3s, transform 0.1s; /* Transisi halus */
+}
+.effect-btn:active {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); /* Bayangan dalam */
+  transform: translateY(2px); /* Perpindahan ke bawah saat ditekan */
+}
+
+/* loader */
+.Loader {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #e50914 94%, #0000) top/9px 9px no-repeat, conic-gradient(#0000 30%, #e50914);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 9px), #000 0);
+  animation: spinner-c7wet2 1s infinite linear;
+}
+
+@keyframes spinner-c7wet2 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.mainLoader {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  animation: spinner-plncf9 4s infinite;
+}
+
+.mainLoader::before,
+.mainLoader::after {
+  content: "";
+  grid-area: 1/1;
+  border: 9px solid;
+  border-radius: 50%;
+  border-color: #e50914 #e50914 #0000 #0000;
+  mix-blend-mode: darken;
+  animation: spinner-plncf9 1s infinite linear;
+}
+
+.mainLoader::after {
+  border-color: #0000 #0000 #dbdcef #dbdcef;
+  animation-direction: reverse;
+}
+
+@keyframes spinner-plncf9 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(165, 165, 165, 0.2) 25%, rgba(225, 225, 225, 0.4) 50%, rgba(165, 165, 165, 0.2) 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
