@@ -6,9 +6,10 @@ const page = () => {
   const Router = useRouter();
   const user = useUser((state) => state.user);
 
+  console.log(user);
   return (
-    <div className="mt-20 flex flex-col justify-center items-center">
-      {user ? (
+    <section className="pt-20 flex flex-col justify-center items-center bg-black h-svh">
+      {user?.email ? (
         <>
           <h1 className="text-white text-3xl font-bold ">Selamat datang : {user?.email}</h1>
           <div className="flex gap-4 items-center">
@@ -21,7 +22,7 @@ const page = () => {
       ) : (
         Router.back()
       )}
-    </div>
+    </section>
   );
 };
 

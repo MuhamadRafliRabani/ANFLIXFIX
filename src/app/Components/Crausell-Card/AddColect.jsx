@@ -8,11 +8,10 @@ import Link from "next/link";
 const AddColectBtn = async ({ anime_mal_id, anime_images, anime_title }) => {
   const user = useUser((state) => state.user);
   const user_email = user?.email;
-  async function addCollect(anime_mal_id, user_email, anime_images, anime_title) {
-    const data = { anime_mal_id, user_email, anime_images, anime_title };
+  async function addCollect() {
     try {
-      const Response = await handleColection(data);
-      const result = Response;
+      const Response = await handleColection(anime_mal_id, user_email, anime_images, anime_title);
+      const result = await Response.json();
     } catch (error) {
       return console.log("error", error);
     }

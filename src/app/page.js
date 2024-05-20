@@ -11,6 +11,7 @@ import Type from "@/app/Components/Type-Anime-Comp/ChoiseType";
 import Home_Page from "./Components/Landing-Page/Lading Page";
 import Rekomend from "./Components/Rekomend/Rekomend";
 import { useUser } from "./Collection_State";
+import CardSkeleton from "./global/cardSeleton";
 
 export default function Home() {
   // mengatur path untuk api
@@ -87,6 +88,7 @@ export default function Home() {
       <Header title={titleHead} path={`/SeeAll/${sendPath}`} />
       <Card animeCa={Data} />
       <Rekomend />
+      <CardSkeleton cards={8} />
     </div>
   );
 }
