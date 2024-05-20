@@ -54,7 +54,7 @@ const Home_Page = ({ animeHo, type }) => {
                 </p>
                 <h1 className="text-xl font-bold mb-4 md:text-3xl text-white">{data.title}</h1>
                 <p className=" hidden md:flex md:w-11/12 md:leading-relaxed md:text-xl md:font-semibold">{dataImg[index % dataImg.length].synopsis}</p>
-                <AddCollection anime_images={data.images?.jpg.image_url} anime_title={data.title} anime_mal_id={data?.mal_id} />
+                <AddCollection anime_images={data.images?.jpg.image_url} anime_title={data.title} anime_mal_id={data.mal_id} />
               </div>
             </div>
           </div>

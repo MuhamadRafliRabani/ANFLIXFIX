@@ -27,7 +27,7 @@ const Navbar = () => {
   }, []);
 
   const handleOut = (e) => {
-    e.preventDevault;
+    e.preventDefault();
     SignOut();
   };
 
@@ -56,7 +56,9 @@ const Navbar = () => {
                   Dasboard <span className="text-xs">{user?.email}</span>
                 </p>
               </Link>
-              <ArrowSquareRight onClick={handleOut} className="w-6 h-6 me-2 cursor-pointer" />
+              <button onClick={handleOut}>
+                <ArrowSquareRight className="hover:w-8 w-6 h-6 me-2 cursor-pointer" />
+              </button>
             </div>
           </div>
         </div>

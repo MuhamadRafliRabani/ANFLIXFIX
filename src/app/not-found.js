@@ -11,7 +11,7 @@ const Page = () => {
   };
 
   return (
-    <div className="w-full text-white flex justify-center items-center flex-col h-svh">
+    <div className="w-full text-white flex justify-center items-center flex-col h-svh bg-black">
       <SmileyXEyes size={80} />
       <h1 className="text-8xl font-extrabold">4 0 4</h1>
       <p>Halaman yang kamu cari tidak tersedia</p>

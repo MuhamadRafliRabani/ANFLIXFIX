@@ -10,11 +10,12 @@ const AddCollection = async ({ anime_mal_id, anime_images, anime_title }) => {
   const user_email = user?.email;
   const [response, setResponse] = useState();
 
-  async function addCollect(anime_mal_id, user_email, anime_images, anime_title) {
-    const data = { anime_mal_id, user_email, anime_images, anime_title };
+  async function addCollect() {
+    console.log(anime_mal_id, user_email, anime_images, anime_title);
     try {
-      const Response = await handleColection(data);
-      setResponse(Response);
+      const Response = await handleColection(anime_mal_id, user_email, anime_images, anime_title);
+      const result = await Response.json();
+      setResponse(result);
     } catch (error) {
       return console.log("error", error);
     }
