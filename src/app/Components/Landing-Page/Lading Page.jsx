@@ -2,10 +2,8 @@
 import Top_Img from "@/data/Home_Img";
 import Seasons_Now_Img from "@/data/Seasons_Now";
 import Rekomend_Img from "@/data/rekomend_Img";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Play } from "@phosphor-icons/react";
 import AddCollection from "./addCollection";
 
 const Home_Page = ({ animeHo, type }) => {
@@ -46,15 +44,15 @@ const Home_Page = ({ animeHo, type }) => {
                 <p className="hidden md:flex md:my-2 md:text-lg md:text-slate-50 ">Duration: {data.duration}</p>
                 <p className="hidden md:flex md:my-2">
                   ⭐ {data.score}
-                  {data.genres.map((genre, genreIndex) => (
-                    <span className="ms-2" key={genreIndex}>
-                      | {genre.name}
+                  {data.genres.map((genre, Index) => (
+                    <span className="ms-2" key={Index}>
+                      {index > 0 ? `| ${genre.name}` : genre.name}
                     </span>
                   ))}
                 </p>
                 <h1 className="text-xl font-bold mb-4 md:text-3xl text-white">{data.title}</h1>
-                <p className=" hidden md:flex md:w-11/12 md:leading-relaxed md:text-xl md:font-semibold">{dataImg[index % dataImg.length].synopsis}</p>
-                <AddCollection anime_images={data.images?.jpg.image_url} anime_title={data.title} anime_mal_id={data.mal_id} />
+                <p className="hidden md:flex md:w-11/12 md:leading-relaxed md:text-xl md:font-semibold">{dataImg[index % dataImg.length].synopsis}</p>
+                <AddCollection anime_images={data.images?.jpg.image_url} anime_title={data.title} anime_mal_id={data.mal_id} anime_episodes={data.episodes} anime_rating={data.rating} anime_status={data.status} anime_type={data.type} />
               </div>
             </div>
           </div>

@@ -26,7 +26,7 @@
 }
 
 .main-transition {
-  transition: all 0.2s ease-in-out;
+  transition: all 0.45s ease-in-out;
 }
 .form-backdrop {
   backdrop-filter: blur(4px);
@@ -35,10 +35,18 @@
 .effect-btn {
   cursor: pointer; /* Ubah cursor menjadi pointer */
   transition: background-color 0.3s, transform 0.1s; /* Transisi halus */
+  box-shadow: inset 5px;
 }
+
 .effect-btn:active {
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); /* Bayangan dalam */
-  transform: translateY(2px); /* Perpindahan ke bawah saat ditekan */
+  transform: translateY(-2px); /* Perpindahan ke bawah saat ditekan */
+  transform: translateX(2px);
+}
+
+.effect-btn:disabled {
+  background-color: #5c1b1e;
+  cursor: not-allowed;
 }
 
 /* loader */
