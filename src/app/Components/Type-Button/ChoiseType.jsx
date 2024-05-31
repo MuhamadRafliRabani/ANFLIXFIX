@@ -41,7 +41,7 @@ const Type = () => {
   );
 
   return (
-    <div className="md:container text-[#E50914] w-svw border-b">
+    <div className="text-[#E50914] w-svw border-b lg:ps-64">
       <Swiper
         slidesPerView={2}
         spaceBetween={10}
@@ -54,25 +54,57 @@ const Type = () => {
             slidesPerView: 4,
             spaceBetween: 40,
           },
+          1200: {
+            slidesPerView: 4,
+            spaceBetween: 100,
+          },
         }}
       >
         <SwiperSlide>
-          <button className={`main-transition p-0 ${stylePicked === "Trend Up" ? "text-[#E50914] text-xl font-bold effect-btn" : "text-slate-300 text-base font-semibold"}`} onClick={() => getType("Trend Up")}>
+          <button
+            className={`main-transition p-0 ${
+              stylePicked === "Trend Up"
+                ? "text-[#E50914] text-xl font-bold effect-btn"
+                : "text-slate-300 text-base font-semibold"
+            }`}
+            onClick={() => getType("Trend Up")}
+          >
             <Nav icon={<TrendUp size={20} />} text={"Trend Up"} />
           </button>
         </SwiperSlide>
         <SwiperSlide>
-          <button className={`main-transition p-0 ${stylePicked === "This Season" ? "text-[#E50914] text-lg font-bold effect-btn" : "text-slate-300 text-base font-semibold"}`} onClick={() => getType("This Season")}>
+          <button
+            className={`main-transition p-0 ${
+              stylePicked === "This Season"
+                ? "text-[#E50914] text-lg font-bold effect-btn"
+                : "text-slate-300 text-base font-semibold"
+            }`}
+            onClick={() => getType("This Season")}
+          >
             <Nav icon={<Star size={20} />} text={"This Season"} />
           </button>
         </SwiperSlide>
         <SwiperSlide>
-          <button className={`main-transition p-0 ${stylePicked === "Season Coming" ? "text-[#E50914] text-lg font-bold effect-btn" : "text-slate-300 text-base font-semibold"}`} onClick={() => getType("Season Coming")}>
+          <button
+            className={`main-transition p-0 ${
+              stylePicked === "Season Coming"
+                ? "text-[#E50914] text-lg font-bold effect-btn"
+                : "text-slate-300 text-base font-semibold"
+            }`}
+            onClick={() => getType("Season Coming")}
+          >
             <Nav icon={<Fire size={20} />} text={"Season Coming"} />
           </button>
         </SwiperSlide>
         <SwiperSlide>
-          <button className={`main-transition p-0 ${stylePicked === "Top" ? "text-[#E50914] text-lg font-bold effect-btn" : "text-slate-300 text-base font-semibold"}`} onClick={() => getType("top")}>
+          <button
+            className={`main-transition p-0 ${
+              stylePicked === "Top"
+                ? "text-[#E50914] text-lg font-bold effect-btn"
+                : "text-slate-300 text-base font-semibold"
+            }`}
+            onClick={() => getType("top")}
+          >
             <Nav icon={<Plus size={20} />} text={"top"} />
           </button>
         </SwiperSlide>

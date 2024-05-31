@@ -39,7 +39,7 @@ const Card = ({ animeCa }) => {
             navigation: true,
           },
           1200: {
-            slidesPerView: 7,
+            slidesPerView: 9,
             navigation: true,
           },
         }}
@@ -47,9 +47,22 @@ const Card = ({ animeCa }) => {
       >
         {animeCa?.map((anime) => {
           return (
-            <SwiperSlide className="w-fit rounded-lg Card mx-auto flex flex-col justify-center items-center" key={anime.mal_id}>
-              <Images anime_images={anime.images?.jpg.image_url} anime_title={anime.title} anime_mal_id={anime.mal_id} anime_episodes={anime.episodes} anime_rating={anime.rating} anime_status={anime.status} anime_type={anime.type} />
-              <h5 className="mb-2 text-base text-white font-medium hover:text-[#E50914] hover:font-semibold w-full">{anime.title}</h5>
+            <SwiperSlide
+              className="w-fit rounded-lg Card mx-auto flex flex-col justify-center items-center"
+              key={anime.mal_id}
+            >
+              <Images
+                anime_images={anime.images?.jpg.image_url}
+                anime_title={anime.title}
+                anime_mal_id={anime.mal_id}
+                anime_episodes={anime.episodes}
+                anime_rating={anime.rating}
+                anime_status={anime.status}
+                anime_type={anime.type}
+              />
+              <h5 className="mb-2 text-base text-white font-medium hover:text-[#E50914] hover:font-semibold w-full text-center">
+                {anime.title}
+              </h5>
             </SwiperSlide>
           );
         })}

@@ -6,7 +6,11 @@ import Header from "@/app/Components/Child-Comp/Header";
 import Type from "@/app/Components/Type-Button/ChoiseType";
 import Home_Page from "./Components/Landing-Page/Lading Page";
 import Rekomend from "./Components/Rekomend/Rekomend";
-import { usePath, useType, useUser } from "./global/global_state/Collection_State";
+import {
+  usePath,
+  useType,
+  useUser,
+} from "./global/global_state/Collection_State";
 
 export default function Home() {
   const [sendPath, setSendPath] = useState("/top");
@@ -15,20 +19,28 @@ export default function Home() {
   const user = useUser((state) => state.user);
   const path = usePath((state) => state.path);
   const type = useType((state) => state.type);
-  const FetchApi = useCallback(async () => {
+
+  const fetchData = async () => {
     try {
-      const DataAnime = await reUseApi(path);
-      setData(DataAnime.data);
+      const GetData = await reUseApi(path);
+      const response = await GetData.data;
+      console.log(response);
+      setData(response);
+      localStorage.setItem([path, response]);
     } catch (error) {
-      alert("errornya", error);
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const Storage = localStorage.getItem(path);
+    if (Storage) {
+      setData(Storage);
+    } else {
+      fetchData();
     }
   }, [path]);
 
-  console.log(path);
-
-  useEffect(() => {
-    FetchApi();
-  }, []);
   console.log(Data);
 
   return (

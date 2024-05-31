@@ -8,9 +8,6 @@ import "react-loading-skeleton/dist/skeleton.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import CardSkeleton from "@/app/global/cardSeleton";
-import { Heart, Images, Play, Plus } from "@phosphor-icons/react";
-import Button from "@/app/Components/compt/button";
-import LinkBtn from "@/app/Components/compt/button";
 import CardDetail from "@/app/Components/Card-Detail/CardDetail";
 
 const Collection = () => {
@@ -59,15 +56,35 @@ const Collection = () => {
 
   return (
     <section className="text-white font-semibold pt-14 bg-black h-fit">
-      <h1 className="py-2 font-bold text-lg ps-2 hover:text-[#E50914]">Your Collection :</h1>
+      <h1 className="py-2 font-bold text-lg ps-2 hover:text-[#E50914]">
+        Your Collection :
+      </h1>
       {isLoading ? (
         <CardSkeleton cards={14} />
       ) : data.data.length > 0 ? (
         <div className="grid grid-cols-3 grid-rows-3 md:grid-cols-7 w-svw h-fit gap-2 ps-2 pe-2 md:pe-6">
           {data.data.map((item) => (
-            <div key={item.anime_mal_id} className="w-fit h-fit flex flex-col justify-center items-center relative z-10">
-              <Link href={`/detail-anime/${item.anime_mal_id}`} className="mx-auto" onMouseEnter={() => handleOpen(item.anime_mal_id)} onMouseLeave={() => handleOpen(item.anime_mal_id)}>
-                {item.anime_images ? <Image src={item.anime_images} alt={item.anime_title} width={200} height={330} className="rounded-md" /> : <Skeleton width={200} height={330} />}
+            <div
+              key={item.anime_mal_id}
+              className="w-fit h-fit flex flex-col justify-center items-center relative z-10"
+            >
+              <Link
+                href={`/detail-anime/${item.anime_mal_id}`}
+                className="mx-auto"
+                onMouseEnter={() => handleOpen(item.anime_mal_id)}
+                onMouseLeave={() => handleOpen(item.anime_mal_id)}
+              >
+                {item.anime_images ? (
+                  <Image
+                    src={item.anime_images}
+                    alt={item.anime_title}
+                    width={200}
+                    height={330}
+                    className="rounded-md"
+                  />
+                ) : (
+                  <Skeleton width={200} height={330} />
+                )}
               </Link>
               <p className="hover:text-[#E50914]">{item.anime_title}</p>
               <CardDetail
@@ -85,7 +102,10 @@ const Collection = () => {
         </div>
       ) : (
         <p className="block m-auto">
-          Collection Tidak Ada <span className="block m-auto text-blue-700">click disini untuk menambahkan Collection</span>
+          Collection Tidak Ada{" "}
+          <span className="block m-auto text-blue-700">
+            click disini untuk menambahkan Collection
+          </span>
         </p>
       )}
     </section>

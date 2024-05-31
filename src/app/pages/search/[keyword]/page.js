@@ -15,7 +15,7 @@ export default function Page({ params }) {
   const fetchData = async () => {
     try {
       const Api = await reUseApi("/anime", `q=${decode}/page=${page}`);
-      const result = await Api.json();
+      const result = await Api.data;
       setLoding(true);
       setDataAnime(result);
     } catch (error) {
@@ -60,8 +60,13 @@ export default function Page({ params }) {
         <div>
           {/* <Header title={"TOP ANIME"} path={"/top"} /> */}
           <h1>pencarian untuk : {decode}</h1>
-          <CardMain animeCM={dataAnime?.data} />
-          <Pagination page={page} lastpage={dataAnime?.pagination?.last_visible_page} HandleNextPage={HandleNextPage} HandlePrevPage={HandlePrevPage} />
+          <CardMain animeCM={dataAnime} />
+          <Pagination
+            page={page}
+            lastpage={dataAnime?.pagination?.last_visible_page}
+            HandleNextPage={HandleNextPage}
+            HandlePrevPage={HandlePrevPage}
+          />
         </div>
       )}
     </section>

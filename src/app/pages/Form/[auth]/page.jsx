@@ -41,28 +41,44 @@ const Form = ({ params }) => {
           setErrorMassage("Akun Anda sudah terdaftar. Silahkan login kembali.");
           break;
         case "auth/invalid-email":
-          setErrorMassage("Email yang Anda masukkan tidak valid. Harap periksa kembali.");
+          setErrorMassage(
+            "Email yang Anda masukkan tidak valid. Harap periksa kembali."
+          );
           break;
         case "auth/user-disabled":
-          setErrorMassage("Akun Anda telah dinonaktifkan oleh administrator. Silakan hubungi dukungan untuk bantuan lebih lanjut.");
+          setErrorMassage(
+            "Akun Anda telah dinonaktifkan oleh administrator. Silakan hubungi dukungan untuk bantuan lebih lanjut."
+          );
           break;
         case "auth/user-not-found":
-          setErrorMassage("Akun tidak ditemukan. Silakan daftar jika Anda belum memiliki akun.");
+          setErrorMassage(
+            "Akun tidak ditemukan. Silakan daftar jika Anda belum memiliki akun."
+          );
           break;
         case "auth/wrong-password":
-          setErrorMassage("Kata sandi yang Anda masukkan salah. Silakan coba lagi.");
+          setErrorMassage(
+            "Kata sandi yang Anda masukkan salah. Silakan coba lagi."
+          );
           break;
         case "auth/network-request-failed":
-          setErrorMassage("Terdapat masalah jaringan. Silakan coba lagi nanti.");
+          setErrorMassage(
+            "Terdapat masalah jaringan. Silakan coba lagi nanti."
+          );
           break;
         case "auth/too-many-requests":
-          setErrorMassage("Terlalu banyak percobaan masuk. Silakan coba lagi nanti.");
+          setErrorMassage(
+            "Terlalu banyak percobaan masuk. Silakan coba lagi nanti."
+          );
           break;
         case "auth/operation-not-allowed":
-          setErrorMassage("Operasi ini tidak diizinkan. Silakan hubungi administrator.");
+          setErrorMassage(
+            "Operasi ini tidak diizinkan. Silakan hubungi administrator."
+          );
           break;
         default:
-          setErrorMassage("Terjadi kesalahan saat masuk. Silakan coba lagi nanti.");
+          setErrorMassage(
+            "Terjadi kesalahan saat masuk. Silakan coba lagi nanti."
+          );
           break;
       }
     }
@@ -81,28 +97,44 @@ const Form = ({ params }) => {
       console.log(error);
       switch (error.code) {
         case "auth/invalid-email":
-          setErrorMassage("Email yang Anda masukkan tidak valid. Harap periksa kembali.");
+          setErrorMassage(
+            "Email yang Anda masukkan tidak valid. Harap periksa kembali."
+          );
           break;
         case "auth/user-disabled":
-          setErrorMassage("Akun Anda telah dinonaktifkan oleh administrator. Silakan hubungi dukungan untuk bantuan lebih lanjut.");
+          setErrorMassage(
+            "Akun Anda telah dinonaktifkan oleh administrator. Silakan hubungi dukungan untuk bantuan lebih lanjut."
+          );
           break;
         case "auth/user-not-found":
-          setErrorMassage("Akun tidak ditemukan. Silakan daftar jika Anda belum memiliki akun.");
+          setErrorMassage(
+            "Akun tidak ditemukan. Silakan daftar jika Anda belum memiliki akun."
+          );
           break;
         case "auth/wrong-password":
-          setErrorMassage("Kata sandi yang Anda masukkan salah. Silakan coba lagi.");
+          setErrorMassage(
+            "Kata sandi yang Anda masukkan salah. Silakan coba lagi."
+          );
           break;
         case "auth/network-request-failed":
-          setErrorMassage("Terdapat masalah jaringan. Silakan coba lagi nanti.");
+          setErrorMassage(
+            "Terdapat masalah jaringan. Silakan coba lagi nanti."
+          );
           break;
         case "auth/too-many-requests":
-          setErrorMassage("Terlalu banyak percobaan masuk. Silakan coba lagi nanti.");
+          setErrorMassage(
+            "Terlalu banyak percobaan masuk. Silakan coba lagi nanti."
+          );
           break;
         case "auth/operation-not-allowed":
-          setErrorMassage("Operasi ini tidak diizinkan. Silakan hubungi administrator.");
+          setErrorMassage(
+            "Operasi ini tidak diizinkan. Silakan hubungi administrator."
+          );
           break;
         default:
-          setErrorMassage("Terjadi kesalahan saat masuk. Silakan coba lagi nanti.");
+          setErrorMassage(
+            "Terjadi kesalahan saat masuk. Silakan coba lagi nanti."
+          );
           break;
       }
     }
@@ -111,32 +143,63 @@ const Form = ({ params }) => {
   const user = useUser((state) => state.user);
 
   return (
-    <section className="w-svw h-svh" id="section-form">
+    <section className="w-svw h-svh pt-20 lg:pt-56" id="section-form">
       {user ? (
-        <form className="mx-auto pt-24 text-white w-4/5" onSubmit={handleSubmit(DecodeKeyword === "Sign-up" ? onSignUp : onSignIn)}>
-          <h1 className="text-center text-2xl font-bold hover:text-[#E50914] main-transition">{DecodeKeyword === "Sign-in" ? "Sign-In" : "Sign-Up"}</h1>
-          <div className="mb-5 mx-auto w-11/12 md:w-[40%]">
-            <label htmlFor="email" className="block mb-2 text-sm font-medium hover:text-[#E50914] main-transition">
+        <form
+          className="m-auto  text-white w-[60%] bg-transparent backdrop-blur-sm h-fit py-14 shadow-md border-white border-[0.1px] rounded-md lg:w-[20%]"
+          onSubmit={handleSubmit(
+            DecodeKeyword === "Sign-up" ? onSignUp : onSignIn
+          )}
+        >
+          <h1 className="text-center text-2xl font-bold hover:text-[#E50914] main-transition">
+            {DecodeKeyword === "Sign-in" ? "Sign-In" : "Sign-Up"}
+          </h1>
+          <div className="mb-5 mx-auto w-11/12 md:w-[80%]">
+            <label
+              htmlFor="email"
+              className="block mb-2 text-sm font-medium hover:text-[#b8b8b8] main-transition"
+            >
               Your email
             </label>
-            <input type="email" id="email" className="bg-white bg-opacity-30 text-sm rounded-full text-slate-300 w-full p-2" placeholder="email" required {...register("email", { required: true })} />
+            <input
+              type="email"
+              id="email"
+              className="bg-transparent border-[0.5px] border-white text-sm rounded-full text-slate-300 w-full p-2 focus:border-none"
+              placeholder="email"
+              required
+              {...register("email", { required: true })}
+            />
             <p className="text-red-500 text-sm mt-2">{errors.email?.message}</p>
           </div>
-          <div className="mb-5 mx-auto block w-11/12 md:w-[40%]">
-            <label htmlFor="password" className="block mb-2 text-sm font-medium hover:text-[#E50914] main-transition">
+          <div className="mb-5 mx-auto block w-11/12 md:w-[80%]">
+            <label
+              htmlFor="password"
+              className="block mb-2 text-sm font-medium hover:text-[#E50914] main-transition"
+            >
               Your password
             </label>
             <input
               type="password"
               id="password"
-              className="white-palace bg-white bg-opacity-30 text-slate-300 text-sm rounded-full w-full p-2"
+              className="white-palace bg-transparent border-[0.5px] border-white text-slate-300 text-sm rounded-full w-full p-2"
               placeholder="password"
               required
               {...register("password", { required: true, min: 6, max: 15 })}
             />
-            {errors.password?.message ? <p className="text-red-500 text-sm mt-2">{errors.password?.message}</p> : <p className="text-yellow-400 text-sm mt-2">masukan password dengan min 6 carakter</p>}
+            {errors.password?.message ? (
+              <p className="text-red-500 text-sm mt-2">
+                {errors.password?.message}
+              </p>
+            ) : (
+              <p className="text-yellow-400 text-sm mt-2">
+                masukan password dengan min 6 carakter
+              </p>
+            )}
           </div>
-          <button type="submit" className="text-black font-semibold bg-[#E50914] hover:bg-[#c93940] rounded-full text-sm px-5 py-2.5 text-center w-11/12 md:w-[40%] block mx-auto">
+          <button
+            type="submit"
+            className="text-black font-semibold bg-[#E50914] hover:bg-[#c93940] rounded-full text-sm px-5 py-2.5 text-center w-11/12 md:w-[80%] block mx-auto"
+          >
             {DecodeKeyword === "Sign-in" ? "SIGN IN" : "SIGN UP"}
           </button>
         </form>
@@ -144,7 +207,7 @@ const Form = ({ params }) => {
         Router.back()
       )}
 
-      {/* <div className="form-backdrop bg-white bg-opacity-30 absolute inset-0 z-10"></div> */}
+      {/* <div className="form-backdrop bg-transparent absolute inset-0 z-10"></div> */}
     </section>
   );
 };

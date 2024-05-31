@@ -10,20 +10,23 @@ const Rekomend = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchApi = async () => {
-    const RekomendAnime = await getRekomendData("/recommendations/anime", "entry");
-    console.log(RekomendAnime);
-    const DataRekomend = RekomendAnime.slice(0, seeData);
-    setDataAnime(DataRekomend);
-  };
-
-  useEffect(() => {
     try {
-      fetchApi();
+      const RekomendAnime = await getRekomendData(
+        "/recommendations/anime",
+        "entry"
+      );
+      console.log(RekomendAnime);
+      const DataRekomend = RekomendAnime.slice(0, seeData);
+      setDataAnime(DataRekomend);
     } catch (error) {
       console.log(error);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  useEffect(() => {
+    fetchApi();
   }, [seeData]);
 
   const handleSeeMore = () => {
@@ -31,9 +34,16 @@ const Rekomend = () => {
   };
   return (
     <section className="">
-      {isLoading ? <CardSkeleton cards={16} /> : <CardMain animeCM={dataAnime} title={"Rekomendasi Anime"} />}
+      {isLoading ? (
+        <CardSkeleton cards={16} />
+      ) : (
+        <CardMain animeCM={dataAnime} title={"Rekomendasi Anime"} />
+      )}
       {seeData < 200 && (
-        <button className="bg-white py-2 w-1/2 mx-auto rounded-lg block my-4 effect-btn" onClick={() => handleSeeMore()}>
+        <button
+          className="bg-white py-2 w-1/2 mx-auto rounded-lg block mb-4 effect-btn"
+          onClick={() => handleSeeMore()}
+        >
           See More
         </button>
       )}

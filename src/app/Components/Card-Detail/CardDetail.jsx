@@ -4,22 +4,55 @@ import LinkBtn from "../compt/button";
 import { CaretDown, Heart, Play } from "@phosphor-icons/react";
 import AddCollection from "./addCollection";
 
-const CardDetail = ({ anime_images, anime_title, anime_mal_id, anime_episodes, anime_rating, anime_status, anime_type, isOpen }) => {
+const CardDetail = ({
+  anime_images,
+  anime_title,
+  anime_mal_id,
+  anime_episodes,
+  anime_rating,
+  anime_status,
+  anime_type,
+  isOpen,
+}) => {
   return (
     <div
       className={`absolute top-8 left-0 right-0 w-80 h-80 z-50 flex flex-col items-center bg-black bg-opacity-80 text-white font-semibold shadow-sm scale-0 main-transition translate-y-4 md:-left-1/2 ${
         isOpen === anime_mal_id ? "scale-100 translate-y-0" : ""
       }`}
     >
-      <Link href={`/pages/detail-anime/${anime_mal_id}`} className="w-full h-[50%] relative">
-        <Image src={anime_images} alt="img" layout="fill" objectFit="cover" objectPosition="center" className="rounded-t-lg" />
+      <Link
+        href={`/pages/detail-anime/${anime_mal_id}`}
+        className="w-full h-[50%] relative"
+      >
+        <Image
+          src={anime_images}
+          alt="img"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+          className="rounded-t-lg"
+        />
       </Link>
       <div className="w-full h-fit flex flex-col p-2">
         <h1 className="text-center text-lg  truncate w-full">{anime_title}</h1>
         <div className="w-full flex justify-start items-center py-1 space-x-2">
-          <LinkBtn url={`/pages/detail-anime/${anime_mal_id}`} icon={<Play />} />
-          <AddCollection anime_images={anime_images} anime_title={anime_title} anime_mal_id={anime_mal_id} anime_episodes={anime_episodes} anime_rating={anime_rating} anime_status={anime_status} anime_type={anime_type} />
-          <LinkBtn url={`/pages/detail-anime/${anime_mal_id}`} icon={<CaretDown />} />
+          <LinkBtn
+            url={`/pages/detail-anime/${anime_mal_id}`}
+            icon={<Play />}
+          />
+          <AddCollection
+            anime_images={anime_images}
+            anime_title={anime_title}
+            anime_mal_id={anime_mal_id}
+            anime_episodes={anime_episodes}
+            anime_rating={anime_rating}
+            anime_status={anime_status}
+            anime_type={anime_type}
+          />
+          <LinkBtn
+            url={`/pages/detail-anime/${anime_mal_id}`}
+            icon={<CaretDown />}
+          />
         </div>
         <ul className="mt-2 flex justify-start items-center gap-2 w-full text-sm">
           <li className="text-green-500">{anime_status}</li>
