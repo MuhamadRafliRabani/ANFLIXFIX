@@ -15,10 +15,14 @@ datasource db {
 
 
 model collection {
-  id            Int     @id @default(autoincrement())
-  anime_mal_id  Int
-  user_email    String
-  anime_images  String
-  anime_title   String
-  @@unique([anime_mal_id,user_email,anime_images,anime_title])
+  id                  Int     @id @default(autoincrement())
+  anime_mal_id        Int
+  user_email          String
+  anime_images        String
+  anime_title         String
+  anime_rating        String
+  anime_type          String
+  anime_status        String
+  anime_episodes        Int?
+  @@unique([anime_mal_id,user_email,anime_images,anime_title,anime_rating,anime_type,anime_episodes])
 }

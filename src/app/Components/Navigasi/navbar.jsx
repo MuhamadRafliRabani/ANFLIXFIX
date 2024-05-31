@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
-import Search from "../search/Search";
-import { SignOut } from "@/service/firebase";
+import Search from "./search/Search";
 import { useState, useEffect, useRef } from "react";
 import { ArrowSquareRight, BookmarksSimple, MagnifyingGlass, XCircle } from "@phosphor-icons/react";
 import Image from "next/image";
-import { useUser } from "@/app/Collection_State";
+import { useUser } from "@/app/global/global_state/Collection_State";
+import { SignOut } from "@/service/firebase";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,8 +56,8 @@ const Navbar = () => {
                   Dasboard <span className="text-xs">{user?.email}</span>
                 </p>
               </Link>
-              <button onClick={handleOut}>
-                <ArrowSquareRight className="hover:w-8 w-6 h-6 me-2 cursor-pointer" />
+              <button onClick={handleOut} className="w-6 h-6">
+                <ArrowSquareRight className="hover:w-8 w-full h-full me-2 cursor-pointer" />
               </button>
             </div>
           </div>
@@ -80,11 +80,7 @@ const Navbar = () => {
   };
 
   const SearchBtn = () => {
-    return (
-      <button className={`w-fit py-2 px-4 rounded-full hover:bg-[#E50914] `} onClick={() => handleSearch()}>
-        {!isOpen ? <MagnifyingGlass className="w-6 h-8" /> : <XCircle className="w-6 h-8" />}
-      </button>
-    );
+    return <button className={`w-fit py-2 px-4 rounded-full hover:bg-[#E50914] `}>{!isOpen ? <MagnifyingGlass className="w-6 h-8" onClick={() => handleSearch()} /> : <XCircle className="w-6 h-8" onClick={() => handleSearch()} />}</button>;
   };
 
   return (

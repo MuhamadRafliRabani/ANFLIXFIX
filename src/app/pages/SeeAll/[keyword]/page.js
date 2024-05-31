@@ -1,8 +1,8 @@
 "use client";
 
-import CardMain from "@/app/Components/Card-Anime/CardMain";
+import CardMain from "@/app/Components/Card/CardMain";
 import Pagination from "@/app/Components/Detail-Anime-Comp/pagination";
-import { reUseApi } from "@/app/global/global-func/Apis";
+import { reUseApi } from "@/app/global/global-func/Api";
 import { useEffect, useState } from "react";
 
 const Page = ({ params }) => {

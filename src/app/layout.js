@@ -1,6 +1,5 @@
 import { SkeletonTheme } from "react-loading-skeleton";
 import Navbar from "./Components/Navigasi/navbar";
-import { UserProvider } from "./User/Is-User-Login";
 import "./globals.css";
 
 export const metadata = {
@@ -11,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <SkeletonTheme baseColor="#3c3c3c" highlightColor="#525252">
+      <SkeletonTheme baseColor="#3b3b3b" highlightColor="#525252">
         <body className={`overflow-x-hidden`} suppressHydrationWarning={true}>
           <Navbar />
           {children}

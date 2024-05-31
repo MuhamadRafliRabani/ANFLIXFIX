@@ -3,7 +3,7 @@ import { signIn, signUp } from "@/service/firebase";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { useUser } from "@/app/Collection_State";
+import { useUser } from "@/app/global/global_state/Collection_State";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -11,6 +11,7 @@ const Form = ({ params }) => {
   const [errorMassage, setErrorMassage] = useState();
   const DecodeKeyword = decodeURI(params.auth);
   const Router = useRouter();
+  const setUser = useUser((state) => state.setUser);
 
   const scemmaVal = yup.object({
     email: yup.string().email().required(),
@@ -25,14 +26,11 @@ const Form = ({ params }) => {
     resolver: yupResolver(scemmaVal),
   });
 
-  const setUser = useUser((state) => state.setUser);
-
   const onSignUp = async (value) => {
     const { email, password } = value;
     try {
       const DaftarAkun = await signUp(email, password);
       if (DaftarAkun) {
-        setErrorMassage("anda berhasil daftar");
         Router.push("/");
         setUser(DaftarAkun);
       }
@@ -76,7 +74,6 @@ const Form = ({ params }) => {
     try {
       const DaftarAkun = await signIn(email, password);
       if (DaftarAkun) {
-        setErrorMassage("anda berhasil masuk");
         Router.back();
         setUser(DaftarAkun);
       }
@@ -118,21 +115,28 @@ const Form = ({ params }) => {
       {user ? (
         <form className="mx-auto pt-24 text-white w-4/5" onSubmit={handleSubmit(DecodeKeyword === "Sign-up" ? onSignUp : onSignIn)}>
           <h1 className="text-center text-2xl font-bold hover:text-[#E50914] main-transition">{DecodeKeyword === "Sign-in" ? "Sign-In" : "Sign-Up"}</h1>
-          <div className="mb-5 mx-auto w-[40%]">
+          <div className="mb-5 mx-auto w-11/12 md:w-[40%]">
             <label htmlFor="email" className="block mb-2 text-sm font-medium hover:text-[#E50914] main-transition">
               Your email
             </label>
-            <input type="email" id="email" className="bg-white bg-opacity-30 text-white text-sm rounded-full w-full p-2" placeholder=" " required {...register("email", { required: true })} />
+            <input type="email" id="email" className="bg-white bg-opacity-30 text-sm rounded-full text-slate-300 w-full p-2" placeholder="email" required {...register("email", { required: true })} />
             <p className="text-red-500 text-sm mt-2">{errors.email?.message}</p>
           </div>
-          <div className="mb-5 mx-auto block w-[40%]">
+          <div className="mb-5 mx-auto block w-11/12 md:w-[40%]">
             <label htmlFor="password" className="block mb-2 text-sm font-medium hover:text-[#E50914] main-transition">
               Your password
             </label>
-            <input type="password" id="password" className="white-palace bg-white bg-opacity-30 text-white text-sm rounded-full w-full p-2" placeholder=" " required {...register("password", { required: true, min: 6, max: 15 })} />
-            {errors.password?.message ? <p className="text-red-500 text-sm mt-2">{errors.password?.message}</p> : <p className="text-yellow-400 text-sm mt-2">masukan pasword dengan minimal 6 character angka</p>}
+            <input
+              type="password"
+              id="password"
+              className="white-palace bg-white bg-opacity-30 text-slate-300 text-sm rounded-full w-full p-2"
+              placeholder="password"
+              required
+              {...register("password", { required: true, min: 6, max: 15 })}
+            />
+            {errors.password?.message ? <p className="text-red-500 text-sm mt-2">{errors.password?.message}</p> : <p className="text-yellow-400 text-sm mt-2">masukan password dengan min 6 carakter</p>}
           </div>
-          <button type="submit" className="text-black font-semibold bg-[#E50914] hover:bg-[#c93940] rounded-full text-sm px-5 py-2.5 text-center w-[40%] block mx-auto">
+          <button type="submit" className="text-black font-semibold bg-[#E50914] hover:bg-[#c93940] rounded-full text-sm px-5 py-2.5 text-center w-11/12 md:w-[40%] block mx-auto">
             {DecodeKeyword === "Sign-in" ? "SIGN IN" : "SIGN UP"}
           </button>
         </form>

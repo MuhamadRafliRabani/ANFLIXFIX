@@ -1,4 +1,3 @@
-"use client";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 // Import Swiper React components
@@ -10,10 +9,12 @@ import "swiper/css";
 import { Autoplay, Navigation } from "swiper/modules";
 import DetailCardCrousell from "./Detail";
 import Images from "./Image";
+import CardDetail from "../Card-Detail/CardDetail";
+import Image from "next/image";
 
 const Card = ({ animeCa }) => {
   return (
-    <div className="flex justify-center items-center w-full swiper-container">
+    <div className="flex justify-center items-center w-full z-20 relative">
       <Swiper
         spaceBetween={10}
         slidesPerView={3}
@@ -46,9 +47,9 @@ const Card = ({ animeCa }) => {
       >
         {animeCa?.map((anime) => {
           return (
-            <SwiperSlide className="w-fit rounded-lg Card mx-auto" key={anime.mal_id}>
-              <Images id={anime.mal_id} imagese={anime?.images.jpg.image_url} />
-              <DetailCardCrousell year={anime.year} anime_mal_id={anime?.mal_id} scores={anime.score} anime_images={anime.images?.jpg.image_url} anime_title={anime.title} />
+            <SwiperSlide className="w-fit rounded-lg Card mx-auto flex flex-col justify-center items-center" key={anime.mal_id}>
+              <Images anime_images={anime.images?.jpg.image_url} anime_title={anime.title} anime_mal_id={anime.mal_id} anime_episodes={anime.episodes} anime_rating={anime.rating} anime_status={anime.status} anime_type={anime.type} />
+              <h5 className="mb-2 text-base text-white font-medium hover:text-[#E50914] hover:font-semibold w-full">{anime.title}</h5>
             </SwiperSlide>
           );
         })}

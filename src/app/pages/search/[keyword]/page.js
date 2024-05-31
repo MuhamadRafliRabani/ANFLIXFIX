@@ -1,8 +1,7 @@
 "use client";
-import { useUser } from "@/app/Collection_State";
-import CardMain from "@/app/Components/Card-Anime/CardMain";
+import CardMain from "@/app/Components/Card/CardMain";
 import Pagination from "@/app/Components/Detail-Anime-Comp/pagination";
-import { reUseApi } from "@/app/global/global-func/Apis";
+import { reUseApi } from "@/app/global/global-func/Api";
 import { useEffect, useState } from "react";
 
 export default function Page({ params }) {
@@ -13,26 +12,28 @@ export default function Page({ params }) {
   const keyword = params.keyword;
   const decode = decodeURI(keyword);
 
-  const user = useUser((state) => state.user);
-  console.log(user);
+  const fetchData = async () => {
+    try {
+      const Api = await reUseApi("/anime", `q=${decode}/page=${page}`);
+      const result = await Api.json();
+      setLoding(true);
+      setDataAnime(result);
+    } catch (error) {
+      alert("error adalah", error);
+    } finally {
+      setLoding(false);
+    }
+  };
+
   useEffect(
     () => {
-      const fetchData = async () => {
-        try {
-          const Api = await reUseApi("/anime", `q=${decode}/page=${page}`);
-          setLoding(true);
-          setDataAnime(Api);
-        } catch (error) {
-          alert("error adalah", error);
-        } finally {
-          setLoding(false);
-        }
-      };
       fetchData();
     },
     [page],
     [decode]
   );
+
+  console.log(dataAnime);
 
   const scrollup = () => {
     scrollTo({

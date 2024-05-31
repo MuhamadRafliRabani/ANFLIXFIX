@@ -1,5 +1,7 @@
-export async function handleColection(anime_mal_id, user_email, anime_images, anime_title) {
-  const data = { anime_mal_id, user_email, anime_images, anime_title };
+import { useSucsses } from "../global_state/Collection_State";
+
+export async function handleColection(data) {
+  console.log(data);
   try {
     const HitApi = await fetch("/api/collection", {
       method: "POST",
