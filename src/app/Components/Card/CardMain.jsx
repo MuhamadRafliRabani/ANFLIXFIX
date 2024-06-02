@@ -12,10 +12,10 @@ function CardMain({ animeCM, title }) {
   const [isOpen, setIsOpen] = useState();
   const handleOpen = (anime_mal_id) => setIsOpen(anime_mal_id);
   return (
-    <div className="mt-2 ">
+    <section className="mt-2 md:container md:mx-auto md:mt-0" id="Rekomend">
       <h1 className="text-white font-bold text-base pt-1">{title}</h1>
 
-      <div className="grid grid-cols-2 grid-rows-3 w-svw h-fit gap-4 ps-2 pe-2  md:pe-8 md:grid-cols-7 lg:grid-cols-10">
+      <div className="grid grid-cols-2 grid-rows-3 w-svw h-fit gap-4 ps-2 pe-3 md:grid-cols-8 md:container md:gap-2">
         {animeCM?.length === 0 ? (
           <NotFoundAnim />
         ) : (
@@ -43,7 +43,7 @@ function CardMain({ animeCM, title }) {
                   )}
                 </Link>
                 {anime.title ? (
-                  <h5 className="mb-2 text-base text-white w-full font-medium text-center">
+                  <h5 className="mb-2 text-base text-white w-full font-medium">
                     {anime.title}
                   </h5>
                 ) : (
@@ -64,7 +64,7 @@ function CardMain({ animeCM, title }) {
           })
         )}
       </div>
-    </div>
+    </section>
   );
 }
 

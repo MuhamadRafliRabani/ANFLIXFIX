@@ -2,7 +2,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { reUseApi } from "./global/global-func/Api";
 import Card from "@/app/Components/Crausell/Card";
-import Header from "@/app/Components/Child-Comp/Header";
 import Type from "@/app/Components/Type-Button/ChoiseType";
 import Home_Page from "./Components/Landing-Page/Lading Page";
 import Rekomend from "./Components/Rekomend/Rekomend";
@@ -47,8 +46,7 @@ export default function Home() {
     <div className="overflow-x-hidden bg-black relative">
       <Home_Page animeHo={Data} type={type} />
       <Type />
-      <Header title={titleHead} path={`/SeeAll/${sendPath}`} />
-      <Card animeCa={Data} />
+      <Card animeCa={Data} title={titleHead} path={`/SeeAll/${sendPath}`} />
       <Rekomend />
     </div>
   );

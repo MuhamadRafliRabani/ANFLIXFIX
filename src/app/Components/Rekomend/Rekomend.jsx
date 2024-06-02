@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import CardSkeleton from "@/app/global/cardSeleton";
 
 const Rekomend = () => {
-  const [seeData, setSeeData] = useState(16);
+  const [seeData, setSeeData] = useState(32);
   const [dataAnime, setDataAnime] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 

@@ -15,6 +15,14 @@
   }
 }
 
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+#Rekomend {
+  font-family: "Noto Sans", sans-serif;
+}
+
 #sw {
   display: flex;
   justify-content: center;
@@ -54,7 +62,9 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: radial-gradient(farthest-side, #e50914 94%, #0000) top/9px 9px no-repeat, conic-gradient(#0000 30%, #e50914);
+  background: radial-gradient(farthest-side, #e50914 94%, #0000) top/9px 9px
+      no-repeat,
+    conic-gradient(#0000 30%, #e50914);
   -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 9px), #000 0);
   animation: spinner-c7wet2 1s infinite linear;
 }
@@ -95,7 +105,12 @@
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, rgba(165, 165, 165, 0.2) 25%, rgba(225, 225, 225, 0.4) 50%, rgba(165, 165, 165, 0.2) 75%);
+  background: linear-gradient(
+    90deg,
+    rgba(165, 165, 165, 0.2) 25%,
+    rgba(225, 225, 225, 0.4) 50%,
+    rgba(165, 165, 165, 0.2) 75%
+  );
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite;
 }
