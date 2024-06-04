@@ -29,10 +29,6 @@ body {
   align-items: center;
 }
 
-.white-palace::-webkit-input-placeholder {
-  color: white;
-}
-
 .main-transition {
   transition: all 0.45s ease-in-out;
 }
@@ -55,6 +51,28 @@ body {
 .effect-btn:disabled {
   background-color: #5c1b1e;
   cursor: not-allowed;
+}
+
+table,
+tr,
+td {
+  border: 1px solid lightslategray;
+}
+
+td {
+  padding: 4px 8px;
+  font-weight: 400;
+}
+
+tr {
+  /* font-light w-[70%] px-2 flex items-center */
+  background-color: #f1f5f9;
+}
+
+tr:nth-child(odd) {
+  /* font-light w-[70%] px-2 flex items-center */
+  background-color: #e2e8f0;
+  font-weight: 500;
 }
 
 /* loader */

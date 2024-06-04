@@ -17,10 +17,17 @@ const YoutubePlayer = ({ dataAnime }) => {
   return (
     <div className="fixed bottom-0 right-0 ">
       <div onClick={handleYoutubePlayer}>
-        <X className="w-10 h-10 text-white" />
+        <X className="w-10 h-10 text-white cursor-pointer effect-btn" />
       </div>
       <div className={`${isOpen ? "" : "hidden"}`}>
-        <YouTube videoId={dataAnime.trailer.youtube_id} opts={option} onReady={(event) => event.target.pauseVideo()} onPlay={(event) => (isOpen === false ? event.target.stopVideo() : event)} />
+        <YouTube
+          videoId={dataAnime.trailer.youtube_id}
+          opts={option}
+          onReady={(event) => event.target.pauseVideo()}
+          onPlay={(event) =>
+            isOpen === false ? event.target.stopVideo() : event
+          }
+        />
       </div>
     </div>
   );

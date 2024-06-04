@@ -11,7 +11,8 @@ const Type = () => {
   const setType = useType((state) => state.setType);
 
   const getType = useCallback(
-    (type) => {
+    (type, e) => {
+      e.preventDefault();
       switch (type) {
         case "Trend Up":
           setPath("/top/anime");
@@ -67,7 +68,7 @@ const Type = () => {
                 ? "text-[#E50914] text-xl font-bold effect-btn"
                 : "text-slate-300 text-base font-semibold"
             }`}
-            onClick={() => getType("Trend Up")}
+            onClick={(e) => getType("Trend Up", e)}
           >
             <Nav icon={<TrendUp size={20} />} text={"Trend Up"} />
           </button>
@@ -79,7 +80,7 @@ const Type = () => {
                 ? "text-[#E50914] text-lg font-bold effect-btn"
                 : "text-slate-300 text-base font-semibold"
             }`}
-            onClick={() => getType("This Season")}
+            onClick={(e) => getType("This Season", e)}
           >
             <Nav icon={<Star size={20} />} text={"This Season"} />
           </button>
@@ -91,7 +92,7 @@ const Type = () => {
                 ? "text-[#E50914] text-lg font-bold effect-btn"
                 : "text-slate-300 text-base font-semibold"
             }`}
-            onClick={() => getType("Season Coming")}
+            onClick={(e) => getType("Season Coming", e)}
           >
             <Nav icon={<Fire size={20} />} text={"Season Coming"} />
           </button>
@@ -103,7 +104,7 @@ const Type = () => {
                 ? "text-[#E50914] text-lg font-bold effect-btn"
                 : "text-slate-300 text-base font-semibold"
             }`}
-            onClick={() => getType("top")}
+            onClick={(e) => getType("top", e)}
           >
             <Nav icon={<Plus size={20} />} text={"top"} />
           </button>

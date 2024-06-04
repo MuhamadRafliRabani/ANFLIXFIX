@@ -143,10 +143,10 @@ const Form = ({ params }) => {
   const user = useUser((state) => state.user);
 
   return (
-    <section className="w-svw h-svh pt-20 lg:pt-56" id="section-form">
+    <section className="w-svw h-svh pt-20 md:pt-40 lg:pt-56" id="section-form">
       {user ? (
         <form
-          className="m-auto  text-white w-[60%] bg-transparent backdrop-blur-sm h-fit py-14 shadow-md border-white border-[0.1px] rounded-md lg:w-[20%]"
+          className="m-auto py-14 text-white w-[65%] h-fit bg-transparent backdrop-blur-sm shadow-md border-white border-[0.1px] rounded-md lg:w-[20%]"
           onSubmit={handleSubmit(
             DecodeKeyword === "Sign-up" ? onSignUp : onSignIn
           )}
