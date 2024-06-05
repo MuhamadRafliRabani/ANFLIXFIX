@@ -15,9 +15,9 @@ const page = async ({ params }) => {
   const dataAnime = data.data;
 
   return (
-    <div className="pt-12 mx-1 md:mx-auto bg-black h-svh lg:pt-20">
+    <div className="pt-16 mx-1 md:mx-auto bg-black h-fit md:h-svh lg:pt-20 ">
       <HeaderDetail dataAnime={dataAnime} />
-      <div className="flex justify-center items-center w-full flex-col flex-wrap md:flex-row md:gap-2 lg:container lg:mx-auto">
+      <div className="flex justify-center items-center  flex-col flex-wrap md:flex-row md:gap-2 lg:container lg:mx-auto ">
         <DetailImages imagesUrl={dataAnime.images.jpg?.large_image_url} />
         <SynopsisDetail dataAnime={dataAnime} />
         <DetailAnime dataAnime={dataAnime} />

@@ -5,7 +5,7 @@ const DetailImages = ({ imagesUrl }) => {
     <div className="w-full object-cover">
       <Image
         width={125}
-        height={280}
+        height={265}
         src={imagesUrl}
         className="mx-auto rounded-sm lg:w-[160px]"
       />

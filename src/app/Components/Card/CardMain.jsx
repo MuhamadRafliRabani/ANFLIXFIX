@@ -14,7 +14,7 @@ function CardMain({ animeCM, title }) {
     <section className="mt-2 md:container md:mx-auto md:mt-0" id="Rekomend">
       <h1 className="text-white font-bold text-base pt-1">{title}</h1>
 
-      <div className="grid grid-cols-2 grid-rows-3 w-svw h-fit gap-4 ps-2 pe-3 md:grid-cols-8 md:container md:gap-2">
+      <div className="grid grid-cols-3 grid-rows-3 w-svw h-fit gap-2 ps-2 pe-3 md:grid-cols-8 md:container md:gap-2">
         {!animeCM && <CardSkeleton cards={16} />}
         {animeCM?.map((anime, index) => {
           return (
@@ -26,8 +26,8 @@ function CardMain({ animeCM, title }) {
               >
                 {anime.images?.jpg.image_url ? (
                   <Image
-                    width={140}
-                    height={200}
+                    width={160}
+                    height={210}
                     src={anime.images?.jpg.image_url}
                     className="rounded-md hover:scale-105 md:mt-4 z-10 w-auto h-auto main-transition"
                     alt={anime.title}

@@ -19,24 +19,24 @@ export default function Home() {
   const path = usePath((state) => state.path);
   const type = useType((state) => state.type);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async (confrimPath) => {
     try {
-      const GetData = await reUseApi(path);
+      const GetData = await reUseApi(confrimPath);
       const response = await GetData.data;
       console.log(response);
       setData(response);
-      localStorage.setItem([path, response]);
+      localStorage.setItem(confrimPath, JSON.stringify(response));
     } catch (error) {
       console.log(error);
     }
-  };
+  });
 
   useEffect(() => {
     const Storage = localStorage.getItem(path);
     if (Storage) {
-      setData(Storage);
+      setData(JSON.parse(Storage));
     } else {
-      fetchData();
+      fetchData(path);
     }
   }, [path]);
 
