@@ -1,16 +1,47 @@
 import { handleColection } from "@/app/global/global-func/func";
-import { useCollecSucsess, useUser } from "@/app/global/global_state/Collection_State";
+import {
+  useCollecSucsess,
+  useUser,
+} from "@/app/global/global_state/Collection_State";
 import { Play, Plus } from "@phosphor-icons/react";
 import Link from "next/link";
 
-const AddCollection = async ({ anime_mal_id, anime_images, anime_title, anime_rating, anime_type, anime_status, anime_episodes }) => {
+const AddCollection = async ({
+  anime_mal_id,
+  anime_images,
+  anime_title,
+  anime_rating,
+  anime_type,
+  anime_status,
+  anime_episodes,
+}) => {
   const user = useUser((state) => state.user);
   const user_email = user?.email;
-  const setCollectSucsess = useCollecSucsess((state) => state.setCollectSucsess);
+  const setCollectSucsess = useCollecSucsess(
+    (state) => state.setCollectSucsess
+  );
 
   async function addCollect() {
-    console.log(anime_mal_id, user_email, anime_images, anime_title, anime_rating, anime_type, anime_status, anime_episodes);
-    const data = { anime_mal_id, user_email, anime_images, anime_title, anime_rating, anime_type, anime_status, anime_episodes };
+    console.log(
+      anime_mal_id,
+      user_email,
+      anime_images,
+      anime_title,
+      anime_rating,
+      anime_type,
+      anime_status,
+      anime_episodes
+    );
+    const data = {
+      anime_mal_id,
+      user_email,
+      anime_images,
+      anime_title,
+      anime_rating,
+      anime_type,
+      anime_status,
+      anime_episodes,
+    };
     try {
       const Response = await handleColection(data);
       const result = await Response.json();
@@ -22,7 +53,7 @@ const AddCollection = async ({ anime_mal_id, anime_images, anime_title, anime_ra
 
   return (
     <div className="flex justtify-center items-center gap-2">
-      <Link href={`pages/detail-anime/${anime_mal_id}`}>
+      <Link href={`pages/Detail-anime/${anime_mal_id}`}>
         <button className="bg-[#E50914] hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base hover:bg-[#FFFFFF] items-center gap-2 justify-center effect-btn ">
           <span>
             <Play size={14} />
@@ -40,7 +71,10 @@ const AddCollection = async ({ anime_mal_id, anime_images, anime_title, anime_ra
           </button>
         </Link>
       ) : (
-        <button onClick={addCollect} className="bg-black bg-opacity-80 hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base hover:bg-[#FFFFFF] items-center gap-2 justify-center effect-btn  active:shadow">
+        <button
+          onClick={addCollect}
+          className="bg-black bg-opacity-80 hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base hover:bg-[#FFFFFF] items-center gap-2 justify-center effect-btn  active:shadow"
+        >
           <span>
             <Plus size={14} />
           </span>{" "}

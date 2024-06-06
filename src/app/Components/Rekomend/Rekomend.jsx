@@ -33,7 +33,7 @@ const Rekomend = () => {
     setSeeData((prev) => prev + 12);
   };
   return (
-    <section className="">
+    <section className="w-full lg:container lg:mx-auto">
       {isLoading ? (
         <CardSkeleton cards={16} />
       ) : (

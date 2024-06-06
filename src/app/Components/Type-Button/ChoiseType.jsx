@@ -4,6 +4,7 @@ import Nav from "../Child-Comp/Nav";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useCallback, useState } from "react";
 import { usePath, useType } from "@/app/global/global_state/Collection_State";
+import Link from "next/link";
 
 const Type = () => {
   const [stylePicked, setStylePicked] = useState("Trend Up");
@@ -42,10 +43,10 @@ const Type = () => {
   );
 
   return (
-    <div className="text-[#E50914] w-svw border-b lg:ps-64">
+    <div className="text-[#E50914] w-full border-b ps-8 lg:ps-52 lg:container lg:mx-auto">
       <Swiper
         slidesPerView={2}
-        spaceBetween={10}
+        spaceBetween={20}
         breakpoints={{
           640: {
             slidesPerView: 2,
@@ -98,16 +99,17 @@ const Type = () => {
           </button>
         </SwiperSlide>
         <SwiperSlide>
-          <button
-            className={`main-transition p-0 ${
-              stylePicked === "Top"
-                ? "text-[#E50914] text-lg font-bold effect-btn"
-                : "text-slate-300 text-base font-semibold"
-            }`}
-            onClick={(e) => getType("top", e)}
-          >
-            <Nav icon={<Plus size={20} />} text={"top"} />
-          </button>
+          <Link href={"pages/Dasboard/collec_page"}>
+            <button
+              className={`main-transition p-0 ${
+                stylePicked === "Top"
+                  ? "text-[#E50914] text-lg font-bold effect-btn"
+                  : "text-slate-300 text-base font-semibold"
+              }`}
+            >
+              <Nav icon={<Plus size={20} />} text={"Collection"} />
+            </button>
+          </Link>
         </SwiperSlide>
       </Swiper>
     </div>

@@ -32,25 +32,26 @@ body {
 .main-transition {
   transition: all 0.45s ease-in-out;
 }
+
 .form-backdrop {
   backdrop-filter: blur(4px);
-}
-
-.effect-btn {
-  cursor: pointer; /* Ubah cursor menjadi pointer */
-  transition: background-color 0.3s, transform 0.1s; /* Transisi halus */
-  box-shadow: inset 5px;
-}
-
-.effect-btn:active {
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); /* Bayangan dalam */
-  transform: translateY(-2px); /* Perpindahan ke bawah saat ditekan */
-  transform: translateX(2px);
 }
 
 .effect-btn:disabled {
   background-color: #5c1b1e;
   cursor: not-allowed;
+}
+
+.effect-btn {
+  transition: background-color 0.3s, transform 0.1s;
+  color: #fff;
+  box-shadow: inset 5px;
+  cursor: pointer;
+}
+
+.effect-btn:active {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  transform: translateY(2px);
 }
 
 table,
@@ -122,22 +123,22 @@ tr:nth-child(odd) {
   }
 }
 
-.animate-shimmer {
-  background: linear-gradient(
-    90deg,
-    rgba(165, 165, 165, 0.2) 25%,
-    rgba(225, 225, 225, 0.4) 50%,
-    rgba(165, 165, 165, 0.2) 75%
-  );
-  background-size: 200px 100%;
-  animation: shimmer 1.5s infinite;
+@media screen and (max-width: 600px) {
+  .swiper-button-next::after {
+    display: none;
+  }
+  .swiper-button-prev::after {
+    display: none;
+  }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: 200px 0;
-  }
+.swiper-button-next::after {
+  background-color: #cbd5e1;
+  border-radius: 5px;
+  padding: 0.8rem;
+}
+.swiper-button-prev::after {
+  background-color: #cbd5e1;
+  border-radius: 5px;
+  padding: 0.8rem;
 }

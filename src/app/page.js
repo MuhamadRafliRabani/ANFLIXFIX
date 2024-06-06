@@ -1,15 +1,15 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { reUseApi } from "./global/global-func/Api";
-import Card from "@/app/Components/Crausell/Card";
 import Type from "@/app/Components/Type-Button/ChoiseType";
-import Home_Page from "./Components/Landing-Page/Lading Page";
 import Rekomend from "./Components/Rekomend/Rekomend";
 import {
   usePath,
   useType,
   useUser,
 } from "./global/global_state/Collection_State";
+import Card from "./Components/Second-Crausell/Card";
+import Home_Page from "./Components/Crousell/Lading Page";
 
 export default function Home() {
   const [sendPath, setSendPath] = useState("/top");
@@ -46,7 +46,7 @@ export default function Home() {
     <div className="overflow-x-hidden bg-black relative">
       <Home_Page animeHo={Data} type={type} />
       <Type />
-      <Card animeCa={Data} title={titleHead} path={`/SeeAll/${sendPath}`} />
+      <Card animeCa={Data} title={titleHead} path={`/See-all/${sendPath}`} />
       <Rekomend />
     </div>
   );

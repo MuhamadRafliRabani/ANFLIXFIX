@@ -16,7 +16,7 @@ const CardDetail = ({
 }) => {
   return (
     <div
-      className={`absolute top-8 left-0 right-0 w-80 h-80 z-[9999] flex flex-col items-center bg-black bg-opacity-80 text-white font-semibold shadow-sm scale-0 main-transition translate-y-4 md:-left-[35%] md:right-[30%] ${
+      className={`hidden absolute top-8 left-0 right-0 w-80 h-80 z-[9999] lg:flex flex-col items-center bg-black bg-opacity-80 text-white font-semibold shadow-sm scale-0 main-transition translate-y-4 md:-left-[35%] md:right-[30%] ${
         isOpen === anime_mal_id ? "scale-100 translate-y-0" : ""
       }`}
     >

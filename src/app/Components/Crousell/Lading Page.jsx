@@ -5,7 +5,9 @@ import Rekomend_Img from "@/data/rekomend_Img";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import AddCollection from "./addCollection";
-import { Navigation } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation } from "swiper/modules";
+import "swiper/css/effect-fade";
+import Link from "next/link";
 
 const Home_Page = ({ animeHo, type }) => {
   const [dataImg, setDataImg] = useState(Top_Img);
@@ -31,29 +33,13 @@ const Home_Page = ({ animeHo, type }) => {
     <Swiper
       slidesPerView={1}
       navigation
-      breakpoints={{
-        480: {
-          navigation: {
-            enabled: false,
-          },
-        },
-        640: {
-          navigation: {
-            enabled: false,
-          },
-        },
-        768: {
-          navigation: {
-            enabled: true,
-          },
-        },
-        1024: {
-          navigation: {
-            enabled: true,
-          },
-        },
+      speed={700}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
       }}
-      modules={[Navigation]}
+      effect={"fade"}
+      modules={[Navigation, Autoplay, EffectFade]}
     >
       {animeHo?.map((data, index) => (
         <SwiperSlide key={index}>
@@ -82,9 +68,12 @@ const Home_Page = ({ animeHo, type }) => {
                     </span>
                   ))}
                 </p>
-                <h1 className="text-xl font-bold mb-4 md:text-3xl text-white">
+                <Link
+                  href={`/pages/Detail-anime/${data.mal_id}`}
+                  className="text-xl font-bold mb-4 md:text-3xl text-white"
+                >
                   {data.title}
-                </h1>
+                </Link>
                 <p className="hidden md:flex md:w-11/12 md:leading-relaxed md:text-xl md:font-semibold">
                   {dataImg[index % dataImg.length].synopsis}
                 </p>

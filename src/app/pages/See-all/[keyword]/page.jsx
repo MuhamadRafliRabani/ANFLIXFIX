@@ -9,7 +9,9 @@ const Page = ({ params }) => {
   const pathAnime = decodeURI(params.keyword);
 
   const [page, setPage] = useState(1);
-  const [path, setPathAnime] = useState(pathAnime === "top" ? "/top/anime" : "/seasons/upcoming");
+  const [path, setPathAnime] = useState(
+    pathAnime === "top" ? "/top/anime" : "/seasons/upcoming"
+  );
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -32,17 +34,13 @@ const Page = ({ params }) => {
     });
   };
 
-  useEffect(
-    () => {
-      const fetchData = async () => {
-        const Api = await reUseApi(`${path}`, `page=${page}`);
-        setData(Api);
-      };
-      fetchData();
-    },
-    [page],
-    [path]
-  );
+  useEffect(() => {
+    const fetchData = async () => {
+      const Api = await reUseApi(`${path}`, `page=${page}`);
+      setData(Api);
+    };
+    fetchData();
+  }, [page]);
 
   console.log(data);
 
@@ -57,10 +55,17 @@ const Page = ({ params }) => {
   };
 
   return (
-    <section className="text-white mt-8 bg-black">
-      <h1 className="w-full text-center">HEADER : {page}</h1>
-      <CardMain animeCM={data.data} />
-      <Pagination page={page} lastpage={data.pagination?.last_visible_page} HandleNextPage={HandleNextPage} HandlePrevPage={HandlePrevPage} />
+    <section className="text-white bg-black w-full">
+      <div className="lg:container lg:mx-auto pt-16 w-full">
+        <h1 className="w-full font-medium lg:text-lg">Halaman : {page}</h1>
+        <CardMain animeCM={data.data} />
+        <Pagination
+          page={page}
+          lastpage={data.pagination?.last_visible_page}
+          HandleNextPage={HandleNextPage}
+          HandlePrevPage={HandlePrevPage}
+        />
+      </div>
     </section>
   );
 };

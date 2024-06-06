@@ -1,8 +1,6 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import CardDetail from "../Card-Detail/CardDetail";
 import { useState } from "react";
 import CardSkeleton from "@/app/global/cardSeleton";
@@ -11,10 +9,10 @@ function CardMain({ animeCM, title }) {
   const [isOpen, setIsOpen] = useState();
   const handleOpen = (anime_mal_id) => setIsOpen(anime_mal_id);
   return (
-    <section className="mt-2 md:container md:mx-auto md:mt-0" id="Rekomend">
-      <h1 className="text-white font-bold text-base pt-1">{title}</h1>
+    <section className="mt-2 md:mt-0" id="Rekomend">
+      <h1 className="text-white font-bold text-base px-2 mt-1 mb-4">{title}</h1>
 
-      <div className="grid grid-cols-3 grid-rows-3 w-svw h-fit gap-2 ps-2 pe-3 md:grid-cols-8 md:container md:gap-2">
+      <div className="grid grid-cols-3 grid-rows-3 w-svw h-fit gap-2 px-1 lg:grid-cols-8 lg:gap-4 lg:container ">
         {!animeCM && <CardSkeleton cards={16} />}
         {animeCM?.map((anime, index) => {
           return (
@@ -26,10 +24,10 @@ function CardMain({ animeCM, title }) {
               >
                 {anime.images?.jpg.image_url ? (
                   <Image
-                    width={160}
-                    height={210}
+                    width={180}
+                    height={250}
                     src={anime.images?.jpg.image_url}
-                    className="rounded-md hover:scale-105 md:mt-4 z-10 w-auto h-auto main-transition"
+                    className="rounded-md hover:scale-105 md:mt-4 z-10 w-auto h-auto main-transition img-card"
                     alt={anime.title}
                   />
                 ) : (
@@ -37,11 +35,11 @@ function CardMain({ animeCM, title }) {
                 )}
               </Link>
               {anime.title ? (
-                <h5 className="mb-2 text-base text-white w-full font-medium">
+                <h5 className="my-1 text-base text-white w-full font-medium">
                   {anime.title}
                 </h5>
               ) : (
-                <Skeleton className="mb-2 text-base text-white w-full font-medium text-start" />
+                <Skeleton className="mb-2 text-base text-white w-full font-medium" />
               )}
 
               <CardDetail

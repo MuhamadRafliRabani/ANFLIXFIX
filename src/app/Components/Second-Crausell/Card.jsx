@@ -4,20 +4,28 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import Images from "./Image";
 import Link from "next/link";
+import { useState } from "react";
+import CardDetail from "../Card-Detail/CardDetail";
 
 const Card = ({ animeCa, title, path }) => {
+  const [isOpen, setIsOpen] = useState();
+
+  const handleOpen = (anime_mal_id) => {
+    setIsOpen(anime_mal_id);
+  };
+
   return (
-    <section className="md:container md:mx-auto md:mt-4">
-      <div className="w-full p-3 flex justify-between items-center mb-4 md:px-6 ">
+    <section className="lg:container lg:mx-auto lg:mt-6">
+      <div className="w-full px-2 flex justify-between items-center my-4 lg:px-6 ">
         <h1 className="text-white font-bold text-base pt-1">{title}</h1>
         <Link
-          href={"/"}
+          href={`/pages${path}`}
           className="text-white font-bold text-sm border-b effect-btn disabled:bg-slate-300 disabled:cursor-not-allowed"
         >
           lihat semua
         </Link>
       </div>
-      <div className="flex justify-center items-center w-full z-20 relative md:container md:mx-auto">
+      <div className="flex justify-center items-center w-full z-20 relative lg:container lg:mx-auto">
         <Swiper
           spaceBetween={5}
           slidesPerView={3}
@@ -48,18 +56,35 @@ const Card = ({ animeCa, title, path }) => {
           {animeCa?.map((anime) => {
             return (
               <SwiperSlide
-                className="w-fit rounded-lg Card mx-auto flex flex-col justify-center items-center"
+                className="w-fit rounded-lg Card mx-auto flex flex-col justify-center items-center lg:ps-2"
                 key={anime.mal_id}
               >
-                <Images
-                  anime_images={anime.images?.jpg.image_url}
-                  anime_title={anime.title}
-                  anime_mal_id={anime.mal_id}
-                  anime_episodes={anime.episodes}
-                  anime_rating={anime.rating}
-                  anime_status={anime.status}
-                  anime_type={anime.type}
-                />
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleOpen(anime.mal_id)}
+                  onMouseLeave={() => handleOpen(null)}
+                >
+                  <Images
+                    anime_images={anime.images?.jpg.image_url}
+                    anime_title={anime.title}
+                    anime_mal_id={anime.mal_id}
+                    anime_episodes={anime.episodes}
+                    anime_rating={anime.rating}
+                    anime_status={anime.status}
+                    anime_type={anime.type}
+                  />
+                  <CardDetail
+                    anime_images={anime.images?.jpg.image_url}
+                    anime_title={anime.title}
+                    anime_mal_id={anime.mal_id}
+                    anime_episodes={anime.episodes}
+                    anime_rating={anime.rating}
+                    anime_status={anime.status}
+                    anime_type={anime.type}
+                    isOpen={isOpen}
+                    key={anime.mal_id}
+                  />
+                </div>
                 <h5 className="mb-2 text-base text-white font-medium hover:text-[#E50914] hover:font-semibold w-full text-center">
                   {anime.title}
                 </h5>

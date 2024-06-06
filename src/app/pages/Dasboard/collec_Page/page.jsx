@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { useUser } from "@/app/global/global_state/Collection_State";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import CardSkeleton from "@/app/global/cardSeleton";
