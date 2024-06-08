@@ -12,7 +12,14 @@ const CardSkeleton = ({ cards }) => {
             className="w-fit h-fit flex flex-col justify-center items-center"
           >
             <div className="rounded-md">
-              {<Skeleton count={1} width={200} height={250} />}
+              {
+                <Skeleton
+                  count={1}
+                  width={200}
+                  height={250}
+                  enableAnimation={true}
+                />
+              }
             </div>
             <p className="text-start">
               {
@@ -21,6 +28,7 @@ const CardSkeleton = ({ cards }) => {
                   height={18}
                   count={2}
                   className="me-auto block"
+                  enableAnimation={true}
                 />
               }
             </p>

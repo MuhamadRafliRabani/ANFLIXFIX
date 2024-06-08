@@ -2,7 +2,7 @@ import DetailImages from "@/app/Components/Detail-Anime-Comp/DetailImages";
 import HeaderDetail from "@/app/Components/Detail-Anime-Comp/HeaderDetail";
 import SynopsisDetail from "@/app/Components/Detail-Anime-Comp/SynopsisDetail";
 import YoutubePlayer from "@/app/Components/Detail-Anime-Comp/YoutubePlayer";
-import { reUseApi } from "@/app/global/global-func/Api";
+import { reUseApi } from "@/utility/Api";
 
 const {
   default: DetailAnime,

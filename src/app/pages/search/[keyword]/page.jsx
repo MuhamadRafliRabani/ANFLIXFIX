@@ -1,7 +1,7 @@
 "use client";
 import CardMain from "@/app/Components/Card/CardMain";
 import Pagination from "@/app/Components/Detail-Anime-Comp/pagination";
-import { reUseApi } from "@/app/global/global-func/Api";
+import { reUseApi } from "@/utility/Api";
 import { useEffect, useState } from "react";
 
 export default function Page({ params }) {
@@ -57,7 +57,7 @@ export default function Page({ params }) {
       {loding ? (
         <div className="Loader"></div>
       ) : (
-        <div>
+        <div className="lg:container lg:mx-auto">
           {/* <Header title={"TOP ANIME"} path={"/top"} /> */}
           <h1>pencarian untuk : {decode}</h1>
           <CardMain animeCM={dataAnime} />

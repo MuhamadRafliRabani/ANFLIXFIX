@@ -21,7 +21,7 @@ const CardDetail = ({
       }`}
     >
       <Link
-        href={`/pages/detail-anime/${anime_mal_id}`}
+        href={`/pages/Detail-anime/${anime_mal_id}`}
         className="w-full h-[50%] relative"
       >
         <Image
@@ -37,7 +37,7 @@ const CardDetail = ({
         <h1 className="text-center text-lg  truncate w-full">{anime_title}</h1>
         <div className="w-full flex justify-start items-center py-1 space-x-2">
           <LinkBtn
-            url={`/pages/detail-anime/${anime_mal_id}`}
+            url={`/pages/Detail-anime/${anime_mal_id}`}
             icon={<Play />}
           />
           <AddCollection
@@ -50,7 +50,7 @@ const CardDetail = ({
             anime_type={anime_type}
           />
           <LinkBtn
-            url={`/pages/detail-anime/${anime_mal_id}`}
+            url={`/pages/Detail-anime/${anime_mal_id}`}
             icon={<CaretDown />}
           />
         </div>

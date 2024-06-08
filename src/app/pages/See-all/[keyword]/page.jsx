@@ -2,7 +2,7 @@
 
 import CardMain from "@/app/Components/Card/CardMain";
 import Pagination from "@/app/Components/Detail-Anime-Comp/pagination";
-import { reUseApi } from "@/app/global/global-func/Api";
+import { reUseApi } from "@/utility/Api";
 import { useEffect, useState } from "react";
 
 const Page = ({ params }) => {
@@ -56,7 +56,7 @@ const Page = ({ params }) => {
 
   return (
     <section className="text-white bg-black w-full">
-      <div className="lg:container lg:mx-auto pt-16 w-full">
+      <div className="lg:container lg:mx-auto contain-none pt-16 w-full">
         <h1 className="w-full font-medium lg:text-lg">Halaman : {page}</h1>
         <CardMain animeCM={data.data} />
         <Pagination

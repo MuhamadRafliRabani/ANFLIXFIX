@@ -12,13 +12,13 @@ function CardMain({ animeCM, title }) {
     <section className="mt-2 md:mt-0" id="Rekomend">
       <h1 className="text-white font-bold text-base px-2 mt-1 mb-4">{title}</h1>
 
-      <div className="grid grid-cols-3 grid-rows-3 w-svw h-fit gap-2 px-1 lg:grid-cols-8 lg:gap-4 lg:container ">
+      <div className="grid grid-cols-3 grid-rows-3 h-fit gap-2 px-1 lg:grid-cols-8 lg:gap-4 lg:container ">
         {!animeCM && <CardSkeleton cards={16} />}
         {animeCM?.map((anime, index) => {
           return (
             <div key={index} className="w-full rounded-lg shadow Card mx-auto">
               <Link
-                href={`/pages/detail-anime/${anime.mal_id}`}
+                href={`/pages/Detail-anime/${anime.mal_id}`}
                 onMouseEnter={() => handleOpen(anime.mal_id)}
                 onMouseLeave={() => handleOpen(anime.mal_id)}
               >

@@ -3,14 +3,13 @@ import { Fire, Plus, Star, TrendUp } from "@phosphor-icons/react";
 import Nav from "../Child-Comp/Nav";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useCallback, useState } from "react";
-import { usePath, useType } from "@/app/global/global_state/Collection_State";
+import { usePath, useType } from "@/utility/global_state/Collection_State";
 import Link from "next/link";
 
 const Type = () => {
   const [stylePicked, setStylePicked] = useState("Trend Up");
   const setPath = usePath((state) => state.setPath);
   const setType = useType((state) => state.setType);
-
   const getType = useCallback(
     (type, e) => {
       e.preventDefault();

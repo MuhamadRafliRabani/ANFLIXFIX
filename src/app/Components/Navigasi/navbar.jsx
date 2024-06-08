@@ -9,7 +9,7 @@ import {
   XCircle,
 } from "@phosphor-icons/react";
 import Image from "next/image";
-import { useUser } from "@/app/global/global_state/Collection_State";
+import { useUser } from "@/utility/global_state/Collection_State";
 import { SignOut } from "@/service/firebase";
 
 const Navbar = () => {
@@ -105,13 +105,13 @@ const Navbar = () => {
       <div className="flex gap-2 items-center font-semibold">
         <Link
           href={"/pages/Form/Sign-up"}
-          className="bg-[#E50914] px-4 py-2 rounded-md"
+          className="bg-[#E50914] px-3 py-2 rounded-md text-sm lg:text-base lg:px-4"
         >
           <p>Sign Up</p>
         </Link>
         <Link
           href={"/pages/Form/Sign-in"}
-          className="text-white rounded-lg hover:bg-white hover:text-[#E50914] hover:px-4 hover:py-2 main-transition"
+          className="text-white rounded-lg hover:bg-white hover:text-[#E50914] px-3 py-2 text-sm lg:text-base lg:px-4 main-transition"
         >
           <p>Sign In</p>
         </Link>

@@ -11,22 +11,19 @@ const YoutubePlayer = ({ dataAnime }) => {
   };
 
   const handleYoutubePlayer = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   return (
-    <div className="fixed bottom-0 right-0 ">
-      <div onClick={handleYoutubePlayer}>
+    <div className="fixed bottom-[1rem] right-4 ">
+      <div onClick={() => handleYoutubePlayer()}>
         <X className="w-10 h-10 text-white cursor-pointer effect-btn" />
       </div>
-      <div className={`${isOpen ? "" : "hidden"}`}>
+      <div className={`${!isOpen && "hidden"}`} id="youtube-plyer">
         <YouTube
           videoId={dataAnime.trailer.youtube_id}
           opts={option}
           onReady={(event) => event.target.pauseVideo()}
-          onPlay={(event) =>
-            isOpen === false ? event.target.stopVideo() : event
-          }
         />
       </div>
     </div>

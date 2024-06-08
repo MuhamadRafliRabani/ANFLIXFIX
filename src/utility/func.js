@@ -1,4 +1,4 @@
-import { useSucsses } from "../global_state/Collection_State";
+import { useSucsses } from "@/utility/global_state/Collection_State";
 
 export async function handleColection(data) {
   console.log(data);

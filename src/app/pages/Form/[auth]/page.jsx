@@ -3,7 +3,7 @@ import { signIn, signUp } from "@/service/firebase";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { useUser } from "@/app/global/global_state/Collection_State";
+import { useUser } from "@/utility/global_state/Collection_State";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 

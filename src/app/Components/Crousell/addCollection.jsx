@@ -1,8 +1,8 @@
-import { handleColection } from "@/app/global/global-func/func";
+import { handleColection } from "@/utility/func";
 import {
   useCollecSucsess,
   useUser,
-} from "@/app/global/global_state/Collection_State";
+} from "@/utility/global_state/Collection_State";
 import { Play, Plus } from "@phosphor-icons/react";
 import Link from "next/link";
 

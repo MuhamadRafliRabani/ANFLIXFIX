@@ -1,13 +1,13 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import { reUseApi } from "./global/global-func/Api";
+import { reUseApi } from "@/utility/Api";
 import Type from "@/app/Components/Type-Button/ChoiseType";
 import Rekomend from "./Components/Rekomend/Rekomend";
 import {
   usePath,
   useType,
   useUser,
-} from "./global/global_state/Collection_State";
+} from "@/utility/global_state/Collection_State";
 import Card from "./Components/Second-Crausell/Card";
 import Home_Page from "./Components/Crousell/Lading Page";
 

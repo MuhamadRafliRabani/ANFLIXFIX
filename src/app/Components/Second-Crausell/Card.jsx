@@ -33,6 +33,7 @@ const Card = ({ animeCa, title, path }) => {
             delay: 2500,
             disableOnInteraction: false,
           }}
+          loop={true}
           navigation
           modules={[Autoplay, Navigation]}
           breakpoints={{
