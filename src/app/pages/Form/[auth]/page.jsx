@@ -33,6 +33,7 @@ const Form = ({ params }) => {
       if (DaftarAkun) {
         Router.push("/");
         setUser(DaftarAkun);
+        localStorage.setItem("user", DaftarAkun.email);
       }
     } catch (error) {
       console.log(error);
@@ -92,6 +93,7 @@ const Form = ({ params }) => {
       if (DaftarAkun) {
         Router.back();
         setUser(DaftarAkun);
+        localStorage.setItem("user", DaftarAkun.email);
       }
     } catch (error) {
       console.log(error);

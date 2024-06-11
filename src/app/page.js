@@ -16,16 +16,18 @@ export default function Home() {
   const [Data, setData] = useState([]);
   const [titleHead, setTitleHead] = useState("Top Anime");
   const user = useUser((state) => state.user);
+  const setUser = useUser((state) => state.setUser);
   const path = usePath((state) => state.path);
   const type = useType((state) => state.type);
 
+  console.log(path);
   const fetchData = useCallback(async (confrimPath) => {
     try {
       const GetData = await reUseApi(confrimPath);
-      const response = await GetData.data;
+      const response = await GetData;
       console.log(response);
       setData(response);
-      localStorage.setItem(confrimPath, JSON.stringify(response));
+      localStorage.setItem(path, JSON.stringify(response));
     } catch (error) {
       console.log(error);
     }
@@ -39,6 +41,21 @@ export default function Home() {
       fetchData(path);
     }
   }, [path]);
+
+  const getUserInLocal = (userEmail) => {
+    setUser(userEmail);
+  };
+
+  useEffect(() => {
+    const userEmail = localStorage.getItem("user");
+    if (userEmail) {
+      getUserInLocal(userEmail);
+    } else {
+      return;
+    }
+  }, []);
+
+  console.log(user);
 
   console.log(Data);
 

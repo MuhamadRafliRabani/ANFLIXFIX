@@ -4,10 +4,9 @@ export const reUseApi = async (resource, query) => {
     const fetchData = await axios.get(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}${resource}?${query}`
     );
-    const dataAnime = fetchData;
+    const dataAnime = fetchData.data;
     console.log(dataAnime);
-    console.log(dataAnime.data.data);
-    return dataAnime.data;
+    return dataAnime?.data;
   } catch (error) {
     return error;
   }

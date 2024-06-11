@@ -76,6 +76,31 @@ tr:nth-child(odd) {
   font-weight: 500;
 }
 
+#anya-backdrop {
+  z-index: 1;
+}
+
+#anya-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  top: 10px;
+  width: 100%;
+  height: 90%;
+  border-radius: 50%;
+  filter: blur(10px);
+  background-color: #ffcbcb;
+  z-index: -1;
+}
+#anya-backdrop::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5%;
+  background-image: linear-gradient(from transparent to black);
+}
+
 /* loader */
 .Loader {
   width: 56px;

@@ -84,7 +84,7 @@ const Navbar = () => {
                   alt="user-img"
                 />
                 <p className="flex justify-center flex-col cursor-pointer">
-                  Dasboard <span className="text-xs">{user?.email}</span>
+                  Dasboard <span className="text-xs">{user.toString()}</span>
                 </p>
               </Link>
               <button
@@ -149,7 +149,7 @@ const Navbar = () => {
         </div>
         <div className="flex gap-3 justify-center items-center">
           <SearchBtn />
-          {user?.email ? <UserComp /> : <AuthButton />}
+          {user ? <UserComp /> : <AuthButton />}
         </div>
       </nav>
     </header>
