@@ -23,7 +23,6 @@ export default function Home() {
     try {
       const GetData = await reUseApi(confrimPath);
       const response = await GetData.data;
-      console.log(response);
       setData(response);
       localStorage.setItem(confrimPath, JSON.stringify(response));
     } catch (error) {
@@ -40,10 +39,8 @@ export default function Home() {
     }
   }, [path]);
 
-  console.log(Data);
-
   return (
-    <div className="overflow-x-hidden bg-black relative">
+    <div className="overflow-x-hidden bg-[#0E0E0E] relative">
       <Home_Page animeHo={Data} type={type} />
       <Type />
       <Card animeCa={Data} title={titleHead} path={`/See-all/${sendPath}`} />

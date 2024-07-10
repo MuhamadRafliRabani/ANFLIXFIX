@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 #section-form {
   background-image: url("/bg-form1.jpg");
@@ -16,7 +17,7 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 #Rekomend {
@@ -47,6 +48,11 @@ body {
   color: #fff;
   box-shadow: inset 5px;
   cursor: pointer;
+}
+
+.btn {
+  @apply bg-opacity-80 hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base hover:bg-[#FFFFFF] items-center gap-2 justify-center effect-btn
+  bg-opacity-80 hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base hover:bg-[#FFFFFF] items-center gap-2 justify-center effect-btn;
 }
 
 .effect-btn:active {

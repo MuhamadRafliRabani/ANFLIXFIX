@@ -22,16 +22,6 @@ const AddCollection = async ({
   );
 
   async function addCollect() {
-    console.log(
-      anime_mal_id,
-      user_email,
-      anime_images,
-      anime_title,
-      anime_rating,
-      anime_type,
-      anime_status,
-      anime_episodes
-    );
     const data = {
       anime_mal_id,
       user_email,
@@ -54,7 +44,7 @@ const AddCollection = async ({
   return (
     <div className="flex justtify-center items-center gap-2">
       <Link href={`pages/Detail-anime/${anime_mal_id}`}>
-        <button className="bg-[#E50914] hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base hover:bg-[#FFFFFF] items-center gap-2 justify-center effect-btn ">
+        <button className="bg-[#E50914] hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base items-center gap-2 justify-center effect-btn ">
           <span>
             <Play size={14} />
           </span>{" "}
@@ -63,7 +53,7 @@ const AddCollection = async ({
       </Link>
       {!user_email ? (
         <Link href={"/pages/Form/sign-in"}>
-          <button className="bg-black bg-opacity-80 hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base hover:bg-[#FFFFFF] items-center gap-2 justify-center effect-btn shadow-md ">
+          <button className="border-white border btn hover:bg-transparent shadow-md btn1 ">
             <span>
               <Plus size={14} />
             </span>
@@ -73,7 +63,7 @@ const AddCollection = async ({
       ) : (
         <button
           onClick={addCollect}
-          className="bg-black bg-opacity-80 hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base hover:bg-[#FFFFFF] items-center gap-2 justify-center effect-btn  active:shadow"
+          className=" border-white border-2 btn active:shadow btn-"
         >
           <span>
             <Plus size={14} />

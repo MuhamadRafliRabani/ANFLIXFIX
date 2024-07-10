@@ -1,10 +1,9 @@
 "use client";
-import { Fire, Plus, Star, TrendUp } from "@phosphor-icons/react";
-import Nav from "../Child-Comp/Nav";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useCallback, useState } from "react";
 import { usePath, useType } from "@/utility/global_state/Collection_State";
 import Link from "next/link";
+import Btn from "./btn";
 
 const Type = () => {
   const [stylePicked, setStylePicked] = useState("Trend Up");
@@ -62,52 +61,37 @@ const Type = () => {
         }}
       >
         <SwiperSlide>
-          <button
-            className={`main-transition p-0 ${
-              stylePicked === "Trend Up"
-                ? "text-[#E50914] text-xl font-bold effect-btn"
-                : "text-slate-300 text-base font-semibold"
-            }`}
-            onClick={(e) => getType("Trend Up", e)}
-          >
-            <Nav icon={<TrendUp size={20} />} text={"Trend Up"} />
-          </button>
+          <Btn
+            text={"Trend Up"}
+            type={"Trend Up"}
+            getType={getType}
+            stylePicked={stylePicked}
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <button
-            className={`main-transition p-0 ${
-              stylePicked === "This Season"
-                ? "text-[#E50914] text-lg font-bold effect-btn"
-                : "text-slate-300 text-base font-semibold"
-            }`}
-            onClick={(e) => getType("This Season", e)}
-          >
-            <Nav icon={<Star size={20} />} text={"This Season"} />
-          </button>
+          <Btn
+            text={"This Season"}
+            type={"This Season"}
+            getType={getType}
+            stylePicked={stylePicked}
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <button
-            className={`main-transition p-0 ${
-              stylePicked === "Season Coming"
-                ? "text-[#E50914] text-lg font-bold effect-btn"
-                : "text-slate-300 text-base font-semibold"
-            }`}
-            onClick={(e) => getType("Season Coming", e)}
-          >
-            <Nav icon={<Fire size={20} />} text={"Season Coming"} />
-          </button>
+          <Btn
+            text={"Season Coming"}
+            type={"Season Coming"}
+            getType={getType}
+            stylePicked={stylePicked}
+          />
         </SwiperSlide>
         <SwiperSlide>
           <Link href={"pages/Dasboard/collec_page"}>
-            <button
-              className={`main-transition p-0 ${
-                stylePicked === "Top"
-                  ? "text-[#E50914] text-lg font-bold effect-btn"
-                  : "text-slate-300 text-base font-semibold"
-              }`}
-            >
-              <Nav icon={<Plus size={20} />} text={"Collection"} />
-            </button>
+            <Btn
+              text={"Collection"}
+              type={"Collection"}
+              getType={getType}
+              stylePicked={stylePicked}
+            />
           </Link>
         </SwiperSlide>
       </Swiper>

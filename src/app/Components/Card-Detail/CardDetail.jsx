@@ -50,7 +50,7 @@ const CardDetail = ({
             anime_type={anime_type}
           />
           <LinkBtn
-            url={`/pages/Detail-anime/${anime_mal_id}`}
+            url={`/pages/detail-anime/${anime_mal_id}`}
             icon={<CaretDown />}
           />
         </div>
