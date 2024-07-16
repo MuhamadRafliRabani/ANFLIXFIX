@@ -1,18 +1,27 @@
-import React from "react";
-import Nav from "../Child-Comp/Nav";
+import { usePath, useType } from "@/utility/global_state/Collection_State";
+import { setDataAnime } from "@/utility/SwitchType";
 import { TrendUp } from "@phosphor-icons/react";
+import { useEffect } from "react";
 
-const Btn = ({ text, type, getType, stylePicked }) => {
+const Btn = ({ Type }) => {
+  const { setPath } = usePath();
+  const { setType, type } = useType();
+
+  useEffect(() => {
+    setDataAnime(Type, setPath, setType);
+  }, [Type]);
+
   return (
     <button
-      className={`main-transition p-0 text-base ${
-        stylePicked === type
-          ? "text-[#E50914] md:text-xl font-bold effect-btn"
+      className={`main-transition p-0 text-base effect-btn flex gap-1 items-center justify-center my-0 py-4 ${
+        type === Type
+          ? "text-primary md:text-xl font-bold "
           : "text-slate-300 font-semibold"
       }`}
-      onClick={(e) => getType("Trend Up", e)}
+      onClick={() => setDataAnime(Type, setPath, setType)}
     >
-      <Nav icon={<TrendUp size={20} />} text={text} />
+      <TrendUp />
+      <p className="">{Type}</p>
     </button>
   );
 };

@@ -15,7 +15,7 @@ const Card = ({ animeCa, title, path }) => {
   };
 
   return (
-    <section className="lg:container lg:mx-auto lg:mt-6">
+    <section className="lg:container lg:mt-6">
       <div className="w-full px-2 flex justify-between items-center my-4 lg:px-6 ">
         <h1 className="text-white font-bold text-base pt-1">{title}</h1>
         <Link
@@ -25,7 +25,7 @@ const Card = ({ animeCa, title, path }) => {
           lihat semua
         </Link>
       </div>
-      <div className="flex justify-center items-center w-full z-20 relative lg:container lg:mx-auto">
+      <div className="flex justify-center items-center w-full z-20 relative lg:container">
         <Swiper
           spaceBetween={5}
           slidesPerView={3}

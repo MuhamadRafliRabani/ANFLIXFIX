@@ -1,5 +1,5 @@
 "use client";
-import { getRekomendData } from "@/utility/Api";
+// import { getRekomendData } from "@/utility/Api";
 import CardMain from "../Card/CardMain";
 import { useEffect, useState } from "react";
 import CardSkeleton from "@/app/global/cardSeleton";
@@ -41,7 +41,7 @@ const Rekomend = () => {
       )}
       {seeData < 200 && (
         <button
-          className="bg-[#E50914] py-2 w-1/2 mx-auto rounded-lg block mb-4 effect-btn"
+          className="bg-primary py-2 w-1/2 mx-auto rounded-lg block mb-4 effect-btn"
           onClick={() => handleSeeMore()}
         >
           See More

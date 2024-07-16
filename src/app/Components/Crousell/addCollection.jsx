@@ -44,7 +44,7 @@ const AddCollection = async ({
   return (
     <div className="flex justtify-center items-center gap-2">
       <Link href={`pages/Detail-anime/${anime_mal_id}`}>
-        <button className="bg-[#E50914] hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base items-center gap-2 justify-center effect-btn ">
+        <button className="bg-primary hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base items-center gap-2 justify-center effect-btn ">
           <span>
             <Play size={14} />
           </span>{" "}

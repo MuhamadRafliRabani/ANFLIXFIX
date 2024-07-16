@@ -10,6 +10,12 @@ module.exports = {
       backgroundImage: {
         "bg-form1": "url('/public/bg-form1.jpg')",
       },
+      colors: {
+        primary: "#E50914",
+      },
+      container: {
+        center: true,
+      },
     },
   },
   plugins: [],

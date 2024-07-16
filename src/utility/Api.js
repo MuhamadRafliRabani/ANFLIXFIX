@@ -1,13 +1,14 @@
+import { axiosIntesnce } from "@/libs/axios";
 import axios from "axios";
-export const reUseApi = async (resource, query) => {
+
+export const FetchAnime = async (resource, query) => {
   try {
-    const fetchData = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}${resource}?${query}`
-    );
-    const dataAnime = fetchData;
+    const FetchDataAnime = await axiosIntesnce(resource);
+    const dataAnime = FetchDataAnime;
     console.log(dataAnime);
-    console.log(dataAnime.data.data);
-    return dataAnime.data;
+    return {
+      data: dataAnime.data,
+    };
   } catch (error) {
     return error;
   }

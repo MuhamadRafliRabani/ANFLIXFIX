@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import { reUseApi } from "@/utility/Api";
+import { FetchAnime } from "@/utility/Api";
 import Type from "@/app/Components/Type-Button/ChoiseType";
 import Rekomend from "./Components/Rekomend/Rekomend";
 import {
@@ -19,29 +19,23 @@ export default function Home() {
   const path = usePath((state) => state.path);
   const type = useType((state) => state.type);
 
-  const fetchData = useCallback(async (confrimPath) => {
+  const GetDataAnime = async () => {
     try {
-      const GetData = await reUseApi(confrimPath);
-      const response = await GetData.data;
-      setData(response);
-      localStorage.setItem(confrimPath, JSON.stringify(response));
+      const { data } = await FetchAnime(path);
+
+      setData(data?.data);
     } catch (error) {
       console.log(error);
     }
-  });
+  };
 
   useEffect(() => {
-    const Storage = localStorage.getItem(path);
-    if (Storage) {
-      setData(JSON.parse(Storage));
-    } else {
-      fetchData(path);
-    }
+    GetDataAnime();
   }, [path]);
 
   return (
     <div className="overflow-x-hidden bg-[#0E0E0E] relative">
-      <Home_Page animeHo={Data} type={type} />
+      <Home_Page data={Data} type={type} />
       <Type />
       <Card animeCa={Data} title={titleHead} path={`/See-all/${sendPath}`} />
       <Rekomend />

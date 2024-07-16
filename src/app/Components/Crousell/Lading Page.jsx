@@ -9,10 +9,10 @@ import { Autoplay, EffectCreative, Navigation } from "swiper/modules";
 import "swiper/css/effect-fade";
 import Link from "next/link";
 
-const Home_Page = ({ animeHo, type }) => {
+const Home_Page = (props) => {
   const [dataImg, setDataImg] = useState(Top_Img);
   useEffect(() => {
-    switch (type) {
+    switch (props.type) {
       case "Trend Up":
         setDataImg(Top_Img);
         break;
@@ -27,7 +27,7 @@ const Home_Page = ({ animeHo, type }) => {
         setDataImg(Top_Img);
         break;
     }
-  }, [type]);
+  }, [props.type]);
 
   return (
     <Swiper
@@ -50,7 +50,7 @@ const Home_Page = ({ animeHo, type }) => {
       }}
       modules={[Navigation, Autoplay, EffectCreative]}
     >
-      {animeHo?.map((data, index) => (
+      {props.data?.map((data, index) => (
         <SwiperSlide key={index}>
           <div className="relative h-[280px] md:h-svh">
             <div className=" relative images h-full md:static">
@@ -60,7 +60,6 @@ const Home_Page = ({ animeHo, type }) => {
               />
               <div className="absolute inset-0 bg-gradient-to-t h-full from-[#0E0E0E] to-transparent z-10 md:-bottom-1 bottom-0"></div>
             </div>
-            {/* buat layar hp pake items-end */}
             <div className="text-white flex items-start justify-end flex-col mx-auto md:w-4/5 absolute z-20 inset-0 md:items-start md:justify-center md:mb-8 md:text-xl">
               <div className="hidden md:block space-y-2">
                 <p className="md:text-lg md:text-slate-50 ">

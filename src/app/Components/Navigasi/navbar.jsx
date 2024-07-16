@@ -105,13 +105,13 @@ const Navbar = () => {
       <div className="flex gap-2 items-center font-semibold">
         <Link
           href={"/pages/Form/Sign-up"}
-          className="bg-[#E50914] px-3 py-2 rounded-md text-sm lg:text-base lg:px-4"
+          className="bg-primary px-3 py-2 rounded-md text-sm lg:text-base lg:px-4"
         >
           <p>Sign Up</p>
         </Link>
         <Link
           href={"/pages/Form/Sign-in"}
-          className="text-white rounded-lg hover:bg-white hover:text-[#E50914] px-3 py-2 text-sm lg:text-base lg:px-4 main-transition"
+          className="text-white rounded-lg hover:bg-white hover:text-pribg-primary px-3 py-2 text-sm lg:text-base lg:px-4 main-transition"
         >
           <p>Sign In</p>
         </Link>
@@ -121,7 +121,7 @@ const Navbar = () => {
 
   const SearchBtn = () => {
     return (
-      <button className={`w-fit py-2 px-4 rounded-full hover:bg-[#E50914] `}>
+      <button className={`w-fit py-2 px-4 rounded-full hover:bg-primary `}>
         {!isOpen ? (
           <MagnifyingGlass className="w-6 h-8" onClick={() => handleSearch()} />
         ) : (
@@ -135,7 +135,7 @@ const Navbar = () => {
     <header className="bg-transparent fixed top-0 left-0 right-0 z-50">
       <nav className="md:px-4 py-2 px-2 flex justify-between items-center text-white relative">
         <Link href={"/"}>
-          <h1 className=" font-extrabold text-xl ms-2 cursor-pointer text-[#E50914]">
+          <h1 className=" font-extrabold text-xl ms-2 cursor-pointer text-pribg-primary">
             ANFLIX
           </h1>
         </Link>
