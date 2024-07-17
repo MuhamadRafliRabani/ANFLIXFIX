@@ -2,42 +2,40 @@
 // import { getRekomendData } from "@/utility/Api";
 import CardMain from "../Card/CardMain";
 import { useEffect, useState } from "react";
-import CardSkeleton from "@/app/global/cardSeleton";
+import { getRekomendData } from "@/utility/Api";
 
 const Rekomend = () => {
   const [seeData, setSeeData] = useState(32);
   const [dataAnime, setDataAnime] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const fetchApi = async () => {
+  const fetchRekomendAnime = async () => {
+    setIsLoading(true);
     try {
-      const RekomendAnime = await getRekomendData(
-        "/recommendations/anime",
-        "entry"
-      );
-      console.log(RekomendAnime);
+      const RekomendAnime = await getRekomendData("/recommendations/anime");
+
       const DataRekomend = RekomendAnime.slice(0, seeData);
+
       setDataAnime(DataRekomend);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchApi();
+    fetchRekomendAnime();
   }, [seeData]);
 
   const handleSeeMore = () => {
     setSeeData((prev) => prev + 12);
   };
   return (
-    <section className="w-full lg:container lg:mx-auto">
+    <section className="w-full lg:container ">
       {isLoading ? (
-        <CardSkeleton cards={16} />
+        <></>
       ) : (
-        <CardMain animeCM={dataAnime} title={"Rekomendasi Anime"} />
+        <CardMain data={dataAnime} title={"Rekomendasi Anime"} />
       )}
       {seeData < 200 && (
         <button

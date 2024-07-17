@@ -1,8 +1,5 @@
 import { handleColection } from "@/utility/func";
-import {
-  useCollecSucsess,
-  useUser,
-} from "@/utility/global_state/Collection_State";
+import { useCollecSucsess, useUser } from "@/utility/store/store";
 import { Play, Plus } from "@phosphor-icons/react";
 import Link from "next/link";
 
@@ -15,11 +12,9 @@ const AddCollection = async ({
   anime_status,
   anime_episodes,
 }) => {
-  const user = useUser((state) => state.user);
+  const { user } = useUser();
   const user_email = user?.email;
-  const setCollectSucsess = useCollecSucsess(
-    (state) => state.setCollectSucsess
-  );
+  const { setCollectSucsess } = useCollecSucsess();
 
   async function addCollect() {
     const data = {
@@ -43,7 +38,7 @@ const AddCollection = async ({
 
   return (
     <div className="flex justtify-center items-center gap-2">
-      <Link href={`pages/Detail-anime/${anime_mal_id}`}>
+      <Link href={`pages/detail-anime/${anime_mal_id}`}>
         <button className="bg-primary hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base items-center gap-2 justify-center effect-btn ">
           <span>
             <Play size={14} />

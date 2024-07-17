@@ -1,23 +1,18 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FetchAnime } from "@/utility/Api";
 import Type from "@/app/Components/Type-Button/ChoiseType";
 import Rekomend from "./Components/Rekomend/Rekomend";
-import {
-  usePath,
-  useType,
-  useUser,
-} from "@/utility/global_state/Collection_State";
-import Card from "./Components/Second-Crausell/Card";
+
 import Home_Page from "./Components/Crousell/Lading Page";
+import SecondCrausell from "./Components/Second-Crausell/Card";
+import { usePath, useType, useUser } from "@/utility/store/store";
 
 export default function Home() {
-  const [sendPath, setSendPath] = useState("/top");
   const [Data, setData] = useState([]);
-  const [titleHead, setTitleHead] = useState("Top Anime");
-  const user = useUser((state) => state.user);
-  const path = usePath((state) => state.path);
-  const type = useType((state) => state.type);
+  const { setUser } = useUser();
+  const { path } = usePath();
+  const { type } = useType();
 
   const GetDataAnime = async () => {
     try {
@@ -30,6 +25,12 @@ export default function Home() {
   };
 
   useEffect(() => {
+    const userLocal = localStorage.getItem("user");
+
+    if (userLocal) {
+      setUser(JSON.parse(userLocal));
+    }
+
     GetDataAnime();
   }, [path]);
 
@@ -37,7 +38,7 @@ export default function Home() {
     <div className="overflow-x-hidden bg-[#0E0E0E] relative">
       <Home_Page data={Data} type={type} />
       <Type />
-      <Card animeCa={Data} title={titleHead} path={`/See-all/${sendPath}`} />
+      <SecondCrausell data={Data} path={type} />
       <Rekomend />
     </div>
   );

@@ -1,27 +1,22 @@
 "use client";
 import CardMain from "@/app/Components/Card/CardMain";
 import Pagination from "@/app/Components/Detail-Anime-Comp/pagination";
-import { reUseApi } from "@/utility/Api";
+import { FetchAnime } from "@/utility/Api";
 import { useEffect, useState } from "react";
 
 export default function Page({ params }) {
-  const [dataAnime, setDataAnime] = useState();
+  const [Data, setData] = useState();
   const [page, setPage] = useState(1);
-  const [loding, setLoding] = useState();
 
-  const keyword = params.keyword;
-  const decode = decodeURI(keyword);
+  const decode = decodeURI(params.keyword);
 
   const fetchData = async () => {
     try {
-      const Api = await reUseApi("/anime", `q=${decode}/page=${page}`);
-      const result = await Api.data;
-      setLoding(true);
-      setDataAnime(result);
+      const { data } = await FetchAnime(`/anime?q=${decode}/page=${page}`);
+
+      setData(data.data);
     } catch (error) {
       alert("error adalah", error);
-    } finally {
-      setLoding(false);
     }
   };
 
@@ -32,8 +27,6 @@ export default function Page({ params }) {
     [page],
     [decode]
   );
-
-  console.log(dataAnime);
 
   const scrollup = () => {
     scrollTo({
@@ -54,21 +47,17 @@ export default function Page({ params }) {
 
   return (
     <section className="text-white text-lg font-semibold overflow-x-hidden pt-20 bg-black">
-      {loding ? (
-        <div className="Loader"></div>
-      ) : (
-        <div className="lg:container lg:mx-auto">
-          {/* <Header title={"TOP ANIME"} path={"/top"} /> */}
-          <h1>pencarian untuk : {decode}</h1>
-          <CardMain animeCM={dataAnime} />
-          <Pagination
-            page={page}
-            lastpage={dataAnime?.pagination?.last_visible_page}
-            HandleNextPage={HandleNextPage}
-            HandlePrevPage={HandlePrevPage}
-          />
-        </div>
-      )}
+      <div className="lg:container lg:mx-auto">
+        {/* <Header title={"TOP ANIME"} path={"/top"} /> */}
+        <h1>pencarian untuk : {decode}</h1>
+        <CardMain data={Data} />
+        <Pagination
+          page={page}
+          lastpage={Data?.pagination?.last_visible_page}
+          HandleNextPage={HandleNextPage}
+          HandlePrevPage={HandlePrevPage}
+        />
+      </div>
     </section>
   );
 }

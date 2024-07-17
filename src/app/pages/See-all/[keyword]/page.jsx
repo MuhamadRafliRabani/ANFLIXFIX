@@ -2,30 +2,17 @@
 
 import CardMain from "@/app/Components/Card/CardMain";
 import Pagination from "@/app/Components/Detail-Anime-Comp/pagination";
-import { reUseApi } from "@/utility/Api";
+import { FetchAnime } from "@/utility/Api";
+import { usePath, useType } from "@/utility/store/store";
+import { setDataAnime } from "@/utility/SwitchType";
 import { useEffect, useState } from "react";
 
 const Page = ({ params }) => {
-  const pathAnime = decodeURI(params.keyword);
-
+  const URL = decodeURI(params.keyword);
   const [page, setPage] = useState(1);
-  const [path, setPathAnime] = useState(
-    pathAnime === "top" ? "/top/anime" : "/seasons/upcoming"
-  );
   const [data, setData] = useState([]);
-
-  useEffect(() => {
-    switch (pathAnime) {
-      case "top":
-        setPathAnime("/top/anime");
-        break;
-      case "season":
-        setPathAnime("/seasons/upcoming");
-        break;
-      default:
-        break;
-    }
-  }, [pathAnime]);
+  const { path, setPath } = usePath();
+  const { setType } = useType();
 
   const scrollup = () => {
     scrollTo({
@@ -34,15 +21,16 @@ const Page = ({ params }) => {
     });
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const Api = await reUseApi(`${path}`, `page=${page}`);
-      setData(Api);
-    };
-    fetchData();
-  }, [page]);
+  const fetchData = async () => {
+    const { data } = await FetchAnime(path + "?page=" + page);
 
-  console.log(data);
+    setData(data?.data);
+  };
+
+  useEffect(() => {
+    setDataAnime(URL, setPath, setType);
+    fetchData();
+  }, [page, URL]);
 
   const HandleNextPage = () => {
     setPage((prev) => prev + 1);
@@ -58,7 +46,7 @@ const Page = ({ params }) => {
     <section className="text-white bg-black w-full">
       <div className="lg:container lg:mx-auto contain-none pt-16 w-full">
         <h1 className="w-full font-medium lg:text-lg">Halaman : {page}</h1>
-        <CardMain animeCM={data.data} />
+        <CardMain data={data} />
         <Pagination
           page={page}
           lastpage={data.pagination?.last_visible_page}

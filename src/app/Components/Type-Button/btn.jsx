@@ -1,4 +1,4 @@
-import { usePath, useType } from "@/utility/global_state/Collection_State";
+import { usePath, useType } from "@/utility/store/store";
 import { setDataAnime } from "@/utility/SwitchType";
 import { TrendUp } from "@phosphor-icons/react";
 import { useEffect } from "react";

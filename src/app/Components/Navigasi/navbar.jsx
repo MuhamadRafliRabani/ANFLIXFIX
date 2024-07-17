@@ -9,7 +9,7 @@ import {
   XCircle,
 } from "@phosphor-icons/react";
 import Image from "next/image";
-import { useUser } from "@/utility/global_state/Collection_State";
+import { useUser } from "@/utility/store/store";
 import { SignOut } from "@/service/firebase";
 
 const Navbar = () => {

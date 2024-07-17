@@ -16,13 +16,13 @@ const CardDetail = ({
 }) => {
   return (
     <div
-      className={`hidden absolute top-8 left-0 right-0 w-80 h-80 z-[9999] lg:flex flex-col items-center bg-black bg-opacity-80 text-white font-semibold shadow-sm scale-0 main-transition translate-y-4 md:-left-[35%] md:right-[30%] ${
-        isOpen === anime_mal_id ? "scale-100 translate-y-0" : ""
+      className={`hidden absolute top-8 left-0 right-0 w-80 h-80 z-[9999] lg:flex flex-col items-center bg-black bg-opacity-95 text-white font-semibold shadow-sm scale-0 main-transition translate-y-4 opacity-0 md:-left-[35%] md:right-[30%] ${
+        isOpen === anime_mal_id ? "scale-100 translate-y-0 opacity-100" : ""
       }`}
     >
       <Link
-        href={`/pages/Detail-anime/${anime_mal_id}`}
-        className="w-full h-[50%] relative"
+        href={`/pages/detail-anime/${anime_mal_id}`}
+        className="w-full h-[45%] relative"
       >
         <Image
           src={anime_images}
@@ -37,7 +37,7 @@ const CardDetail = ({
         <h1 className="text-center text-lg  truncate w-full">{anime_title}</h1>
         <div className="w-full flex justify-start items-center py-1 space-x-2">
           <LinkBtn
-            url={`/pages/Detail-anime/${anime_mal_id}`}
+            url={`/pages/detail-anime/${anime_mal_id}`}
             icon={<Play />}
           />
           <AddCollection

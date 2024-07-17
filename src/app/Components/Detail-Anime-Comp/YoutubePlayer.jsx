@@ -2,7 +2,7 @@
 import { X } from "@phosphor-icons/react";
 import { useState } from "react";
 import YouTube from "react-youtube";
-const YoutubePlayer = ({ dataAnime }) => {
+const YoutubePlayer = ({ trailer }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const option = {
@@ -20,11 +20,13 @@ const YoutubePlayer = ({ dataAnime }) => {
         <X className="w-10 h-10 text-white cursor-pointer effect-btn" />
       </div>
       <div className={`${!isOpen && "hidden"}`} id="youtube-plyer">
+        (
         <YouTube
-          videoId={dataAnime.trailer.youtube_id}
+          videoId={trailer == null ? null : trailer.youtube_id}
           opts={option}
           onReady={(event) => event.target.pauseVideo()}
         />
+        )
       </div>
     </div>
   );

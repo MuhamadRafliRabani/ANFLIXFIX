@@ -1,10 +1,8 @@
 import { handleColection } from "@/utility/func";
-import {
-  useCollecSucsess,
-  useUser,
-} from "@/utility/global_state/Collection_State";
+
 import { Plus } from "@phosphor-icons/react";
 import Link from "next/link";
+import { useCollecSucsess, useUser } from "@/utility/store/store";
 
 const AddCollection = ({
   anime_images,
@@ -15,15 +13,13 @@ const AddCollection = ({
   anime_status,
   anime_type,
 }) => {
-  const user_email = useUser((state) => state.user.email);
-  const setCollectSucsess = useCollecSucsess(
-    (state) => state.setCollectSucsess
-  );
+  const { user } = useUser();
+  const { setCollectSucsess } = useCollecSucsess();
 
   const SendCollect = async () => {
     const data = {
       anime_images,
-      user_email,
+      user_email: user?.email,
       anime_title,
       anime_mal_id,
       anime_episodes,
@@ -43,7 +39,7 @@ const AddCollection = ({
 
   return (
     <>
-      {user_email ? (
+      {user ? (
         <button
           onClick={SendCollect}
           className="border-white rounded-full border-2 hover:bg-slate-300 hover:text-[#E50914] w-8 h-8 p-0.5 flex justify-center items-center"

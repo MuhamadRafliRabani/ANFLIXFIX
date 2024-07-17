@@ -1,5 +1,5 @@
 "use client";
-import { useUser } from "@/app/global/global_state/Collection_State";
+import { useUser } from "@/app/store/store";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 const page = () => {

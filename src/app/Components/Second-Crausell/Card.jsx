@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 import CardDetail from "../Card-Detail/CardDetail";
 
-const Card = ({ animeCa, title, path }) => {
+const SecondCrausell = ({ data, path }) => {
   const [isOpen, setIsOpen] = useState();
 
   const handleOpen = (anime_mal_id) => {
@@ -17,9 +17,9 @@ const Card = ({ animeCa, title, path }) => {
   return (
     <section className="lg:container lg:mt-6">
       <div className="w-full px-2 flex justify-between items-center my-4 lg:px-6 ">
-        <h1 className="text-white font-bold text-base pt-1">{title}</h1>
+        <h1 className="text-white font-bold text-base pt-1">Top anime</h1>
         <Link
-          href={`/pages${path}`}
+          href={`/pages/See-all/${path}`}
           className="text-white font-bold text-sm border-b effect-btn disabled:bg-slate-300 disabled:cursor-not-allowed"
         >
           lihat semua
@@ -54,48 +54,46 @@ const Card = ({ animeCa, title, path }) => {
           }}
           className="px-4"
         >
-          {animeCa?.map((anime) => {
-            return (
-              <SwiperSlide
-                className="w-fit rounded-lg Card mx-auto flex flex-col justify-center items-center lg:ps-2"
-                key={anime.mal_id}
+          {data?.map((anime) => (
+            <SwiperSlide
+              className="w-fit rounded-lg Card mx-auto flex flex-col justify-center items-center lg:ps-2 mb-2 cursor-pointer"
+              key={anime.mal_id}
+            >
+              <div
+                className="relative "
+                onMouseEnter={() => handleOpen(anime.mal_id)}
+                onMouseLeave={() => handleOpen(null)}
               >
-                <div
-                  className="relative"
-                  onMouseEnter={() => handleOpen(anime.mal_id)}
-                  onMouseLeave={() => handleOpen(null)}
-                >
-                  <Images
-                    anime_images={anime.images?.jpg.image_url}
-                    anime_title={anime.title}
-                    anime_mal_id={anime.mal_id}
-                    anime_episodes={anime.episodes}
-                    anime_rating={anime.rating}
-                    anime_status={anime.status}
-                    anime_type={anime.type}
-                  />
-                  <CardDetail
-                    anime_images={anime.images?.jpg.image_url}
-                    anime_title={anime.title}
-                    anime_mal_id={anime.mal_id}
-                    anime_episodes={anime.episodes}
-                    anime_rating={anime.rating}
-                    anime_status={anime.status}
-                    anime_type={anime.type}
-                    isOpen={isOpen}
-                    key={anime.mal_id}
-                  />
-                </div>
-                <h5 className="mb-2 text-base text-white font-medium hover:text-[#E50914] hover:font-semibold w-full text-center">
-                  {anime.title}
-                </h5>
-              </SwiperSlide>
-            );
-          })}
+                <Images
+                  anime_images={anime.images?.jpg.image_url}
+                  anime_title={anime.title}
+                  anime_mal_id={anime.mal_id}
+                  anime_episodes={anime.episodes}
+                  anime_rating={anime.rating}
+                  anime_status={anime.status}
+                  anime_type={anime.type}
+                />
+                <CardDetail
+                  anime_images={anime.images?.jpg.image_url}
+                  anime_title={anime.title}
+                  anime_mal_id={anime.mal_id}
+                  anime_episodes={anime.episodes}
+                  anime_rating={anime.rating}
+                  anime_status={anime.status}
+                  anime_type={anime.type}
+                  isOpen={isOpen}
+                  key={anime.mal_id}
+                />
+              </div>
+              <h5 className="text-base text-white font-medium hover:text-primary hover:font-semibold text-center">
+                {anime.title}
+              </h5>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </section>
   );
 };
 
-export default Card;
+export default SecondCrausell;

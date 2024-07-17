@@ -2,8 +2,8 @@
 import { signIn, signUp } from "@/service/firebase";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
-import { useUser } from "@/utility/global_state/Collection_State";
+import { useState } from "react";
+import { useUser } from "@/utility/store/store";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -33,47 +33,13 @@ const Form = ({ params }) => {
       if (DaftarAkun) {
         Router.push("/");
         setUser(DaftarAkun);
+        localStorage.setItem("user", JSON.stringify(DaftarAkun));
       }
     } catch (error) {
       console.log(error);
       switch (error?.code) {
         case "auth/email-already-in-use":
           setErrorMassage("Akun Anda sudah terdaftar. Silahkan login kembali.");
-          break;
-        case "auth/invalid-email":
-          setErrorMassage(
-            "Email yang Anda masukkan tidak valid. Harap periksa kembali."
-          );
-          break;
-        case "auth/user-disabled":
-          setErrorMassage(
-            "Akun Anda telah dinonaktifkan oleh administrator. Silakan hubungi dukungan untuk bantuan lebih lanjut."
-          );
-          break;
-        case "auth/user-not-found":
-          setErrorMassage(
-            "Akun tidak ditemukan. Silakan daftar jika Anda belum memiliki akun."
-          );
-          break;
-        case "auth/wrong-password":
-          setErrorMassage(
-            "Kata sandi yang Anda masukkan salah. Silakan coba lagi."
-          );
-          break;
-        case "auth/network-request-failed":
-          setErrorMassage(
-            "Terdapat masalah jaringan. Silakan coba lagi nanti."
-          );
-          break;
-        case "auth/too-many-requests":
-          setErrorMassage(
-            "Terlalu banyak percobaan masuk. Silakan coba lagi nanti."
-          );
-          break;
-        case "auth/operation-not-allowed":
-          setErrorMassage(
-            "Operasi ini tidak diizinkan. Silakan hubungi administrator."
-          );
           break;
         default:
           setErrorMassage(
@@ -92,6 +58,7 @@ const Form = ({ params }) => {
       if (DaftarAkun) {
         Router.back();
         setUser(DaftarAkun);
+        localStorage.setItem("user", JSON.stringify(DaftarAkun));
       }
     } catch (error) {
       console.log(error);
@@ -99,36 +66,6 @@ const Form = ({ params }) => {
         case "auth/invalid-email":
           setErrorMassage(
             "Email yang Anda masukkan tidak valid. Harap periksa kembali."
-          );
-          break;
-        case "auth/user-disabled":
-          setErrorMassage(
-            "Akun Anda telah dinonaktifkan oleh administrator. Silakan hubungi dukungan untuk bantuan lebih lanjut."
-          );
-          break;
-        case "auth/user-not-found":
-          setErrorMassage(
-            "Akun tidak ditemukan. Silakan daftar jika Anda belum memiliki akun."
-          );
-          break;
-        case "auth/wrong-password":
-          setErrorMassage(
-            "Kata sandi yang Anda masukkan salah. Silakan coba lagi."
-          );
-          break;
-        case "auth/network-request-failed":
-          setErrorMassage(
-            "Terdapat masalah jaringan. Silakan coba lagi nanti."
-          );
-          break;
-        case "auth/too-many-requests":
-          setErrorMassage(
-            "Terlalu banyak percobaan masuk. Silakan coba lagi nanti."
-          );
-          break;
-        case "auth/operation-not-allowed":
-          setErrorMassage(
-            "Operasi ini tidak diizinkan. Silakan hubungi administrator."
           );
           break;
         default:
