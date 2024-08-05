@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import { handleColection } from "@/utility/func";
 import { useCollecSucsess, useUser } from "@/utility/store/store";
 import { Play, Plus } from "@phosphor-icons/react";
 import Link from "next/link";
 
-const AddCollection = async ({
+const AddCollection = ({
   anime_mal_id,
   anime_images,
   anime_title,
@@ -16,7 +17,7 @@ const AddCollection = async ({
   const user_email = user?.email;
   const { setCollectSucsess } = useCollecSucsess();
 
-  async function addCollect() {
+  const addCollect = async () => {
     const data = {
       anime_mal_id,
       user_email,
@@ -32,9 +33,9 @@ const AddCollection = async ({
       const result = await Response.json();
       setCollectSucsess(result);
     } catch (error) {
-      return console.log("error", error);
+      console.log("error", error);
     }
-  }
+  };
 
   return (
     <div className="flex justtify-center items-center gap-2">
@@ -58,7 +59,7 @@ const AddCollection = async ({
       ) : (
         <button
           onClick={addCollect}
-          className=" border-white border-2 btn active:shadow btn-"
+          className="border-white border-2 btn active:shadow btn-"
         >
           <span>
             <Plus size={14} />

@@ -7,19 +7,20 @@ import Link from "next/link";
 import { useState } from "react";
 import CardDetail from "../Card-Detail/CardDetail";
 
-const SecondCrausell = ({ data, path }) => {
-  const [isOpen, setIsOpen] = useState();
+const SecondCarousel = ({ datas, type, isLoading }) => {
+  const [isOpen, setIsOpen] = useState(null);
 
-  const handleOpen = (anime_mal_id) => {
-    setIsOpen(anime_mal_id);
+  const handleOpen = (animeMalId) => {
+    setIsOpen(animeMalId);
+    console.log(animeMalId);
   };
 
   return (
     <section className="lg:container lg:mt-6">
-      <div className="w-full px-2 flex justify-between items-center my-4 lg:px-6 ">
+      <div className="w-full px-2 flex justify-between items-center my-4 lg:px-6">
         <h1 className="text-white font-bold text-base pt-1">Top anime</h1>
         <Link
-          href={`/pages/See-all/${path}`}
+          href={`/pages/See-all/${type}`}
           className="text-white font-bold text-sm border-b effect-btn disabled:bg-slate-300 disabled:cursor-not-allowed"
         >
           lihat semua
@@ -54,46 +55,47 @@ const SecondCrausell = ({ data, path }) => {
           }}
           className="px-4"
         >
-          {data?.map((anime) => (
-            <SwiperSlide
-              className="w-fit rounded-lg Card mx-auto flex flex-col justify-center items-center lg:ps-2 mb-2 cursor-pointer"
-              key={anime.mal_id}
-            >
-              <div
-                className="relative "
-                onMouseEnter={() => handleOpen(anime.mal_id)}
-                onMouseLeave={() => handleOpen(null)}
+          {datas &&
+            datas.map((data) => (
+              <SwiperSlide
+                className="w-fit rounded-lg Card mx-auto flex flex-col justify-center items-center lg:ps-2 mb-2 cursor-pointer"
+                key={data.mal_id}
               >
-                <Images
-                  anime_images={anime.images?.jpg.image_url}
-                  anime_title={anime.title}
-                  anime_mal_id={anime.mal_id}
-                  anime_episodes={anime.episodes}
-                  anime_rating={anime.rating}
-                  anime_status={anime.status}
-                  anime_type={anime.type}
-                />
-                <CardDetail
-                  anime_images={anime.images?.jpg.image_url}
-                  anime_title={anime.title}
-                  anime_mal_id={anime.mal_id}
-                  anime_episodes={anime.episodes}
-                  anime_rating={anime.rating}
-                  anime_status={anime.status}
-                  anime_type={anime.type}
-                  isOpen={isOpen}
-                  key={anime.mal_id}
-                />
-              </div>
-              <h5 className="text-base text-white font-medium hover:text-primary hover:font-semibold text-center">
-                {anime.title}
-              </h5>
-            </SwiperSlide>
-          ))}
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleOpen(data.mal_id)}
+                  onMouseLeave={() => handleOpen(null)}
+                >
+                  <Images
+                    anime_images={data.images?.jpg.image_url}
+                    anime_title={data.title}
+                    anime_mal_id={data.mal_id}
+                    anime_episodes={data.episodes}
+                    anime_rating={data.rating}
+                    anime_status={data.status}
+                    anime_type={data.type}
+                  />
+                  <CardDetail
+                    anime_images={data.images?.jpg.image_url}
+                    anime_title={data.title}
+                    anime_mal_id={data.mal_id}
+                    anime_episodes={data.episodes}
+                    anime_rating={data.rating}
+                    anime_status={data.status}
+                    anime_type={data.type}
+                    isOpen={isOpen}
+                    key={data.mal_id}
+                  />
+                </div>
+                <h5 className="text-base text-white font-medium hover:text-primary hover:font-semibold text-center">
+                  {data.title}
+                </h5>
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </section>
   );
 };
 
-export default SecondCrausell;
+export default SecondCarousel;

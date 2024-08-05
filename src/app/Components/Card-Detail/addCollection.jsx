@@ -1,5 +1,4 @@
 import { handleColection } from "@/utility/func";
-
 import { Plus } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useCollecSucsess, useUser } from "@/utility/store/store";
@@ -16,10 +15,14 @@ const AddCollection = ({
   const { user } = useUser();
   const { setCollectSucsess } = useCollecSucsess();
 
-  const SendCollect = async () => {
+  const sendCollect = async () => {
+    if (!user?.email) {
+      return;
+    }
+
     const data = {
       anime_images,
-      user_email: user?.email,
+      user_email: user.email,
       anime_title,
       anime_mal_id,
       anime_episodes,
@@ -29,9 +32,8 @@ const AddCollection = ({
     };
 
     try {
-      const handle = await handleColection(data);
-      const result = await handle;
-      setCollectSucsess(result);
+      const response = await handleColection(data);
+      setCollectSucsess(response);
     } catch (error) {
       console.log(error);
     }
@@ -41,14 +43,14 @@ const AddCollection = ({
     <>
       {user ? (
         <button
-          onClick={SendCollect}
+          onClick={sendCollect}
           className="border-white rounded-full border-2 hover:bg-slate-300 hover:text-[#E50914] w-8 h-8 p-0.5 flex justify-center items-center"
         >
           <Plus size={16} />
         </button>
       ) : (
         <Link
-          href={"/pages/Form/Sign-up"}
+          href="/pages/Form/Sign-up"
           className="border-white rounded-full border-2 hover:bg-slate-300 hover:text-[#E50914] w-8 h-8 p-0.5 flex justify-center items-center"
         >
           <Plus size={16} />

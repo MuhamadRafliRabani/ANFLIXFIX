@@ -1,28 +1,12 @@
 import { axiosIntesnce } from "@/libs/axios";
+import { useQuery } from "@tanstack/react-query";
 
-export const FetchAnime = async (resource, query) => {
-  try {
-    const FetchDataAnime = await axiosIntesnce(resource);
-
-    const dataAnime = FetchDataAnime;
-    console.log(dataAnime);
-
-    return {
-      data: dataAnime.data,
-    };
-  } catch (error) {
-    return error;
-  }
-};
-
-export const getRekomendData = async (resource, objectProperty) => {
-  try {
-    const { data } = await axiosIntesnce(resource);
-
-    const response = data.data;
-
-    return response.flatMap((datas) => datas.entry);
-  } catch (error) {
-    return error;
-  }
+export const FetchAnime = (resource) => {
+  return useQuery({
+    queryKey: [resource],
+    queryFn: async () => {
+      const { data } = await axiosIntesnce.get(resource);
+      return data;
+    },
+  });
 };

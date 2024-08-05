@@ -9,29 +9,22 @@ import { useEffect, useState } from "react";
 
 const page = async ({ params }) => {
   const idAnime = params.keyword;
-  const [Data, setData] = useState([]);
 
-  const GetDataAnime = async () => {
-    const { data } = await FetchAnime(`/anime/${idAnime}`);
-
-    setData(data.data);
-  };
-  useEffect(() => {
-    GetDataAnime();
-  }, []);
+  const { data } = FetchAnime(`/anime/${idAnime}`);
+  console.log(data?.data);
 
   return (
     <div className="pt-16 mx-1 md:mx-auto bg-black h-fit md:h-svh lg:pt-20 ">
       <HeaderDetail
-        title={Data.title}
-        title_japanese={Data.title_japanese}
-        status={Data.status}
+        title={data?.data.title}
+        title_japanese={data?.data.title_japanese}
+        status={data?.data.status}
       />
-      <div className="flex justify-center items-center  flex-col flex-wrap md:flex-row md:gap-2 lg:container lg:mx-auto ">
-        <DetailImages imagesUrl={Data.images?.jpg.large_image_url} />
-        <SynopsisDetail synopsis={Data.synopsis} />
-        <DetailAnimeTable Data={Data} />
-        <YoutubePlayer Data={Data?.trailer} />
+      <div className="flex justify-center items-center  flex-col flex-wrap md:flex-row md:gap-2 lg:container">
+        <DetailImages imagesUrl={data?.data.images?.jpg.large_image_url} />
+        <SynopsisDetail synopsis={data?.data.synopsis} />
+        <DetailAnimeTable datas={data} />
+        <YoutubePlayer Data={data?.data?.trailer} />
       </div>
     </div>
   );

@@ -5,28 +5,13 @@ import { FetchAnime } from "@/utility/Api";
 import { useEffect, useState } from "react";
 
 export default function Page({ params }) {
-  const [Data, setData] = useState();
   const [page, setPage] = useState(1);
 
   const decode = decodeURI(params.keyword);
 
-  const fetchData = async () => {
-    try {
-      const { data } = await FetchAnime(`/anime?q=${decode}/page=${page}`);
+  const { data, isLoading } = FetchAnime(`/anime?q=${decode}/page=${page}`);
 
-      setData(data.data);
-    } catch (error) {
-      alert("error adalah", error);
-    }
-  };
-
-  useEffect(
-    () => {
-      fetchData();
-    },
-    [page],
-    [decode]
-  );
+  console.log(data);
 
   const scrollup = () => {
     scrollTo({
@@ -36,13 +21,15 @@ export default function Page({ params }) {
   };
 
   const HandleNextPage = () => {
-    setPage((prev) => prev + 1);
     scrollup();
+    if (page <= data?.pagination?.last_visible_page)
+      setPage((prev) => prev + 1);
   };
 
   const HandlePrevPage = () => {
-    setPage((prev) => prev - 1);
     scrollup();
+    if (page < 1) setPage(1);
+    setPage((prev) => prev - 1);
   };
 
   return (
@@ -50,10 +37,10 @@ export default function Page({ params }) {
       <div className="lg:container lg:mx-auto">
         {/* <Header title={"TOP ANIME"} path={"/top"} /> */}
         <h1>pencarian untuk : {decode}</h1>
-        <CardMain data={Data} />
+        <CardMain data={data?.data} />
         <Pagination
           page={page}
-          lastpage={Data?.pagination?.last_visible_page}
+          lastpage={data?.pagination?.last_visible_page}
           HandleNextPage={HandleNextPage}
           HandlePrevPage={HandlePrevPage}
         />

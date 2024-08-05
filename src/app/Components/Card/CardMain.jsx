@@ -3,16 +3,21 @@ import Link from "next/link";
 import Image from "next/image";
 import CardDetail from "../Card-Detail/CardDetail";
 import { useState } from "react";
+import SkeletonCard from "../cardSkeleton";
 
-function CardMain({ data, title }) {
+function CardMain({ data, title, isLoading }) {
   const [isOpen, setIsOpen] = useState();
   const handleOpen = (anime_mal_id) => setIsOpen(anime_mal_id);
+
   return (
     <section className="mt-2 md:mt-0" id="Rekomend">
       <h1 className="text-white font-bold text-base px-2 mt-1 mb-4">{title}</h1>
 
       <div className="grid grid-cols-3 h-fit gap-2 px-1 lg:grid-cols-8">
-        {/* {!data && <CardSkeleton cards={16} />} */}
+        {isLoading &&
+          Array.from({ length: 12 }).map((_, index) => (
+            <SkeletonCard key={index} />
+          ))}
         {data?.map((anime, index) => {
           return (
             <div key={index} className="w-full rounded-lg shadow Card mx-auto">

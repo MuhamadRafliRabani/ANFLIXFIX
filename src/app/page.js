@@ -3,42 +3,33 @@ import { useEffect, useState } from "react";
 import { FetchAnime } from "@/utility/Api";
 import Type from "@/app/Components/Type-Button/ChoiseType";
 import Rekomend from "./Components/Rekomend/Rekomend";
-
 import Home_Page from "./Components/Crousell/Lading Page";
 import SecondCrausell from "./Components/Second-Crausell/Card";
 import { usePath, useType, useUser } from "@/utility/store/store";
 
 export default function Home() {
-  const [Data, setData] = useState([]);
   const { setUser } = useUser();
   const { path } = usePath();
   const { type } = useType();
 
-  const GetDataAnime = async () => {
-    try {
-      const { data } = await FetchAnime(path);
-
-      setData(data?.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { data, isLoading } = FetchAnime(path);
 
   useEffect(() => {
-    const userLocal = localStorage.getItem("user");
-
-    if (userLocal) {
-      setUser(JSON.parse(userLocal));
+    const storage = localStorage.getItem("user");
+    if (storage) {
+      setUser(JSON.parse(storage));
     }
+  }, []);
 
-    GetDataAnime();
-  }, [path]);
+  if (isLoading) <div className="text-white">Loading....</div>;
+
+  console.log(data);
 
   return (
-    <div className="overflow-x-hidden bg-[#0E0E0E] relative">
-      <Home_Page data={Data} type={type} />
+    <div className="bg-[#0E0E0E] relative">
+      <Home_Page datas={data?.data} type={type} isLoading={isLoading} />
       <Type />
-      <SecondCrausell data={Data} path={type} />
+      <SecondCrausell datas={data?.data} type={type} isLoading={isLoading} />
       <Rekomend />
     </div>
   );
