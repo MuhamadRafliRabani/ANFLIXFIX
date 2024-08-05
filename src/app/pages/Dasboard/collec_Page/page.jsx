@@ -4,21 +4,19 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import CardSkeleton from "@/app/cardSeleton";
-import CardDetail from "@/app/Components/Card-Detail/CardDetail";
 import { useUser } from "@/utility/store/store";
 
 const Collection = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isOpen, setIsOpen] = useState();
-  const user_email = useUser((state) => state.user?.email);
+  const { user } = useUser();
   const Router = useRouter();
 
   const HitDb = useCallback(async () => {
     try {
       const response = await axios.get(`/api/dataDb`, {
-        params: { email: user_email },
+        params: { email: user.email },
       });
       console.log("API response data:", response.data);
       setData(response);
@@ -57,55 +55,46 @@ const Collection = () => {
       <h1 className="py-2 font-bold text-lg ps-2 hover:text-[#E50914]">
         Your Collection :
       </h1>
-      {isLoading ? (
-        <CardSkeleton cards={14} />
-      ) : data.data.length > 0 ? (
-        <div className="grid grid-cols-3 grid-rows-3 md:grid-cols-7 w-svw h-fit gap-2 ps-2 pe-2 md:pe-6">
-          {data.data.map((item) => (
-            <div
-              key={item.anime_mal_id}
-              className="w-fit h-fit flex flex-col justify-center items-center relative z-10"
+      <div className="grid grid-cols-3 grid-rows-3 md:grid-cols-7 w-svw h-fit gap-2 ps-2 pe-2 md:pe-6">
+        {data.data.map((item) => (
+          <div
+            key={item.anime_mal_id}
+            className="w-fit h-fit flex flex-col justify-center items-center relative z-10"
+          >
+            <Link
+              href={`/detail-anime/${item.anime_mal_id}`}
+              className="mx-auto"
+              onMouseEnter={() => handleOpen(item.anime_mal_id)}
+              onMouseLeave={() => handleOpen(item.anime_mal_id)}
             >
-              <Link
-                href={`/detail-anime/${item.anime_mal_id}`}
-                className="mx-auto"
-                onMouseEnter={() => handleOpen(item.anime_mal_id)}
-                onMouseLeave={() => handleOpen(item.anime_mal_id)}
-              >
-                {item.anime_images ? (
-                  <Image
-                    src={item.anime_images}
-                    alt={item.anime_title}
-                    width={200}
-                    height={330}
-                    className="rounded-md"
-                  />
-                ) : (
-                  <Skeleton width={200} height={330} />
-                )}
-              </Link>
-              <p className="hover:text-[#E50914]">{item.anime_title}</p>
-              <CardDetail
-                anime_episodes={item.anime_episodes}
-                anime_images={item.anime_images}
-                anime_mal_id={item.anime_mal_id}
-                anime_rating={item.anime_rating}
-                anime_status={item.anime_status}
-                anime_title={item.anime_title}
-                anime_type={item.anime_type}
-                isOpen={isOpen}
+              <Image
+                src={item.anime_images}
+                alt={item.anime_title}
+                width={200}
+                height={330}
+                className="rounded-md"
               />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p className="block m-auto">
-          Collection Tidak Ada{" "}
-          <span className="block m-auto text-blue-700">
-            click disini untuk menambahkan Collection
-          </span>
-        </p>
-      )}
+            </Link>
+            <p className="hover:text-[#E50914]">{item.anime_title}</p>
+            <CardDetail
+              anime_episodes={item.anime_episodes}
+              anime_images={item.anime_images}
+              anime_mal_id={item.anime_mal_id}
+              anime_rating={item.anime_rating}
+              anime_status={item.anime_status}
+              anime_title={item.anime_title}
+              anime_type={item.anime_type}
+              isOpen={isOpen}
+            />
+          </div>
+        ))}
+      </div>
+      <p className="block m-auto">
+        Collection Tidak Ada{" "}
+        <span className="block m-auto text-blue-700">
+          click disini untuk menambahkan Collection
+        </span>
+      </p>
     </section>
   );
 };

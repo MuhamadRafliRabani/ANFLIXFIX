@@ -1,10 +1,11 @@
 "use client";
-import { useUser } from "@/app/store/store";
+
+import { useUser } from "@/utility/store/store";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 const page = () => {
   const Router = useRouter();
-  const user = useUser((state) => state.user?.email);
+  const { user } = useUser();
 
   console.log(user);
   return (
@@ -12,7 +13,7 @@ const page = () => {
       {user ? (
         <>
           <h1 className="text-white text-3xl font-bold ">
-            Selamat datang : {user}
+            Selamat datang : {user.email}
           </h1>
           <div className="flex gap-4 items-center">
             <Link
