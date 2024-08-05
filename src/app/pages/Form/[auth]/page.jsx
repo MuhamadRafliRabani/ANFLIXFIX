@@ -1,10 +1,8 @@
 import { useFormik } from "formik";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
 import * as yup from "yup";
 import { useUser } from "@/utility/store/store";
-import { useSignWithEmail } from "@/utility/auth";
 import { signIn } from "@/service/firebase";
+import { useRouter } from "next/navigation";
 
 // Define your validation schema
 const validationSchema = yup.object({
