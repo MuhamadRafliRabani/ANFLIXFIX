@@ -17,7 +17,7 @@ const page = () => {
           </h1>
           <div className="flex gap-4 items-center">
             <Link
-              href={"/Dasboard/collec_Page"}
+              href={"/pages/Dasboard/collec_Page"}
               className="bg-blue-400 px-4 py-2"
             >
               ke koleksi

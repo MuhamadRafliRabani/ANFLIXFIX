@@ -17,7 +17,7 @@ const validationSchema = yup.object({
 
 const Form = ({ params }) => {
   const router = useRouter();
-  const setUser = useUser((state) => state.setUser);
+  const { setUser, user } = useUser();
   const URL = decodeURI(params.auth);
 
   // Use formik for form handling
@@ -28,9 +28,17 @@ const Form = ({ params }) => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      URL === "Sign-in" ? await signIn(values) : await signUp(values);
+      console.log(values);
+
+      const user =
+        URL === "Sign-in" ? await signIn(values) : await signUp(values);
+      localStorage.setItem("user", JSON.stringify(user));
+      setUser(user);
+      router.push("/");
     },
   });
+
+  console.log(user);
 
   return (
     <section className="w-svw h-svh pt-20 md:pt-40 lg:pt-56" id="section-form">
@@ -53,7 +61,8 @@ const Form = ({ params }) => {
             id="email"
             className="bg-transparent border-[0.5px] border-white text-sm rounded-full text-slate-300 w-full p-2 focus:border-none"
             placeholder="email"
-            {...formik.getFieldProps("email")}
+            name="email"
+            onChange={formik.handleChange}
           />
           {formik.touched.email && formik.errors.email ? (
             <p className="text-red-500 text-sm mt-2">{formik.errors.email}</p>
@@ -71,7 +80,8 @@ const Form = ({ params }) => {
             id="password"
             className="white-palace bg-transparent border-[0.5px] border-white text-slate-300 text-sm rounded-full w-full p-2"
             placeholder="password"
-            {...formik.getFieldProps("password")}
+            name="password"
+            onChange={formik.handleChange}
           />
           {formik.touched.password && formik.errors.password ? (
             <p className="text-red-500 text-sm mt-2">
@@ -89,9 +99,6 @@ const Form = ({ params }) => {
         >
           {URL === "Sign-in" ? "SIGN IN" : "SIGN UP"}
         </button>
-        {errorMessage && (
-          <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
-        )}
       </form>
     </section>
   );

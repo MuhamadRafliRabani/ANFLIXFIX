@@ -3,6 +3,7 @@ import { handleColection } from "@/utility/func";
 import { useCollecSucsess, useUser } from "@/utility/store/store";
 import { Play, Plus } from "@phosphor-icons/react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const AddCollection = ({
   anime_mal_id,
@@ -16,6 +17,7 @@ const AddCollection = ({
   const { user } = useUser();
   const user_email = user?.email;
   const { setCollectSucsess } = useCollecSucsess();
+  const { mutate, data, isError, isSuccess } = handleColection();
 
   const addCollect = async () => {
     const data = {
@@ -28,14 +30,16 @@ const AddCollection = ({
       anime_status,
       anime_episodes,
     };
-    try {
-      const Response = await handleColection(data);
-      const result = await Response.json();
-      setCollectSucsess(result);
-    } catch (error) {
-      console.log("error", error);
-    }
+    mutate(data);
   };
+
+  if (isError) {
+    toast.error("gagal menambahkan anime");
+  }
+
+  if (isSuccess) {
+    toast.success("succes menambahkan anime");
+  }
 
   return (
     <div className="flex justtify-center items-center gap-2">

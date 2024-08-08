@@ -2,6 +2,7 @@ import { handleColection } from "@/utility/func";
 import { Plus } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useCollecSucsess, useUser } from "@/utility/store/store";
+import toast from "react-hot-toast";
 
 const AddCollection = ({
   anime_images,
@@ -13,7 +14,7 @@ const AddCollection = ({
   anime_type,
 }) => {
   const { user } = useUser();
-  const { setCollectSucsess } = useCollecSucsess();
+  const { mutate, data, isError, isSuccess } = handleColection();
 
   const sendCollect = async () => {
     if (!user?.email) {
@@ -30,14 +31,18 @@ const AddCollection = ({
       anime_status,
       anime_type,
     };
-
-    try {
-      const response = await handleColection(data);
-      setCollectSucsess(response);
-    } catch (error) {
-      console.log(error);
-    }
+    mutate(data);
   };
+
+  if (isError) {
+    toast.error("gagal menambahkan anime");
+  }
+
+  if (isSuccess) {
+    toast.success("succes menambahkan anime");
+  }
+
+  console.log(data);
 
   return (
     <>

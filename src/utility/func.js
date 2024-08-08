@@ -1,13 +1,11 @@
-export async function handleColection(data) {
-  console.log(data);
-  try {
-    const HitApi = await fetch("/api/collection", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-    const Result = await HitApi.json();
-    return Result;
-  } catch (error) {
-    return console.log("message", error);
-  }
-}
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+
+export const handleColection = () => {
+  return useMutation({
+    mutationFn: async (value) => {
+      const { data } = await axios.post("/api/collection", value);
+      return data;
+    },
+  });
+};

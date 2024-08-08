@@ -4,6 +4,7 @@ import { handleColection } from "@/app/global/global-func/func";
 import { useCollecSucsess, useUser } from "@/utility/store/store";
 import { Heart, Eye } from "@phosphor-icons/react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const AddColectBtn = ({
   anime_mal_id,
@@ -17,6 +18,7 @@ const AddColectBtn = ({
   const { user } = useUser();
   const { setSucsess } = useCollecSucsess();
   const user_email = user?.email;
+  const { mutate, data, isError, isSuccess } = handleColection();
 
   const addCollect = async () => {
     const data = {
@@ -30,13 +32,16 @@ const AddColectBtn = ({
       anime_episodes,
     };
 
-    try {
-      const Response = await handleColection(data);
-      setSucsess(Response?.sucsess);
-    } catch (error) {
-      console.log("error", error);
-    }
+    mutate(data);
   };
+
+  if (isError) {
+    toast.error("gagal menambahkan anime");
+  }
+
+  if (isSuccess) {
+    toast.success("succes menambahkan anime");
+  }
 
   return (
     <>
