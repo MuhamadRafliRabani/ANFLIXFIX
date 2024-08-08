@@ -26,7 +26,7 @@ export default function Home() {
   console.log(data);
 
   return (
-    <div className="bg-[#0E0E0E] relative">
+    <div className="overflow-x-hidden bg-[#0E0E0E] relative">
       <Home_Page datas={data?.data} type={type} isLoading={isLoading} />
       <Type />
       <SecondCrausell datas={data?.data} type={type} isLoading={isLoading} />

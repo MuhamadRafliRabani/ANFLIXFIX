@@ -37,7 +37,7 @@ const Collection = () => {
     } else {
       HitDb();
     }
-  }, [user_email, HitDb]);
+  }, [user, HitDb]);
 
   const handleOpen = (anime_mal_id) => {
     setIsOpen(anime_mal_id);
@@ -45,7 +45,7 @@ const Collection = () => {
 
   console.log("Data state:", data);
 
-  if (!user_email) {
+  if (!user) {
     Router.back();
     return null;
   }
