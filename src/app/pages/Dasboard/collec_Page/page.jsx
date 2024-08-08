@@ -26,7 +26,7 @@ const Collection = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [user_email]);
+  }, [user]);
 
   useEffect(() => {
     const local = localStorage.getItem(user_email);
