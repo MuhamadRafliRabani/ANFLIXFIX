@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Search from "./search/Search";
 import { useState, useEffect, useRef } from "react";
-import { ArrowSquareRight, BookmarksSimple, MagnifyingGlass, XCircle } from "@phosphor-icons/react";
+import { ArrowSquareRight, BookmarksSimple, MagnifyingGlass, X, XCircle } from "@phosphor-icons/react";
 import Image from "next/image";
 import { useUser } from "@/utility/store/store";
 import { SignOut } from "@/service/firebase";
@@ -80,7 +80,11 @@ const Navbar = () => {
   };
 
   const SearchBtn = () => {
-    return <button className={`w-fit py-2 px-4 rounded-full hover:bg-primary `}>{!isOpen ? <MagnifyingGlass className="w-6 h-8" onClick={() => handleSearch()} /> : <XCircle className="w-6 h-8" onClick={() => handleSearch()} />}</button>;
+    return (
+      <button className={`w-fit ${isOpen && "absolute top-6 right-0 md:static"}`}>
+        {!isOpen ? <MagnifyingGlass className="size-16 py-2 px-4 rounded-full hover:bg-primary" onClick={() => handleSearch()} /> : <X className="size-8 text-white" onClick={() => handleSearch()} />}
+      </button>
+    );
   };
 
   return (
@@ -92,7 +96,7 @@ const Navbar = () => {
         <div ref={searchRef} className={`absolute left-0 w-4/5 main-transition z-40 md:w-full ${isOpen ? "scale-100" : "scale-0"}`}>
           <Search />
         </div>
-        <div className="flex gap-3 justify-center items-center">
+        <div className="flex gap-3 justify-center items-center relative">
           <SearchBtn />
           {user?.email ? <UserComp /> : <AuthButton />}
         </div>
