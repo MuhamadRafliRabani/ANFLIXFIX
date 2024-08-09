@@ -14,12 +14,8 @@ const page = async ({ params }) => {
   console.log(data?.data);
 
   return (
-    <div className="pt-16 mx-1 md:mx-auto bg-black h-fit md:h-svh lg:pt-20 ">
-      <HeaderDetail
-        title={data?.data.title}
-        title_japanese={data?.data.title_japanese}
-        status={data?.data.status}
-      />
+    <div className="pt-16 md:mx-auto bg-black min-h-svh lg:pt-20 w-screen">
+      <HeaderDetail title={data?.data.title} title_japanese={data?.data.title_japanese} status={data?.data.status} />
       <div className="flex justify-center items-center  flex-col flex-wrap md:flex-row md:gap-2 lg:container">
         <DetailImages imagesUrl={data?.data.images?.jpg.large_image_url} />
         <SynopsisDetail synopsis={data?.data.synopsis} />

@@ -25,7 +25,7 @@ const Page = ({ params }) => {
   };
 
   useEffect(() => {
-    useSetDataAnime(URL, setType, setPath);
+    useSetDataAnime(URL, setPath, setType);
   }, [page, URL]);
 
   const { data, isLoading } = FetchAnime(path + "?page=" + page);

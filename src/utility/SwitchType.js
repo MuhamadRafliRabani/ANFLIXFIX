@@ -1,6 +1,4 @@
-export const useSetDataAnime = (type, setType, setPath) => {
-  console.log(type);
-
+export const useSetDataAnime = (type, setPath, setType) => {
   switch (type) {
     case "Trend Up":
       setPath("/top/anime");

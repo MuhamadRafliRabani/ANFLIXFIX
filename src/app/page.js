@@ -13,7 +13,7 @@ export default function Home() {
   const { type } = useType();
   console.log({ path, type });
 
-  const { data, isLoading } = FetchAnime(type, setUser);
+  const { data, isLoading } = FetchAnime(path, setUser);
 
   useEffect(() => {
     const storage = localStorage.getItem("user");

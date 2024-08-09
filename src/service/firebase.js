@@ -1,11 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApps } from "firebase/app";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 // Initialize Firebase if it hasn't been initialized before
 if (!getApps().length) {
@@ -28,11 +23,7 @@ export const signUp = async (values) => {
   const auth = getAuth();
 
   try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
     // Do something with the signed-up user
@@ -50,11 +41,7 @@ export const signIn = async (values) => {
   const auth = getAuth();
 
   try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
     // Do something with the signed-in user
@@ -68,9 +55,5 @@ export const signIn = async (values) => {
 export const SignOut = async () => {
   const auth = getAuth();
 
-  try {
-    await signOut(auth);
-  } catch (error) {
-    console.log(error);
-  }
+  await signOut(auth);
 };
