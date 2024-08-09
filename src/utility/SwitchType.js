@@ -1,5 +1,6 @@
-// utils/setDataAnime.js
-export const setDataAnime = (type, setPath, setType) => {
+export const useSetDataAnime = (type, setType, setPath) => {
+  console.log(type);
+
   switch (type) {
     case "Trend Up":
       setPath("/top/anime");

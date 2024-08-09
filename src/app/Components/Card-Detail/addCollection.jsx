@@ -4,15 +4,7 @@ import Link from "next/link";
 import { useCollecSucsess, useUser } from "@/utility/store/store";
 import toast from "react-hot-toast";
 
-const AddCollection = ({
-  anime_images,
-  anime_title,
-  anime_mal_id,
-  anime_episodes,
-  anime_rating,
-  anime_status,
-  anime_type,
-}) => {
+const AddCollection = ({ anime_images, anime_title, anime_mal_id, anime_episodes, anime_rating, anime_status, anime_type }) => {
   const { user } = useUser();
   const { mutate, data, isError, isSuccess } = handleColection();
 
@@ -42,22 +34,14 @@ const AddCollection = ({
     toast.success("succes menambahkan anime");
   }
 
-  console.log(data);
-
   return (
     <>
       {user ? (
-        <button
-          onClick={sendCollect}
-          className="border-white rounded-full border-2 hover:bg-slate-300 hover:text-[#E50914] w-8 h-8 p-0.5 flex justify-center items-center"
-        >
+        <button onClick={sendCollect} className="border-white rounded-full border-2 hover:bg-slate-300 hover:text-[#E50914] w-8 h-8 p-0.5 flex justify-center items-center">
           <Plus size={16} />
         </button>
       ) : (
-        <Link
-          href="/pages/Form/Sign-up"
-          className="border-white rounded-full border-2 hover:bg-slate-300 hover:text-[#E50914] w-8 h-8 p-0.5 flex justify-center items-center"
-        >
+        <Link href="/pages/Form/Sign-up" className="border-white rounded-full border-2 hover:bg-slate-300 hover:text-[#E50914] w-8 h-8 p-0.5 flex justify-center items-center">
           <Plus size={16} />
         </Link>
       )}

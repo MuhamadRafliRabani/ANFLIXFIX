@@ -11,8 +11,9 @@ export default function Home() {
   const { setUser } = useUser();
   const { path } = usePath();
   const { type } = useType();
+  console.log({ path, type });
 
-  const { data, isLoading } = FetchAnime(path);
+  const { data, isLoading } = FetchAnime(type, setUser);
 
   useEffect(() => {
     const storage = localStorage.getItem("user");
@@ -23,7 +24,7 @@ export default function Home() {
 
   if (isLoading) <div className="text-white">Loading....</div>;
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="overflow-x-hidden bg-[#0E0E0E] relative">

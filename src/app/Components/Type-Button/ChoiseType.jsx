@@ -5,7 +5,7 @@ import Btn from "./btn";
 
 const Type = () => {
   return (
-    <div className="container">
+    <div className="container ">
       <Swiper
         slidesPerView={2}
         spaceBetween={20}

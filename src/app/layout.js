@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SkeletonTheme } from "react-loading-skeleton";
 import Navbar from "./Components/Navigasi/navbar";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,9 @@ export default function RootLayout({ children }) {
           <body className="overflow-x-hidden" suppressHydrationWarning={true}>
             <Navbar />
             {children}
+            <div>
+              <Toaster />
+            </div>
           </body>
         </SkeletonTheme>
       </html>
