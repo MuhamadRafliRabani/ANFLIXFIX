@@ -17,7 +17,6 @@ if (!getApps().length) {
 
 export const Auth = getAuth();
 
-// Define the asynchronous function for signing up with email and password
 export const signUp = async (values) => {
   const { email, password } = values;
   const auth = getAuth();
@@ -26,11 +25,8 @@ export const signUp = async (values) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // Do something with the signed-up user
     return user;
   } catch (error) {
-    // Handle error
-
     console.log(error.code);
     throw error;
   }
@@ -44,10 +40,8 @@ export const signIn = async (values) => {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // Do something with the signed-in user
     return user;
   } catch (error) {
-    // Handle error
     throw error;
   }
 };
@@ -55,5 +49,6 @@ export const signIn = async (values) => {
 export const SignOut = async () => {
   const auth = getAuth();
 
-  await signOut(auth);
+  const out = await signOut(auth);
+  return out;
 };
