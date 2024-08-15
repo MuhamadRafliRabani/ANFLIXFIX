@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
             <Navbar />
             {children}
             <div>
-              <Toaster />
+              <Toaster containerStyle={{ accentColor: "black", color: "white" }} position="top-right" />
             </div>
           </body>
         </SkeletonTheme>

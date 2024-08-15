@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApps } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import toast from "react-hot-toast";
 
 // Initialize Firebase if it hasn't been initialized before
 if (!getApps().length) {
@@ -28,6 +29,7 @@ export const signUp = async (values) => {
     return user;
   } catch (error) {
     console.log(error.code);
+    if (error.code) toast.error("email already in use");
     throw error;
   }
 };
@@ -42,6 +44,8 @@ export const signIn = async (values) => {
 
     return user;
   } catch (error) {
+    console.log(error);
+    if (error.code) toast.error("invalid email or password");
     throw error;
   }
 };
