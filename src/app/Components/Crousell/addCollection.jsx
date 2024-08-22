@@ -5,15 +5,7 @@ import { Play, Plus } from "@phosphor-icons/react";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
-const AddCollection = ({
-  anime_mal_id,
-  anime_images,
-  anime_title,
-  anime_rating,
-  anime_type,
-  anime_status,
-  anime_episodes,
-}) => {
+const AddCollection = ({ anime_mal_id, anime_images, anime_title, anime_rating, anime_type, anime_status, anime_episodes }) => {
   const { user } = useUser();
   const user_email = user?.email;
   const { setCollectSucsess } = useCollecSucsess();
@@ -52,7 +44,7 @@ const AddCollection = ({
         </button>
       </Link>
       {!user_email ? (
-        <Link href={"/pages/Form/sign-in"}>
+        <Link href={"/pages/auth/sign-in"}>
           <button className="border-white border btn hover:bg-transparent shadow-md btn1 ">
             <span>
               <Plus size={14} />
@@ -61,10 +53,7 @@ const AddCollection = ({
           </button>
         </Link>
       ) : (
-        <button
-          onClick={addCollect}
-          className="border-white border-2 btn active:shadow btn-"
-        >
+        <button onClick={addCollect} className="border-white border-2 btn active:shadow btn-">
           <span>
             <Plus size={14} />
           </span>{" "}
