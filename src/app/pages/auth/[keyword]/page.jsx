@@ -41,9 +41,9 @@ const Auth = ({ params }) => {
   console.log(user);
 
   return (
-    <section className="h-svh w-svw pt-20 md:pt-40 lg:pt-56" id="section-form">
+    <section className="h-svh w-svw pt-36 md:pt-40 lg:pt-56" id="section-form">
       <form
-        className="m-auto h-fit w-[90%] rounded-md border-[0.1px] border-white bg-transparent py-14 text-white shadow-md backdrop-blur-sm lg:w-1/2"
+        className="m-auto h-fit w-[90%] max-w-xl rounded-md border-[0.1px] border-white bg-transparent py-14 text-white shadow-md backdrop-blur-sm lg:w-1/2"
         onSubmit={formik.handleSubmit}
       >
         <h1 className="main-transition text-center text-2xl font-bold uppercase hover:text-[#E50914]">

@@ -5,7 +5,15 @@ import { Play, Plus } from "@phosphor-icons/react";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
-const AddCollection = ({ anime_mal_id, anime_images, anime_title, anime_rating, anime_type, anime_status, anime_episodes }) => {
+const AddCollection = ({
+  anime_mal_id,
+  anime_images,
+  anime_title,
+  anime_rating,
+  anime_type,
+  anime_status,
+  anime_episodes,
+}) => {
   const { user } = useUser();
   const user_email = user?.email;
   const { setCollectSucsess } = useCollecSucsess();
@@ -34,9 +42,9 @@ const AddCollection = ({ anime_mal_id, anime_images, anime_title, anime_rating, 
   }
 
   return (
-    <div className="flex justtify-center items-center gap-2">
+    <div className="justtify-center flex items-center gap-2">
       <Link href={`pages/detail-anime/${anime_mal_id}`}>
-        <button className="bg-primary hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base items-center gap-2 justify-center effect-btn ">
+        <button className="effect-btn hidden items-center justify-center gap-2 rounded-full bg-primary text-base md:mt-2 md:flex md:px-4 md:py-2">
           <span>
             <Play size={14} />
           </span>{" "}
@@ -44,8 +52,8 @@ const AddCollection = ({ anime_mal_id, anime_images, anime_title, anime_rating, 
         </button>
       </Link>
       {!user_email ? (
-        <Link href={"/pages/auth/sign-in"}>
-          <button className="border-white border btn hover:bg-transparent shadow-md btn1 ">
+        <Link href={"/pages/auth/sign-up"}>
+          <button className="btn btn1 border border-white shadow-md hover:bg-transparent">
             <span>
               <Plus size={14} />
             </span>
@@ -53,7 +61,10 @@ const AddCollection = ({ anime_mal_id, anime_images, anime_title, anime_rating, 
           </button>
         </Link>
       ) : (
-        <button onClick={addCollect} className="border-white border-2 btn active:shadow btn-">
+        <button
+          onClick={addCollect}
+          className="btn btn- border-2 border-white active:shadow"
+        >
           <span>
             <Plus size={14} />
           </span>{" "}
