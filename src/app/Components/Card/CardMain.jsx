@@ -11,16 +11,16 @@ function CardMain({ data, title, isLoading }) {
 
   return (
     <section className="mt-2 md:mt-0" id="Rekomend">
-      <h1 className="text-white font-bold text-base px-2 mt-1 mb-4">{title}</h1>
+      <h1 className="mb-4 mt-1 px-2 text-base font-bold text-white">{title}</h1>
 
-      <div className="grid grid-cols-3 h-fit gap-2 px-1 lg:grid-cols-8">
+      <div className="grid h-fit grid-cols-3 gap-2 px-1 lg:grid-cols-8">
         {isLoading &&
           Array.from({ length: 12 }).map((_, index) => (
             <SkeletonCard key={index} />
           ))}
         {data?.map((anime, index) => {
           return (
-            <div key={index} className="w-full rounded-lg shadow Card mx-auto">
+            <div key={index} className="Card mx-auto w-full rounded-lg shadow">
               <Link
                 href={`/pages/detail-anime/${anime.mal_id}`}
                 onMouseEnter={() => handleOpen(anime.mal_id)}
@@ -31,7 +31,7 @@ function CardMain({ data, title, isLoading }) {
                     width={180}
                     height={250}
                     src={anime.images?.jpg.image_url}
-                    className="rounded-md hover:scale-105 md:mt-4 z-10 w-auto h-auto main-transition img-card"
+                    className="main-transition img-card z-10 h-auto w-auto rounded-md hover:scale-105 md:mt-4"
                     alt={anime.title}
                   />
                 ) : (
@@ -39,11 +39,11 @@ function CardMain({ data, title, isLoading }) {
                 )}
               </Link>
               {anime.title ? (
-                <h5 className="my-1 text-base text-white w-full font-medium">
+                <h5 className="my-1 w-full text-base font-medium text-white">
                   {anime.title}
                 </h5>
               ) : (
-                <Skeleton className="mb-2 text-base text-white w-full font-medium" />
+                <Skeleton className="mb-2 w-full text-base font-medium text-white" />
               )}
 
               <CardDetail

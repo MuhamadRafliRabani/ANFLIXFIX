@@ -33,7 +33,7 @@ export default function Page({ params }) {
   };
 
   return (
-    <section className="text-white text-lg font-semibold overflow-x-hidden pt-20 bg-black">
+    <section className="min-h-svh overflow-x-hidden bg-black pt-20 text-lg font-semibold text-white">
       <div className="lg:container lg:mx-auto">
         {/* <Header title={"TOP ANIME"} path={"/top"} /> */}
         <h1>pencarian untuk : {decode}</h1>

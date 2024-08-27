@@ -8,7 +8,6 @@ import AddCollection from "./addCollection";
 import { Autoplay, EffectCreative, Navigation } from "swiper/modules";
 import "swiper/css/effect-fade";
 import Link from "next/link";
-import SkeletonCard from "../cardSkeleton";
 import LandingSkeleton from "../skeleton";
 
 const Home_Page = ({ datas, type, isLoading }) => {
@@ -59,16 +58,16 @@ const Home_Page = ({ datas, type, isLoading }) => {
           <SwiperSlide key={index}>
             <div className="relative h-[280px] md:h-svh">
               {isLoading && <LandingSkeleton />}
-              <div className=" relative images h-full md:static">
+              <div className="images relative h-full md:static">
                 <img
                   src={dataImg[index % dataImg.length].img}
-                  className="md:brightness-50 brightness-[0.7] object-cover object-center w-svw h-full"
+                  className="h-full w-svw object-cover object-center brightness-[0.7] md:brightness-50"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t h-full from-[#0E0E0E] to-transparent z-10 md:-bottom-1 bottom-0"></div>
+                <div className="absolute inset-0 bottom-0 z-10 h-full bg-gradient-to-t from-[#0E0E0E] to-transparent md:-bottom-1"></div>
               </div>
-              <div className="text-white flex items-start justify-end flex-col mx-auto md:w-4/5 absolute z-20 inset-0 md:items-start md:justify-center md:mb-8 md:text-xl">
-                <div className="hidden md:block space-y-2">
-                  <p className="md:text-lg md:text-slate-50 ">
+              <div className="absolute inset-0 z-20 mx-auto flex flex-col items-start justify-end text-white md:mb-8 md:w-4/5 md:items-start md:justify-center md:text-xl">
+                <div className="hidden space-y-2 md:block">
+                  <p className="md:text-lg md:text-slate-50">
                     Duration: {data.duration}
                   </p>
                   <p className="flex items-center space-x-2">
@@ -81,11 +80,11 @@ const Home_Page = ({ datas, type, isLoading }) => {
                   </p>
                   <Link
                     href={`/pages/detail-anime/${data.mal_id}`}
-                    className="-mb-2 block font-bold text-4xl text-white"
+                    className="-mb-2 block text-4xl font-bold text-white"
                   >
                     {data.title}
                   </Link>
-                  <p className="w-1/2 leading-relaxed text-lg font-medium text-gray-300 ">
+                  <p className="w-1/2 text-lg font-medium leading-relaxed text-gray-300">
                     {dataImg[index % dataImg.length].synopsis}
                   </p>
                 </div>
@@ -102,7 +101,7 @@ const Home_Page = ({ datas, type, isLoading }) => {
                 </div>
                 <Link
                   href={`/pages/detail-anime/${data.mal_id}`}
-                  className="mb-4 mx-4 block font-semibold text-lg text-white md:hidden"
+                  className="mx-4 mb-4 block text-lg font-semibold text-white md:hidden"
                 >
                   {data.title}
                 </Link>

@@ -1,6 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApps } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import toast from "react-hot-toast";
 
 // Initialize Firebase if it hasn't been initialized before
@@ -23,7 +28,11 @@ export const signUp = async (values) => {
   const auth = getAuth();
 
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
     const user = userCredential.user;
 
     return user;
@@ -39,7 +48,11 @@ export const signIn = async (values) => {
   const auth = getAuth();
 
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
     const user = userCredential.user;
 
     return user;
@@ -53,6 +66,5 @@ export const signIn = async (values) => {
 export const SignOut = async () => {
   const auth = getAuth();
 
-  const out = await signOut(auth);
-  return out;
+  await signOut(auth);
 };

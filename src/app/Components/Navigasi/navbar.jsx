@@ -2,7 +2,13 @@
 import Link from "next/link";
 import Search from "./search/Search";
 import { useState, useEffect, useRef } from "react";
-import { ArrowSquareRight, BookmarksSimple, MagnifyingGlass, X, XCircle } from "@phosphor-icons/react";
+import {
+  ArrowSquareRight,
+  BookmarksSimple,
+  MagnifyingGlass,
+  X,
+  XCircle,
+} from "@phosphor-icons/react";
 import Image from "next/image";
 import { useUser } from "@/utility/store/store";
 import { SignOut } from "@/service/firebase";
@@ -15,22 +21,9 @@ const Navbar = () => {
   const searchRef = useRef(null);
   const router = useRouter();
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   const handleOut = async (e) => {
     e.preventDefault();
-    localStorage.removeItem("user");
+    localStorage.clear();
     const res = await SignOut();
     router.refresh();
     console.log(res);
@@ -40,29 +33,53 @@ const Navbar = () => {
     setIsOpenDas((prev) => !prev);
   };
 
-  const handleSearch = () => {
+  const handleOpen = () => {
     setIsOpen((prev) => !prev);
   };
 
+  console.log("ISoPEN", isOpen);
+
   const UserComp = () => {
     return (
-      <div className="flex gap-4 items-center">
-        <div className={`relative main-transition ${isOpen ? "hidden md:inline" : ""}`}>
-          <Image width={70} height={100} src="/Home_img/Home1.jpg" onClick={handleDas} className="rounded-full cursor-pointer" />
-          <div className={`w-[250px] h-fit font-medium text-start absolute top-full main-transition origin-top right-10 ps-4 bg-black bg-opacity-70 rounded-md text-base shadow-md ${isOpenDas ? "" : "scale-0"}`}>
-            <Link href={"/pages/Dasboard/collec_Page"} className="flex items-center gap-2 py-2">
-              <BookmarksSimple className="w-5 h-5" />
+      <div className="flex items-center gap-4">
+        <div
+          className={`main-transition relative ${isOpen ? "hidden md:inline" : ""}`}
+        >
+          <Image
+            width={70}
+            height={100}
+            src="/Home_img/Home1.jpg"
+            onClick={handleDas}
+            className="cursor-pointer rounded-full"
+          />
+          <div
+            className={`main-transition absolute right-10 top-full h-fit w-[250px] origin-top rounded-md bg-black bg-opacity-70 ps-4 text-start text-base font-medium shadow-md ${isOpenDas ? "" : "scale-0"}`}
+          >
+            <Link
+              href={"/pages/Dasboard/collec_Page"}
+              className="flex items-center gap-2 py-2"
+            >
+              <BookmarksSimple className="h-5 w-5" />
               koleksi
             </Link>
-            <div className="flex justify-between items-center">
-              <Link href={"/pages/Dasboard"} className="flex justify-start items-center gap-2 py-2">
-                <Image src={"/Home_img/Home1.jpg"} width={45} height={50} className="rounded-full h-auto w-auto" alt="user-img" />
-                <p className="flex justify-center flex-col cursor-pointer">
+            <div className="flex items-center justify-between">
+              <Link
+                href={"/pages/Dasboard"}
+                className="flex items-center justify-start gap-2 py-2"
+              >
+                <Image
+                  src={"/Home_img/Home1.jpg"}
+                  width={45}
+                  height={50}
+                  className="h-auto w-auto rounded-full"
+                  alt="user-img"
+                />
+                <p className="flex cursor-pointer flex-col justify-center">
                   Dasboard <span className="text-xs">{user?.email}</span>
                 </p>
               </Link>
-              <button onClick={handleOut} className="w-6 h-6 z-[100] ">
-                <ArrowSquareRight className="hover:w-8 w-full h-full me-2 cursor-pointer" />
+              <button onClick={handleOut} className="z-[100] h-6 w-6">
+                <ArrowSquareRight className="me-2 h-full w-full cursor-pointer hover:w-8" />
               </button>
             </div>
           </div>
@@ -73,11 +90,17 @@ const Navbar = () => {
 
   const AuthButton = () => {
     return (
-      <div className="flex gap-2 items-center font-semibold">
-        <Link href={"/pages/auth/sign-up"} className="bg-primary px-3 py-2 rounded-md text-sm lg:text-base lg:px-4">
+      <div className="flex items-center gap-2 font-semibold">
+        <Link
+          href={"/pages/auth/sign-up"}
+          className="rounded-md bg-primary px-3 py-2 text-sm lg:px-4 lg:text-base"
+        >
           <p>Sign Up</p>
         </Link>
-        <Link href={"/pages/auth/sign-in"} className="text-white rounded-lg hover:bg-white hover:text-pribg-primary px-3 py-2 text-sm lg:text-base lg:px-4 main-transition">
+        <Link
+          href={"/pages/auth/sign-in"}
+          className="hover:text-pribg-primary main-transition rounded-lg px-3 py-2 text-sm text-white hover:bg-white lg:px-4 lg:text-base"
+        >
           <p>Sign In</p>
         </Link>
       </div>
@@ -86,22 +109,41 @@ const Navbar = () => {
 
   const SearchBtn = () => {
     return (
-      <button className={`w-fit ${isOpen && "absolute top-6 right-0 md:static"}`}>
-        {!isOpen ? <MagnifyingGlass className="size-10 md:size-10 md:py-1 px-2 rounded-full hover:bg-primary" onClick={() => handleSearch()} /> : <X className="size-6 md:size-8  text-white" onClick={() => handleSearch()} />}
-      </button>
+      <>
+        {!isOpen ? (
+          <button
+            ref={searchRef}
+            onClick={handleOpen}
+            className={`w-fit cursor-pointer ${isOpen && "absolute right-0 top-6 z-50 md:static"}`}
+          >
+            <MagnifyingGlass className="size-10 rounded-full px-2 md:size-10 md:py-1" />
+          </button>
+        ) : (
+          <button
+            onClick={handleOpen}
+            className={`w-fit cursor-pointer ${isOpen && "absolute right-0 top-6 z-50 md:static"}`}
+          >
+            <X className="size-6 text-white md:size-8" />
+          </button>
+        )}
+      </>
     );
   };
 
   return (
-    <header className="bg-transparent fixed top-0 left-0 right-0 z-50">
-      <nav className="md:px-4 py-2 px-2 flex justify-between items-center text-white relative">
+    <header className="fixed left-0 right-0 top-0 z-50 bg-transparent">
+      <nav className="relative flex items-center justify-between px-2 py-2 text-white md:px-4">
         <Link href={"/"}>
-          <h1 className=" font-extrabold text-xl ms-2 cursor-pointer text-pribg-primary">ANFLIX</h1>
+          <h1 className="text-pribg-primary ms-2 cursor-pointer text-xl font-extrabold">
+            ANFLIX
+          </h1>
         </Link>
-        <div ref={searchRef} className={`absolute left-0 w-4/5 main-transition z-40 md:w-full ${isOpen ? "scale-100" : "scale-0"}`}>
+        <div
+          className={`main-transition absolute left-0 z-40 w-4/5 md:w-full ${isOpen ? "scale-100" : "scale-0"}`}
+        >
           <Search />
         </div>
-        <div className="flex gap-3 justify-center items-center relative">
+        <div className="relative flex items-center justify-center gap-3">
           <SearchBtn />
           {user?.email ? <UserComp /> : <AuthButton />}
         </div>
