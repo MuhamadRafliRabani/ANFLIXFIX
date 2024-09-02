@@ -14,13 +14,12 @@ Anflix adalah platform streaming anime yang terinspirasi dari MyAnimeList, Otaku
 
 ## Fitur:
 
-Pengguna dapat membuat daftar tontonan pribadi (watchlist) untuk anime favorit mereka.
-Informasi lengkap tentang setiap judul anime, termasuk sinopsis, rating, dan daftar episode.
-Sistem pencarian anime berdasarkan judul, genre, atau studio produksi.
-Fitur komentar dan rating untuk setiap anime yang memungkinkan pengguna berbagi pendapat mereka.
-Desain responsif dengan tampilan yang optimal di perangkat apapun.
+- Pengguna dapat membuat daftar tontonan pribadi (watchlist) untuk anime favorit mereka.
+- Informasi lengkap tentang setiap judul anime, termasuk sinopsis, rating, dan daftar episode.
+- Sistem pencarian anime berdasarkan judul, genre, atau studio produksi.
+- Desain responsif dengan tampilan yang optimal di perangkat apapun.
 
 ## Website & Repo:
 
-- Website: Link ke website
-- Repository: Link ke repository
+- [website](https://anflx.vercel.app/)
+- [repository](https://github.com/konoham/ANFLIXFIX)
