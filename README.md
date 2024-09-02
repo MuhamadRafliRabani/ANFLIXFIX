@@ -1,38 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Anflix
 
-## Getting Started
+Deskripsi:
+Anflix adalah platform streaming anime yang terinspirasi dari MyAnimeList, Otakudesu, dan Netflix. Platform ini menggabungkan koleksi anime dengan antarmuka yang modern dan mudah digunakan. Anflix menyediakan informasi lengkap tentang berbagai judul anime dengan cara yang lebih interaktif dan visual.
 
-First, run the development server:
+## Tech Stack:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- JavaScript
+- Next.js
+- App Router
+- Tailwind CSS
+- Tanstack Query
+- Axios
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Fitur:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Pengguna dapat membuat daftar tontonan pribadi (watchlist) untuk anime favorit mereka.
+Informasi lengkap tentang setiap judul anime, termasuk sinopsis, rating, dan daftar episode.
+Sistem pencarian anime berdasarkan judul, genre, atau studio produksi.
+Fitur komentar dan rating untuk setiap anime yang memungkinkan pengguna berbagi pendapat mereka.
+Desain responsif dengan tampilan yang optimal di perangkat apapun.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Website & Repo:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# RABANI-MART
-# next-project
+- Website: Link ke website
+- Repository: Link ke repository
