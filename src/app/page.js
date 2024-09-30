@@ -22,6 +22,8 @@ export default function Home() {
     }
   }, []);
 
+  
+
   if (isLoading) <div className="text-white">Loading....</div>;
 
   // console.log(data);

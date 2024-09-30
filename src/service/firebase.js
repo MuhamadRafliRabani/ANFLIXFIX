@@ -21,7 +21,6 @@ if (!getApps().length) {
   initializeApp(firebaseConfig);
 }
 
-export const Auth = getAuth();
 
 export const signUp = async (values) => {
   const { email, password } = values;

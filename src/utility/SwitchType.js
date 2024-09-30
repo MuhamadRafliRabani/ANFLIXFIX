@@ -3,6 +3,9 @@ export const useSetDataAnime = (type, setPath, setType) => {
     case "Trend Up":
       setPath("/top/anime");
       break;
+    case null:
+      setPath("/top/anime");
+      break;
     case "This Season":
       setPath("/seasons/now");
       break;
