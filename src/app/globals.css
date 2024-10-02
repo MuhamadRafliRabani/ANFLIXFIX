@@ -1,13 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 #section-form {
-  background-image: url("/bg-form1.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #676279;
+}
+
+@font-face {
+  font-family: "Mona Sans";
+  src:
+    url("/fonts/MonaSans-Medium.woff2") format("woff2"),
+    url("/fonts/MonaSans-Regular.woff2") format("woff2"),
+    url("/fonts/MonaSans-SemiBold.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+  font-family: "Mona Sans";
+  font-weight: 400;
 }
 
 @media (max-width: 767px) {
@@ -16,12 +27,8 @@
   }
 }
 
-body {
-  font-family: "Montserrat", sans-serif;
-}
-
 #Rekomend {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Mona Sans";
 }
 
 #sw {
@@ -44,15 +51,16 @@ body {
 }
 
 .effect-btn {
-  transition: background-color 0.3s, transform 0.1s;
+  transition:
+    background-color 0.3s,
+    transform 0.1s;
   color: #fff;
   box-shadow: inset 5px;
   cursor: pointer;
 }
 
 .btn {
-  @apply bg-opacity-80 hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base hover:bg-[#FFFFFF] items-center gap-2 justify-center effect-btn
-  bg-opacity-80 hidden md:flex md:px-4 md:py-2 md:mt-2 rounded-full text-base hover:bg-[#FFFFFF] items-center gap-2 justify-center effect-btn;
+  @apply effect-btn effect-btn hidden items-center justify-center gap-2 rounded-full bg-opacity-80 text-base hover:bg-[#FFFFFF] md:mt-2 md:flex md:px-4 md:py-2;
 }
 
 .effect-btn:active {
@@ -87,8 +95,8 @@ tr:nth-child(odd) {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: radial-gradient(farthest-side, #e50914 94%, #0000) top/9px 9px
-      no-repeat,
+  background:
+    radial-gradient(farthest-side, #e50914 94%, #0000) top/9px 9px no-repeat,
     conic-gradient(#0000 30%, #e50914);
   -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 9px), #000 0);
   animation: spinner-c7wet2 1s infinite linear;

@@ -16,8 +16,8 @@ const Btn = ({ Type }) => {
       className="main-transition p-0 text-base effect-btn flex gap-1 items-center justify-center my-0 py-4 w-full "
       onClick={() => useSetDataAnime(Type, setPath, setType)}
     >
-      <TrendUp className={`${type === Type ? "text-primary md:text-xl font-bold " : "text-slate-300 font-semibold"}`} />
-      <p className={`${type === Type ? "text-primary md:text-xl font-bold " : "text-slate-300 font-semibold"}`}>{Type}</p>
+      <TrendUp className={`${type === Type ? "text-primary md:text-xl font-bold " : "text-white font-semibold"}`} />
+      <p className={`${type === Type ? "text-primary md:text-xl font-bold " : "text-white font-semibold"}`}>{Type}</p>
     </button>
   );
 };

@@ -84,7 +84,7 @@ const Home_Page = ({ datas, type, isLoading }) => {
                   >
                     {data.title}
                   </Link>
-                  <p className="w-1/2 text-lg font-medium leading-relaxed text-gray-300">
+                  <p className="w-1/2 text-lg font-medium leading-relaxed line-clamp-6 text-gray-300">
                     {dataImg[index % dataImg.length].synopsis}
                   </p>
                 </div>
