@@ -6,6 +6,7 @@ import { signIn, signUp } from "@/service/firebase";
 import { useRouter } from "next/navigation";
 import Slide from "@/app/Components/auth/slide";
 import Link from "next/link";
+import Image from "next/image";
 
 const validationSchema = yup.object({
   email: yup.string().email("Invalid email format").required("Required"),
@@ -44,16 +45,37 @@ const Auth = ({ params }) => {
 
   return (
     <section className="h-svh w-svw md:p-4" id="section-form">
-      <div className="bg-authBackround container box-border flex h-full min-h-full flex-1 items-center justify-center rounded-lg shadow-md md:p-4">
+      <div className="container box-border flex h-full min-h-full flex-1 items-center justify-center rounded-lg bg-authBackround shadow-md md:p-4">
         <Slide />
         <div className="h-full w-full p-36 text-white">
           <form className="max-w-lg">
             <div className="space-y-6">
-              <h1 className="text-4xl font-medium">Create an account</h1>
-              <p className="text-base text-slate-500">
-                already have an account?{" "}
-                <span className="text-primary underline">Log in</span>
-              </p>
+              <h1 className="text-4xl font-medium">
+                {URL === "sign-up"
+                  ? "Create an account."
+                  : "Sign in to your account."}
+              </h1>
+              {URL === "sign-up" ? (
+                <p className="text-base text-slate-500">
+                  already have an account?{" "}
+                  <Link
+                    href="/pages/auth/sign-in"
+                    className="text-primary underline"
+                  >
+                    Log in
+                  </Link>
+                </p>
+              ) : (
+                <p className="text-base text-slate-500">
+                  Don`t have account yet?{" "}
+                  <Link
+                    href="/pages/auth/sign-up"
+                    className="text-primary underline"
+                  >
+                    Sign up
+                  </Link>
+                </p>
+              )}
             </div>
             <div className="mt-10 w-full space-y-5">
               <div className="flex w-full items-center space-x-4">
@@ -96,9 +118,36 @@ const Auth = ({ params }) => {
                 </p>
               </div>
             </div>
-            <div className="mt-20 w-full">
+            <div className="mt-14 w-full">
               <button className="w-full rounded-md bg-primary py-3">
-                Create account
+                {URL === "sign-up" ? "Create account" : "Login"}
+              </button>
+            </div>
+            <div className="mt-5 flex w-full items-center justify-center space-x-4">
+              <hr className="w-full border-slate-500" />
+              <p className="whitespace-nowrap text-sm font-thin text-slate-500">
+                Or register with
+              </p>
+              <hr className="w-full border-slate-500" />
+            </div>
+            <div className="mt-5 flex w-full items-center justify-center space-x-4">
+              <button className="flex w-full items-center justify-center space-x-2 rounded-md border border-slate-300 bg-transparent py-2 font-light">
+                <Image
+                  alt="Google image"
+                  src="/Google.png"
+                  width={45}
+                  height={45}
+                />{" "}
+                Google
+              </button>
+              <button className="flex w-full items-center justify-center space-x-2 rounded-md border border-slate-300 bg-transparent py-2 font-light">
+                <Image
+                  alt="GitHub image"
+                  src="/Github.png"
+                  width={45}
+                  height={45}
+                />{" "}
+                GitHub
               </button>
             </div>
           </form>
