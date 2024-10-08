@@ -16,6 +16,7 @@ const Slide = () => {
           src="/image-auth-1.jpg"
           width={700}
           height={600}
+          alt=""
           className="h-full w-full rounded-lg brightness-90"
         />
       </SwiperSlide>
@@ -24,6 +25,7 @@ const Slide = () => {
           src="/image-auth-2.jpg"
           width={700}
           height={600}
+          alt=""
           className="h-full w-full rounded-lg brightness-90"
         />
       </SwiperSlide>
@@ -32,6 +34,7 @@ const Slide = () => {
           src="/image-auth-3.jpg"
           width={700}
           height={600}
+          alt=""
           className="h-full w-full rounded-lg brightness-90"
         />
       </SwiperSlide>
@@ -40,6 +43,7 @@ const Slide = () => {
           src="/image-auth-4.jpg"
           width={700}
           height={600}
+          alt=""
           className="h-full w-full rounded-lg brightness-90"
         />
       </SwiperSlide>

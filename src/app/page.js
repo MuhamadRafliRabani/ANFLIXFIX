@@ -7,11 +7,10 @@ import Home_Page from "./Components/Crousell/Lading Page";
 import SecondCrausell from "./Components/Second-Crausell/Card";
 import { usePath, useType, useUser } from "@/utility/store/store";
 
-export default function Home() {
+const Home = async () => {
   const { setUser } = useUser();
   const { path } = usePath();
   const { type } = useType();
-  console.log({ path, type });
 
   const { data, isLoading } = FetchAnime(path, setUser);
 
@@ -21,8 +20,6 @@ export default function Home() {
       setUser(JSON.parse(storage));
     }
   }, []);
-
-  
 
   if (isLoading) <div className="text-white">Loading....</div>;
 
@@ -36,4 +33,5 @@ export default function Home() {
       <Rekomend />
     </div>
   );
-}
+};
+export default Home;

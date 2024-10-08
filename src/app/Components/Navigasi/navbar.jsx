@@ -7,11 +7,9 @@ import {
   BookmarksSimple,
   MagnifyingGlass,
   X,
-  XCircle,
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import { useUser } from "@/utility/store/store";
-import { SignOut } from "@/service/firebase";
 import { useRouter } from "next/navigation";
 
 const Navbar = () => {

@@ -2,11 +2,11 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useUser } from "@/utility/store/store";
-import { signIn, signUp } from "@/service/firebase";
 import { useRouter } from "next/navigation";
 import Slide from "@/app/Components/auth/slide";
 import Link from "next/link";
 import Image from "next/image";
+import Oauth from "@/app/Components/auth/Oauth";
 
 const validationSchema = yup.object({
   email: yup.string().email("Invalid email format").required("Required"),
@@ -22,7 +22,7 @@ const Auth = ({ params }) => {
   const { setUser, user } = useUser();
   const URL = decodeURI(params.keyword);
 
-  console.log(URL);
+  console.log(process.env.NEXT_PUBLIC_NEXTAUTH_SECRET);
 
   const formik = useFormik({
     initialValues: {
@@ -57,7 +57,7 @@ const Auth = ({ params }) => {
               </h1>
               {URL === "sign-up" ? (
                 <p className="text-base text-slate-500">
-                  already have an account?{" "}
+                  Already have an account?{" "}
                   <Link
                     href="/pages/auth/sign-in"
                     className="text-primary underline"
@@ -130,26 +130,7 @@ const Auth = ({ params }) => {
               </p>
               <hr className="w-full border-slate-500" />
             </div>
-            <div className="mt-5 flex w-full items-center justify-center space-x-4">
-              <button className="flex w-full items-center justify-center space-x-2 rounded-md border border-slate-300 bg-transparent py-2 font-light">
-                <Image
-                  alt="Google image"
-                  src="/Google.png"
-                  width={45}
-                  height={45}
-                />{" "}
-                Google
-              </button>
-              <button className="flex w-full items-center justify-center space-x-2 rounded-md border border-slate-300 bg-transparent py-2 font-light">
-                <Image
-                  alt="GitHub image"
-                  src="/Github.png"
-                  width={45}
-                  height={45}
-                />{" "}
-                GitHub
-              </button>
-            </div>
+            <Oauth />
           </form>
         </div>
       </div>

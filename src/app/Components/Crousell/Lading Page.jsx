@@ -12,7 +12,6 @@ import LandingSkeleton from "../skeleton";
 
 const Home_Page = ({ datas, type, isLoading }) => {
   const [dataImg, setDataImg] = useState(Top_Img);
-  console.log(datas);
 
   useEffect(() => {
     switch (type) {
@@ -84,7 +83,7 @@ const Home_Page = ({ datas, type, isLoading }) => {
                   >
                     {data.title}
                   </Link>
-                  <p className="w-1/2 text-lg font-medium leading-relaxed line-clamp-6 text-gray-300">
+                  <p className="line-clamp-6 w-1/2 text-lg font-medium leading-relaxed text-gray-300">
                     {dataImg[index % dataImg.length].synopsis}
                   </p>
                 </div>
