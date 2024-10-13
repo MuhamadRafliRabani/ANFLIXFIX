@@ -1,11 +1,10 @@
 "use client";
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
-const Search = () => {
-  const SearchRef = useRef();
+const Search = ({ searchRef }) => {
   const path = useRouter();
   const handleSubmit = (e) => {
-    const keyword = SearchRef.current.value;
+    const keyword = searchRef.current.value;
     if (!keyword) return;
     if (e.key === "Enter" || e.type === "click") {
       e.preventDefault();
@@ -20,7 +19,7 @@ const Search = () => {
           class="block w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-2 text-sm text-gray-900"
           placeholder="Search"
           required
-          ref={SearchRef}
+          ref={searchRef}
           onKeyDown={handleSubmit}
         />
         <button

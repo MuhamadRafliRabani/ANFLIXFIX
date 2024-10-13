@@ -1,11 +1,8 @@
 "use client";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { useUser } from "@/utility/store/store";
-import { useRouter } from "next/navigation";
 import Slide from "@/app/Components/auth/slide";
 import Link from "next/link";
-import Image from "next/image";
 import Oauth from "@/app/Components/auth/Oauth";
 
 const validationSchema = yup.object({
@@ -18,8 +15,6 @@ const validationSchema = yup.object({
 });
 
 const Auth = ({ params }) => {
-  const router = useRouter();
-  const { setUser, user } = useUser();
   const URL = decodeURI(params.keyword);
 
   console.log(process.env.NEXT_PUBLIC_NEXTAUTH_SECRET);
@@ -32,16 +27,8 @@ const Auth = ({ params }) => {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       console.log(values);
-
-      const user =
-        URL === "sign-in" ? await signIn(values) : await signUp(values);
-      localStorage.setItem("user", JSON.stringify(user));
-      setUser(user);
-      router.push("/");
     },
   });
-
-  console.log(user);
 
   return (
     <section className="h-svh w-svw md:p-4" id="section-form">

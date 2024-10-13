@@ -81,7 +81,7 @@ const Home_Page = ({ datas, type, isLoading }) => {
                     href={`/pages/detail-anime/${data.mal_id}`}
                     className="-mb-2 block text-4xl font-bold text-white"
                   >
-                    {data.title}
+                    {data.title_english}
                   </Link>
                   <p className="line-clamp-6 w-1/2 text-lg font-medium leading-relaxed text-gray-300">
                     {dataImg[index % dataImg.length].synopsis}

@@ -1,11 +1,6 @@
 // useUser.js
 import { create } from "zustand";
 
-export const useUser = create((set) => ({
-  user: {},
-  setUser: (user) => set(() => ({ user })),
-}));
-
 export const useCollecSucsess = create((set) => ({
   collectSucsess: false,
   setCollectSucsess: (collectSucsess) => set(() => ({ collectSucsess })),

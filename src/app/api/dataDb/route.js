@@ -5,6 +5,8 @@ const prisma = new PrismaClient();
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const user_email = searchParams.get("email");
+  console.log(user_email);
+
   if (!user_email) {
     throw new Error("Missing email query parameter");
   }
@@ -22,7 +24,7 @@ export async function GET(req) {
     console.error(error);
     return new Response(
       JSON.stringify({ status: 400, message: error.message }),
-      { status: 400 }
+      { status: 400 },
     );
   }
 }

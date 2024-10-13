@@ -1,33 +1,27 @@
 "use client";
 
-import { useUser } from "@/utility/store/store";
+import { userSessions } from "@/libs/auth-session";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 const page = () => {
-  const Router = useRouter();
-  const { user } = useUser();
+  const { user } = userSessions();
 
-  console.log(user);
   return (
-    <section className="pt-20 flex flex-col justify-center items-center bg-black h-svh">
-      {user ? (
-        <>
-          <h1 className="text-white text-3xl font-bold ">
-            Selamat datang : {user.email}
-          </h1>
-          <div className="flex gap-4 items-center">
-            <Link
-              href={"/pages/Dasboard/collec_Page"}
-              className="bg-blue-400 px-4 py-2"
-            >
-              ke koleksi
-            </Link>
-            <button className="bg-blue-400 px-4 py-2">ke mana</button>
-          </div>
-        </>
-      ) : (
-        Router.back()
-      )}
+    <section className="flex h-svh flex-col items-center justify-center bg-black pt-20">
+      <>
+        <h1 className="text-3xl font-bold text-white">
+          Selamat datang : {user.email}
+        </h1>
+        <div className="flex items-center gap-4">
+          <Link
+            href={"/pages/Dasboard/collec_Page"}
+            className="bg-blue-400 px-4 py-2"
+          >
+            ke koleksi
+          </Link>
+          <button className="bg-blue-400 px-4 py-2">ke mana</button>
+        </div>
+      </>
     </section>
   );
 };

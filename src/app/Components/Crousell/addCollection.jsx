@@ -4,6 +4,7 @@ import { useCollecSucsess, useUser } from "@/utility/store/store";
 import { Play, Plus } from "@phosphor-icons/react";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { userSessions } from "@/libs/auth-session";
 
 const AddCollection = ({
   anime_mal_id,
@@ -14,15 +15,15 @@ const AddCollection = ({
   anime_status,
   anime_episodes,
 }) => {
-  const { user } = useUser();
-  const user_email = user?.email;
+  const { user } = userSessions();
   const { setCollectSucsess } = useCollecSucsess();
   const { mutate, data, isError, isSuccess } = handleColection();
+  const email = user.email;
 
   const addCollect = async () => {
     const data = {
       anime_mal_id,
-      user_email,
+      email,
       anime_images,
       anime_title,
       anime_rating,
@@ -51,7 +52,7 @@ const AddCollection = ({
           Watch
         </button>
       </Link>
-      {!user_email ? (
+      {!user.email ? (
         <Link href={"/pages/auth/sign-up"}>
           <button className="btn btn1 border border-white shadow-md hover:bg-transparent">
             <span>

@@ -1,7 +1,13 @@
-// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-// import { getServerSession } from "next-auth";
+import { useSession } from "next-auth/react";
 
-// export const userSession = async () => {
-//   const user = await getServerSession(authOptions);
-//   return user;
-// };
+export const userSessions = () => {
+  const { data, status } = useSession();
+
+  if (!data?.user) {
+    return { user: {}, status: "not logged in" };
+  }
+
+  if (data?.user) {
+    return { user: data?.user, status };
+  }
+};
