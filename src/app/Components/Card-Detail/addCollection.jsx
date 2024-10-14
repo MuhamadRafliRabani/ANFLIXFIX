@@ -1,3 +1,4 @@
+"use client";
 import { handleColection } from "@/utility/func";
 import { Plus } from "@phosphor-icons/react";
 import Link from "next/link";

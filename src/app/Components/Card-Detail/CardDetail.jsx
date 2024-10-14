@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import LinkBtn from "../compt/button";
 import { CaretDown, Heart, Play } from "@phosphor-icons/react";
 import AddCollection from "./addCollection";
 

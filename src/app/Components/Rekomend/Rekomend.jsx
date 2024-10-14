@@ -2,7 +2,7 @@
 import CardMain from "../Card/CardMain";
 import { useState } from "react";
 import { FetchAnime } from "@/utility/Api";
-import SkeletonCard from "../cardSkeleton";
+import Button from "../button";
 
 const Rekomend = () => {
   const [seeData, setSeeData] = useState(24);
@@ -28,12 +28,12 @@ const Rekomend = () => {
         isLoading={isLoading}
       />
       {seeData < 200 && (
-        <button
-          onClick={handleSeeMore}
-          className="bg-primary py-2 w-1/2 mx-auto rounded-lg block mb-4 effect-btn"
-        >
-          See More
-        </button>
+        <Button
+          action={handleSeeMore}
+          text={"Show More"}
+          width={"w-1/2"}
+          height={"auto"}
+        />
       )}
     </section>
   );

@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#section-form {
-  background-color: #676279;
-}
-
 @font-face {
   font-family: "Mona Sans";
   src:
@@ -16,56 +12,21 @@
   font-style: normal;
 }
 
-html {
+body {
   font-family: "Mona Sans";
   font-weight: 400;
 }
 
-@media (max-width: 767px) {
-  #carousell {
-    display: none;
-  }
+/* crousell */
+.hero__crousell {
+  overflow: hidden;
 }
-
-#Rekomend {
-  font-family: "Mona Sans";
-}
-
-#sw {
+.hero__crousell__container {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
-
-.main-transition {
-  transition: all 0.45s ease-in-out;
-}
-
-.form-backdrop {
-  backdrop-filter: blur(4px);
-}
-
-.effect-btn:disabled {
-  background-color: #5c1b1e;
-  cursor: not-allowed;
-}
-
-.effect-btn {
-  transition:
-    background-color 0.3s,
-    transform 0.1s;
-  color: #fff;
-  box-shadow: inset 5px;
-  cursor: pointer;
-}
-
-.btn {
-  @apply effect-btn effect-btn hidden items-center justify-center gap-2 rounded-full bg-opacity-80 text-base hover:bg-[#FFFFFF] md:mt-2 md:flex md:px-4 md:py-2;
-}
-
-.effect-btn:active {
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  transform: translateY(2px);
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
 }
 
 table,
@@ -137,26 +98,6 @@ tr:nth-child(odd) {
   }
 }
 
-@media screen and (max-width: 600px) {
-  .swiper-button-next::after {
-    display: none;
-  }
-  .swiper-button-prev::after {
-    display: none;
-  }
-  #youtube-plyer {
-    width: 300px;
-    height: 200px;
-  }
-}
-
-.swiper-button-next::after {
-  background-color: #cbd5e1;
-  border-radius: 5px;
-  padding: 0.8rem;
-}
-.swiper-button-prev::after {
-  background-color: #cbd5e1;
-  border-radius: 5px;
-  padding: 0.8rem;
+#section-form {
+  background-color: #676279;
 }

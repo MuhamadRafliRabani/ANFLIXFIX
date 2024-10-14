@@ -11,9 +11,8 @@ module.exports = {
         "bg-form1": "url('/public/bg-form1.jpg')",
       },
       colors: {
-        primary: "#6E54B5",
-        second: "rgb(158, 158, 167)",
-        authBackround: "#2B2738",
+        primary_color: "rgba(0,0,0,0.85)",
+        second_color: "#FFFFFF",
       },
       container: {
         center: true,

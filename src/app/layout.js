@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <SkeletonTheme baseColor="#3b3b3b" highlightColor="#525252">
           <SessionProvider>
             <body className="overflow-x-hidden" suppressHydrationWarning={true}>
-              <Navbar />
+              {/* <Navbar /> */}
               {children}
               <div>
                 <Toaster
