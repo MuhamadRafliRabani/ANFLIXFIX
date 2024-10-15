@@ -2,7 +2,7 @@
 import CardMain from "../Card/CardMain";
 import { useState } from "react";
 import { FetchAnime } from "@/utility/Api";
-import Button from "../button";
+import Button from "../ui/button";
 
 const Rekomend = () => {
   const [seeData, setSeeData] = useState(24);

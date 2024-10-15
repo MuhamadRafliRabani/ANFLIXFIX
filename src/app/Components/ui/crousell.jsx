@@ -1,21 +1,23 @@
 "use client";
-import { FetchAnime } from "@/utility/Api";
-import Hero from "../content/Hero";
+import { cn } from "@/libs/cn";
 import useEmblaCarousel from "embla-carousel-react";
+import Hero from "../content/Hero";
 
-const Home_Page = () => {
-  const { data, isLoading } = FetchAnime("seasons/now");
+const Crousell = ({ content, className, data }) => {
   const [emblaRef] = useEmblaCarousel();
 
   return (
-    <div className="embla min-h-56 bg-primary_color" ref={emblaRef}>
+    <div
+      className={cn("embla min-h-56 bg-primary_color", className)}
+      ref={emblaRef}
+    >
       <div className="embla__container h-full w-full">
         {data?.data.map((anime, index) => (
           <div
             key={index}
             className="embla__slide flex h-full items-center justify-center bg-fuchsia-400"
           >
-            <Hero key={index} anime={anime} />
+            {content(anime, index)}
           </div>
         ))}
       </div>
@@ -23,4 +25,4 @@ const Home_Page = () => {
   );
 };
 
-export default Home_Page;
+export default Crousell;

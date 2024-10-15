@@ -16,6 +16,7 @@
     "@tanstack/react-query": "^5.51.21",
     "@vercel/postgres": "^0.9.0",
     "axios": "^1.7.1",
+    "clsx": "^2.1.1",
     "embla-carousel-react": "^8.3.0",
     "formik": "^2.4.6",
     "mysql": "^2.18.1",
@@ -27,6 +28,8 @@
     "react-hot-toast": "^2.4.1",
     "react-loading-skeleton": "^3.4.0",
     "react-youtube": "^10.1.0",
+    "tailwind-merge": "^2.5.4",
+    "videojs-youtube": "^3.0.1",
     "yup": "^1.4.0",
     "zustand": "^4.5.2"
   },
@@ -38,6 +41,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "prisma": "^5.18.0",
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "^3.4.3",
+    "video.js": "^8.18.1"
   }
 }
