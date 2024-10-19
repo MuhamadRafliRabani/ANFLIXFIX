@@ -1,11 +1,20 @@
 "use client";
-const Button = ({ action, width, height, text, style__ }) => {
+
+import { cn } from "@/libs/cn";
+
+const Button = ({ action, black, text }) => {
   return (
     <button
       onClick={action}
-      className={` ${width} ${height} bg-second_color rounded-lg py-2 ${style__}`}
+      className={cn(
+        "rounded-lg bg-second_color px-4 py-2 text-xs font-medium text-black shadow-sm",
+        {
+          "rounded-lg bg-primary_color px-4 py-2 text-xs font-medium text-white shadow-sm":
+            black,
+        },
+      )}
     >
-      <p className="text-sm font-semibold text-black">{text}</p>
+      <p className="">{text}</p>
     </button>
   );
 };

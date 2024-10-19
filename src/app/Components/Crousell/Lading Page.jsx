@@ -1,23 +1,26 @@
-"use client";
-import { FetchAnime } from "@/utility/Api";
-import Hero from "../content/Hero";
-import useEmblaCarousel from "embla-carousel-react";
+import Button from "../ui/button";
 
 const Home_Page = () => {
-  const { data, isLoading } = FetchAnime("seasons/now");
-  const [emblaRef] = useEmblaCarousel();
-
   return (
-    <div className="embla min-h-56 bg-primary_color" ref={emblaRef}>
-      <div className="embla__container h-full w-full">
-        {data?.data.map((anime, index) => (
-          <div
-            key={index}
-            className="embla__slide flex h-full items-center justify-center bg-fuchsia-400"
-          >
-            <Hero key={index} anime={anime} />
-          </div>
-        ))}
+    <div className="relative h-full min-h-56 w-full shadow-sm">
+      <div className="h-full w-full space-y-3 px-4 py-9">
+        <div className="container">
+          <h1 className="text-3xl font-bold text-white">Chainsaw Man</h1>
+          <p className="w-3/4 text-sm text-white text-opacity-90">
+            Denji has a simple dream ~ to live a happy and peaceful life,
+            spending time with a girl.
+          </p>
+        </div>
+        <div className="space-x-2">
+          <Button text="Learn More" />
+          <Button text="To Watch" black />
+        </div>
+      </div>
+      <div className="absolute inset-0 -z-10 h-full w-full">
+        <video autoPlay muted loop className="h-full w-full object-cover">
+          <source src="/ChainsawManOp.mp4" type="video/mp4" />
+          Browsermu tidak mendukung video tag.
+        </video>
       </div>
     </div>
   );
