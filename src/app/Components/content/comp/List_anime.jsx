@@ -4,7 +4,11 @@ import Card from "../../ui/card";
 import { FetchAnime } from "@/utility/Api";
 
 const List_anime = ({ jikan, header }) => {
-  const [emblaRef] = useEmblaCarousel();
+  const [emblaRef] = useEmblaCarousel({
+    dragFree: true,
+    loop: true,
+    align: "start",
+  });
   const { data } = FetchAnime(jikan);
   console.log(data);
 

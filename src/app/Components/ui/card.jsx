@@ -1,10 +1,6 @@
 import Image from "next/image";
 
 const Card = ({ anime }) => {
-  const poster =
-    "https://i.pinimg.com/enabled_hi/236x/a1/3e/0a/a13e0a513152f8e8e2099c8c66fea0ec.jpg";
-  console.log(anime?.images.jpg.image_url);
-
   return (
     <div className="relative h-fit max-h-[180px] w-fit max-w-[115px]">
       <Image
