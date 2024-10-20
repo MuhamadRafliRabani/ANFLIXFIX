@@ -2,19 +2,20 @@
 
 import { cn } from "@/libs/cn";
 
-const Button = ({ action, black, text }) => {
+const Button = ({ action, black, text, icon }) => {
   return (
     <button
       onClick={action}
       className={cn(
-        "rounded-lg bg-second_color px-4 py-2 text-xs font-medium text-black shadow-sm",
+        "rounded-lg bg-second_color px-3 py-2 text-xs font-medium text-black shadow-sm",
         {
-          "rounded-lg bg-primary_color px-4 py-2 text-xs font-medium text-white shadow-sm":
-            black,
+          "bg-primary_color text-white": black,
         },
       )}
     >
-      <p className="">{text}</p>
+      <p className="flex flex-1 items-center gap-1">
+        {icon} {text}
+      </p>
     </button>
   );
 };

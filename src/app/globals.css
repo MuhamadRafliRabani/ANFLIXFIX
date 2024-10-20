@@ -12,6 +12,12 @@
   font-style: normal;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Mona Sans";
   font-weight: 400;
@@ -25,7 +31,7 @@ body {
   display: flex;
 }
 .embla__slide {
-  flex: 0 0 100%;
+  flex: 0 0 125px;
   min-width: 0;
 }
 
@@ -43,6 +49,20 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
+}
+
+/* card */
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #e50914;
+  z-index: 50;
 }
 
 table,
