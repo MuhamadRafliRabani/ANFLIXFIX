@@ -5,7 +5,7 @@ const Card = ({ anime }) => {
     <div className="relative h-fit max-h-[180px] w-fit max-w-[115px]">
       <Image
         className="card rounded-lg"
-        src={anime?.images.jpg.image_url}
+        src={anime?.images?.jpg.image_url}
         alt="poster"
         width={110}
         height={180}

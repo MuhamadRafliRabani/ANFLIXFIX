@@ -1,6 +1,6 @@
 "use client";
 import useEmblaCarousel from "embla-carousel-react";
-import Card from "../../ui/card";
+import Card from "../ui/card";
 import { FetchAnime } from "@/utility/Api";
 
 const List_anime = ({ jikan, header }) => {
@@ -10,7 +10,6 @@ const List_anime = ({ jikan, header }) => {
     align: "start",
   });
   const { data } = FetchAnime(jikan);
-  console.log(data);
 
   return (
     <div className="p-3">
