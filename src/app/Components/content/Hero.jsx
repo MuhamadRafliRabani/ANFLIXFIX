@@ -2,11 +2,13 @@ import ButtonHouse from "./comp/buttonHouse";
 
 const Home_Page = () => {
   return (
-    <div className="relative h-full min-h-56 w-full shadow-sm">
-      <div className="container h-full w-full space-y-3 px-3 py-8">
-        <div className=" ">
-          <h1 className="text-3xl font-bold text-white">Chainsaw Man</h1>
-          <p className="w-3/4 text-sm text-white text-opacity-90">
+    <div className="relative h-full min-h-56 w-full shadow-sm md:min-h-72">
+      <div className="container absolute left-4 top-12 h-full w-3/4 space-y-3 md:left-12 md:top-16 md:w-[30%]">
+        <div className="">
+          <h1 className="text-3xl font-bold text-white md:text-4xl">
+            Chainsaw Man
+          </h1>
+          <p className="w-full text-sm text-white text-opacity-90">
             Denji has a simple dream ~ to live a happy and peaceful life,
             spending time with a girl.
           </p>

@@ -23,18 +23,6 @@ body {
   font-weight: 400;
 }
 
-/* crousell */
-.embla {
-  overflow: hidden;
-}
-.embla__container {
-  display: flex;
-}
-.embla__slide {
-  flex: 0 0 125px;
-  min-width: 0;
-}
-
 .video-js .vjs-control-bar {
   background-color: #c6a078; /* Ganti dengan warna yang diinginkan */
 }
