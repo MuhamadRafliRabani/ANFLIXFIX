@@ -1,7 +1,7 @@
 "use client";
 import { FetchAnime } from "@/utility/Api";
 import Card from "../ui/card";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../ui/button";
 
 const Rekomend_anime = ({ jikan, header }) => {
@@ -25,11 +25,11 @@ const Rekomend_anime = ({ jikan, header }) => {
     <div className="w-full">
       <div className="w-full space-y-2 text-base font-medium text-white">
         <h3>{header}</h3>
-        <div className="container ms-1 grid w-11/12 grid-cols-3 space-x-4 space-y-5 md:w-full md:grid-cols-8 md:space-x-4">
+        <div className="flex w-full min-w-[150px] flex-shrink-0 flex-grow flex-wrap content-center items-center justify-start gap-4">
           {animes.map((anime, i) => (
-            <div key={i}>
+            <React.Fragment key={i}>
               <Card anime={anime} />
-            </div>
+            </React.Fragment>
           ))}
         </div>
 

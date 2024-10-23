@@ -2,20 +2,20 @@ import ButtonHouse from "./comp/buttonHouse";
 
 const Home_Page = () => {
   return (
-    <div className="relative h-full min-h-56 w-full shadow-sm md:min-h-72">
-      <div className="container absolute left-4 top-12 h-full w-3/4 space-y-3 md:left-12 md:top-16 md:w-[30%]">
+    <div className="relative z-20 h-full min-h-56 w-full shadow-sm md:min-h-[70svh]">
+      <div className="container absolute left-4 top-12 h-full w-3/4 space-y-3 md:left-12 md:top-[45%] md:w-[20%]">
         <div className="">
-          <h1 className="text-3xl font-bold text-white md:text-4xl">
+          <h1 className="text-3xl font-bold tracking-wide text-white md:text-5xl">
             Chainsaw Man
           </h1>
-          <p className="w-full text-sm text-white text-opacity-90">
+          <p className="w-full text-sm tracking-wide text-white text-opacity-90">
             Denji has a simple dream ~ to live a happy and peaceful life,
             spending time with a girl.
           </p>
         </div>
         <ButtonHouse />
       </div>
-      <div className="absolute inset-0 -z-10 h-full w-full">
+      <div className="absolute inset-0 -z-10 h-full w-full bg-white">
         <video autoPlay muted loop className="h-full w-full object-cover">
           <source src="/ChainsawManOp.mp4" type="video/mp4" />
           Browsermu tidak mendukung video tag.
