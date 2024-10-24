@@ -1,6 +1,6 @@
 "use client";
 import { BookmarkSimple, Play } from "@phosphor-icons/react";
-import Button from "../../ui/button";
+import Button from "./button";
 
 const ButtonHouse = () => {
   return (

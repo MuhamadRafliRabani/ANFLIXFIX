@@ -14,7 +14,7 @@ const List_anime = ({ jikan, header }) => {
     <div className="w-screen p-3">
       <div className="w-full space-y-2 text-base font-medium text-white">
         <h3 className="text-lg md:font-medium">{header}</h3>
-        <div className="embla w-[90%] overflow-hidden" ref={emblaRef}>
+        <div className="embla w-[90%] md:overflow-hidden" ref={emblaRef}>
           <div className="embla__container flex gap-4 md:gap-4">
             {data?.data.map((anime, i) => (
               <div

@@ -1,4 +1,4 @@
-import ContainerIconFooter from "./comp/containerIconFooter";
+import ContainerIconFooter from "../ui/containerIconFooter";
 
 const Footer = () => {
   return (

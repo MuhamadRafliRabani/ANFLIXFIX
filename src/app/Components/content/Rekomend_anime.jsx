@@ -3,11 +3,12 @@ import { FetchAnime } from "@/utility/Api";
 import Card from "../ui/card";
 import React, { useEffect, useState } from "react";
 import Button from "../ui/button";
+import { Pagginations } from "@/libs/pagginations";
 
 const Rekomend_anime = ({ jikan, header }) => {
   const { data } = FetchAnime(jikan);
   const [animes, setAnime] = useState([]);
-  const [seeAnime, setSeeAnime] = useState(18);
+  const { seeAnime, handleSeeMore } = Pagginations();
 
   useEffect(() => {
     if (data) {
@@ -16,10 +17,6 @@ const Rekomend_anime = ({ jikan, header }) => {
       setAnime(datam);
     }
   }, [data, seeAnime]);
-
-  const handleSeeMore = () => {
-    setSeeAnime(seeAnime + 16);
-  };
 
   return (
     <div className="w-full">
