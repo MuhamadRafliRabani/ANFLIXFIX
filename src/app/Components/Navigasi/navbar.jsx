@@ -112,7 +112,7 @@ const Navbar = () => {
       <div className="flex items-center gap-2 font-semibold">
         <Link
           href={"/pages/auth/sign-up"}
-          className="rounded-md bg-primary px-3 py-2 text-sm lg:px-4 lg:text-base"
+          className="bg-primary rounded-md px-3 py-2 text-sm lg:px-4 lg:text-base"
         >
           <p>Sign Up</p>
         </Link>
