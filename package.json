@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "prisma generate && next build",
-    "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate"
+    "dev": "pnpm next dev",
+    "build": "pnpm prisma generate && pnpm next build",
+    "start": "pnpm next start",
+    "lint": "pnpm next lint",
+    "postinstall": "pnpm prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
