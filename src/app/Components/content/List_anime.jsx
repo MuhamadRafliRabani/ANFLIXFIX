@@ -15,11 +15,11 @@ const List_anime = ({ jikan, header }) => {
       <div className="w-full space-y-2 text-base font-medium text-white">
         <h3 className="text-lg md:font-medium">{header}</h3>
         <div className="embla w-[90%] md:overflow-hidden" ref={emblaRef}>
-          <div className="embla__container flex gap-4 md:gap-4">
+          <div className="embla__container flex gap-2 md:gap-3">
             {data?.data.map((anime, i) => (
               <div
                 key={i}
-                className="embla__slide w-[113px] min-w-0 flex-shrink-0 flex-grow-0 md:w-[150px]"
+                className="embla__slide w-[113px] min-w-0 flex-shrink-0 flex-grow-0 md:w-[140px]"
               >
                 <Card anime={anime} />
               </div>

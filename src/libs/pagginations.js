@@ -2,10 +2,10 @@
 import { useState } from "react";
 
 export const Pagginations = () => {
-  const [seeAnime, setSeeAnime] = useState(18);
+  const [page, setPage] = useState(1);
 
   const handleSeeMore = () => {
-    setSeeAnime(seeAnime + 16);
+    setPage((prev) => prev + 1);
   };
-  return { seeAnime, handleSeeMore };
+  return { page, handleSeeMore };
 };

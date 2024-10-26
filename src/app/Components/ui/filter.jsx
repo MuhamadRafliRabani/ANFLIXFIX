@@ -1,32 +1,30 @@
-const Filter = ({ filters, onChange }) => {
-  const handleYearChange = (e) => {
-    onChange({ year: e.target.value });
-  };
+import Accordion from "./accordion";
 
-  const handleSeasonChange = (e) => {
-    onChange({ season: e.target.value });
-  };
+const accordionItems = [
+  { title: "Is it accessible?", content: "Yes, it's accessible to everyone!" },
+  { title: "Is it styled?", content: "Yes, it's styled with Tailwind CSS." },
+  {
+    title: "Is it animated?",
+    content: "No, but you can easily add transitions if you want.",
+  },
+];
 
+const Filter = () => {
   return (
     <div className="rounded-lg bg-gray-800 p-4">
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-4 font-medium text-white">
         {/* Filter by Year */}
-        <select
-          value={filters.year}
-          onChange={handleYearChange}
-          className="rounded-lg bg-gray-700 px-4 py-2 text-white"
-        >
-          <option value="2020">2020</option>
-          <option value="2021">2021</option>
-          <option value="2022">2022</option>
-        </select>
+        <div className="h-fit w-full">
+          <h4 className="">Tahun</h4>
+          <select className="flex-1 rounded-lg bg-gray-700 px-4 py-2 text-white">
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+          </select>
+        </div>
 
         {/* Filter by Season */}
-        <select
-          value={filters.season}
-          onChange={handleSeasonChange}
-          className="rounded-lg bg-gray-700 px-4 py-2 text-white"
-        >
+        <select className="rounded-lg bg-gray-700 px-4 py-2 text-white">
           <option value="winter">Winter</option>
           <option value="spring">Spring</option>
           <option value="summer">Summer</option>
@@ -39,24 +37,13 @@ const Filter = ({ filters, onChange }) => {
           <div className="flex flex-wrap gap-2">
             {["Action", "Comedy", "Drama", "Adventure"].map((genre) => (
               <label key={genre} className="text-white">
-                <input
-                  type="checkbox"
-                  value={genre}
-                  onChange={(e) => {
-                    const selectedGenres = filters.genres.includes(
-                      e.target.value,
-                    )
-                      ? filters.genres.filter((g) => g !== e.target.value)
-                      : [...filters.genres, e.target.value];
-                    onChange({ genres: selectedGenres });
-                  }}
-                />
-                {genre}
+                {genre} <input type="checkbox" />
               </label>
             ))}
           </div>
         </div>
-      </div>
+      </div>{" "}
+      <Accordion items={accordionItems} />
     </div>
   );
 };

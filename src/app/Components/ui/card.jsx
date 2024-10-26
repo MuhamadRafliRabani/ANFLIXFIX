@@ -4,7 +4,7 @@ const Card = ({ anime }) => {
   return (
     <div className="relative h-auto max-h-[150px] w-auto max-w-full md:max-h-[300px]">
       <Image
-        className="card h-[150px] w-[105px] rounded-lg object-cover md:h-full md:w-full"
+        className="card h-[150px] w-[105px] rounded-lg object-cover md:h-[200px] md:w-[135px]"
         src={anime?.images?.jpg.large_image_url}
         alt="poster"
         width={113}

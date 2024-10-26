@@ -1,73 +1,43 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Rekomend_anime from "@/app/Components/content/Rekomend_anime";
-import Filter from "@/app/Components/ui/filter";
-import useDebounce from "@/libs/useDebounce";
-import { FetchAnime } from "@/utility/Api"; // Menggunakan reusable API
+import React from "react";
 import Card from "@/app/Components/ui/card";
+import { FetchAnime } from "@/utility/Api";
 import { Pagginations } from "@/libs/pagginations";
+import Button from "@/app/Components/ui/button";
+import LoadingSkeleton from "@/app/Components/cardSkeleton";
+import Filter from "@/app/Components/ui/filter";
 
 export default function CatalogPage() {
-  const [filters, setFilters] = useState({
-    year: null,
-    season: null,
-    genres: [],
-  });
-  const [animes, setAnime] = useState([]);
-  const { seeAnime } = Pagginations();
+  const { handleSeeMore, page } = Pagginations();
+  const {
+    data: animes,
+    isLoading,
+    isError,
+  } = FetchAnime(`/anime?page=${page}`);
 
-  const debouncedFilters = useDebounce(filters, 300);
-  let urlAnime;
-
-  if (debouncedFilters.year && debouncedFilters.season) {
-    urlAnime = `/seasons/${debouncedFilters.year}/${debouncedFilters.season}`;
-  } else {
-    urlAnime = "/recommendations/anime";
-  }
-
-  const { data: animeList, isLoading, isError } = FetchAnime(urlAnime);
-
-  useEffect(() => {
-    if (animeList && urlAnime === "/recommendations/anime") {
-      const datas = animeList?.data?.flatMap((animes) => animes.entry);
-      console.log({ animeList });
-      console.log({ datas });
-      const datam = datas?.slice(0, seeAnime);
-
-      setAnime(datam);
-    }
-  }, [animeList, urlAnime, seeAnime]);
-
-  if (isLoading) return <div className="text-center">Loading...</div>;
+  if (isLoading) return <LoadingSkeleton length={20} />;
   if (isError) return <div className="text-center">Failed to load data.</div>;
-
-  const handleFilterChange = (newFilters) => {
-    setFilters((prev) => ({ ...prev, ...newFilters }));
-  };
 
   console.log(animes);
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <h1 className="mb-6 text-center text-3xl font-bold">Catalog</h1>
       <div className="container mx-auto py-10">
-        <h1 className="mb-6 text-center text-3xl font-bold">Catalog</h1>
-        <Filter filters={filters} onChange={handleFilterChange} />
+        <div className="me-6 ms-auto h-fit w-full py-2">
+          <Button black text="FILTERR" width="w-full" />
+          <Filter />
+        </div>
+        <div className="flex w-full flex-shrink-0 flex-grow flex-wrap content-center items-center justify-center gap-4 md:w-full md:pe-4">
+          {animes?.data.map((anime, i) => (
+            <React.Fragment key={i}>
+              <Card anime={anime} />
+            </React.Fragment>
+          ))}
+        </div>
 
-        <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-6">
-          {animes.length !== 0 &&
-            urlAnime === "/recommendations/anime" &&
-            animes?.map((anime, i) => (
-              <React.Fragment key={i}>
-                <Card anime={anime} />
-              </React.Fragment>
-            ))}
-          {animes.length !== 0 &&
-            urlAnime !== "/recommendations/anime" &&
-            animeList.data.map((anime, i) => (
-              <React.Fragment key={i}>
-                <Card anime={anime} />
-              </React.Fragment>
-            ))}
+        <div className="pt-2">
+          <Button width="w-full" action={handleSeeMore} text="Show More" />
         </div>
       </div>
     </div>
