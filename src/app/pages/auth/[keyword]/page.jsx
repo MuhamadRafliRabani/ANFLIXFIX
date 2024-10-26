@@ -32,7 +32,7 @@ const Auth = ({ params }) => {
 
   return (
     <section className="h-svh w-svw md:p-4" id="section-form">
-      <div className="container box-border flex h-full min-h-full flex-1 items-center justify-center rounded-lg bg-authBackround shadow-md md:p-4">
+      <div className="bg-authBackround container box-border flex h-full min-h-full flex-1 items-center justify-center rounded-lg shadow-md md:p-4">
         <Slide />
         <div className="h-full w-full p-36 text-white">
           <form className="max-w-lg">
@@ -69,26 +69,26 @@ const Auth = ({ params }) => {
                 <input
                   type="text"
                   placeholder="First name"
-                  className="flex-1 rounded-md bg-[#3B364C] p-3 px-5 text-sm outline-1 outline-offset-0 outline-primary placeholder:text-sm focus:outline"
+                  className="outline-primary flex-1 rounded-md bg-[#3B364C] p-3 px-5 text-sm outline-1 outline-offset-0 placeholder:text-sm focus:outline"
                 />
                 <input
                   type="text"
                   placeholder="Last name"
-                  className="flex-1 rounded-md bg-[#3B364C] p-3 px-5 text-sm outline-1 outline-offset-0 outline-primary placeholder:text-sm focus:outline"
+                  className="outline-primary flex-1 rounded-md bg-[#3B364C] p-3 px-5 text-sm outline-1 outline-offset-0 placeholder:text-sm focus:outline"
                 />
               </div>
               <div className="">
                 <input
                   type="email"
                   placeholder="Email"
-                  className="w-full rounded-md bg-[#3B364C] p-3 px-5 text-sm outline-1 outline-offset-0 outline-primary placeholder:text-sm focus:outline"
+                  className="outline-primary w-full rounded-md bg-[#3B364C] p-3 px-5 text-sm outline-1 outline-offset-0 placeholder:text-sm focus:outline"
                 />
               </div>
               <div className="">
                 <input
                   type="password"
                   placeholder="Enter your password"
-                  className="w-full rounded-md bg-[#3B364C] p-3 px-5 text-sm outline-1 outline-offset-0 outline-primary placeholder:text-sm focus:outline"
+                  className="outline-primary w-full rounded-md bg-[#3B364C] p-3 px-5 text-sm outline-1 outline-offset-0 placeholder:text-sm focus:outline"
                 />
               </div>
               <div className="flex w-full items-center space-x-4 text-sm">
@@ -106,7 +106,7 @@ const Auth = ({ params }) => {
               </div>
             </div>
             <div className="mt-14 w-full">
-              <button className="w-full rounded-md bg-primary py-3">
+              <button className="bg-primary w-full rounded-md py-3">
                 {URL === "sign-up" ? "Create account" : "Login"}
               </button>
             </div>
