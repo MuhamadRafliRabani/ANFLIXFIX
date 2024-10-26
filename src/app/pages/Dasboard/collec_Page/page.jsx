@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Smiley } from "@phosphor-icons/react";
-import CardDetail from "@/app/Components/Card-Detail/CardDetail";
+
 import { HitDb } from "@/utility/getDataDb";
 import { userSessions } from "@/libs/auth-session";
 
@@ -52,16 +52,6 @@ const Collection = () => {
                 />
               </Link>
               <p className="hover:text-[#E50914]">{item.anime_title}</p>
-              <CardDetail
-                anime_episodes={item.anime_episodes}
-                anime_images={item.anime_images}
-                anime_mal_id={item.anime_mal_id}
-                anime_rating={item.anime_rating}
-                anime_status={item.anime_status}
-                anime_title={item.anime_title}
-                anime_type={item.anime_type}
-                isOpen={isOpen === item.anime_mal_id}
-              />
             </div>
           ))}
         </div>
