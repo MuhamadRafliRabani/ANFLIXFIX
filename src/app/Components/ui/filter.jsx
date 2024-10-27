@@ -1,48 +1,46 @@
 import Accordion from "./accordion";
 
 const accordionItems = [
-  { title: "Is it accessible?", content: "Yes, it's accessible to everyone!" },
-  { title: "Is it styled?", content: "Yes, it's styled with Tailwind CSS." },
   {
-    title: "Is it animated?",
-    content: "No, but you can easily add transitions if you want.",
+    title: "Year",
+    content: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
+  },
+  {
+    title: "Genres",
+    content: [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Fantasy",
+      "Horror",
+      "Mystery",
+      "Romance",
+      "Sci-Fi",
+      "Slice of Life",
+      "Sports",
+      "Supernatural",
+    ],
+  },
+  {
+    title: "Rating",
+    content: [
+      "G - All Ages",
+      "PG - Children",
+      "PG-13 - Teens 13 or older",
+      "R - 17+ (Violence & Profanity)",
+      "R+ - Mild Nudity",
+    ],
+  },
+  {
+    title: "Type",
+    content: ["TV", "Movie", "OVA", "ONA", "Special", "Music"],
   },
 ];
 
 const Filter = () => {
   return (
-    <div className="rounded-lg bg-gray-800 p-4">
-      <div className="flex flex-wrap justify-center gap-4 font-medium text-white">
-        {/* Filter by Year */}
-        <div className="h-fit w-full">
-          <h4 className="">Tahun</h4>
-          <select className="flex-1 rounded-lg bg-gray-700 px-4 py-2 text-white">
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-          </select>
-        </div>
-
-        {/* Filter by Season */}
-        <select className="rounded-lg bg-gray-700 px-4 py-2 text-white">
-          <option value="winter">Winter</option>
-          <option value="spring">Spring</option>
-          <option value="summer">Summer</option>
-          <option value="fall">Fall</option>
-        </select>
-
-        {/* Filter by Genres */}
-        <div className="flex flex-col gap-2">
-          <label className="text-white">Genres:</label>
-          <div className="flex flex-wrap gap-2">
-            {["Action", "Comedy", "Drama", "Adventure"].map((genre) => (
-              <label key={genre} className="text-white">
-                {genre} <input type="checkbox" />
-              </label>
-            ))}
-          </div>
-        </div>
-      </div>{" "}
+    <div className="rounded-lg p-4">
       <Accordion items={accordionItems} />
     </div>
   );

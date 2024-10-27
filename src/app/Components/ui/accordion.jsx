@@ -1,24 +1,28 @@
 import { useState } from "react";
+import FilterSelect from "./filterSelect";
+import { CaretDown } from "@phosphor-icons/react";
 
 const AccordionItem = ({ title, content }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleAccordion = () => {
+  const toggleAccordion = ({ content }) => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <div className="rounded-lg border border-gray-300">
+    <div className="overflow-hidden ps-28">
       <button
-        className="w-full px-4 py-3 text-left font-medium hover:bg-gray-300 focus:outline-none"
+        className="w-11/12 border-b border-white py-1 text-left font-medium focus:outline-none"
         onClick={toggleAccordion}
       >
-        <span>{title}</span>
+        <span className="flex items-center justify-between">
+          {title} <CaretDown size={16} />
+        </span>
       </button>
       <div
-        className={`px-4 py-2 transition-all duration-300 ${isOpen ? "max-h-screen" : "max-h-0 overflow-hidden"}`}
+        className={`w-11/12 py-2 transition-all duration-300 ease-in-out ${isOpen ? "max-h-[500px]" : "max-h-0 overflow-hidden"}`}
       >
-        <p className="text-gray-600">{content}</p>
+        <FilterSelect filterArray={content} />
       </div>
     </div>
   );
@@ -27,6 +31,7 @@ const AccordionItem = ({ title, content }) => {
 const Accordion = ({ items }) => {
   return (
     <div className="space-y-4">
+      <h3 className="text-xl font-medium">Filter By</h3>
       {items.map((item, index) => (
         <AccordionItem key={index} title={item.title} content={item.content} />
       ))}

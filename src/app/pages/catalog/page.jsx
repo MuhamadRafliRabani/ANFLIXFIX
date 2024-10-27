@@ -13,7 +13,7 @@ export default function CatalogPage() {
     data: animes,
     isLoading,
     isError,
-  } = FetchAnime(`/anime?page=${page}`);
+  } = FetchAnime(`/anime?genres=1&type=movie&order_by=score&sort=desc`);
 
   if (isLoading) return <LoadingSkeleton length={20} />;
   if (isError) return <div className="text-center">Failed to load data.</div>;

@@ -1,17 +1,7 @@
 // useUser.js
 import { create } from "zustand";
 
-export const useCollecSucsess = create((set) => ({
-  collectSucsess: false,
-  setCollectSucsess: (collectSucsess) => set(() => ({ collectSucsess })),
-}));
-
-export const usePath = create((set) => ({
-  path: "/top/anime",
-  setPath: (path) => set(() => ({ path })),
-}));
-
-export const useType = create((set) => ({
-  type: "Trend Up",
-  setType: (type) => set(() => ({ type })),
+export const useFilter = create((set) => ({
+  filter: {},
+  setFilter: (items) => set(() => ({ items })),
 }));
