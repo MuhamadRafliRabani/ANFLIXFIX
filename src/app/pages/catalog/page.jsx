@@ -1,14 +1,18 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Card from "@/app/Components/ui/card";
 import { FetchAnime } from "@/utility/Api";
 import { Pagginations } from "@/libs/pagginations";
 import Button from "@/app/Components/ui/button";
 import LoadingSkeleton from "@/app/Components/cardSkeleton";
 import Filter from "@/app/Components/ui/filter";
+import { CaretDown } from "@phosphor-icons/react";
 
 export default function CatalogPage() {
   const { handleSeeMore, page } = Pagginations();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggleFilter = () => setIsOpen((prev) => !prev);
   const {
     data: animes,
     isLoading,
@@ -18,22 +22,29 @@ export default function CatalogPage() {
   if (isLoading) return <LoadingSkeleton length={20} />;
   if (isError) return <div className="text-center">Failed to load data.</div>;
 
-  console.log(animes);
-
   return (
-    <div className="min-h-screen bg-black text-white">
-      <h1 className="mb-6 text-center text-3xl font-bold">Catalog</h1>
-      <div className="container mx-auto py-10">
-        <div className="me-6 ms-auto h-fit w-full py-2">
-          <Button black text="FILTERR" width="w-full" />
-          <Filter />
+    <div className="G relative min-h-screen bg-black text-white">
+      <div className="mx-auto py-14">
+        <div className="ms-auto flex h-fit w-full flex-shrink-0 flex-grow items-center justify-between px-6 py-4 tracking-wide">
+          <h1 className="text-xl font-bold">Catalog</h1>
+
+          <button
+            className="text-primary flex items-center justify-center gap-1 text-sm"
+            onClick={handleToggleFilter}
+          >
+            Sort by <CaretDown size={16} />
+          </button>
         </div>
-        <div className="flex w-full flex-shrink-0 flex-grow flex-wrap content-center items-center justify-center gap-4 md:w-full md:pe-4">
-          {animes?.data.map((anime, i) => (
-            <React.Fragment key={i}>
-              <Card anime={anime} />
-            </React.Fragment>
-          ))}
+        <div className="flex h-full w-full flex-shrink-0 flex-grow-0 items-center">
+          <Filter handleOpen={handleToggleFilter} isOpen={isOpen} />
+
+          <div className="flex w-full flex-shrink-0 flex-grow flex-wrap content-center items-center justify-center gap-4 md:w-[85%] md:pe-4">
+            {animes?.data.map((anime, i) => (
+              <React.Fragment key={i}>
+                <Card anime={anime} />
+              </React.Fragment>
+            ))}
+          </div>
         </div>
 
         <div className="pt-2">

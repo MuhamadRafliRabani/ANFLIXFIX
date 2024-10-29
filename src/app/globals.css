@@ -12,6 +12,12 @@
   font-style: normal;
 }
 
+@layer {
+  .text-primary {
+    @apply text-neutral-400;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -51,6 +57,10 @@ body {
   inset: 0;
   background-color: #e50914;
   z-index: 50;
+}
+
+.G {
+  display: grid;
 }
 
 table,

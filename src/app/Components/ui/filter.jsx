@@ -2,8 +2,8 @@ import Accordion from "./accordion";
 
 const accordionItems = [
   {
-    title: "Year",
-    content: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
+    title: "Season",
+    content: ["Winter", "Spring", "fall", "Summer"],
   },
   {
     title: "Genres",
@@ -38,10 +38,13 @@ const accordionItems = [
   },
 ];
 
-const Filter = () => {
+const Filter = ({ handleOpen, isOpen }) => {
+  console.log("🚀 ~ Filter ~ isOpen:", isOpen);
   return (
-    <div className="rounded-lg p-4">
-      <Accordion items={accordionItems} />
+    <div
+      className={`fixed right-1/2 z-40 h-fit w-3/4 translate-x-1/2 rounded-lg border-neutral-400 bg-neutral-50 p-4 transition-all duration-300 md:static md:right-0 md:h-3/4 md:w-[15%] md:translate-x-0 md:rounded-none md:border-e md:bg-transparent md:pt-0 ${isOpen ? "top-0" : "-top-full"}`}
+    >
+      <Accordion items={accordionItems} handleOpen={handleOpen} />
     </div>
   );
 };
