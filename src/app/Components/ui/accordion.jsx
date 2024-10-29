@@ -5,7 +5,7 @@ import { CaretDown, CaretUp, X } from "@phosphor-icons/react";
 import Button from "./button";
 
 const AccordionItem = ({ title, content }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [items, setItems] = useState();
   const [viewMore, setviewMore] = useState(4);
 
@@ -48,7 +48,7 @@ const AccordionItem = ({ title, content }) => {
 
 const Accordion = ({ items, handleOpen }) => {
   return (
-    <div className="w-full space-y-4 bg-purple-400">
+    <div className="w-full space-y-4">
       <div className="flex items-center justify-between md:hidden">
         <h3 className="text-xl font-medium">Filter By</h3>
         <Button icon={<X size={22} />} black action={handleOpen} />

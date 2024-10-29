@@ -27,7 +27,7 @@ const Rekomend_anime = ({ jikan, header }) => {
     <div className="w-full">
       <div className="w-full space-y-2 text-base font-medium text-white">
         <h3>{header}</h3>
-        <div className="flex w-full min-w-[150px] flex-shrink-0 flex-grow flex-wrap content-center items-center justify-start gap-4 md:w-full md:pe-4 md:ps-6">
+        <div className="flex w-full flex-shrink-0 flex-grow flex-wrap content-center items-center justify-center gap-4 md:pe-4 md:ps-6">
           {animes.map((anime, i) => (
             <React.Fragment key={i}>
               <Card anime={anime} />
