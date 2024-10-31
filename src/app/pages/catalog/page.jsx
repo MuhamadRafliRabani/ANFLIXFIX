@@ -17,7 +17,7 @@ export default function CatalogPage() {
     data: animes,
     isLoading,
     isError,
-  } = FetchAnime(`/anime?genres=1&type=movie&order_by=score&sort=desc`);
+  } = FetchAnime(`https://api.jikan.moe/v4/anime?genres=&type=tv&order_by=score&sort=desc`);
 
   if (isLoading) return <LoadingSkeleton length={20} />;
   if (isError) return <div className="text-center">Failed to load data.</div>;
