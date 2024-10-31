@@ -1,21 +1,21 @@
 "use client";
 import { useFilter } from "@/utility/store/store";
-import { CaretDown } from "@phosphor-icons/react";
-import { useState } from "react";
 
-const FilterSelect = ({ filterArray }) => {
+const FilterSelect = ({ filterArray, seeMore }) => {
   const { filter, setFilter } = useFilter();
-  console.log(filter);
 
   return (
     <div
-      className={`grid h-fit w-full grid-cols-3 gap-3 overflow-ellipsis transition-all duration-700 ease-in-out md:grid-cols-1 md:gap-4 md:py-5`}
+      className={`grid h-fit w-full grid-cols-3 gap-3 overflow-ellipsis transition-all duration-700 ease-in-out md:grid-cols-1 md:gap-4 md:py-5 ${seeMore ? "max-h-fit" : "max-h-[150px]"}`}
     >
       {filterArray.map((year, i) => (
-        <label key={i} className="flex items-center space-x-2 truncate">
+        <label
+          key={i}
+          className="flex items-center space-x-2 truncate whitespace-pre-line"
+        >
           <input
             type="checkbox"
-            className="form-checkbox md:roun size-4 appearance-none rounded-sm border border-neutral-200 border-opacity-90 bg-transparent text-blue-600 transition duration-200 ease-in-out checked:border-transparent checked:bg-blue-600 md:rounded-md"
+            className="form-checkbox md:roun size-4 appearance-none rounded-sm border border-white border-opacity-90 bg-transparent text-black transition duration-200 ease-in-out checked:border-transparent checked:bg-white md:rounded-[4px]"
             onClick={() => setFilter(year)}
             onChange={() => setFilter(year)}
             value={year}

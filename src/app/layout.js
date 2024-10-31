@@ -1,9 +1,9 @@
 "use client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
-import Navbar from "./Components/Navigasi/navbar";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import Navbar from "./Components/ui/navbar";
 
 const queryClient = new QueryClient();
 
@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         </head>
         <SessionProvider>
           <body className="overflow-x-hidden" suppressHydrationWarning={true}>
-            {/* <Navbar /> */}
+            <Navbar />
             {children}
             <div>
               <Toaster
