@@ -16,7 +16,7 @@ const Home_Page = () => {
         <ButtonHouse />
       </div>
       <div className="absolute inset-0 -z-10 h-full w-full bg-white">
-        <video autoPlay muted loop className="h-full w-full object-cover">
+        <video autoPlay muted className="h-full w-full object-cover">
           <source src="/ChainsawManOp.mp4" type="video/mp4" />
           Browsermu tidak mendukung video tag.
         </video>
