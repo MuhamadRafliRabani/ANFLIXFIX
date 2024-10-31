@@ -12,7 +12,7 @@ const Home = async () => {
         <List_anime header="Trending Now" jikan="/seasons/now" />
         <div className="h-52 w-full bg-fuchsia-400"></div>
         <List_anime header="Special For You" jikan="seasons/2023/fall" />
-        <div className="w-full px-1 md:px-4">
+        <div className="w-full bg-yellow-500 md:px-4">
           <Rekomend_anime
             header="Most Popular"
             jikan="/recommendations/anime"
