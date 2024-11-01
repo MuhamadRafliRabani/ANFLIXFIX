@@ -18,7 +18,7 @@ const List_anime = ({ jikan, header }) => {
         <div className="embla w-[90%] md:overflow-hidden" ref={emblaRef}>
           <div className="embla__container flex gap-2 md:gap-3">
             {isLoading ? (
-      <div className="embla__slide w-[113px] min-w-0 flex-shrink-0 flex-grow-0 md:w-[140px]"
+      <div className=" w-full min-w-0 flex-shrink-0 flex-grow-0 md:w-[140px]"
                 >
                   <LoadingSkeleton length={10} />
                 </div>
