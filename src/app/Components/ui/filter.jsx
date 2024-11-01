@@ -2,28 +2,27 @@ import Accordion from "./accordion";
 
 const accordionItems = [
   {
-    title: "Season",
+    Name: "Season",
     content: ["Winter", "Spring", "fall", "Summer", "All-times"],
   },
   {
-    title: "Genres",
+    Name: "Genres",
     content: [
       "Action",
       "Adventure",
-      "Comedy",
-      "Drama",
-      "Fantasy",
-      "Horror",
-      "Mystery",
-      "Romance",
-      "Sci-Fi",
-      "Slice of Life",
       "Sports",
+      "Comedy",
       "Supernatural",
+      "Sci - Fi",
+      "Mystery",
+      "Drama",
+      "Ecchi",
+      "Fantasy",
+      "suspense",
     ],
   },
   {
-    title: "Rating",
+    Name: "Rating",
     content: [
       "G - All Ages",
       "PG - Children",
@@ -33,7 +32,7 @@ const accordionItems = [
     ],
   },
   {
-    title: "Type",
+    Name: "Type",
     content: ["TV", "Movie", "OVA", "ONA", "Special", "Music"],
   },
 ];

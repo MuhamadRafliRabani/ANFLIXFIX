@@ -22,6 +22,11 @@ const Card = ({ anime }) => {
                 {anime.year}, {anime.score}
               </span>
             )}
+            {anime.genres.map((anime) => (
+              <span key={anime.mal_id} className="mx-1 text-[.75rem]">
+                {anime.name}
+              </span>
+            ))}
           </div>
         </div>
       </div>

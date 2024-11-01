@@ -16,13 +16,9 @@ const List_anime = ({ jikan, header }) => {
       <div className="w-full space-y-2 text-base font-medium text-white">
         <h3 className="text-lg md:font-medium">{header}</h3>
         <div className="embla w-[90%] md:overflow-hidden" ref={emblaRef}>
-          <div className="embla__container flex gap-2 md:gap-3">
+          <div className="embla__container flex gap-2 overflow-hidden md:gap-3">
             {isLoading ? (
-      <div className=" w-full min-w-0 flex-shrink-0 flex-grow-0 md:w-[140px]"
-                >
-                  <LoadingSkeleton length={10} />
-                </div>
-              
+              <LoadingSkeleton length={10} />
             ) : (
               data?.data.map((anime, i) => (
                 <div

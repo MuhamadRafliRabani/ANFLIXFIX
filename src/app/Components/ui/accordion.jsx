@@ -4,11 +4,11 @@ import FilterSelect from "./filterSelect";
 import { CaretDown, CaretUp, X } from "@phosphor-icons/react";
 import Button from "./button";
 
-const AccordionItem = ({ title, content }) => {
+const AccordionItem = ({ items }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [seeMore, SetseeMore] = useState(false);
 
-  const toggleAccordion = ({ content }) => {
+  const toggleAccordion = ({ items }) => {
     setIsOpen(!isOpen);
   };
 
@@ -23,13 +23,14 @@ const AccordionItem = ({ title, content }) => {
         onClick={toggleAccordion}
       >
         <span className="flex items-center justify-between md:text-base">
-          {title} {isOpen ? <CaretUp size={16} /> : <CaretDown size={16} />}
+          {items.Name}{" "}
+          {isOpen ? <CaretUp size={16} /> : <CaretDown size={16} />}
         </span>
       </button>
       <div
         className={`mt-1 transition-all duration-700 ease-in-out ${isOpen ? "max-h-fit" : "max-h-0 overflow-hidden"}`}
       >
-        <FilterSelect filterArray={content} seeMore={seeMore} />
+        <FilterSelect items={items} seeMore={seeMore} />
         <button
           onClick={handleSeeMore}
           className="text-primary flex items-center justify-center gap-1 text-sm"
@@ -49,7 +50,7 @@ const Accordion = ({ items, handleOpen }) => {
         <Button icon={<X size={22} />} black action={handleOpen} />
       </div>
       {items.map((item, index) => (
-        <AccordionItem key={index} title={item.title} content={item.content} />
+        <AccordionItem key={index} items={item} />
       ))}
     </div>
   );

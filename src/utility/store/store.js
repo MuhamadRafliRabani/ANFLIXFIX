@@ -1,7 +1,17 @@
-// useUser.js
 import { create } from "zustand";
 
 export const useFilter = create((set) => ({
-  filter: {},
-  setFilter: (items) => set(() => ({ items })),
+  filter: {
+    Season: null,
+    Genres: null,
+    Rating: null,
+    Type: null,
+  },
+  setFilter: (filterKey, value) =>
+    set((state) => ({
+      filter: {
+        ...state.filter,
+        [filterKey]: value,
+      },
+    })),
 }));

@@ -7,19 +7,29 @@ import Button from "@/app/Components/ui/button";
 import LoadingSkeleton from "@/app/Components/cardSkeleton";
 import Filter from "@/app/Components/ui/filter";
 import { CaretDown } from "@phosphor-icons/react";
+import { useFilter } from "@/utility/store/store";
 
 export default function CatalogPage() {
+  const { filter } = useFilter();
   const { handleSeeMore, page } = Pagginations();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggleFilter = () => setIsOpen((prev) => !prev);
+
+  const genre = filter.Genres !== null ? filter.Genres : "";
+  const type = filter.Type !== null ? filter.Type : "";
+  const rating = filter.Rating !== null ? filter.Rating : "";
+
   const {
     data: animes,
     isLoading,
     isError,
   } = FetchAnime(
-    `https://api.jikan.moe/v4/anime?genres=&type=tv&order_by=score&sort=desc`,
+    `https://api.jikan.moe/v4/anime?genres=${genre}&type=${type}&rating=&order_by=score&sort=desc`,
+    // "https://api.jikan.moe/v4/anime?genres=&type=&rating=rx&order_by=score&sort=desc",
   );
+
+  console.log("🚀 ~ CatalogPage ~ filter:", filter);
 
   if (isLoading) return <LoadingSkeleton length={20} />;
   if (isError) return <div className="text-center">Failed to load data.</div>;
