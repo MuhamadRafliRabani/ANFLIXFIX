@@ -6,9 +6,9 @@ import LoadingSkeleton from "./Components/cardSkeleton";
 
 const Home = async () => {
   return (
-    <div className="w-full overflow-x-hidden bg-primary_color">
+    <div className="w-full overflow-x-hidden">
       <Home_Page />
-      <div className="relative z-30 min-h-screen w-full md:w-screen space-y-4 overflow-x-hidden px-1 md:-mt-24 md:px-20">
+      <div className="relative z-30 min-h-screen w-full space-y-4 overflow-x-hidden px-1 md:-mt-24 md:w-screen md:px-20">
         <List_anime header="Trending Now" jikan="/seasons/now" />
         <div className="h-52 w-full bg-fuchsia-400"></div>
         <List_anime header="Special For You" jikan="seasons/2023/fall" />

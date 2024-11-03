@@ -16,7 +16,10 @@ export default function RootLayout({ children }) {
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         </head>
         <SessionProvider>
-          <body className="overflow-x-hidden" suppressHydrationWarning={true}>
+          <body
+            className="overflow-x-hidden bg-primary_color"
+            suppressHydrationWarning={true}
+          >
             <Navbar />
             {children}
             <div>

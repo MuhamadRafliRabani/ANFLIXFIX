@@ -11,6 +11,9 @@ const List_anime = ({ jikan, header }) => {
   });
   const { data, isLoading } = FetchAnime(jikan);
 
+  console.log({ jikan });
+  console.log(data);
+
   return (
     <div className="w-screen p-3">
       <div className="w-full space-y-2 text-base font-medium text-white">
