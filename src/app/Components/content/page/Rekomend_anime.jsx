@@ -1,10 +1,9 @@
 "use client";
 import { FetchAnime } from "@/utility/Api";
-import Card from "../ui/card";
 import React, { useEffect, useState } from "react";
-import Button from "../ui/button";
-import { Pagginations } from "@/libs/pagginations";
-import LoadingSkeleton from "../cardSkeleton";
+import LoadingSkeleton from "../../cardSkeleton";
+import Card from "../../ui/card";
+import Button from "../../ui/button";
 
 const Rekomend_anime = ({ jikan, header }) => {
   const { data, isLoading } = FetchAnime(jikan);

@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/libs/cn";
 import useEmblaCarousel from "embla-carousel-react";
-import Hero from "../content/Hero";
+import Hero from "../content/page/Hero";
 
 const Crousell = ({ content, className, data }) => {
   const [emblaRef] = useEmblaCarousel();

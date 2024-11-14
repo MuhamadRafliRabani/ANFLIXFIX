@@ -1,8 +1,8 @@
 "use client";
 import useEmblaCarousel from "embla-carousel-react";
-import Card from "../ui/card";
 import { FetchAnime } from "@/utility/Api";
-import LoadingSkeleton from "../cardSkeleton";
+import Card from "../../ui/card";
+import LoadingSkeleton from "../../cardSkeleton";
 
 const List_anime = ({ jikan, header }) => {
   const [emblaRef] = useEmblaCarousel({

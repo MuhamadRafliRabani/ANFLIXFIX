@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Card = ({ anime }) => {
   return (
-    <Link href={`${anime.mal_id}`}>
+    <Link href={`/anime/${anime.mal_id}`}>
       <div className="relative h-auto max-h-[150px] w-auto max-w-full md:max-h-[300px]">
         <Image
           className="card h-[150px] w-[105px] rounded-lg object-cover md:h-[200px] md:w-[135px]"

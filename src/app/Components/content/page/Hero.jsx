@@ -1,4 +1,4 @@
-import ButtonHouse from "../ui/buttonHouse";
+import ButtonHouse from "../../ui/buttonHouse";
 
 const Home_Page = () => {
   return (

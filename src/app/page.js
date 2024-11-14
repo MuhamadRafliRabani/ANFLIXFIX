@@ -1,8 +1,8 @@
-import List_anime from "./Components/content/List_anime";
-import Home_Page from "./Components/content/Hero";
-import Rekomend_anime from "./Components/content/Rekomend_anime";
 import Footer from "./Components/content/Footer";
 import LoadingSkeleton from "./Components/cardSkeleton";
+import List_anime from "./Components/content/page/List_anime";
+import Home_Page from "./Components/content/page/Hero";
+import Rekomend_anime from "./Components/content/page/Rekomend_anime";
 
 const Home = async () => {
   return (
