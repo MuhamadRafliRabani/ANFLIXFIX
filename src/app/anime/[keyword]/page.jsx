@@ -7,14 +7,19 @@ import { FetchAnime } from "@/utility/Api";
 const Anime = ({ params }) => {
   const animeId = params.keyword;
 
-  const { data: anime, isLoading } = FetchAnime(`/anime/${animeId}`);
+  const { data: anime, isLoading } = FetchAnime(`/anime/${animeId}/full`);
+  console.log(anime?.data);
 
   return (
     <section className="w-screen px-4">
       <div className="mt-32 w-full space-y-5">
         <HeadAnime
           image={anime?.data.images?.webp.large_image_url}
-          title={anime?.data.title_synonyms}
+          title={
+            anime?.data?.title_synonyms.length !== 0
+              ? anime?.data?.title_synonyms
+              : anime?.data.title_english
+          }
           score={anime?.data.score}
           animeId={animeId}
           status={anime?.data.status}

@@ -32,7 +32,7 @@ const HeadAnime = ({ image, title, score, animeId, status }) => {
               <Star className="size-4" /> {score}
             </span>
           </div>
-          <div className="mt-20 block w-full space-x-4">
+          <div className="mt-20 block w-full space-x-2">
             <Button black icon={<Eye className="size-4" />} text="Watching" />
             <Button
               black

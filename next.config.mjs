@@ -14,6 +14,9 @@ const nextConfig = {
       {
         hostname: "i.pinimg.com",
       },
+      {
+        hostname: "myanimelist.net",
+      },
     ],
   },
   typescript: {

@@ -29,7 +29,13 @@ const Rekomend_anime = ({ jikan, header }) => {
         <div className="flex w-full flex-shrink-0 flex-grow flex-wrap items-center gap-4 md:px-4">
           {animes.map((anime, i) => (
             <React.Fragment key={i}>
-              <Card anime={anime} />
+              <Card
+                idAnime={anime?.mal_id}
+                image={anime?.images?.jpg.large_image_url}
+                title={anime.title_english || anime.title}
+                year={anime.year}
+                score={anime.score}
+              />
             </React.Fragment>
           ))}
           {isLoading && <LoadingSkeleton length={20} />}

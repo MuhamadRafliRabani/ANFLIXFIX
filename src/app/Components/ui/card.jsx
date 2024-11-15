@@ -1,13 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Card = ({ anime }) => {
+const Card = ({ idAnime, image, title, year, score, url }) => {
+  console.log("🚀 ~ Card ~ { idAnime, image, title, year, score, url }:", {
+    idAnime,
+    image,
+    title,
+    year,
+    score,
+    url,
+  });
+
   return (
-    <Link href={`/anime/${anime.mal_id}`}>
+    <Link href={url ? url : `${idAnime}`}>
       <div className="relative h-auto max-h-[150px] w-auto max-w-full md:max-h-[300px]">
         <Image
           className="card h-[150px] w-[105px] rounded-lg object-cover md:h-[200px] md:w-[135px]"
-          src={anime?.images?.jpg.large_image_url}
+          src={image}
           alt="poster"
           width={113}
           height={150}
@@ -15,11 +24,11 @@ const Card = ({ anime }) => {
         <div className="absolute inset-0 mt-auto text-xs text-[rgb(225,225,225)]">
           <div className="flex h-full w-full flex-col justify-end rounded-lg bg-gradient-to-t from-[rgba(0,0,0,0.1)] to-transparent px-1 pb-2">
             <p className="truncate whitespace-nowrap tracking-wide text-white">
-              {anime.title_english || anime.title}
+              {title}
             </p>
-            {anime.year && (
+            {year && (
               <span className="text-[.65rem]">
-                {anime.year}, {anime.score}
+                {year}, {score}
               </span>
             )}
             {/* {anime.genres.map((anime) => (

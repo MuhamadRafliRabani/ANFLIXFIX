@@ -11,9 +11,6 @@ const List_anime = ({ jikan, header }) => {
   });
   const { data, isLoading } = FetchAnime(jikan);
 
-  console.log({ jikan });
-  console.log(data);
-
   return (
     <div className="w-screen p-3">
       <div className="w-full space-y-2 text-base font-medium text-white">
@@ -28,7 +25,13 @@ const List_anime = ({ jikan, header }) => {
                   key={i}
                   className="embla__slide w-[113px] min-w-0 flex-shrink-0 flex-grow-0 md:w-[140px]"
                 >
-                  <Card anime={anime} />
+                  <Card
+                    idAnime={anime?.mal_id}
+                    image={anime?.images?.jpg.large_image_url}
+                    title={anime.title_english || anime.title}
+                    year={anime.year}
+                    score={anime.score}
+                  />
                 </div>
               ))
             )}
