@@ -12,7 +12,7 @@ const Card = ({ idAnime, image, title, year, score, url }) => {
   });
 
   return (
-    <Link href={url ? url : `${idAnime}`}>
+    <Link href={`${idAnime}`}>
       <div className="relative h-auto max-h-[150px] w-auto max-w-full md:max-h-[300px]">
         <Image
           className="card h-[150px] w-[105px] rounded-lg object-cover md:h-[200px] md:w-[135px]"
