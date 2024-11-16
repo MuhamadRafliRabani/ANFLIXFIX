@@ -1,7 +1,10 @@
+import Characters from "../../ui/characters";
 import Overview from "../../ui/overview";
 import Relations from "../../ui/relations";
+import Reviews from "../../ui/reviews";
+import Staff from "../../ui/staff";
 
-const Content = ({ anime }) => {
+const Content = ({ anime, characters, staff }) => {
   return (
     <div>
       <Overview anime={anime} />
@@ -11,6 +14,9 @@ const Content = ({ anime }) => {
         score={anime?.score}
         idAnime={anime?.mal_id}
       />
+      <Characters characters={characters} />
+      <Staff staff={staff} />
+      <Reviews />
     </div>
   );
 };

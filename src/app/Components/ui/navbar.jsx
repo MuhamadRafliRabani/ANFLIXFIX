@@ -4,10 +4,10 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 z-50 flex w-full translate-x-0 items-center justify-between border-b-[0.1px] border-white border-opacity-35 bg-transparent px-6 py-4 text-white md:px-32">
+    <nav className="fixed top-0 z-50 flex w-full translate-x-0 items-center justify-between gap-10 border-b-[0.1px] border-white border-opacity-35 bg-transparent px-4 py-2 text-white md:px-32 md:py-4">
       <div className="flex items-center space-x-4">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-semibold">
+        <Link href="/" className="text-xl font-semibold md:text-2xl">
           Kurosaw
         </Link>
       </div>
@@ -29,12 +29,12 @@ const Navbar = () => {
       </div>
 
       {/* Search Bar */}
-      <div className="flex flex-1 items-center space-x-2 font-extralight">
-        <div className="relative w-11/12">
+      <div className="h-h-1/5 flex flex-1 items-center space-x-2 font-extralight">
+        <div className="relative h-full w-11/12">
           <input
             type="text"
             placeholder="Search"
-            className="w-full rounded-md bg-white bg-opacity-10 px-10 py-2 text-white outline-none ring-[0.5px] ring-white placeholder:font-extralight placeholder:text-white"
+            className="h-full w-full rounded-md bg-white bg-opacity-10 px-10 py-2 text-white outline-none ring-[0.5px] ring-white placeholder:font-extralight placeholder:text-white"
           />
           <MagnifyingGlass
             size={16}
@@ -44,7 +44,7 @@ const Navbar = () => {
       </div>
 
       {/* Login Button */}
-      <div className="space-x-4">
+      <div className="hidden space-x-1">
         <button className="rounded-md bg-gray-800 px-4 py-2 text-white hover:bg-gray-700">
           Log In
         </button>

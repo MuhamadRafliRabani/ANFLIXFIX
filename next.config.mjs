@@ -17,10 +17,10 @@ const nextConfig = {
       {
         hostname: "myanimelist.net",
       },
+      {
+        hostname: "placehold.co",
+      },
     ],
-  },
-  typescript: {
-    ignoreBuildErrors: true, // Nonaktifkan TypeScript checking untuk build errors
   },
 };
 
