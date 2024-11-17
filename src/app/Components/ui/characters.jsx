@@ -11,7 +11,7 @@ const Characters = ({ characters }) => {
   return (
     <div>
       <h3 className="text-xl font-semibold text-white">Characters</h3>
-      <div className="embla w-full" ref={emblaRef}>
+      <div className="embla w-full overflow-hidden " ref={emblaRef}>
         <div className="embla__container flex w-full gap-2 md:gap-3">
           {characters &&
             characters?.map((item, i) => (
