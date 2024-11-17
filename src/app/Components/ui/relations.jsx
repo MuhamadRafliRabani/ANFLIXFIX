@@ -15,7 +15,7 @@ const Relations = ({ relations, score, idAnime }) => {
   return (
     <div>
       <h3 className="text-xl font-semibold text-white">Chronology</h3>
-      <div className="embla w-full" ref={emblaRef}>
+      <div className="embla w-full overflow-hidden" ref={emblaRef}>
         <div className="embla__container flex w-full gap-2 md:gap-3">
           {anime.map((item, i) => (
             <div
