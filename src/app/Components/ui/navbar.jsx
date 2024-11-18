@@ -30,7 +30,7 @@ const Navbar = () => {
       setIsopen(false);
     }
   };
-  window.addEventListener("click", handleClose);
+  
 
   // handle close menu when slide
   useEffect(() => {
