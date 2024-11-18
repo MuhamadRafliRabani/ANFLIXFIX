@@ -19,7 +19,7 @@ const Card = ({ idAnime, image, title, year, score, url }) => {
             </p>
             {year && (
               <span className="text-[.65rem]">
-                {year}, {score}
+                {year} {score}
               </span>
             )}
             {/* {anime.genres.map((anime) => (

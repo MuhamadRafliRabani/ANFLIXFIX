@@ -6,7 +6,7 @@ export const ListOptions = [
     title: "Relations",
   },
   {
-    title: "Character",
+    title: "Characters",
   },
   {
     title: "Staff",

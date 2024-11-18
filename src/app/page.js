@@ -1,10 +1,9 @@
 import Footer from "./Components/content/Footer";
-import LoadingSkeleton from "./Components/cardSkeleton";
 import List_anime from "./Components/content/page/List_anime";
 import Home_Page from "./Components/content/page/Hero";
 import Rekomend_anime from "./Components/content/page/Rekomend_anime";
 
-const Home = async () => {
+const Home = () => {
   return (
     <div className="w-full overflow-x-hidden">
       <Home_Page />

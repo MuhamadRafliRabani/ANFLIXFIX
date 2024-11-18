@@ -1,43 +1,13 @@
 "use client";
-import useEmblaCarousel from "embla-carousel-react";
 import { FetchAnime } from "@/utility/Api";
-import Card from "../../ui/card";
-import LoadingSkeleton from "../../cardSkeleton";
+import Carousel from "../../ui/crousell";
 
 const List_anime = ({ jikan, header }) => {
-  const [emblaRef] = useEmblaCarousel({
-    dragFree: true,
-    align: "start",
-  });
-  const { data, isLoading } = FetchAnime(jikan);
+  const { data } = FetchAnime(jikan);
 
   return (
     <div className="w-screen p-3">
-      <div className="w-full space-y-2 text-base font-medium text-white">
-        <h3 className="text-lg md:font-medium">{header}</h3>
-        <div className="embla w-[90%] md:overflow-hidden" ref={emblaRef}>
-          <div className="embla__container flex gap-2 md:gap-3">
-            {isLoading ? (
-              <LoadingSkeleton length={10} />
-            ) : (
-              data?.data.map((anime, i) => (
-                <div
-                  key={i}
-                  className="embla__slide w-[113px] min-w-0 flex-shrink-0 flex-grow-0 md:w-[140px]"
-                >
-                  <Card
-                    idAnime={anime?.mal_id}
-                    image={anime?.images?.jpg.large_image_url}
-                    title={anime.title_english || anime.title}
-                    year={anime.year}
-                    score={anime.score}
-                  />
-                </div>
-              ))
-            )}
-          </div>
-        </div>
-      </div>
+      <Carousel data={data?.data} header={header} />
     </div>
   );
 };

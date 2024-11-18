@@ -1,24 +1,36 @@
-import Characters from "../../ui/characters";
-import Overview from "../../ui/overview";
-import Relations from "../../ui/relations";
-import Reviews from "../../ui/reviews";
-import Staff from "../../ui/staff";
+import { useContent } from "@/store/store";
+import dynamic from "next/dynamic";
+
+const Overview = dynamic(() => import("../../ui/overview"));
+const Relations = dynamic(() => import("../../ui/relations"));
+const Characters = dynamic(() => import("../../ui/characters"));
+const Staff = dynamic(() => import("../../ui/staff"));
+const Reviews = dynamic(() => import("../../ui/reviews"));
 
 const Content = ({ anime, characters, staff }) => {
-  return (
-    <div>
-      <Overview anime={anime} />
-      <Relations
-        relations={anime?.relations}
-        image={anime?.trailer?.images.medium_image_url}
-        score={anime?.score}
-        idAnime={anime?.mal_id}
-      />
-      <Characters characters={characters} />
-      <Staff staff={staff} />
-      <Reviews />
-    </div>
-  );
+  const { content } = useContent();
+
+  switch (content) {
+    case "Overview":
+      return <Overview anime={anime} />;
+    case "Relations":
+      return (
+        <Relations
+          relations={anime?.relations}
+          image={anime?.trailer?.images.medium_image_url}
+          score={anime?.score}
+          idAnime={anime?.mal_id}
+        />
+      );
+    case "Characters":
+      return <Characters characters={characters} />;
+    case "Staff":
+      return <Staff staff={staff} />;
+    case "Reviews":
+      return <Reviews />;
+    default:
+      return <Overview anime={anime} />;
+  }
 };
 
 export default Content;

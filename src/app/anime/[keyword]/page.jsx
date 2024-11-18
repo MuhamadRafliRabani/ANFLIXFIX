@@ -17,9 +17,9 @@ const Anime = ({ params }) => {
         <HeadAnime
           image={anime?.data.images?.webp.large_image_url}
           title={
-            anime?.data?.title_synonyms.length !== 0
-              ? anime?.data.title
-              : anime?.data?.title_synonyms
+            anime?.data.title ||
+            anime?.data.title_english ||
+            anime?.data?.title_synonyms
           }
           score={anime?.data.score}
           animeId={animeId}

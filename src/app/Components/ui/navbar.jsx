@@ -1,10 +1,50 @@
 // components/Navbar.tsx
-import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
+import { List, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
+import NavigationLink from "./navigationLink";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [open, setIsopen] = useState(false);
+  const [change, setChange] = useState(false);
+
+  const toggleMenu = () => setIsopen(!open);
+
+  const handleClose = (event) => {
+    if (
+      sidebar.current &&
+      !sidebar.current.contains(event.target) &&
+      triger.current &&
+      !triger.current.contains(event.target)
+    ) {
+      setIsopen(false);
+    }
+  };
+  window.addEventListener("click", handleClose);
+
+  useEffect(() => {
+    const checkScroll = () => {
+      if (window.scrollY) {
+        setIsopen(false);
+        if (window.scrollY >= 100) {
+          setChange(true);
+        } else {
+          setChange(false);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", checkScroll);
+
+    return () => {
+      window.removeEventListener("scroll", checkScroll);
+    };
+  }, []);
+
   return (
-    <nav className="fixed top-0 z-50 flex w-full translate-x-0 items-center justify-between gap-10 border-b-[0.1px] border-white border-opacity-35 bg-transparent px-4 py-2 text-white md:px-32 md:py-4">
+    <nav
+      className={`fixed top-0 z-50 flex w-full translate-x-0 items-center justify-between gap-10 border-white border-opacity-35 px-4 py-2 text-white md:px-32 md:py-4 ${change ? "bg-primary_color shadow-sm" : "bg-bg-transparent border-b-[0.1px]"}`}
+    >
       <div className="flex items-center space-x-4">
         {/* Logo */}
         <Link href="/" className="text-xl font-semibold md:text-2xl">
@@ -12,25 +52,11 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Navigation Links */}
-      <div className="hidden w-3/12 flex-shrink-0 items-center justify-center space-x-4 md:flex">
-        <Link href="/home" className="hover:text-gray-400">
-          Home
-        </Link>
-        <Link href="/anime/catalog" className="hover:text-gray-400">
-          Catalog
-        </Link>
-        <Link href="/news" className="hover:text-gray-400">
-          News
-        </Link>
-        <Link href="/collections" className="hover:text-gray-400">
-          Collections
-        </Link>
-      </div>
+      <NavigationLink open={open} setisopen={setIsopen} />
 
       {/* Search Bar */}
-      <div className="h-h-1/5 flex flex-1 items-center space-x-2 font-extralight">
-        <div className="relative h-full w-11/12">
+      <div className="flex h-1/5 w-full flex-1 items-center space-x-2 font-extralight">
+        <div className="relative h-full w-full">
           <input
             type="text"
             placeholder="Search"
@@ -44,14 +70,9 @@ const Navbar = () => {
       </div>
 
       {/* Login Button */}
-      <div className="hidden space-x-1">
-        <button className="rounded-md bg-gray-800 px-4 py-2 text-white hover:bg-gray-700">
-          Log In
-        </button>
-        <button className="rounded-md bg-white px-4 py-2 text-gray-900 hover:bg-gray-200">
-          Get Started
-        </button>
-      </div>
+      <button onClick={() => toggleMenu()} className="text-white">
+        <List size={32} />
+      </button>
     </nav>
   );
 };

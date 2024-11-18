@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { handleColection } from "@/utility/func";
-import { useCollecSucsess, useUser } from "@/utility/store/store";
+import { useCollecSucsess, useUser } from "@/store/store";
 import { Play, Plus } from "@phosphor-icons/react";
 import Link from "next/link";
 import toast from "react-hot-toast";
@@ -45,7 +45,7 @@ const AddCollection = ({
   return (
     <div className="justtify-center flex items-center gap-2">
       <Link href={`pages/detail-anime/${anime_mal_id}`}>
-        <button className="effect-btn hidden items-center justify-center gap-2 rounded-full bg-primary text-base md:mt-2 md:flex md:px-4 md:py-2">
+        <button className="effect-btn bg-primary hidden items-center justify-center gap-2 rounded-full text-base md:mt-2 md:flex md:px-4 md:py-2">
           <span>
             <Play size={14} />
           </span>{" "}

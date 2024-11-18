@@ -7,7 +7,7 @@ import Button from "@/app/Components/ui/button";
 import LoadingSkeleton from "@/app/Components/cardSkeleton";
 import Filter from "@/app/Components/ui/filter";
 import { CaretDown } from "@phosphor-icons/react";
-import { useFilter } from "@/utility/store/store";
+import { useFilter } from "@/store/store";
 
 export default function CatalogPage() {
   const { filter } = useFilter();

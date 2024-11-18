@@ -1,5 +1,5 @@
 "use client";
-import { useFilter } from "@/utility/store/store";
+import { useFilter } from "@/store/store";
 import { useState } from "react";
 
 const FilterSelect = ({ items, seeMore }) => {
