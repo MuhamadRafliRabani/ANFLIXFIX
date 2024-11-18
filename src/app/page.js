@@ -10,7 +10,10 @@ const Home = () => {
       <div className="relative z-30 min-h-screen w-full space-y-4 overflow-x-hidden px-1 md:-mt-24 md:w-screen md:px-20">
         <List_anime header="Trending Now" jikan="/seasons/now" />
         <div className="h-52 w-full bg-fuchsia-400"></div>
-        <List_anime header="Special For You" jikan="seasons/2023/fall" />
+        <List_anime
+          header="Special For You"
+          jikan="seasons/2023/fall?limit=10"
+        />
         <div className="w-full md:px-4">
           <Rekomend_anime
             header="Most Popular"
