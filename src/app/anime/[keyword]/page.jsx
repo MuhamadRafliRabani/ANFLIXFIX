@@ -15,7 +15,10 @@ const Anime = ({ params }) => {
     <section className="w-screen px-4">
       <div className="mt-16 w-full space-y-5">
         <HeadAnime
-          image={anime?.data.images?.webp.large_image_url}
+          image={
+            anime?.data.images?.webp?.large_image_url ||
+            anime?.data.images?.jpg?.large_image_url
+          }
           title={
             anime?.data.title ||
             anime?.data.title_english ||

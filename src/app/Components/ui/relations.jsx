@@ -27,8 +27,8 @@ const Relations = ({ relations, score, idAnime }) => {
               <Card
                 idAnime={idAnime}
                 image={
-                  data?.data[0]?.jpg.large_image_url ||
-                  data?.data[0]?.webp.large_image_url
+                  data?.data[0]?.jpg?.large_image_url ||
+                  data?.data[0]?.webp?.large_image_url
                 }
                 title={item.name}
                 year={item.type}
