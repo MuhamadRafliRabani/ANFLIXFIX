@@ -21,7 +21,10 @@ const Carousel = ({ data, header }) => {
               >
                 <Card
                   idAnime={anime?.mal_id}
-                  image={anime?.images?.jpg.large_image_url}
+                  image={
+                    anime?.images?.jpg.large_image_url ||
+                    anime?.images?.webp.image_url
+                  }
                   title={anime.title_english || anime.title}
                   year={anime.year}
                   score={anime.score}

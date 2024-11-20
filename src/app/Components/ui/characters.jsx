@@ -25,7 +25,10 @@ const Characters = ({ characters = [] }) => {
             >
               <Card
                 idAnime={anime.mal_id}
-                image={anime?.character?.images?.webp.image_url}
+                image={
+                  anime?.character?.images?.webp.image_url ||
+                  anime?.character?.images?.jpg.image_url
+                }
                 title={anime?.character.name}
                 year={anime.role}
               />
@@ -33,7 +36,7 @@ const Characters = ({ characters = [] }) => {
                 <Card
                   idAnime={anime.mal_id}
                   image={
-                    anime?.voice_actors[0]?.person.images?.jpg.image_url ||
+                    anime?.voice_actors[0]?.person?.images.jpg.image_url ||
                     "/placeholder.png"
                   }
                   title={anime?.voice_actors[0]?.person.name}

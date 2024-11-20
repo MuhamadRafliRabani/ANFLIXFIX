@@ -12,6 +12,8 @@ const Relations = ({ relations, score, idAnime }) => {
 
   const { data } = FetchAnime(`/anime/${idAnime}/pictures`);
 
+  console.log(data);
+
   return (
     <div>
       <h3 className="text-xl font-semibold text-white">Chronology</h3>
@@ -24,7 +26,10 @@ const Relations = ({ relations, score, idAnime }) => {
             >
               <Card
                 idAnime={idAnime}
-                image={data?.data[1]?.jpg.large_image_url}
+                image={
+                  data?.data[0]?.jpg.large_image_url ||
+                  data?.data[0]?.webp.large_image_url
+                }
                 title={item.name}
                 year={item.type}
                 score={score}
