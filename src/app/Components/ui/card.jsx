@@ -2,17 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Card = ({ idAnime, image, title, year, score, url }) => {
-  console.log(image);
-  
   return (
     <Link href={url ? url : `/anime/${idAnime}`}>
       <div className="relative h-auto max-h-[150px] w-auto max-w-full md:max-h-[300px]">
-        <Image
-          className="card aspect-[9/16] h-[150px] w-[105px] rounded-lg object-cover md:h-[200px] md:w-[135px]"
+      <img
+          className="card aspect-[9/16] h-[150px] w-[105px] rounded-lg object-contain md:h-[200px] md:w-[135px]"
           src={image}
           alt="poster"
-          width={113}
-          height={150}
           loading="lazy"
         />
         <div className="absolute inset-0 mt-auto text-xs text-[rgb(225,225,225)]">
