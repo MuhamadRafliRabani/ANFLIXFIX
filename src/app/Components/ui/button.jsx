@@ -7,7 +7,7 @@ const Button = ({ action, black, text, icon, width }) => {
     <button
       onClick={action}
       className={cn(
-        `rounded-lg bg-white px-3 py-2 text-xs font-medium text-black shadow-sm ${width}`,
+        `rounded-lg whitespace-nowrap bg-white px-3 py-2 text-xs font-medium text-black shadow-sm ${width}`,
         {
           "bg-second_color text-white": black,
         },

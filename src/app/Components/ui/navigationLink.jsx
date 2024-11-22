@@ -5,7 +5,7 @@ import Button from "./button";
 const NavigationLink = ({ open, setisopen }) => {
   return (
     <div
-      className={`fixed top-[99.75%] z-[100] flex min-h-svh w-[45%] flex-shrink-0 flex-col gap-3 rounded-tl-md bg-blue-400 bg-primary_color pt-4 font-medium transition-all duration-300 ${open ? "right-0" : "-right-44"}`}
+      className={`fixed top-[99.75%] z-[100] flex min-h-svh w-1/2 flex-shrink-0 flex-col gap-3 rounded-tl-md bg-blue-400 bg-primary_color pt-4 font-medium transition-all duration-300 ${open ? "right-0" : "-right-full"}`}
     >
       <>
         <Link

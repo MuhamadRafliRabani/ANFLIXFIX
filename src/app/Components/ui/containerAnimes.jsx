@@ -2,7 +2,6 @@ import React from "react";
 import LoadingSkeleton from "../cardSkeleton";
 import Card from "./card";
 import Button from "./button";
-import { CaretDoubleRight } from "@phosphor-icons/react/dist/ssr";
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 
 const ContainerAnimes = ({
@@ -26,9 +25,9 @@ const ContainerAnimes = ({
   return (
     <div className="w-full space-y-2 text-base font-medium text-white">
       <h3 className="w-full ps-2 text-xl font-semibold text-white">{header}</h3>
-      <div className="flex w-full flex-shrink-0 flex-grow flex-wrap items-center justify-center gap-4 md:justify-start md:px-4">
+      <div className="flex w-full flex-shrink-0 flex-grow flex-wrap items-center justify-center gap-3 md:justify-start md:px-4">
         {animes?.map((anime, i) => (
-          <React.Fragment key={i}>
+          <div className="w-fit h-fit" key={i}>
             <Card
               idAnime={anime?.mal_id}
               image={anime?.images?.jpg.large_image_url}
@@ -36,7 +35,7 @@ const ContainerAnimes = ({
               year={anime.year}
               score={anime.score}
             />
-          </React.Fragment>
+          </div>
         ))}
       </div>
 

@@ -13,11 +13,11 @@ const HeadAnime = ({ image, title, score, animeId, status }) => {
       <div className="flex h-48 w-full items-center">
         {/* // images */}
         <div className="relative h-full w-1/3">
-          <Image
+          <img
             src={image}
             alt="Description of image"
             fill
-            className="rounded-md object-cover"
+            className="rounded-md h-full w-full object-cover"
           />
         </div>
         {/* content headers */}
@@ -32,7 +32,7 @@ const HeadAnime = ({ image, title, score, animeId, status }) => {
               <Star className="size-4" /> {score}
             </span>
           </div>
-          <div className="mt-auto block w-full space-x-1">
+          <div className="mt-auto w-full flex space-x-1">
             <Button black icon={<Eye className="size-4" />} text="Watching" />
             <Button
               black

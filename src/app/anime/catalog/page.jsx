@@ -8,6 +8,7 @@ import LoadingSkeleton from "@/app/Components/cardSkeleton";
 import Filter from "@/app/Components/ui/filter";
 import { CaretDown } from "@phosphor-icons/react";
 import { useFilter } from "@/store/store";
+import ContainerAnimes from "@/app/Components/ui/containerAnimes";
 
 export default function CatalogPage() {
   const { filter } = useFilter();
@@ -25,11 +26,11 @@ export default function CatalogPage() {
     isLoading,
     isError,
   } = FetchAnime(
-    `https://api.jikan.moe/v4/anime?genres=${genre}&type=${type}&rating=&order_by=score&sort=desc`,
+    `https://api.jikan.moe/v4/anime?genres=${genre}&type=${type}&rating=&order_by=score&sort=desc&page=${page}`,
     // "https://api.jikan.moe/v4/anime?genres=&type=&rating=rx&order_by=score&sort=desc",
   );
-
-  console.log("🚀 ~ CatalogPage ~ filter:", filter);
+  
+  console.log("🚀 ~ CatalogPage ~ animes:", animes)
 
   if (isLoading) return <LoadingSkeleton length={20} />;
   if (isError) return <div className="text-center">Failed to load data.</div>;
@@ -47,19 +48,15 @@ export default function CatalogPage() {
             Sort by <CaretDown size={16} />
           </button>
         </div>
-        <div className="flex h-full w-full flex-shrink-0 flex-grow-0 items-center">
-          <Filter handleOpen={handleToggleFilter} isOpen={isOpen} />
-
-          <div className="flex w-full flex-shrink-0 flex-grow flex-wrap content-center items-center justify-center gap-4 md:w-[90%] md:pe-4">
-            {animes?.data.map((anime, i) => (
-              <React.Fragment key={i}>
-                <Card anime={anime} />
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-
-        <Button width=" w-full" action={handleSeeMore} text="Show More" />
+        
+      <ContainerAnimes
+        animes={animes?.data}
+        header={""}
+        isLoading={isLoading}
+        handleSeeMore={handleSeeMore}
+        hasLastPage={animes?.pagination.has_next_page}
+        page={page}
+      />
       </div>
     </div>
   );

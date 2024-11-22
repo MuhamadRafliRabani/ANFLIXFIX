@@ -1,17 +1,16 @@
 "use client";
 import ContainerAnimes from "@/app/Components/ui/containerAnimes";
+import { Pagginations } from "@/libs/pagginations";
 import { FetchAnime } from "@/utility/Api";
 import { useState } from "react";
 
 const page = ({ params }) => {
   const animeTitle = decodeURI(params.keyword);
-  const [page, setPage] = useState(1);
+  const {handleSeeMore,page} = Pagginations()
 
   const { data, isLoading } = FetchAnime(`/anime?q=${animeTitle}&page=${page}`);
 
-  const handlePageChange = (props) => {
-    setPage((prev) => prev + props);
-  };
+ 
 
   return (
     <div className="w-full pt-16">
@@ -19,7 +18,7 @@ const page = ({ params }) => {
         animes={data?.data}
         header={`Search Anime :  ${animeTitle}`}
         isLoading={isLoading}
-        handleSeeMore={handlePageChange}
+        handleSeeMore={handleSeeMore}
         hasLastPage={data?.pagination.has_next_page}
         page={page}
       />
