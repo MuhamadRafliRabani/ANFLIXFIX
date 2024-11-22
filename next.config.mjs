@@ -15,7 +15,9 @@ const nextConfig = {
         hostname: "i.pinimg.com",
       },
       {
-        hostname: "myanimelist.net",
+        protocol: 'https',
+        hostname: 'cdn.myanimelist.net',
+        pathname: '/**',
       },
       {
         hostname: "placehold.co",

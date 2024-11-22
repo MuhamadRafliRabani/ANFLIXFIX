@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Card = ({ idAnime, image, title, year, score, url }) => {
+  console.log(image);
+  
   return (
     <Link href={url ? url : `/anime/${idAnime}`}>
       <div className="relative h-auto max-h-[150px] w-auto max-w-full md:max-h-[300px]">
@@ -11,6 +13,7 @@ const Card = ({ idAnime, image, title, year, score, url }) => {
           alt="poster"
           width={113}
           height={150}
+          loading="lazy"
         />
         <div className="absolute inset-0 mt-auto text-xs text-[rgb(225,225,225)]">
           <div className="flex h-full w-full flex-col justify-end rounded-lg bg-gradient-to-t from-[rgba(0,0,0,0.1)] to-transparent px-1 pb-2">
