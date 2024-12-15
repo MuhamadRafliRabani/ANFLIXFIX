@@ -13,30 +13,25 @@ const ContainerAnimes = ({
   page,
   text,
 }) => {
-  {
-    if (isLoading)
-      return (
-        <div className="flex w-full flex-shrink-0 flex-grow flex-wrap items-center justify-center gap-4 md:justify-start md:px-4">
-          <LoadingSkeleton length={20} />
-        </div>
-      );
-  }
-
   return (
     <div className="w-full space-y-2 text-base font-medium text-white">
       <h3 className="w-full ps-2 text-xl font-semibold text-white">{header}</h3>
       <div className="flex w-full flex-shrink-0 flex-grow flex-wrap items-center justify-center gap-3 md:justify-start md:px-4">
-        {animes?.map((anime, i) => (
-          <div className="w-fit h-fit" key={i}>
-            <Card
-              idAnime={anime?.mal_id}
-              image={anime?.images?.jpg.large_image_url}
-              title={anime.title_english || anime.title}
-              year={anime.year}
-              score={anime.score}
-            />
-          </div>
-        ))}
+        {!isLoading ? (
+          animes?.map((anime, i) => (
+            <div className="h-fit w-fit" key={i}>
+              <Card
+                idAnime={anime?.mal_id}
+                image={anime?.images?.jpg.large_image_url}
+                title={anime.title_english || anime.title}
+                year={anime.year}
+                score={anime.score}
+              />
+            </div>
+          ))
+        ) : (
+          <LoadingSkeleton length={20} />
+        )}
       </div>
 
       <div

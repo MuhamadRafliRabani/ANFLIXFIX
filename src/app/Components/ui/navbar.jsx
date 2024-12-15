@@ -2,13 +2,14 @@
 import { List, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import NavigationLink from "./navigationLink";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useCustomState } from "@/libs/useCustomState";
 
 const Navbar = () => {
-  const [open, setIsopen] = useState(false);
-  const [change, setChange] = useState(false);
-  const [query, setQuery] = useState("");
+  const [open, setIsopen] = useCustomState(false);
+  const [change, setChange] = useCustomState(false);
+  const [query, setQuery] = useCustomState("");
   const router = useRouter();
 
   const handleKeyDown = (e) => {
@@ -16,6 +17,8 @@ const Navbar = () => {
       router.push(`/anime/search/${encodeURIComponent(query.trim())}`);
     }
   };
+
+  console.log("hamburger", open);
 
   const toggleMenu = () => setIsopen(!open);
 
@@ -30,18 +33,12 @@ const Navbar = () => {
       setIsopen(false);
     }
   };
-  
 
   // handle close menu when slide
   useEffect(() => {
     const checkScroll = () => {
       if (window.scrollY) {
         setIsopen(false);
-        if (window.scrollY >= 100) {
-          setChange(true);
-        } else {
-          setChange(false);
-        }
       }
     };
 
@@ -54,7 +51,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 z-50 flex w-full translate-x-0 items-center justify-between gap-10 border-white border-opacity-35 px-4 py-2 text-white md:px-32 md:py-4 ${change ? "bg-primary_color shadow-sm" : "border-b-[0.1px] bg-transparent"}`}
+      className={`fixed top-0 z-50 flex w-full translate-x-0 items-center justify-between gap-10 border-white border-opacity-35 bg-red-400 px-4 py-2 text-white md:px-32 md:py-4 ${change ? "bg-primary_color shadow-sm" : "border-b-[0.1px] bg-transparent"}`}
     >
       <div className="flex items-center space-x-4">
         {/* Logo */}

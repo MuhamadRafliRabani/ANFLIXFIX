@@ -3,11 +3,11 @@ import { FetchAnime } from "@/utility/Api";
 import Carousel from "../../ui/crousell";
 
 const List_anime = ({ jikan, header }) => {
-  const { data } = FetchAnime(jikan);
+  const { data, isLoading } = FetchAnime(jikan);
 
   return (
     <div className="w-screen p-3">
-      <Carousel data={data?.data} header={header} />
+      <Carousel data={data?.data} header={header} isLoading={isLoading} />
     </div>
   );
 };

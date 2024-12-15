@@ -1,8 +1,9 @@
 "use client";
+import LoadingSkeleton from "../cardSkeleton";
 import Card from "./card";
 import useEmblaCarousel from "embla-carousel-react";
 
-const Carousel = ({ data, header }) => {
+const Carousel = ({ data, header, isLoading }) => {
   const [emblaRef] = useEmblaCarousel({
     dragFree: true,
     align: "start",
@@ -13,7 +14,7 @@ const Carousel = ({ data, header }) => {
       <h3 className="w-full text-xl font-semibold text-white">{header}</h3>
       <div className="embla w-full overflow-hidden" ref={emblaRef}>
         <div className="embla__container flex w-full gap-2 md:gap-3">
-          {data &&
+          {!isLoading ? (
             data?.map((anime, i) => (
               <div
                 key={i}
@@ -30,7 +31,10 @@ const Carousel = ({ data, header }) => {
                   score={anime.score}
                 />
               </div>
-            ))}
+            ))
+          ) : (
+            <LoadingSkeleton crousell length={8} />
+          )}
         </div>
       </div>
     </div>

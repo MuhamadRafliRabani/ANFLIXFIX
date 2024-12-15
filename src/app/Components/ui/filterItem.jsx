@@ -1,14 +1,14 @@
 import FilterInput from "./filterInput";
 import { useFilter } from "@/store/store";
-import { Genres, Rating, seasons, Types } from "@/data/dataFilter";
+import { Filters } from "@/data/dataFilter";
 import { MagnifyingGlass, X } from "@phosphor-icons/react/dist/ssr";
+import { useCustomState } from "@/libs/useCustomState";
 
 const FilterComponent = ({ isOpen, setIsOpen }) => {
   const { filter, setFilter } = useFilter();
 
   const handleFilterChange = (key, value) => {
     setFilter(key, value);
-    setIsOpen(false);
   };
 
   return (
@@ -24,32 +24,20 @@ const FilterComponent = ({ isOpen, setIsOpen }) => {
         </button>
       </div>
       <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <FilterInput
-          option={Genres}
-          onChange={handleFilterChange}
-          selectedValue={filter.Genres}
-        />
-        <FilterInput
-          option={seasons}
-          onChange={handleFilterChange}
-          selectedValue={filter.seasons}
-        />
-        <FilterInput
-          option={Rating}
-          onChange={handleFilterChange}
-          selectedValue={filter.Rating}
-        />
-        <FilterInput
-          option={Types}
-          onChange={handleFilterChange}
-          selectedValue={filter.Types}
-        />
+        {Filters.map((filterOption) => (
+          <FilterInput
+            key={filterOption.Name}
+            option={filterOption}
+            onChange={handleFilterChange}
+            selectedValue={filter[filterOption.Name]}
+          />
+        ))}
       </div>
       <div className="flex items-center justify-between">
         <button onClick={setIsOpen}>
           <h3>Reset filter</h3>
         </button>
-        <button onClick={setIsOpen}>
+        <button onClick={handleFilterChange}>
           <h3 className="flex items-center justify-center space-x-1">
             <MagnifyingGlass size={20} /> <span>Search</span>
           </h3>
