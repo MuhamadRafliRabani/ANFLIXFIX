@@ -2,7 +2,6 @@ import FilterInput from "./filterInput";
 import { useFilter } from "@/store/store";
 import { Filters } from "@/data/dataFilter";
 import { MagnifyingGlass, X } from "@phosphor-icons/react/dist/ssr";
-import { useCustomState } from "@/libs/useCustomState";
 
 const FilterComponent = ({ isOpen, setIsOpen }) => {
   const { filter, setFilter } = useFilter();
@@ -14,7 +13,7 @@ const FilterComponent = ({ isOpen, setIsOpen }) => {
   return (
     <div
       className={`absolute z-50 mx-auto w-full max-w-4xl space-y-3 rounded-lg bg-primary_color p-4 text-white transition-transform duration-300 ${
-        isOpen ? "top-14 opacity-100" : "-top-96 opacity-0"
+        isOpen ? "top-14 opacity-100" : "-top-full opacity-0"
       }`}
     >
       <div className="flex items-center justify-between">

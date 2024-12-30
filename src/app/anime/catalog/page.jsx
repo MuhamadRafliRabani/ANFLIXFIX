@@ -6,7 +6,6 @@ import { useFilter } from "@/store/store";
 import ContainerAnimes from "@/app/Components/ui/containerAnimes";
 import { useCustomState } from "@/libs/useCustomState";
 import FilterComponent from "@/app/Components/ui/filterItem";
-import { useEffect, useRef } from "react";
 import Button from "@/app/Components/ui/button";
 
 export default function CatalogPage() {
@@ -31,21 +30,23 @@ export default function CatalogPage() {
     `https://api.jikan.moe/v4/anime?genres=${genre}&type=${type}&rating=${rating}&order_by=${orderBy}&sort=${sort}&status=${status}&season=${seasons}&year=${year}&page=${page}`,
   );
 
-  useEffect(() => {
-    const checkScroll = () => {
-      if (window.scrollY) {
-        setIsOpen(false);
-      }
-    };
-
-    window.addEventListener("scroll", checkScroll);
-
-    return () => {
-      window.removeEventListener("scroll", checkScroll);
-    };
-  }, []);
-
   if (isError) return <div className="text-center">Failed to load data.</div>;
+
+  // console.log("🚀 ~ CatalogPage ~ globalState:", {
+  //   genre,
+  //   type,
+  //   rating,
+  //   seasons,
+  //   year,
+  //   status,
+  //   orderBy,
+  //   sort,
+  // });
+
+  console.log("🚀 ~ CatalogPage ~ globalState:", {
+    genre,
+    animes,
+  });
 
   return (
     <div className="G relative min-h-screen bg-black text-white md:px-10">
