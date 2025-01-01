@@ -3,7 +3,7 @@ import { FetchAnime } from "@/utility/Api";
 import React, { useEffect, useState } from "react";
 import ContainerAnimes from "../../ui/containerAnimes";
 
-const Rekomend_anime = ({ jikan, header }) => {
+const Rekomend_anime = ({ jikan, header, icon }) => {
   const { data, isLoading } = FetchAnime(jikan);
   const [animes, setAnime] = useState([]);
   const [seeAnime, setSeeAnime] = useState(24);
@@ -25,7 +25,8 @@ const Rekomend_anime = ({ jikan, header }) => {
       <ContainerAnimes
         animes={animes}
         handleSeeMore={handleSeeMore}
-        header={"Most Popular"}
+        header={header}
+        icon={icon}
         isLoading={isLoading}
         text={"Show More"}
       />

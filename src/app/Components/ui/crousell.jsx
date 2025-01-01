@@ -3,22 +3,26 @@ import LoadingSkeleton from "../cardSkeleton";
 import Card from "./card";
 import useEmblaCarousel from "embla-carousel-react";
 
-const Carousel = ({ data, header, isLoading }) => {
+const Carousel = ({ data, header, isLoading, icon }) => {
   const [emblaRef] = useEmblaCarousel({
     dragFree: true,
     align: "start",
   });
 
+  console.log(data);
+
   return (
     <div className="w-full space-y-2">
-      <h3 className="w-full text-xl font-semibold text-white">{header}</h3>
+      <h3 className="flex w-full items-center text-xl font-bold tracking-wide text-white">
+        {header} <span className="ms-2">{icon}</span>
+      </h3>
       <div className="embla w-full overflow-hidden" ref={emblaRef}>
-        <div className="embla__container flex w-full gap-2 md:gap-3">
+        <div className="embla__container flex w-full gap-3 md:gap-3">
           {!isLoading ? (
             data?.map((anime, i) => (
               <div
                 key={i}
-                className="embla__slide w-[113px] min-w-0 flex-shrink-0 flex-grow-0 md:w-[140px]"
+                className="embla__slide w-fit min-w-0 flex-shrink-0 flex-grow-0"
               >
                 <Card
                   idAnime={anime?.mal_id}

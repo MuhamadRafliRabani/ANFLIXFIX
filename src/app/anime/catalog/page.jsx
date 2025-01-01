@@ -7,10 +7,10 @@ import ContainerAnimes from "@/app/Components/ui/containerAnimes";
 import { useCustomState } from "@/libs/useCustomState";
 import FilterComponent from "@/app/Components/ui/filterItem";
 import Button from "@/app/Components/ui/button";
+import { Sliders } from "@phosphor-icons/react/dist/ssr";
 
 export default function CatalogPage() {
   const { filter } = useFilter();
-  const { handleSeeMore, page } = Pagginations();
   const [isFilterOpen, setIsFilterOpen] = useCustomState(false);
 
   const genre = filter.Genres && filter.Genres !== "none" ? filter.Genres : "";
@@ -27,7 +27,7 @@ export default function CatalogPage() {
     isLoading,
     isError,
   } = FetchAnime(
-    `https://api.jikan.moe/v4/anime?genres=${genre}&type=${type}&rating=${rating}&order_by=${orderBy}&sort=${sort}&status=${status}&season=${seasons}&year=${year}&page=${page}`,
+    `https://api.jikan.moe/v4/anime?genres=${genre}&type=${type}&rating=${rating}&order_by=${orderBy}&sort=${sort}&status=${status}&season=${seasons}&year=${year}&page=${1}`,
   );
 
   if (isError) return <div className="text-center">Failed to load data.</div>;
@@ -43,10 +43,7 @@ export default function CatalogPage() {
   //   sort,
   // });
 
-  console.log("🚀 ~ CatalogPage ~ globalState:", {
-    genre,
-    animes,
-  });
+  console.log(animes);
 
   return (
     <div className="G relative min-h-screen bg-black text-white md:px-10">
@@ -60,7 +57,7 @@ export default function CatalogPage() {
 
           <Button
             action={() => setIsFilterOpen((prev) => !prev)}
-            icon={<Icons />}
+            icon={<Sliders size={20} />}
             text={"Sort by"}
             black
           />
@@ -70,9 +67,9 @@ export default function CatalogPage() {
           animes={animes?.data}
           header={""}
           isLoading={isLoading}
-          handleSeeMore={handleSeeMore}
-          hasLastPage={animes?.pagination.has_next_page}
-          page={page}
+          handleSeeMore
+          LastPage={animes?.pagination.items.count}
+          page
         />
       </div>
     </div>

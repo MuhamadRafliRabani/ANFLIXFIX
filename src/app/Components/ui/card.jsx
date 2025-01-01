@@ -2,29 +2,30 @@ import Link from "next/link";
 
 const Card = ({ idAnime, image, title, year, score, url }) => {
   return (
-    <Link href={url ? url : `/anime/${idAnime}`}>
-      <div className="relative h-auto max-h-[150px] w-auto max-w-full md:max-h-[300px]">
+    <Link href={url || `/anime/${idAnime}`}>
+      <div className="relative h-[150px]">
+        {/* Bagian Gambar */}
         <img
-          className="h-[150px] w-[108px] rounded-lg object-fill md:h-[200px] md:w-[135px]"
           src={image}
-          alt="poster"
+          alt={title || "Anime Poster"}
+          className="h-full w-fit rounded-lg object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 mt-auto text-xs text-[rgb(225,225,225)]">
-          <div className="flex h-full w-full flex-col justify-end rounded-lg bg-gradient-to-t from-[rgba(0,0,0,0.0.6)] to-transparent px-1 pb-2">
-            <p className="truncate overflow-ellipsis whitespace-nowrap tracking-wide text-white">
+
+        {/* Bagian Overlay */}
+        <div className="absolute inset-0 flex items-end rounded-lg bg-gradient-to-t from-black/60 from-30% to-transparent to-50% p-1 hover:from-black/40">
+          <div className="flex w-full flex-col text-sm text-white">
+            {/* Judul */}
+            <p className="truncate font-thin tracking-wide text-gray-50">
               {title}
             </p>
-            {year && (
-              <span className="text-[.65rem]">
-                {year} {score}
+
+            {/* Tahun dan Skor */}
+            {(year || score) && (
+              <span className="text-xs text-gray-300">
+                {year} {score && `· ${score}`}
               </span>
             )}
-            {/* {anime.genres.map((anime) => (
-              <span key={anime.mal_id} className="mx-1 text-[.75rem]">
-                {anime.name}
-              </span>
-            ))} */}
           </div>
         </div>
       </div>

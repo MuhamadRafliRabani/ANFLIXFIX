@@ -10,6 +10,10 @@ const FilterComponent = ({ isOpen, setIsOpen }) => {
     setFilter(key, value);
   };
 
+  const resetFilters = () => {
+    Filters.forEach((filterOption) => setFilter(filterOption.Name, ""));
+  };
+
   return (
     <div
       className={`absolute z-50 mx-auto w-full max-w-4xl space-y-3 rounded-lg bg-primary_color p-4 text-white transition-transform duration-300 ${
@@ -33,7 +37,7 @@ const FilterComponent = ({ isOpen, setIsOpen }) => {
         ))}
       </div>
       <div className="flex items-center justify-between">
-        <button onClick={setIsOpen}>
+        <button onClick={resetFilters}>
           <h3>Reset filter</h3>
         </button>
         <button onClick={handleFilterChange}>
