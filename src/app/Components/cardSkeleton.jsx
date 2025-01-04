@@ -4,7 +4,7 @@ const LoadingSkeleton = ({ length, crousell }) => {
   return (
     <div className="w-full space-y-2">
       <div
-        className={`flex w-full overflow-x-auto md:gap-3 ${crousell ? "gap-2" : "flex-wrap justify-center gap-3"}`}
+        className={`flex w-full overflow-x-auto ${crousell ? "gap-2" : "flex-wrap justify-center gap-2"}`}
       >
         {emptyArray.map((_, i) => (
           <div

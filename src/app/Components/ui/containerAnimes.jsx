@@ -1,28 +1,23 @@
-import React from "react";
 import LoadingSkeleton from "../cardSkeleton";
-import Card from "./card";
 import Button from "./button";
-import { CaretLeft, CaretRight } from "@phosphor-icons/react";
+import Card from "./card";
 import Pagination from "@/libs/pagginations";
 
 const ContainerAnimes = ({
-  animes,
-  isLoading,
-  header,
-  LastPage,
-  text,
   icon,
+  header,
+  animes,
+  LastPage,
+  isLoading,
+  pagination,
+  handlePage,
 }) => {
-  const handlePageChange = (newPage) => {
-    setPage(newPage);
-  };
-
   return (
     <div className="w-full space-y-2 text-base font-medium text-white">
       <h3 className="flex w-full items-center text-xl font-bold tracking-wide text-white">
         {header} <span className="ms-2">{icon}</span>
       </h3>
-      <div className="flex w-full flex-wrap items-center justify-center gap-3">
+      <div className="flex w-full flex-wrap items-center justify-center gap-2">
         {!isLoading ? (
           animes?.map((anime, i) => (
             <div className="h-fit w-fit flex-shrink-0" key={i}>
@@ -40,10 +35,12 @@ const ContainerAnimes = ({
         )}
       </div>
 
-      <div
-        className={`flex w-full items-center justify-center gap-5 pt-2 ${text ? "ms-2" : ""} `}
-      >
-        <Pagination totalPages={LastPage} />
+      <div className="flex w-full items-center justify-center">
+        {pagination ? (
+          <Pagination totalPages={LastPage} onPageChange={handlePage} />
+        ) : (
+          <Button action={handlePage} text="Show more" width="w-full" />
+        )}
       </div>
     </div>
   );

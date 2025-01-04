@@ -3,7 +3,7 @@ import Link from "next/link";
 const Card = ({ idAnime, image, title, year, score, url }) => {
   return (
     <Link href={url || `/anime/${idAnime}`}>
-      <div className="relative h-[145px] w-[106px]">
+      <div className="relative h-[150px] w-[109px]">
         {/* Bagian Gambar */}
         <img
           src={image}
@@ -23,7 +23,7 @@ const Card = ({ idAnime, image, title, year, score, url }) => {
             {/* Tahun dan Skor */}
             {(year || score) && (
               <span className="text-xs text-gray-300">
-                {year} {score && `· ${score}`}
+                {year || "N/A"} {score ? `· ${score} ` : ". N/A"}
               </span>
             )}
           </div>

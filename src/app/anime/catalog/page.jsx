@@ -8,9 +8,11 @@ import { useCustomState } from "@/libs/useCustomState";
 import FilterComponent from "@/app/Components/ui/filterItem";
 import Button from "@/app/Components/ui/button";
 import { Sliders } from "@phosphor-icons/react/dist/ssr";
+import { useState } from "react";
 
 export default function CatalogPage() {
   const { filter } = useFilter();
+  const [page, setPage] = useState(1);
   const [isFilterOpen, setIsFilterOpen] = useCustomState(false);
 
   const genre = filter.Genres && filter.Genres !== "none" ? filter.Genres : "";
@@ -27,7 +29,7 @@ export default function CatalogPage() {
     isLoading,
     isError,
   } = FetchAnime(
-    `https://api.jikan.moe/v4/anime?genres=${genre}&type=${type}&rating=${rating}&order_by=${orderBy}&sort=${sort}&status=${status}&season=${seasons}&year=${year}&page=${1}`,
+    `https://api.jikan.moe/v4/anime?genres=${genre}&type=${type}&rating=${rating}&order_by=${orderBy}&sort=${sort}&status=${status}&season=${seasons}&year=${year}&page=${page}`,
   );
 
   if (isError) return <div className="text-center">Failed to load data.</div>;
@@ -43,7 +45,14 @@ export default function CatalogPage() {
   //   sort,
   // });
 
-  console.log(animes);
+  const handlePage = (newPage) => {
+    setPage(newPage);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="G relative min-h-screen bg-black text-white md:px-10">
@@ -64,11 +73,13 @@ export default function CatalogPage() {
         </div>
 
         <ContainerAnimes
-          animes={animes?.data}
+          pagination
           header={""}
-          isLoading={isLoading}
           handleSeeMore
-          LastPage={animes?.pagination.items.count}
+          handlePage={handlePage}
+          isLoading={isLoading}
+          animes={animes?.data || []}
+          LastPage={animes?.pagination.last_visible_page}
           page
         />
       </div>

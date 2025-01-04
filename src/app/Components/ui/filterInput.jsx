@@ -1,5 +1,3 @@
-import React from "react";
-
 const FilterInput = ({ option, onChange, selectedValue }) => {
   return (
     <div className="w-full space-y-2">
