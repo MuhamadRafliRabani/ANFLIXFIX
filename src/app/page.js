@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div className="w-full overflow-x-hidden">
       <Home_Page />
-      <div className="relative z-30 min-h-screen w-screen space-y-4 overflow-x-hidden p-3">
+      <div className="relative z-30 min-h-screen w-screen space-y-4 overflow-x-hidden p-2">
         <List_anime
           icon={<TelevisionSimple size={20} />}
           header="Airing Now"
@@ -24,7 +24,7 @@ const Home = () => {
           header="Special For You"
           jikan="seasons/2023/fall?limit=10"
         />
-        <div className="w-full md:px-4">
+        <div className="w-full">
           <Rekomend_anime
             header="Most Popular"
             icon={<StarFour size={20} />}

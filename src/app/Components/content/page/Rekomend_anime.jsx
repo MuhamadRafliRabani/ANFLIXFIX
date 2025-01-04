@@ -21,16 +21,14 @@ const Rekomend_anime = ({ jikan, header, icon }) => {
   };
 
   return (
-    <div className="w-full">
-      <ContainerAnimes
-        animes={animes}
-        handleSeeMore={handleSeeMore}
-        header={header}
-        icon={icon}
-        isLoading={isLoading}
-        text={"Show More"}
-      />
-    </div>
+    <ContainerAnimes
+      animes={animes}
+      handleSeeMore={handleSeeMore}
+      header={header}
+      icon={icon}
+      isLoading={isLoading}
+      text={"Show More"}
+    />
   );
 };
 

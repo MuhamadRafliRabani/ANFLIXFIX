@@ -22,10 +22,10 @@ const ContainerAnimes = ({
       <h3 className="flex w-full items-center text-xl font-bold tracking-wide text-white">
         {header} <span className="ms-2">{icon}</span>
       </h3>
-      <div className="flex w-full flex-shrink-0 flex-grow flex-wrap items-center justify-center gap-3 md:justify-start md:px-4">
+      <div className="flex w-full flex-wrap items-center justify-center gap-3">
         {!isLoading ? (
           animes?.map((anime, i) => (
-            <div className="h-fit w-fit" key={i}>
+            <div className="h-fit w-fit flex-shrink-0" key={i}>
               <Card
                 idAnime={anime?.mal_id}
                 image={anime?.images?.jpg.large_image_url}

@@ -3,12 +3,12 @@ import Link from "next/link";
 const Card = ({ idAnime, image, title, year, score, url }) => {
   return (
     <Link href={url || `/anime/${idAnime}`}>
-      <div className="relative h-[150px]">
+      <div className="relative h-[145px] w-[106px]">
         {/* Bagian Gambar */}
         <img
           src={image}
           alt={title || "Anime Poster"}
-          className="h-full w-fit rounded-lg object-cover"
+          className="h-full w-full rounded-lg object-cover"
           loading="lazy"
         />
 
