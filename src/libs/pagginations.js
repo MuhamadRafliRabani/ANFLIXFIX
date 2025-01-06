@@ -7,6 +7,8 @@ const Pagination = ({ totalPages, onPageChange }) => {
   const handlePageChange = (page) => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);
+      console.log(page);
+
       onPageChange(page); // Return the page number via callback
     }
   };

@@ -5,6 +5,7 @@ import ContainerAnimes from "./containerAnimes";
 
 const ContainerContent = ({ endPoint, header, icon, typeContent }) => {
   const { data: animes, isLoading } = FetchAnime(endPoint);
+  console.log("🚀 ~ ContainerContent ~ animes:", animes);
 
   if (typeContent === "crousell") {
     return (
@@ -13,7 +14,6 @@ const ContainerContent = ({ endPoint, header, icon, typeContent }) => {
         data={animes?.data}
         isLoading={isLoading}
         icon={icon}
-        animeCard
       />
     );
   }
@@ -36,6 +36,7 @@ const ContainerContent = ({ endPoint, header, icon, typeContent }) => {
         data={animes?.data}
         isLoading={isLoading}
         icon={icon}
+        mangaCard
       />
     );
   }

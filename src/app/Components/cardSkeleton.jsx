@@ -1,4 +1,4 @@
-const LoadingSkeleton = ({ length, crousell, animeCard }) => {
+const LoadingSkeleton = ({ length, crousell, mangaCardSkeleton }) => {
   const emptyArray = Array.from({ length });
 
   return (
@@ -8,23 +8,7 @@ const LoadingSkeleton = ({ length, crousell, animeCard }) => {
       >
         {emptyArray.map((_, i) => (
           <>
-            {animeCard ? (
-              <div
-                key={i}
-                className="relative h-auto max-h-[150px] w-[108px] flex-shrink-0 animate-pulse overflow-hidden md:max-h-[300px] md:w-[135px]"
-              >
-                {/* Skeleton Image */}
-                <div className="h-[150px] w-full rounded-lg bg-gray-300 md:h-[200px]"></div>
-
-                {/* Skeleton Text */}
-                <div className="absolute inset-0 mt-auto flex h-full w-full flex-col justify-end rounded-lg bg-gradient-to-t from-[rgba(0,0,0,0.6)] to-transparent px-1 pb-2">
-                  <div className="mb-1 h-4 w-3/4 rounded bg-gray-400"></div>{" "}
-                  {/* Title */}
-                  <div className="h-3 w-1/4 rounded bg-gray-400"></div>{" "}
-                  {/* Year/Score */}
-                </div>
-              </div>
-            ) : (
+            {mangaCardSkeleton ? (
               <div className="flex h-52 w-[100vw] min-w-80 max-w-sm items-center overflow-hidden rounded-lg border bg-second_color shadow-lg">
                 {/* Manga Image Skeleton */}
                 <div className="h-full w-2/5 animate-pulse rounded-br-lg rounded-tr-lg bg-gray-400"></div>
@@ -58,6 +42,22 @@ const LoadingSkeleton = ({ length, crousell, animeCard }) => {
                       ></div>
                     ))}
                   </div>
+                </div>
+              </div>
+            ) : (
+              <div
+                key={i}
+                className="relative h-auto max-h-[150px] w-[108px] flex-shrink-0 animate-pulse overflow-hidden md:max-h-[300px] md:w-[135px]"
+              >
+                {/* Skeleton Image */}
+                <div className="h-[150px] w-full rounded-lg bg-gray-300 md:h-[200px]"></div>
+
+                {/* Skeleton Text */}
+                <div className="absolute inset-0 mt-auto flex h-full w-full flex-col justify-end rounded-lg bg-gradient-to-t from-[rgba(0,0,0,0.6)] to-transparent px-1 pb-2">
+                  <div className="mb-1 h-4 w-3/4 rounded bg-gray-400"></div>{" "}
+                  {/* Title */}
+                  <div className="h-3 w-1/4 rounded bg-gray-400"></div>{" "}
+                  {/* Year/Score */}
                 </div>
               </div>
             )}

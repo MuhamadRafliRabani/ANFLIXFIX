@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-const AnimeCard = ({ mal_id, image, title, year, score, url }) => {
+const AnimeCard = ({ mal_id, image, title, year, score }) => {
   return (
-    <Link href={url || `/anime/${mal_id}`} className="w-full">
+    <Link href={`/anime/${mal_id}`} className="w-full">
       <div className="relative h-[60vh] max-h-[180px] min-h-44 w-[30vw] min-w-[120px] max-w-[140px]">
         {/* Bagian Gambar */}
         <img

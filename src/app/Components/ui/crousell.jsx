@@ -5,8 +5,7 @@ import Card from "./cardAnime";
 import useEmblaCarousel from "embla-carousel-react";
 import MangaCard from "./cardManga";
 
-const Carousel = ({ data, header, isLoading, icon, animeCard }) => {
-  console.log("🚀 ~ Carousel ~ data:", data);
+const Carousel = ({ data, header, isLoading, icon, mangaCard }) => {
   const [showGuide, setShowGuide] = useState(true);
 
   const [emblaRef] = useEmblaCarousel({
@@ -44,20 +43,9 @@ const Carousel = ({ data, header, isLoading, icon, animeCard }) => {
             data?.map((anime, i) => (
               <div
                 key={i}
-                className={`embla__slide flex-shrink-0 flex-grow-0 ${animeCard ? "h-auto w-[30vw] min-w-[120px] max-w-[180px]" : "h-52 max-w-sm"}`}
+                className={`embla__slide flex-shrink-0 flex-grow-0 ${mangaCard ? "h-52 max-w-sm" : "h-auto w-[30vw] min-w-[120px] max-w-[180px]"}`}
               >
-                {animeCard ? (
-                  <Card
-                    mal_id={anime?.mal_id}
-                    image={
-                      anime?.images?.jpg.large_image_url ||
-                      anime?.images?.webp.image_url
-                    }
-                    title={anime.title_english || anime.title}
-                    year={anime.year}
-                    score={anime.score}
-                  />
-                ) : (
+                {mangaCard ? (
                   <MangaCard
                     mal_id={anime?.mal_id}
                     image={
@@ -72,13 +60,24 @@ const Carousel = ({ data, header, isLoading, icon, animeCard }) => {
                     members={anime.members}
                     genres={anime.genres}
                   />
+                ) : (
+                  <Card
+                    mal_id={anime?.mal_id}
+                    image={
+                      anime?.images?.jpg.large_image_url ||
+                      anime?.images?.webp.image_url
+                    }
+                    title={anime.title_english || anime.title}
+                    year={anime.year}
+                    score={anime.score}
+                  />
                 )}
               </div>
             ))
           ) : (
             <>
-              {animeCard ? (
-                <LoadingSkeleton crousell length={8} animeCard />
+              {mangaCard ? (
+                <LoadingSkeleton crousell length={8} mangaCardSkeleton />
               ) : (
                 <LoadingSkeleton crousell length={8} />
               )}

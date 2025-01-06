@@ -1,6 +1,7 @@
 "use server";
 import Footer from "./Components/content/Footer";
 import Home_Page from "./Components/content/page/Hero";
+import Search from "./Components/Navigasi/search/Search";
 import ContainerContent from "./Components/ui/containerContent";
 import {
   BookOpen,
@@ -42,9 +43,11 @@ const Home = () => {
           icon={<StarFour size={20} />}
           endPoint="/recommendations/anime"
         />
+        <Search />
         <Footer />
       </div>
     </div>
   );
 };
+
 export default Home;

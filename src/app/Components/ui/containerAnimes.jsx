@@ -7,7 +7,7 @@ import Pagination from "@/libs/pagginations";
 import { usePage } from "@/store/store";
 
 const ContainerAnimes = ({ icon, header, animes, isLoading }) => {
-  const { page, setPage } = usePage();
+  const { setPage } = usePage();
   const [lastVisibleAnime, setLastVisibleAnime] = useState(24);
   const [dataRekomendationsAnime, setDataRekomendationsAnime] = useState([]);
 
@@ -35,7 +35,7 @@ const ContainerAnimes = ({ icon, header, animes, isLoading }) => {
           dataRekomendationsAnime?.map((anime, i) => (
             <div className="h-auto w-auto flex-shrink-0" key={i}>
               <Card
-                idAnime={anime?.mal_id}
+                mal_id={anime?.mal_id}
                 image={anime?.images?.jpg.large_image_url}
                 title={anime.title_english || anime.title}
                 year={anime.year}
@@ -52,7 +52,7 @@ const ContainerAnimes = ({ icon, header, animes, isLoading }) => {
         {header !== "Rekomendation Anime" ? (
           <Pagination
             totalPages={animes?.pagination?.last_visible_page}
-            onPageChange={() => setPage(page + 1)}
+            onPageChange={setPage}
           />
         ) : (
           <Button

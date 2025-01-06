@@ -1,33 +1,37 @@
 "use client";
-import { useRef } from "react";
 import { useRouter } from "next/navigation";
-const Search = ({ searchRef }) => {
-  const path = useRouter();
+import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
+const Search = () => {
+  const router = useRouter();
+
   const handleSubmit = (e) => {
-    const keyword = searchRef.current.value;
+    console.log(e);
+
+    const keyword = e.target.value;
+
     if (!keyword) return;
     if (e.key === "Enter" || e.type === "click") {
       e.preventDefault();
-      path.push(`/pages/search/${keyword}`);
+      router.push(`/anime/catalog/${encodeURI(keyword)}`);
     }
   };
+
   return (
-    <form class="mx-auto w-fit min-w-[500px] px-2">
-      <div class="relative">
+    <form class="flex h-1/5 w-full flex-1 items-center space-x-2 font-extralight">
+      <div class="relative h-full w-full">
         <input
           type="search"
-          class="block w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-2 text-sm text-gray-900"
+          class="h-full w-full rounded-md bg-white bg-opacity-10 px-10 py-2 text-white outline-none ring-[0.5px] ring-white placeholder:font-extralight placeholder:text-white"
           placeholder="Search"
           required
-          ref={searchRef}
           onKeyDown={handleSubmit}
         />
         <button
           type="submit"
-          class="absolute bottom-0 end-0 top-0 rounded-e-lg bg-[#E50914] px-4 py-2 text-sm font-medium text-white hover:bg-[#d6484f]"
+          class="absolute left-2 top-2 z-20"
           onClick={handleSubmit}
         >
-          Search
+          <MagnifyingGlass size={16} className="size-6" />
         </button>
       </div>
     </form>

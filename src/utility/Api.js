@@ -1,9 +1,9 @@
 import { axiosIntesnce } from "@/libs/axios";
 import { useQuery } from "@tanstack/react-query";
 
-export const FetchAnime = (resource, seeAnime) => {
+export const FetchAnime = (resource, key) => {
   return useQuery({
-    queryKey: [resource, seeAnime],
+    queryKey: [resource, key],
     queryFn: async () => {
       const { data } = await axiosIntesnce.get(resource);
       return data;

@@ -86,6 +86,7 @@ export const Filters = [
       { label: "Music", value: "music" },
     ],
   },
+
   {
     Name: "Status",
     content: [
@@ -130,3 +131,17 @@ export const Filters = [
     ],
   },
 ];
+
+export const TypeManga = {
+  Name: "Type Manga",
+  content: [
+    { label: "None", value: "" },
+    { label: "Manga", value: "manga" },
+    { label: "Novel", value: "novel" },
+    { label: "Lightnovel", value: "lightnovel" },
+    { label: "Oneshot", value: "Oneshot" },
+    { label: "Doujin", value: "doujin" },
+    { label: "Manhwa", value: "manhwa" },
+    { label: "Manhua", value: "manhua" },
+  ],
+};

@@ -29,6 +29,32 @@ body {
   font-weight: 400;
 }
 
+.border-slide {
+  position: relative;
+}
+
+.border-slide:hover::before {
+  content: "";
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  border-bottom: 1px solid #facc15;
+  transform: scaleX(0);
+  transform-origin: left;
+  width: 100%;
+  animation: border-scale 0.25s ease-in-out forwards;
+}
+
+@keyframes border-scale {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 .video-js .vjs-control-bar {
   background-color: #c6a078; /* Ganti dengan warna yang diinginkan */
 }

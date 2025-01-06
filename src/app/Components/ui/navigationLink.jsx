@@ -15,7 +15,7 @@ const NavigationLink = ({ open, setisopen }) => {
           Home
         </Link>
         <Link
-          href="/anime/catalog"
+          href="/anime/catalog/series"
           className="border-b border-b-text_color px-3 hover:text-gray-400"
         >
           Catalog
