@@ -1,5 +1,5 @@
 "use client";
-import Card from "./card";
+import Card from "./cardAnime";
 import useEmblaCarousel from "embla-carousel-react";
 
 const staff = ({ staff }) => {
@@ -11,7 +11,7 @@ const staff = ({ staff }) => {
   return (
     <div>
       <h3 className="text-xl font-semibold text-white">Staff</h3>
-      <div className="embla w-full overflow-hidden " ref={emblaRef}>
+      <div className="embla w-full overflow-hidden" ref={emblaRef}>
         <div className="embla__container flex w-full gap-2 md:gap-3">
           {staff &&
             staff?.map((item, i) => (

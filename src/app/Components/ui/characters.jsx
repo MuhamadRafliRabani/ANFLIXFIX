@@ -1,5 +1,5 @@
 "use client";
-import Card from "./card";
+import Card from "./cardAnime";
 import useEmblaCarousel from "embla-carousel-react";
 
 const Characters = ({ characters = [] }) => {

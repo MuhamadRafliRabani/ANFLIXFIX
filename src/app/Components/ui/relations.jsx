@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./card";
+import Card from "./cardAnime";
 import { FetchAnime } from "@/utility/Api";
 import useEmblaCarousel from "embla-carousel-react";
 

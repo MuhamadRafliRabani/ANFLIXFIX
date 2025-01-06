@@ -1,6 +1,5 @@
 "use client";
 import { FetchAnime } from "@/utility/Api";
-import { Pagginations } from "@/libs/pagginations";
 import { CaretDown, CaretUp } from "@phosphor-icons/react";
 import { useFilter } from "@/store/store";
 import ContainerAnimes from "@/app/Components/ui/containerAnimes";
@@ -29,7 +28,7 @@ export default function CatalogPage() {
     isLoading,
     isError,
   } = FetchAnime(
-    `https://api.jikan.moe/v4/anime?genres=${genre}&type=${type}&rating=${rating}&order_by=${orderBy}&sort=${sort}&status=${status}&season=${seasons}&year=${year}&page=${page}`,
+    `?genres=${genre}&type=${type}&rating=${rating}&order_by=${orderBy}&sort=${sort}&status=${status}&season=${seasons}&year=${year}&page=${page}`,
   );
 
   if (isError) return <div className="text-center">Failed to load data.</div>;

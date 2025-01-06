@@ -13,7 +13,7 @@ module.exports = {
       colors: {
         primary_color: "rgba(18,17,18,255)",
         second_color: "rgba(37,36,37,255)",
-        text_color: "#6b6a6c",
+        text_color: "#6b7280",
         button_color: "#2E2E2E",
         card_overlay: "rgba(0, 0, 0, 0.7)",
       },

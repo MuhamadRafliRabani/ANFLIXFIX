@@ -1,4 +1,5 @@
-import ButtonHouse from "../../ui/buttonHouse";
+import { BookmarkSimple, Play } from "@phosphor-icons/react/dist/ssr";
+import Button from "../../ui/button";
 
 const Home_Page = () => {
   return (
@@ -13,7 +14,10 @@ const Home_Page = () => {
             spending time with a girl.
           </p>
         </div>
-        <ButtonHouse />
+        <div className="space-x-2">
+          <Button text="Watch" icon={<Play size={14} />} />
+          <Button text="Collection" icon={<BookmarkSimple size={16} />} black />
+        </div>
       </div>
       <div className="absolute inset-0 -z-10 h-full w-full bg-white">
         <video autoPlay muted loop className="h-full w-full object-cover">
