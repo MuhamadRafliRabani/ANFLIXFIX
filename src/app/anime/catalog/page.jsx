@@ -1,17 +1,18 @@
 "use client";
 import { FetchAnime } from "@/utility/Api";
 import { CaretDown, CaretUp } from "@phosphor-icons/react";
-import { useFilter } from "@/store/store";
+import { useFilter, usePage } from "@/store/store";
 import ContainerAnimes from "@/app/Components/ui/containerAnimes";
 import { useCustomState } from "@/libs/useCustomState";
 import FilterComponent from "@/app/Components/ui/filterItem";
 import Button from "@/app/Components/ui/button";
 import { Sliders } from "@phosphor-icons/react/dist/ssr";
 import { useState } from "react";
+import ContainerContent from "@/app/Components/ui/containerContent";
 
 export default function CatalogPage() {
   const { filter } = useFilter();
-  const [page, setPage] = useState(1);
+  const { page } = usePage();
   const [isFilterOpen, setIsFilterOpen] = useCustomState(false);
 
   const genre = filter.Genres && filter.Genres !== "none" ? filter.Genres : "";
@@ -23,15 +24,7 @@ export default function CatalogPage() {
   const orderBy = filter.Order_by ? filter.Order_by.toLowerCase() : "score";
   const sort = filter.Sort ? filter.Sort.toLowerCase() : "desc";
 
-  const {
-    data: animes,
-    isLoading,
-    isError,
-  } = FetchAnime(
-    `?genres=${genre}&type=${type}&rating=${rating}&order_by=${orderBy}&sort=${sort}&status=${status}&season=${seasons}&year=${year}&page=${page}`,
-  );
-
-  if (isError) return <div className="text-center">Failed to load data.</div>;
+  const endpoint = `/anime?genres=${genre}&type=${type}&rating=${rating}&order_by=${orderBy}&sort=${sort}&status=${status}&season=${seasons}&year=${year}&page=${parseInt(page)}`;
 
   // console.log("🚀 ~ CatalogPage ~ globalState:", {
   //   genre,
@@ -44,14 +37,16 @@ export default function CatalogPage() {
   //   sort,
   // });
 
-  const handlePage = (newPage) => {
-    setPage(newPage);
+  // const handlePage = (newPage) => {
+  //   setPage(newPage);
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth",
+  //   });
+  // };
+
+  console.log(page);
 
   return (
     <div className="G relative min-h-screen bg-black text-white md:px-10">
@@ -71,16 +66,7 @@ export default function CatalogPage() {
           />
         </div>
 
-        <ContainerAnimes
-          pagination
-          header={""}
-          handleSeeMore
-          handlePage={handlePage}
-          isLoading={isLoading}
-          animes={animes?.data || []}
-          LastPage={animes?.pagination?.last_visible_page}
-          page
-        />
+        <ContainerContent endPoint={endpoint} typeContent={"listCard"} />
       </div>
     </div>
   );

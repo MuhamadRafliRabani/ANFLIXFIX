@@ -4,15 +4,21 @@ import LoadingSkeleton from "../cardSkeleton";
 import Button from "./button";
 import Card from "./cardAnime";
 import Pagination from "@/libs/pagginations";
+import { usePage } from "@/store/store";
 
-const ContainerAnimes = ({ icon, header, animes, isLoading, pagination }) => {
-  const [page, setPage] = useState(1);
+const ContainerAnimes = ({ icon, header, animes, isLoading }) => {
+  const { page, setPage } = usePage();
   const [lastVisibleAnime, setLastVisibleAnime] = useState(24);
   const [dataRekomendationsAnime, setDataRekomendationsAnime] = useState([]);
 
   const handleDataRekomed = useMemo(() => {
-    const flatedData = animes?.data?.flatMap((anime) => anime.entry) || [];
-    return flatedData.slice(0, lastVisibleAnime);
+    if (header === "Rekomendation Anime") {
+      const flatedData = animes?.data?.flatMap((anime) => anime.entry) || [];
+
+      return flatedData.slice(0, lastVisibleAnime);
+    }
+
+    return animes?.data;
   }, [lastVisibleAnime, animes]);
 
   useEffect(() => {
@@ -43,10 +49,10 @@ const ContainerAnimes = ({ icon, header, animes, isLoading, pagination }) => {
       </div>
 
       <div className="flex w-full items-center justify-center">
-        {pagination ? (
+        {header !== "Rekomendation Anime" ? (
           <Pagination
-            totalPages={animes?.pagination.last_visible_page}
-            onPageChange={setPage}
+            totalPages={animes?.pagination?.last_visible_page}
+            onPageChange={() => setPage(page + 1)}
           />
         ) : (
           <Button

@@ -20,7 +20,7 @@ export const useFilter = create((set) => ({
     })),
 }));
 
-export const useContent = create((set) => ({
-  content: null,
-  setContent: (content) => set(() => ({ content })),
+export const usePage = create((set) => ({
+  page: 1,
+  setPage: (page) => set(() => ({ page })),
 }));
