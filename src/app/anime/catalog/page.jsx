@@ -78,7 +78,7 @@ export default function CatalogPage() {
           handlePage={handlePage}
           isLoading={isLoading}
           animes={animes?.data || []}
-          LastPage={animes?.pagination.last_visible_page}
+          LastPage={animes?.pagination?.last_visible_page}
           page
         />
       </div>
