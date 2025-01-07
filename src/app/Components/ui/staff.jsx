@@ -1,23 +1,18 @@
-"use client";
+import Guide from "../guide/guide";
 import Card from "./cardAnime";
-import useEmblaCarousel from "embla-carousel-react";
 
 const staff = ({ staff }) => {
-  const [emblaRef] = useEmblaCarousel({
-    dragFree: true,
-    align: "start",
-  });
-
   return (
     <div>
-      <h3 className="text-xl font-semibold text-white">Staff</h3>
-      <div className="embla w-full overflow-hidden" ref={emblaRef}>
-        <div className="embla__container flex w-full gap-2 md:gap-3">
+      <h3 className="-mt-2 pb-2 text-xl font-semibold text-white">Staff</h3>
+      <div className="relative w-full overflow-hidden">
+        <Guide message="← Slide →" />
+        <div className="scrollbar-hide flex w-full gap-4 overflow-auto">
           {staff &&
             staff?.map((item, i) => (
               <div
                 key={i}
-                className="embla__slide w-[113px] min-w-0 flex-shrink-0 flex-grow-0 md:w-[140px]"
+                className="relative w-[113px] min-w-0 flex-shrink-0 flex-grow-0 md:w-[140px]"
               >
                 <Card
                   idAnime={item.mal_id}

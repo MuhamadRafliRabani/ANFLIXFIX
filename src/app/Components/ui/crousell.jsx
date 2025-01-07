@@ -1,26 +1,15 @@
 "use client";
-import { useEffect, useState } from "react";
-import LoadingSkeleton from "../cardSkeleton";
 import Card from "./cardAnime";
 import useEmblaCarousel from "embla-carousel-react";
 import MangaCard from "./cardManga";
+import Guide from "../guide/guide";
+import LoadingSkeleton from "../cardSkeleton";
 
 const Carousel = ({ data, header, isLoading, icon, mangaCard }) => {
-  const [showGuide, setShowGuide] = useState(true);
-
   const [emblaRef] = useEmblaCarousel({
     dragFree: true,
     align: "start",
   });
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowGuide(false);
-    }, 3000);
-
-    // Cleanup timer
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div className="h-fit w-full space-y-2">
@@ -31,13 +20,7 @@ const Carousel = ({ data, header, isLoading, icon, mangaCard }) => {
         className="embla relative h-full w-full overflow-hidden"
         ref={emblaRef}
       >
-        {showGuide && (
-          <div className="absolute bottom-0 left-0 right-0 z-50 flex items-center justify-center bg-black/50 p-2">
-            <p className="animate-fadeInOut text-sm font-bold text-white">
-              ← Slide →
-            </p>
-          </div>
-        )}
+        <Guide message="← Slide →" />
         <div className="embla__container flex w-full gap-2">
           {!isLoading ? (
             data?.map((anime, i) => (

@@ -21,7 +21,7 @@ export const useFilter = create((set) => ({
 }));
 
 export const useContent = create((set) => ({
-  content: null,
+  content: "Overview",
   setContent: (content) => set(() => ({ content })),
 }));
 

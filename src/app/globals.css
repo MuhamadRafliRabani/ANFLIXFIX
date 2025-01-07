@@ -55,6 +55,15 @@ body {
   }
 }
 
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 .video-js .vjs-control-bar {
   background-color: #c6a078; /* Ganti dengan warna yang diinginkan */
 }

@@ -1,8 +1,11 @@
 import Link from "next/link";
 
-const AnimeCard = ({ mal_id, image, title, year, score }) => {
+const AnimeCard = ({ mal_id, image, title, year, score, url }) => {
   return (
-    <Link href={`/anime/${mal_id}`} className="w-full">
+    <Link
+      href={mal_id ? `/anime/${mal_id}` : url || "https://myanimelist.net/"}
+      className="w-full"
+    >
       <div className="relative h-[60vh] max-h-[180px] min-h-44 w-[30vw] min-w-[120px] max-w-[140px]">
         {/* Bagian Gambar */}
         <img
@@ -22,8 +25,8 @@ const AnimeCard = ({ mal_id, image, title, year, score }) => {
 
             {/* Tahun dan Skor */}
             {(year || score) && (
-              <span className="text-xs text-gray-300">
-                {year || "N/A"} {score ? `· ${score} ` : ". N/A"}
+              <span className="truncate text-xs text-gray-300">
+                {year || "N/A"} {score ? `· ${score} ` : ""}
               </span>
             )}
           </div>

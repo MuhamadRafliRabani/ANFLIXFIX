@@ -4,10 +4,12 @@ import {
   Star,
   TelevisionSimple,
 } from "@phosphor-icons/react/dist/ssr";
-import Image from "next/image";
-import Button from "../../ui/button";
+import Button from "@/app/Components/ui/button";
+import HeaderAnimeSkeleton from "@/app/Components/skeleton/headerAnimeSkeleton";
 
-const HeadAnime = ({ image, title, score, animeId, status }) => {
+const HeadAnime = ({ image, title, score, isLoading, status }) => {
+  if (isLoading) return <HeaderAnimeSkeleton />;
+
   return (
     <div className="h-full w-full">
       <div className="flex h-48 w-full items-center">
@@ -17,7 +19,7 @@ const HeadAnime = ({ image, title, score, animeId, status }) => {
             src={image}
             alt="Description of image"
             fill
-            className="rounded-md h-full w-full object-cover"
+            className="h-full w-full rounded-md object-cover"
           />
         </div>
         {/* content headers */}
@@ -32,7 +34,7 @@ const HeadAnime = ({ image, title, score, animeId, status }) => {
               <Star className="size-4" /> {score}
             </span>
           </div>
-          <div className="mt-auto w-full flex space-x-1">
+          <div className="mt-auto flex w-full space-x-1">
             <Button black icon={<Eye className="size-4" />} text="Watching" />
             <Button
               black

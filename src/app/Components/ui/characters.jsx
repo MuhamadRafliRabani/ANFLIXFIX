@@ -2,22 +2,20 @@
 import Card from "./cardAnime";
 import useEmblaCarousel from "embla-carousel-react";
 
-const Characters = ({ characters = [] }) => {
+const Characters = ({ characters }) => {
   const [emblaRef] = useEmblaCarousel({
     dragFree: true,
     align: "start",
   });
 
-  if (!characters.length) {
-    return <p className="text-white">No characters available.</p>;
-  }
-
   return (
-    <div>
-      <h3 className="text-xl font-semibold text-white">Characters</h3>
+    <div className="w-full">
+      <h3 className="-mt-2 pb-2 text-xl font-semibold text-white">
+        Characters
+      </h3>
 
       <div className="embla w-full overflow-hidden" ref={emblaRef}>
-        <div className="embla__container flex w-full gap-2 md:gap-3">
+        <div className="embla__container flex w-full gap-4">
           {characters?.map((anime, i) => (
             <div
               key={i}

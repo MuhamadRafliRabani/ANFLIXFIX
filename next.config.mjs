@@ -2,7 +2,6 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      
       {
         hostname: "avatars.githubusercontent.com",
       },
@@ -12,9 +11,12 @@ const nextConfig = {
       {
         hostname: "i.pinimg.com",
       },
-      
+
       {
         hostname: "placehold.co",
+      },
+      {
+        hostname: "cdn.myanimelist.net",
       },
     ],
   },

@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
-import LoadingSkeleton from "../cardSkeleton";
 import Button from "./button";
 import Card from "./cardAnime";
 import Pagination from "@/libs/pagginations";
 import { usePage } from "@/store/store";
+import LoadingSkeleton from "../cardSkeleton";
 
 const ContainerAnimes = ({ icon, header, animes, isLoading }) => {
   const { setPage } = usePage();
