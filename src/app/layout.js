@@ -1,5 +1,6 @@
 "use client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SessionProvider } from "next-auth/react";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
@@ -22,12 +23,11 @@ export default function RootLayout({ children }) {
           >
             <Navbar />
             {children}
-            <div>
-              <Toaster
-                containerStyle={{ accentColor: "black", color: "white" }}
-                position="top-right"
-              />
-            </div>
+            <Toaster
+              containerStyle={{ accentColor: "black", color: "white" }}
+              position="top-right"
+            />
+            <SpeedInsights />
           </body>
         </SessionProvider>
       </html>
