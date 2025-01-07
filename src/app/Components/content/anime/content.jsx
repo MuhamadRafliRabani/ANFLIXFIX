@@ -20,12 +20,12 @@ const Reviews = dynamic(() => import("@/app/Components/ui/reviews"), {
   loading: () => <LoadingSkeleton crousell length={5} />,
 });
 
-const Content = ({ anime, characters, staff, reviews, isLoading }) => {
+const Content = ({ anime, characters, staff, reviews, isLoading, type }) => {
   const { content } = useContent();
 
   switch (content) {
     case "Overview":
-      return <Overview anime={anime} isLoading={isLoading} />;
+      return <Overview anime={anime} isLoading={isLoading} type={type} />;
     case "Relations":
       return (
         <Relations
@@ -33,10 +33,11 @@ const Content = ({ anime, characters, staff, reviews, isLoading }) => {
           image={anime?.trailer?.images.medium_image_url}
           score={anime?.score}
           idAnime={anime?.mal_id}
+          type={type}
         />
       );
     case "Characters":
-      return <Characters characters={characters} />;
+      return <Characters characters={characters} type={type} />;
     case "Staff":
       return <Staff staff={staff} />;
     case "Reviews":

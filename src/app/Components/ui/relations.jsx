@@ -3,10 +3,10 @@ import Guide from "../guide/guide";
 import Card from "./cardAnime";
 import { FetchAnime } from "@/utility/Api";
 
-const Relations = ({ relations, score, idAnime }) => {
+const Relations = ({ relations, score, idAnime, type }) => {
   const anime = relations?.flatMap((relation) => relation.entry) || [];
 
-  const { data } = FetchAnime(`/anime/${idAnime}/pictures`);
+  const { data } = FetchAnime(`/${type}/${idAnime}/pictures`);
 
   return (
     <div className="">

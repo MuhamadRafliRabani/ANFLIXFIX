@@ -2,6 +2,7 @@ import Guide from "../guide/guide";
 import Card from "./cardAnime";
 
 const staff = ({ staff }) => {
+  console.log("🚀 ~ staff ~ staff:", staff);
   return (
     <div>
       <h3 className="-mt-2 pb-2 text-xl font-semibold text-white">Staff</h3>

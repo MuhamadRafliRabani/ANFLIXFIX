@@ -7,13 +7,15 @@ import { FetchAnime } from "@/utility/Api";
 import { useEffect } from "react";
 
 const Anime = ({ params }) => {
-  const animeId = params.keyword;
+  const { type, mal_id } = params;
   const { setContent } = useContent();
 
-  const { data: anime, isLoading } = FetchAnime(`/anime/${animeId}/full`);
-  const { data: Characters } = FetchAnime(`/anime/${animeId}/characters`);
-  const { data: Staff } = FetchAnime(`/anime/${animeId}/staff`);
-  const { data: reviews } = FetchAnime(`/anime/${animeId}/reviews`);
+  const { data: anime, isLoading } = FetchAnime(`/${type}/${mal_id}/full`);
+  const { data: Characters } = FetchAnime(`/${type}/${mal_id}/characters`);
+  const { data: Staff } = FetchAnime(
+    type === anime ? `/${type}/${mal_id}/staff` : `/${type}/${mal_id}/external`,
+  );
+  const { data: reviews } = FetchAnime(`/${type}/${mal_id}/reviews`);
 
   useEffect(() => {
     setContent("Overview");
@@ -23,27 +25,21 @@ const Anime = ({ params }) => {
     <section className="min-w-full px-2">
       <div className="mt-16 w-full space-y-5">
         <HeadAnime
-          image={
-            anime?.data?.images.webp.large_image_url ||
-            anime?.data?.images.jpg.large_image_url
-          }
-          title={
-            anime?.data.title ||
-            anime?.data.title_english ||
-            anime?.data?.title_synonyms
-          }
+          image={anime?.data?.images.webp.large_image_url}
+          title={anime?.data.title || anime?.data.title_english}
           score={anime?.data.score}
-          animeId={animeId}
+          animeId={mal_id}
           status={anime?.data.status}
           isLoading={isLoading}
         />
-        <HeadContent />
+        <HeadContent type={type} />
         <Content
           anime={anime?.data}
           characters={Characters?.data}
           staff={Staff?.data}
           reviews={reviews?.data}
           isLoading={isLoading}
+          type={type}
         />
       </div>
     </section>

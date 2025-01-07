@@ -12,7 +12,7 @@ const Search = () => {
     if (!keyword) return;
     if (e.key === "Enter" || e.type === "click") {
       e.preventDefault();
-      router.push(`/anime/catalog/${encodeURI(keyword)}`);
+      router.push(`/search/catalog/${encodeURI(keyword)}`);
     }
   };
 

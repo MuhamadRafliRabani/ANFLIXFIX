@@ -1,9 +1,16 @@
 import DetailAnimeSkeleton from "../skeleton/detailAnimeSkeleton";
 
-const Overview = ({ anime, isLoading }) => {
-  console.log(isLoading);
-
+const Overview = ({ anime, isLoading, type }) => {
   if (isLoading) return <DetailAnimeSkeleton />;
+
+  const handleCondition = (option1, option2) => {
+    if (type === "anime") {
+      return option1 || "N/A";
+    } else if (type === "manga") {
+      return option2 || "N/A";
+    }
+    return "N/A";
+  };
 
   return (
     <div className="w-[100vw] max-w-screen-sm overflow-hidden">
@@ -18,9 +25,11 @@ const Overview = ({ anime, isLoading }) => {
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="min-w-14">Episodes :</span>
+              <span className="min-w-14">
+                {handleCondition("Episodes", "Rank")}:
+              </span>
               <span className="flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
-                {anime?.episodes}
+                {handleCondition(anime?.episodes, anime?.rank)}
               </span>
             </li>
             <li className="flex items-center gap-2">
@@ -38,7 +47,10 @@ const Overview = ({ anime, isLoading }) => {
             <li className="flex items-center gap-2">
               <span className="min-w-14">Year :</span>
               <span className="flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
-                {anime?.year}
+                {handleCondition(
+                  type === "anime" ? anime?.year : "N/A",
+                  type === "manga" ? anime?.published.prop?.from.year : "N/A",
+                )}
               </span>
             </li>
             <li className="flex items-center gap-2">
@@ -50,21 +62,33 @@ const Overview = ({ anime, isLoading }) => {
           </div>
           <div className="space-y-2">
             <li className="flex items-center gap-2">
-              <span className="min-w-14">Season :</span>
+              <span className="min-w-14">
+                {handleCondition("Season", "Members")} :
+              </span>
               <span className="overflow-autow hitespace-nowrap flex-1 text-white text-opacity-60 hover:text-white">
-                {anime?.season}
+                {handleCondition(anime?.season, anime?.members)}
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="min-w-14">Studios :</span>
+              <span className="min-w-14">
+                {handleCondition("Studios", "Chapters")}:
+              </span>
               <span className="max-w-[45%] flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
-                {anime?.studios[0].name}
+                {handleCondition(
+                  type === "anime" ? anime?.studios[0].name : "N/A",
+                  type === "manga" ? anime?.chapters : "N/A",
+                )}
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="min-w-14">Source :</span>
+              <span className="min-w-14">
+                {handleCondition("Source", "Authors")} :{" "}
+              </span>
               <span className="flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
-                {anime?.source}
+                {handleCondition(
+                  type === "anime" ? anime?.source : "N/A",
+                  type === "manga" ? anime?.authors[0].name : "N/A",
+                )}
               </span>
             </li>
             <li className="flex items-center gap-2">
@@ -74,9 +98,11 @@ const Overview = ({ anime, isLoading }) => {
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="min-w-14">Duration :</span>
+              <span className="min-w-14">
+                {handleCondition("Duration", "Volumes")}:
+              </span>
               <span className="flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
-                {anime?.duration}
+                {handleCondition(anime?.duration, anime?.volumes)}
               </span>
             </li>
           </div>

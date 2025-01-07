@@ -2,7 +2,7 @@
 import Card from "./cardAnime";
 import useEmblaCarousel from "embla-carousel-react";
 
-const Characters = ({ characters }) => {
+const Characters = ({ characters, type }) => {
   const [emblaRef] = useEmblaCarousel({
     dragFree: true,
     align: "start",
@@ -31,16 +31,18 @@ const Characters = ({ characters }) => {
                 year={anime.role}
               />
               <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <Card
-                  idAnime={anime.mal_id}
-                  image={
-                    anime?.voice_actors[0]?.person?.images.jpg.image_url ||
-                    "/placeholder.png"
-                  }
-                  title={anime?.voice_actors[0]?.person.name}
-                  year="seiyu / voice actors"
-                  url={anime?.voice_actors[0]?.person.url}
-                />
+                {type === "anime" && (
+                  <Card
+                    idAnime={anime.mal_id}
+                    image={
+                      anime?.voice_actors[0]?.person?.images.jpg.image_url ||
+                      "/placeholder.png"
+                    }
+                    title={anime?.voice_actors[0]?.person.name}
+                    year="seiyu / voice actors"
+                    url={anime?.voice_actors[0]?.person.url}
+                  />
+                )}
               </div>
             </div>
           ))}

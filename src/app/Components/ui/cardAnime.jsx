@@ -1,9 +1,13 @@
 import Link from "next/link";
 
-const AnimeCard = ({ mal_id, image, title, year, score, url }) => {
+const AnimeCard = ({ mal_id, image, title, year, score, url, type }) => {
   return (
     <Link
-      href={mal_id ? `/anime/${mal_id}` : url || "https://myanimelist.net/"}
+      href={
+        mal_id
+          ? `/${type}/detail/${title}/${mal_id}`
+          : url || "https://myanimelist.net/"
+      }
       className="w-full"
     >
       <div className="relative h-[60vh] max-h-[180px] min-h-44 w-[30vw] min-w-[120px] max-w-[140px]">

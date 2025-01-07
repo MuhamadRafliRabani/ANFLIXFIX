@@ -40,6 +40,7 @@ const ContainerAnimes = ({ icon, header, animes, isLoading }) => {
                 title={anime.title_english || anime.title}
                 year={anime.year}
                 score={anime.score}
+                type={icon ? "anime" : anime?.genres[0]?.type}
               />
             </div>
           ))

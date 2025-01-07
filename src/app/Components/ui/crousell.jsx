@@ -42,6 +42,7 @@ const Carousel = ({ data, header, isLoading, icon, mangaCard }) => {
                     scored={anime.scored}
                     members={anime.members}
                     genres={anime.genres}
+                    type={anime.genres[0]?.type}
                   />
                 ) : (
                   <Card
@@ -53,6 +54,7 @@ const Carousel = ({ data, header, isLoading, icon, mangaCard }) => {
                     title={anime.title_english || anime.title}
                     year={anime.year}
                     score={anime.score}
+                    type={anime.genres[0]?.type}
                   />
                 )}
               </div>

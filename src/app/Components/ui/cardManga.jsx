@@ -11,9 +11,10 @@ const MangaCard = ({
   scored,
   members,
   genres,
+  type,
 }) => {
   return (
-    <Link href={`/anime/${mal_id}`}>
+    <Link href={`/${type}/detail/${title}/${mal_id}`}>
       <div className="flex h-full w-full items-center overflow-hidden rounded-lg border bg-second_color shadow-lg">
         {/* Manga Image */}
         <img

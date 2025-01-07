@@ -2,7 +2,12 @@ import { ListOptions } from "@/data/listOptions";
 import { useContent } from "@/store/store";
 import Guide from "../../guide/guide";
 
-const HeadContent = () => {
+const handleShowOptions = (type) => {
+  return type === "anime"
+    ? ListOptions
+    : ListOptions.filter((option) => option.title !== "Staff");
+};
+const HeadContent = ({ type }) => {
   const { content, setContent } = useContent();
 
   return (
@@ -10,7 +15,7 @@ const HeadContent = () => {
       <div className="relative w-full overflow-hidden border-b border-second_color pb-2">
         <Guide message="← Slide →" />
         <ul className="scrollbar-hide flex items-center gap-2 overflow-x-scroll font-medium">
-          {ListOptions.map((List, i) => (
+          {handleShowOptions(type)?.map((List, i) => (
             <li
               key={i}
               onClick={() => setContent(List.title)}
