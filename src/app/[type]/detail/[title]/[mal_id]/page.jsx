@@ -13,7 +13,9 @@ const Anime = ({ params }) => {
   const { data: anime, isLoading } = FetchAnime(`/${type}/${mal_id}/full`);
   const { data: Characters } = FetchAnime(`/${type}/${mal_id}/characters`);
   const { data: Staff } = FetchAnime(
-    type === anime ? `/${type}/${mal_id}/staff` : `/${type}/${mal_id}/external`,
+    type === "anime"
+      ? `/${type}/${mal_id}/staff`
+      : `/${type}/${mal_id}/external`,
   );
   const { data: reviews } = FetchAnime(`/${type}/${mal_id}/reviews`);
 
