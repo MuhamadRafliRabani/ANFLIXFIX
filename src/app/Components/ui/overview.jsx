@@ -13,7 +13,7 @@ const Overview = ({ anime, isLoading, type }) => {
   };
 
   return (
-    <div className="w-[100vw] max-w-screen-sm overflow-hidden">
+    <div className="w-[95vw] max-w-sm overflow-hidden px-1">
       <div className="w-full">
         <h1 className="text-xl font-semibold text-white">Details</h1>
         <ul className="mt-2 flex items-center gap-2 text-sm text-text_color">

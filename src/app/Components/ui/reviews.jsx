@@ -17,7 +17,7 @@ const Reviews = ({ reviews }) => {
           width="w-full"
         />
       </div>
-      <div className="space-y-4">
+      <div className="w-[95vw] max-w-sm space-y-4 pe-1">
         {reviews.map((review) => (
           <div className="flex gap-3">
             <Image
@@ -34,7 +34,7 @@ const Reviews = ({ reviews }) => {
                   {formatDate(review?.date)}
                 </p>
               </div>
-              <article className="line-clamp-4 text-sm font-thin tracking-wide text-slate-300">
+              <article className="line-clamp-4 w-full text-sm font-thin tracking-wide text-slate-300">
                 {review?.review}
               </article>
             </Link>
