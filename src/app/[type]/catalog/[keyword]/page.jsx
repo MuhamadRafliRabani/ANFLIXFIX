@@ -7,31 +7,37 @@ import FilterComponent from "@/app/Components/ui/filterItem";
 import ContainerContent from "@/app/Components/ui/containerContent";
 
 const CatalogPage = ({ params }) => {
-  const { page } = usePage();
-  console.log("🚀 ~ CatalogPage ~ page:", page);
+  // States and Stores
+  const { page, setPage } = usePage();
   const { filter, setFilter } = useFilter();
-  const [typeData, setTypeData] = useCustomState("anime");
-  const [isFilterOpen, setIsFilterOpen] = useCustomState(false);
+  const { keyword, type } = params;
 
-  const TitleAnime = decodeURI(params.keyword);
+  const [typeData, setTypeData] = useCustomState(type);
+  const [isFilterOpen, setIsFilterOpen] = useCustomState(false);
 
   const { Genre, Type, Rating, Year, Status, OrderBy, Sort } = filter;
 
-  const generateEndpoint = () => {
-    const baseParams = `type=${Type || ""}&rating=${Rating || ""}&year=${Year || ""}&order_by=${
-      OrderBy?.toLowerCase() || "score"
-    }&sort=${Sort?.toLowerCase() || "desc"}&status=${Status?.toLowerCase() || ""}&page=${parseInt(page) || 1}`;
+  const decodeKeyword = decodeURI(keyword);
 
-    return TitleAnime === "series"
-      ? `/${typeData}?genres=${Genre || ""}&${baseParams}`
-      : `/${typeData}?q=${TitleAnime}&${baseParams}`;
+  // Helper Functions
+  const generateEndpoint = () => {
+    const baseParams = [
+      `type=${Type || ""}`,
+      `rating=${Rating || ""}`,
+      `year=${Year || ""}`,
+      `order_by=${OrderBy?.toLowerCase() || "score"}`,
+      `sort=${Sort?.toLowerCase() || "desc"}`,
+      `status=${Status?.toLowerCase() || ""}`,
+      `page=${page || 1}`,
+    ].join("&");
+
+    const endPointSearch = `/${typeData}?q=${decodeKeyword}&${baseParams}`;
+    const endPointSeries = `/${typeData}?genres=${Genre || ""}&${baseParams}`;
+
+    return keyword === "series" ? endPointSeries : endPointSearch;
   };
 
-  const toggleFilterOpen = () => setIsFilterOpen((prev) => !prev);
-
-  const handleTypeData = () => {
-    setTypeData((prev) => (prev === "anime" ? "manga" : "anime"));
-    setIsFilterOpen(false);
+  const resetFilterState = () => {
     setFilter({
       Genre: null,
       Type: null,
@@ -41,9 +47,19 @@ const CatalogPage = ({ params }) => {
       OrderBy: "score",
       Sort: "desc",
     });
+  };
+
+  const toggleFilterOpen = () => setIsFilterOpen((prev) => !prev);
+
+  const handleTypeDataSwitch = () => {
+    setTypeData((prev) => (prev === "anime" ? "manga" : "anime"));
+    setPage(1);
+    resetFilterState();
+    setIsFilterOpen(false);
     window.scrollTo(0, 0);
   };
 
+  // Render
   return (
     <div className="relative min-h-screen text-white md:px-10">
       {/* Filter Component */}
@@ -60,7 +76,7 @@ const CatalogPage = ({ params }) => {
           <h1 className="text-xl font-bold">
             Catalog{" "}
             <span
-              onClick={handleTypeData}
+              onClick={handleTypeDataSwitch}
               className="border-slide cursor-pointer bg-gradient-to-b from-yellow-400 to-orange-400 bg-clip-text text-transparent"
             >
               {typeData}
@@ -71,7 +87,8 @@ const CatalogPage = ({ params }) => {
             className="border-slide flex cursor-pointer items-center gap-1 bg-transparent"
             onClick={toggleFilterOpen}
           >
-            Sort by <CaretDown size={16} />
+            Sort by{" "}
+            {isFilterOpen ? <CaretUp size={16} /> : <CaretDown size={16} />}
           </button>
         </div>
 

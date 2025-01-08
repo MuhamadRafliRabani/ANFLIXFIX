@@ -1,46 +1,41 @@
 "use client";
+
 import { useState } from "react";
 
-const Pagination = ({ totalPages, onPageChange }) => {
+const Pagination = ({ totalPages, onPageChange, pageNow }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageChange = (page) => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);
-      console.log(page);
-
-      onPageChange(page); // Return the page number via callback
+      onPageChange(page); // Memanggil callback dengan nomor halaman
     }
   };
 
   const handleNext = () => {
-    if (currentPage < totalPages) {
-      handlePageChange(currentPage + 1);
-    }
+    handlePageChange(currentPage + 1);
   };
 
   const handlePrev = () => {
-    if (currentPage > 1) {
-      handlePageChange(currentPage - 1);
-    }
+    handlePageChange(currentPage - 1);
   };
 
   const renderPages = () => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
       if (
-        i === 1 || // First page
-        i === totalPages || // Last page
-        (i >= currentPage - 1 && i <= currentPage + 1) // Adjacent pages
+        i === 1 || // Halaman pertama
+        i === totalPages || // Halaman terakhir
+        (i >= currentPage - 1 && i <= currentPage + 1) // Halaman di sekitar halaman saat ini
       ) {
         pages.push(
           <button
             key={i}
             onClick={() => handlePageChange(i)}
             className={`rounded px-3 py-1 ${
-              currentPage === i
-                ? "rounded-md bg-second_color text-white"
-                : "text-gray-300"
+              currentPage === i && pageNow == i
+                ? "bg-second_color text-white"
+                : "bg-transparent text-gray-300"
             }`}
           >
             {i}
@@ -62,17 +57,19 @@ const Pagination = ({ totalPages, onPageChange }) => {
 
   return (
     <div className="flex items-center space-x-2">
-      {/* Previous Button */}
+      {/* Tombol Sebelumnya */}
       <button
         onClick={handlePrev}
         disabled={currentPage === 1}
-        className={`px-2 py-1 ${currentPage === 1 ? "text-gray-500" : "text-white"}`}
+        className={`px-2 py-1 ${
+          currentPage === 1 ? "text-gray-500" : "text-white"
+        }`}
       >
         ←
       </button>
-      {/* Pages */}
+      {/* Render Angka Halaman */}
       {renderPages()}
-      {/* Next Button */}
+      {/* Tombol Selanjutnya */}
       <button
         onClick={handleNext}
         disabled={currentPage === totalPages}

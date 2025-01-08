@@ -7,7 +7,7 @@ import { usePage } from "@/store/store";
 import LoadingSkeleton from "../cardSkeleton";
 
 const ContainerAnimes = ({ icon, header, animes, isLoading }) => {
-  const { setPage } = usePage();
+  const { setPage, page } = usePage();
   const [lastVisibleAnime, setLastVisibleAnime] = useState(24);
   const [dataRekomendationsAnime, setDataRekomendationsAnime] = useState([]);
 
@@ -54,6 +54,7 @@ const ContainerAnimes = ({ icon, header, animes, isLoading }) => {
           <Pagination
             totalPages={animes?.pagination?.last_visible_page}
             onPageChange={setPage}
+            pageNow={page}
           />
         ) : (
           <Button

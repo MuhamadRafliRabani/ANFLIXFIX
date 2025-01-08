@@ -14,7 +14,7 @@ const Search = () => {
 
     if (!keyword) return;
 
-    router.push(`/search/catalog/${encodeURI(keyword)}`);
+    router.push(`/anime/catalog/${encodeURI(keyword)}`);
     inputRef.current.value = "";
   };
 

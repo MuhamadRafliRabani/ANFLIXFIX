@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --border-color: #facc15;
+}
+
 @font-face {
   font-family: "Mona Sans";
   src:
@@ -39,7 +43,7 @@ body {
   right: 0;
   bottom: 0;
   position: absolute;
-  border-bottom: 1px solid #facc15;
+  border-bottom: 1px solid var(--border-color);
   transform: scaleX(0);
   transform-origin: left;
   width: 100%;

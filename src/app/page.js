@@ -43,7 +43,6 @@ const Home = () => {
           icon={<StarFour size={20} />}
           endPoint="/recommendations/anime"
         />
-        <Search />
         <Footer />
       </div>
     </div>

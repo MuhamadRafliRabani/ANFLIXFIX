@@ -1,13 +1,14 @@
 import { BookmarkSimple, Play } from "@phosphor-icons/react/dist/ssr";
 import Button from "../../ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const Home_Page = () => {
   return (
-    <div className="relative z-20 h-full min-h-56 w-full shadow-sm md:min-h-[70svh]">
-      <div className="container absolute left-4 top-12 h-full w-3/4 space-y-3 md:left-12 md:top-[45%] md:w-[20%]">
+    <div className="relative z-20 h-full min-h-48 w-full shadow-sm">
+      <div className="container absolute left-4 top-12 h-full w-3/4 space-y-3">
         <div className="">
-          <h1 className="text-3xl font-bold tracking-wide text-white md:text-5xl">
+          <h1 className="text-3xl font-bold tracking-wide text-white">
             Chainsaw Man
           </h1>
           <p className="w-full text-sm tracking-wide text-white text-opacity-90">
@@ -16,13 +17,15 @@ const Home_Page = () => {
           </p>
         </div>
         <div className="space-x-2">
-          <Button text="Watch" icon={<Play size={14} />} />
+          <Link href="anime/detail/chainsaw man/44511">
+            <Button text="Watch" icon={<Play size={14} />} />
+          </Link>
           <Button text="Collection" icon={<BookmarkSimple size={16} />} black />
         </div>
       </div>
       <div className="absolute inset-0 -z-10 h-full w-full bg-white">
         <Image
-          src="/chainsaw man.jpg"
+          src="/chainsaw man2.jpg"
           height={250}
           width={800}
           objectFit="cover"

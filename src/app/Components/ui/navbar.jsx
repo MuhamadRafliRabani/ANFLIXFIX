@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 z-[9999] flex max-h-11 w-full translate-x-0 items-center justify-between border-white border-opacity-35 bg-red-400 px-2 py-3 text-white ${change ? "bg-primary_color shadow-sm" : "border-b-[0.1px] bg-transparent"}`}
+      className={`fixed top-0 z-[9999] flex max-h-11 w-full translate-x-0 items-center justify-between border-b border-white border-opacity-35 px-2 py-3 text-white shadow-sm ${change ? "bg-primary_color shadow-sm" : "bg-transparent"}`}
     >
       <div className="flex h-full max-w-full items-center space-x-4">
         {/* Logo */}
