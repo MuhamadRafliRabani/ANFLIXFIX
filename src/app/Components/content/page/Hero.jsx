@@ -1,5 +1,6 @@
 import { BookmarkSimple, Play } from "@phosphor-icons/react/dist/ssr";
 import Button from "../../ui/button";
+import Image from "next/image";
 
 const Home_Page = () => {
   return (
@@ -20,10 +21,13 @@ const Home_Page = () => {
         </div>
       </div>
       <div className="absolute inset-0 -z-10 h-full w-full bg-white">
-        <video autoPlay muted loop className="h-full w-full object-cover">
-          <source src="/ChainsawManOp.mp4" type="video/mp4" />
-          Browsermu tidak mendukung video tag.
-        </video>
+        <Image
+          src="/chainsaw man.jpg"
+          height={250}
+          width={800}
+          objectFit="cover"
+          className="h-full w-full"
+        />
       </div>
     </div>
   );

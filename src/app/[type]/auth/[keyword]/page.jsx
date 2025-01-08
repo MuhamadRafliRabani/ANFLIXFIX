@@ -1,7 +1,6 @@
 "use client";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Slide from "@/app/Components/auth/slide";
 import Link from "next/link";
 import Oauth from "@/app/Components/auth/Oauth";
 
@@ -33,7 +32,6 @@ const Auth = ({ params }) => {
   return (
     <section className="h-svh w-svw md:p-4" id="section-form">
       <div className="bg-authBackround container box-border flex h-full min-h-full flex-1 items-center justify-center rounded-lg shadow-md md:p-4">
-        <Slide />
         <div className="h-full w-full p-36 text-white">
           <form className="max-w-lg">
             <div className="space-y-6">

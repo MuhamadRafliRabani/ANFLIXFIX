@@ -1,9 +1,8 @@
 // components/Navbar.tsx
-import { List, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
+import { List } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import NavigationLink from "./navigationLink";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { useCustomState } from "@/libs/useCustomState";
 import Search from "../Navigasi/search/Search";
 
@@ -42,11 +41,11 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 z-50 flex w-full translate-x-0 items-center justify-between gap-10 border-white border-opacity-35 bg-red-400 px-4 py-2 text-white md:px-32 md:py-4 ${change ? "bg-primary_color shadow-sm" : "border-b-[0.1px] bg-transparent"}`}
+      className={`fixed top-0 z-[9999] flex max-h-11 w-full translate-x-0 items-center justify-between border-white border-opacity-35 bg-red-400 px-2 py-3 text-white ${change ? "bg-primary_color shadow-sm" : "border-b-[0.1px] bg-transparent"}`}
     >
-      <div className="flex items-center space-x-4">
+      <div className="flex h-full max-w-full items-center space-x-4">
         {/* Logo */}
-        <Link href="/" className="text-xl font-semibold md:text-2xl">
+        <Link href="/" className="max-w-fit text-xl font-semibold">
           Kurosaw
         </Link>
       </div>
@@ -57,7 +56,7 @@ const Navbar = () => {
       <Search />
 
       {/* Login Button */}
-      <button onClick={() => toggleMenu()} className="text-white">
+      <button onClick={() => toggleMenu()} className="max-w-fit text-white">
         <List size={32} />
       </button>
     </nav>
