@@ -25,7 +25,7 @@ const Home_Page = () => {
       </div>
       <div className="absolute inset-0 -z-10 h-full w-full bg-white">
         <Image
-          src="/chainsaw man2.jpg"
+          src="/chainsaw man.jpg"
           height={250}
           width={800}
           objectFit="cover"
