@@ -5,13 +5,13 @@ import Link from "next/link";
 
 const Home_Page = () => {
   return (
-    <div className="relative z-20 h-full min-h-48 w-full shadow-sm">
+    <div className="relative z-20 h-full min-h-48 w-full shadow-sm md:min-h-72">
       <div className="container absolute left-4 top-12 h-full w-3/4 space-y-3">
         <div className="">
           <h1 className="text-3xl font-bold tracking-wide text-white">
             Chainsaw Man
           </h1>
-          <p className="w-full text-sm tracking-wide text-white text-opacity-90">
+          <p className="w-full text-sm tracking-wide text-white text-opacity-90 md:w-[40%]">
             Denji has a simple dream ~ to live a happy and peaceful life,
             spending time with a girl.
           </p>
@@ -29,7 +29,7 @@ const Home_Page = () => {
           height={250}
           width={800}
           objectFit="cover"
-          className="h-full w-full"
+          className="h-full w-full object-cover"
         />
       </div>
     </div>

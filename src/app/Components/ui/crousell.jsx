@@ -1,74 +1,106 @@
 "use client";
-import Card from "./cardAnime";
+
 import useEmblaCarousel from "embla-carousel-react";
+import { useCallback, useEffect, useState } from "react";
+import Card from "./cardAnime";
 import MangaCard from "./cardManga";
 import Guide from "../guide/guide";
 import LoadingSkeleton from "../cardSkeleton";
+import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 
 const Carousel = ({ data, header, isLoading, icon, mangaCard }) => {
-  const [emblaRef] = useEmblaCarousel({
+  const [emblaRef, emblaApi] = useEmblaCarousel({
     dragFree: true,
     align: "start",
+    slidesToScroll: mangaCard ? 1 : 3,
   });
+
+  const [isAtStart, setIsAtStart] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
+
+  const updateScrollStatus = useCallback(() => {
+    if (!emblaApi) return;
+
+    setIsAtStart(!emblaApi.canScrollPrev());
+    setIsAtEnd(!emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    updateScrollStatus();
+
+    emblaApi.on("select", updateScrollStatus);
+    emblaApi.on("reInit", updateScrollStatus);
+  }, [emblaApi, updateScrollStatus]);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  const renderSlide = (anime, i) => (
+    <div
+      key={i}
+      className={`embla__slide w-fit flex-shrink-0 ${
+        mangaCard
+          ? "h-52 max-w-sm"
+          : "h-auto w-[30vw] min-w-[120px] max-w-[180px]"
+      }`}
+    >
+      {mangaCard ? (
+        <MangaCard {...anime} />
+      ) : (
+        <Card
+          mal_id={anime?.mal_id}
+          image={
+            anime?.images?.jpg.large_image_url || anime?.images?.webp.image_url
+          }
+          title={anime.title_english || anime.title}
+          year={anime.year}
+          score={anime.score}
+          type={anime.genres[0]?.type}
+        />
+      )}
+    </div>
+  );
 
   return (
     <div className="h-fit w-full space-y-2">
-      <h3 className="flex w-full items-center text-xl font-bold tracking-wide text-white">
+      <h3 className="flex items-center text-xl font-bold tracking-wide text-white">
         {header} <span className="ms-2">{icon}</span>
       </h3>
-      <div
-        className="embla relative h-full w-full overflow-hidden"
-        ref={emblaRef}
-      >
-        <Guide message="← Slide →" />
-        <div className="embla__container flex w-full gap-2">
-          {!isLoading ? (
-            data?.map((anime, i) => (
-              <div
-                key={i}
-                className={`embla__slide flex-shrink-0 flex-grow-0 ${mangaCard ? "h-52 max-w-sm" : "h-auto w-[30vw] min-w-[120px] max-w-[180px]"}`}
-              >
-                {mangaCard ? (
-                  <MangaCard
-                    mal_id={anime?.mal_id}
-                    image={
-                      anime?.images?.jpg.large_image_url ||
-                      anime?.images?.webp.image_url
-                    }
-                    title={anime.title_english || anime.title}
-                    status={anime.status}
-                    rank={anime.rank}
-                    chapters={anime.chapters}
-                    scored={anime.scored}
-                    members={anime.members}
-                    genres={anime.genres}
-                    type={anime.genres[0]?.type}
-                  />
-                ) : (
-                  <Card
-                    mal_id={anime?.mal_id}
-                    image={
-                      anime?.images?.jpg.large_image_url ||
-                      anime?.images?.webp.image_url
-                    }
-                    title={anime.title_english || anime.title}
-                    year={anime.year}
-                    score={anime.score}
-                    type={anime.genres[0]?.type}
-                  />
-                )}
-              </div>
-            ))
-          ) : (
-            <>
-              {mangaCard ? (
-                <LoadingSkeleton crousell length={8} mangaCardSkeleton />
-              ) : (
-                <LoadingSkeleton crousell length={8} />
-              )}
-            </>
-          )}
+      <div className="embla relative h-full w-full overflow-hidden">
+        <div className="embla__viewport" ref={emblaRef}>
+          <Guide message="← Slide →" />
+          <div className="embla__container flex w-full gap-2 md:gap-3.5">
+            {!isLoading ? (
+              data?.map(renderSlide)
+            ) : (
+              <LoadingSkeleton
+                crousell
+                length={8}
+                mangaCardSkeleton={mangaCard}
+              />
+            )}
+          </div>
         </div>
+        <button
+          className={`embla__prev absolute left-0 top-1/2 w-fit rounded-full bg-white p-1 ${
+            isAtStart ? "cursor-not-allowed opacity-50" : ""
+          }`}
+          onClick={scrollPrev}
+          disabled={isAtStart}
+        >
+          <ArrowLeft size={16} />
+        </button>
+        <button
+          className={`embla__next absolute right-1 top-1/2 w-fit rounded-full bg-white p-1 md:right-4 ${
+            isAtEnd ? "cursor-not-allowed opacity-50" : ""
+          }`}
+          onClick={scrollNext}
+          disabled={isAtEnd}
+        >
+          <ArrowRight size={16} />
+        </button>
       </div>
     </div>
   );

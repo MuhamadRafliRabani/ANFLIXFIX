@@ -30,7 +30,7 @@ const ContainerAnimes = ({ icon, header, animes, isLoading }) => {
       <h3 className="flex w-full items-center text-xl font-bold tracking-wide text-white">
         {header} <span className="ms-2">{icon}</span>
       </h3>
-      <div className="flex h-auto w-full flex-wrap items-center justify-center gap-2">
+      <div className="md:grid-responsive flex h-auto w-full flex-wrap justify-center gap-1.5 md:gap-4">
         {!isLoading ? (
           dataRekomendationsAnime?.map((anime, i) => (
             <div className="h-auto w-auto flex-shrink-0" key={i}>

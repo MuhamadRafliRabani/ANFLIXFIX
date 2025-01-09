@@ -1,7 +1,7 @@
-import DetailAnimeSkeleton from "../skeleton/detailAnimeSkeleton";
+import OverviewSkeleton from "../skeleton/overviewSkeleton";
 
 const Overview = ({ anime, isLoading, type }) => {
-  if (isLoading) return <DetailAnimeSkeleton />;
+  if (isLoading) return <OverviewSkeleton />;
 
   const handleCondition = (option1, option2) => {
     if (type === "anime") {
@@ -13,28 +13,30 @@ const Overview = ({ anime, isLoading, type }) => {
   };
 
   return (
-    <div className="w-[95vw] max-w-sm overflow-hidden px-1">
-      <div className="w-full">
-        <h1 className="text-xl font-semibold text-white">Details</h1>
-        <ul className="mt-2 flex items-center gap-2 text-sm text-text_color">
+    <div className="flex w-[95vw] max-w-sm flex-wrap gap-4 overflow-hidden px-1 md:w-full md:max-w-full md:flex-nowrap">
+      <div className="w-full flex-1 md:w-[20%] md:flex-none">
+        <h1 className="text-xl font-semibold text-white md:text-2xl md:tracking-wide">
+          Details
+        </h1>
+        <ul className="my-2 flex items-center gap-2 text-sm text-white text-opacity-75 md:inline-block md:w-full md:gap-0 md:text-base">
           <div className="space-y-2">
             <li className="flex items-center gap-2">
-              <span className="min-w-14">Type :</span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
+              <span className="min-w-14 md:min-w-20">Type</span>
+              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
                 {anime?.type}
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="min-w-14">
+              <span className="min-w-14 md:min-w-20">
                 {handleCondition("Episodes", "Rank")}:
               </span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
+              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
                 {handleCondition(anime?.episodes, anime?.rank)}
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="min-w-14">Genres :</span>
-              <span className="max-w-[60%] flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
+              <span className="min-w-14 md:min-w-20">Genres</span>
+              <span className="max-w-[60%] flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white md:overflow-visible md:whitespace-normal">
                 {anime?.genres?.map((genre, i) => (
                   <span key={i}>
                     {i + 1 != anime?.genres.length
@@ -45,8 +47,8 @@ const Overview = ({ anime, isLoading, type }) => {
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="min-w-14">Year :</span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
+              <span className="min-w-14 md:min-w-20">Year</span>
+              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
                 {handleCondition(
                   type === "anime" ? anime?.year : "N/A",
                   type === "manga" ? anime?.published.prop?.from.year : "N/A",
@@ -54,26 +56,26 @@ const Overview = ({ anime, isLoading, type }) => {
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="min-w-14">Status :</span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
+              <span className="min-w-14 md:min-w-20">Status</span>
+              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
                 {anime?.status}
               </span>
             </li>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 md:mt-2">
             <li className="flex items-center gap-2">
-              <span className="min-w-14">
-                {handleCondition("Season", "Members")} :
+              <span className="min-w-14 md:min-w-20">
+                {handleCondition("Season", "Members")}
               </span>
-              <span className="overflow-autow hitespace-nowrap flex-1 text-white text-opacity-60 hover:text-white">
+              <span className="overflow-autow hitespace-nowrap flex-1 text-[0.95rem] text-white">
                 {handleCondition(anime?.season, anime?.members)}
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="min-w-14">
-                {handleCondition("Studios", "Chapters")}:
+              <span className="min-w-14 md:min-w-20">
+                {handleCondition("Studios", "Chapters")}
               </span>
-              <span className="max-w-[45%] flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
+              <span className="max-w-[45%] flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white md:overflow-visible md:whitespace-normal">
                 {handleCondition(
                   type === "anime" ? anime?.studios[0].name : "N/A",
                   type === "manga" ? anime?.chapters : "N/A",
@@ -81,10 +83,10 @@ const Overview = ({ anime, isLoading, type }) => {
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="min-w-14">
-                {handleCondition("Source", "Authors")} :{" "}
+              <span className="min-w-14 md:min-w-20">
+                {handleCondition("Source", "Authors")}
               </span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
+              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.9rem] text-white">
                 {handleCondition(
                   type === "anime" ? anime?.source : "N/A",
                   type === "manga" ? anime?.authors[0].name : "N/A",
@@ -92,28 +94,29 @@ const Overview = ({ anime, isLoading, type }) => {
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="min-w-14">Rating :</span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
+              <span className="min-w-14 md:min-w-20">Rating</span>
+              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
                 {anime?.score}
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="min-w-14">
-                {handleCondition("Duration", "Volumes")}:
+              <span className="min-w-14 md:min-w-20">
+                {handleCondition("Duration", "Volumes")}
               </span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-white text-opacity-60 hover:text-white">
+              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
                 {handleCondition(anime?.duration, anime?.volumes)}
               </span>
             </li>
           </div>
         </ul>
       </div>
-      <div className="space-y-2">
-        <h1 className="text-xl font-semibold text-white">Description</h1>
-        <p className="text-sm text-white text-opacity-60">{anime?.synopsis}</p>
-      </div>
-      <div className="">
-        {/* <h1 className="text-xl font-semibold text-white">Special For you</h1> */}
+      <div className="w-full flex-1 space-y-2 pe-1 md:w-[70%] md:px-0">
+        <h1 className="text-xl font-semibold text-white md:text-2xl md:tracking-wide">
+          Description
+        </h1>
+        <p className="text-sm text-white text-opacity-75 md:text-base">
+          {anime?.synopsis}
+        </p>
       </div>
     </div>
   );

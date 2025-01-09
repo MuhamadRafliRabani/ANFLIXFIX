@@ -16,7 +16,7 @@ const Relations = ({ relations, score, idAnime, type }) => {
       <div className="relative w-full overflow-hidden">
         <Guide message="← Slide →" />
         <div className="scrollbar-hide flex w-full gap-4 overflow-auto">
-          {relations ? (
+          {relations?.length != 0 ? (
             anime.map((item, i) => (
               <div
                 key={i}
@@ -36,7 +36,9 @@ const Relations = ({ relations, score, idAnime, type }) => {
               </div>
             ))
           ) : (
-            <LoadingSkeleton crousell length={5} />
+            <h3 className="w-full pb-2 text-center tracking-wide text-white">
+              No Relations
+            </h3>
           )}
         </div>
       </div>

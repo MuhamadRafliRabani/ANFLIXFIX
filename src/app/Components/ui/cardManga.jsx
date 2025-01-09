@@ -3,23 +3,22 @@ import Link from "next/link";
 
 const MangaCard = ({
   mal_id,
-  image,
-  title,
+  images,
+  title_english,
   status,
   rank,
   chapters,
   scored,
   members,
   genres,
-  type,
 }) => {
   return (
-    <Link href={`/${type}/detail/${title}/${mal_id}`}>
-      <div className="flex h-full w-full items-center overflow-hidden rounded-lg border bg-second_color shadow-lg">
+    <Link href={`/manga/detail/${title_english}/${mal_id}`}>
+      <div className="flex h-full w-full items-center overflow-hidden rounded-lg border bg-second_color shadow-lg md:w-[100vw] md:max-w-sm">
         {/* Manga Image */}
         <img
-          src={image}
-          alt={title || "N/A"}
+          src={images.images?.jpg.large_image_url || images?.webp.image_url}
+          alt={title_english || "N/A"}
           className="h-full w-2/5 rounded-br-lg rounded-tr-lg object-cover"
         />
 
@@ -36,7 +35,7 @@ const MangaCard = ({
 
           {/* Title */}
           <h3 className="w-2/3 truncate text-xl font-semibold text-white">
-            {title || "N/A"}
+            {title_english || "N/A"}
           </h3>
 
           {/* Rating and Ranking */}

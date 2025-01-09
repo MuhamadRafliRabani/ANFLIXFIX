@@ -32,6 +32,7 @@ const Anime = ({ params }) => {
           score={anime?.data.score}
           animeId={mal_id}
           status={anime?.data.status}
+          trailer={anime?.data.trailer.embed_url}
           isLoading={isLoading}
         />
         <HeadContent type={type} />
