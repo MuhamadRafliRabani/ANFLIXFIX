@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Button from "../ui/button";
 import { listNav } from "@/data/listNav";
+import Button from "./ui/button";
 
 const NavigationLink = ({ open, setisopen }) => {
   return (
