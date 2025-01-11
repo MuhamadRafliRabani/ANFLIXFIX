@@ -15,7 +15,7 @@ const CatalogPage = ({ params }) => {
   const [typeData, setTypeData] = useCustomState(type);
   const [isFilterOpen, setIsFilterOpen] = useCustomState(false);
 
-  const { Genre, Type, Rating, Year, Status, OrderBy, Sort } = filter;
+  const { Genres, Type, Rating, Year, Status, OrderBy, Sort } = filter;
 
   const decodeKeyword = decodeURI(keyword);
 
@@ -32,7 +32,7 @@ const CatalogPage = ({ params }) => {
     ].join("&");
 
     const endPointSearch = `/${typeData}?q=${decodeKeyword}&${baseParams}`;
-    const endPointSeries = `/${typeData}?genres=${Genre || ""}&${baseParams}`;
+    const endPointSeries = `/${typeData}?genres=${Genres || ""}&${baseParams}`;
 
     return keyword === "series" ? endPointSeries : endPointSearch;
   };
@@ -66,7 +66,6 @@ const CatalogPage = ({ params }) => {
       <FilterComponent
         isOpen={isFilterOpen}
         setIsOpen={toggleFilterOpen}
-        action="searchAnime"
         typeData={typeData}
       />
 

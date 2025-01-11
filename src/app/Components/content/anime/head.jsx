@@ -23,8 +23,10 @@ const HeadAnime = ({ image, title, score, isLoading, status, trailer }) => {
           />
         </div>
         {/* content headers */}
-        <div className="flex h-full w-4/6 border-separate flex-col px-2 pt-6 text-sm font-medium text-white md:w-2/6 md:border-e-[0.5px] md:border-white md:border-opacity-55">
-          <h3 className="text-xl font-semibold md:text-2xl">{title}</h3>
+        <div className="flex h-full w-4/6 flex-col px-2 pt-6 text-sm font-medium text-white md:w-2/6">
+          <h3 className="text-xl font-semibold hover:text-yellow-400 md:text-2xl">
+            {title}
+          </h3>
           <div className="mt-1 flex items-center space-x-3 md:text-base">
             <span className="flex items-center gap-1 text-text_color">
               <TelevisionSimple className="size-4" />
@@ -34,29 +36,31 @@ const HeadAnime = ({ image, title, score, isLoading, status, trailer }) => {
               <Star className="size-4" /> {score}
             </span>
           </div>
-          <div className="mt-auto flex w-full space-x-1">
-            <Button black icon={<Eye className="size-4" />} text="Watching" />
+          <div className="mt-auto flex w-full space-x-1 font-semibold">
+            <Button second icon={<Eye className="size-4" />} text="Watching" />
             <Button
-              black
               icon={<BookmarkSimple className="size-4" />}
               text="To Watch"
+              width="bg-transparent border border-white text-white"
             />
           </div>
         </div>
 
-        <div className="mx-auto hidden h-full w-[30%] md:inline-block">
-          <iframe
-            width="560"
-            height="315"
-            src={trailer}
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-            className="h-full w-full rounded-md"
-          ></iframe>
-        </div>
+        {trailer && (
+          <div className="mx-auto hidden h-full w-[30%] md:inline-block">
+            <iframe
+              width="560"
+              height="315"
+              src={trailer}
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              className="h-full w-full rounded-md"
+            ></iframe>
+          </div>
+        )}
       </div>
     </div>
   );

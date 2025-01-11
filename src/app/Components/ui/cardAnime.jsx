@@ -3,8 +3,8 @@ import Link from "next/link";
 const AnimeCard = ({ mal_id, image, title, year, score, type }) => {
   return (
     <Link
-      href={`/${type}/detail/${title}/${mal_id}`}
-      className="w-fit bg-fuchsia-400"
+      href={`/${type}/detail/${title == "[Oshi no Ko]" ? "Oshi no Ko" : title}/${mal_id}`}
+      className="w-fit"
     >
       <div className="relative h-[60vh] max-h-[180px] min-h-44 w-[30vw] min-w-[120px] max-w-[140px] md:h-[80vh] md:w-[50vw]">
         {/* Bagian Gambar */}

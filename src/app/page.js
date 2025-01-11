@@ -12,16 +12,16 @@ import {
 
 const Home = () => {
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="w-full">
       <Home_Page />
 
-      <div className="relative z-30 min-h-screen w-screen space-y-4 overflow-x-hidden p-2">
+      <div className="w-screen space-y-4 overflow-x-hidden p-2 md:absolute md:inset-x-0 md:top-[53%] md:z-30">
         {/* airing anime */}
         <ContainerContent
           header="Airing Now"
           typeContent="crousell"
           endPoint="/seasons/now"
-          icon={<TelevisionSimple size={20} />}
+          icon={<TelevisionSimple weight="fill" size={20} />}
         />
         <ContainerContent
           typeContent="manga"
@@ -33,14 +33,14 @@ const Home = () => {
         <ContainerContent
           typeContent="crousell"
           header="Special For You"
-          icon={<ShootingStar size={20} />}
+          icon={<ShootingStar weight="fill" size={20} />}
           endPoint="/seasons/2023/fall?limit=10"
         />
         {/* rekomendation anime */}
         <ContainerContent
           typeContent="listCard"
           header="Rekomendation Anime"
-          icon={<StarFour size={20} />}
+          icon={<StarFour weight="fill" size={20} />}
           endPoint="/recommendations/anime"
         />
         <Footer />

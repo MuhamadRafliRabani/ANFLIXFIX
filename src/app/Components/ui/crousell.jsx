@@ -7,6 +7,7 @@ import MangaCard from "./cardManga";
 import Guide from "../guide/guide";
 import LoadingSkeleton from "../cardSkeleton";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import TitleHead from "./titleHead";
 
 const Carousel = ({ data, header, isLoading, icon, mangaCard }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -65,19 +66,17 @@ const Carousel = ({ data, header, isLoading, icon, mangaCard }) => {
 
   return (
     <div className="h-fit w-full space-y-2">
-      <h3 className="flex items-center text-xl font-bold tracking-wide text-white">
-        {header} <span className="ms-2">{icon}</span>
-      </h3>
+      <TitleHead header={header} icon={icon} />
       <div className="embla relative h-full w-full overflow-hidden">
         <div className="embla__viewport" ref={emblaRef}>
           <Guide message="← Slide →" />
-          <div className="embla__container flex w-full gap-2 md:gap-3.5">
+          <div className="embla__container flex w-full gap-2 shadow-lg md:gap-3.5">
             {!isLoading ? (
               data?.map(renderSlide)
             ) : (
               <LoadingSkeleton
                 crousell
-                length={8}
+                length={10}
                 mangaCardSkeleton={mangaCard}
               />
             )}

@@ -2,14 +2,14 @@
 
 import { cn } from "@/libs/cn";
 
-const Button = ({ action, black, text, icon, width }) => {
+const Button = ({ action, second, text, icon, width }) => {
   return (
     <button
       onClick={action}
       className={cn(
-        `whitespace-nowrap rounded-lg bg-white px-3 py-2 text-xs font-medium text-black shadow-sm ${width} transition-all duration-200`,
+        `whitespace-nowrap rounded-lg bg-white px-3 py-2 text-xs font-medium text-black shadow-sm ${width} transition-all duration-200 hover:brightness-105`,
         {
-          "bg-second_color text-white hover:brightness-110": black,
+          "bg-yellow-400 text-white transition-all hover:bg-yellow-500": second,
         },
       )}
     >

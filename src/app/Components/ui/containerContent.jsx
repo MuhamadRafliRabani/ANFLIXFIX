@@ -1,7 +1,7 @@
 "use client";
 import Carousel from "./crousell";
 import { FetchAnime } from "@/utility/Api";
-import ContainerAnimes from "./containerAnimes";
+import ListAnimes from "./listAnime";
 
 const ContainerContent = ({ endPoint, header, icon, typeContent }) => {
   const { data: animes, isLoading } = FetchAnime(endPoint);
@@ -19,7 +19,7 @@ const ContainerContent = ({ endPoint, header, icon, typeContent }) => {
 
   if (typeContent === "listCard") {
     return (
-      <ContainerAnimes
+      <ListAnimes
         animes={animes}
         header={header}
         icon={icon}

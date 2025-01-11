@@ -34,7 +34,7 @@ const MangaCard = ({
           <p className="text-sm text-gray-700">{chapters || "N/A"} chapters</p>
 
           {/* Title */}
-          <h3 className="w-2/3 truncate text-xl font-semibold text-white">
+          <h3 className="w-2/3 truncate text-xl font-semibold text-white transition-all hover:text-yellow-400">
             {title_english || "N/A"}
           </h3>
 
@@ -56,7 +56,7 @@ const MangaCard = ({
             {genres?.map((genre, index) => (
               <span
                 key={index}
-                className="rounded-lg bg-gray-200 px-2 py-1 text-xs text-gray-700"
+                className="rounded-lg bg-white/20 px-2 py-1 text-xs text-white hover:bg-white/30 hover:text-yellow-400"
               >
                 {genre.name}
               </span>

@@ -3,7 +3,7 @@ import { create } from "zustand";
 export const useFilter = create((set) => ({
   filter: {
     Season: null,
-    Genres: "none",
+    Genres: null,
     Rating: null,
     Type: null,
     Year: null,
