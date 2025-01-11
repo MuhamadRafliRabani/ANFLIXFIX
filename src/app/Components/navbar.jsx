@@ -1,11 +1,11 @@
 "use client";
 import { List } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import NavigationLink from "./navigationLink";
+import NavigationLink from "./navigasi/navigationLink";
 import { useEffect } from "react";
 import { useCustomState } from "@/libs/useCustomState";
-import Search from "../Navigasi/search/Search";
-import Button from "../ui/button";
+import Search from "./Navigasi/search/Search";
+import Button from "./ui/button";
 
 const Navbar = () => {
   const [open, setIsopen] = useCustomState(false);

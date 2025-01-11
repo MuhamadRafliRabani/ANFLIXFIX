@@ -4,7 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SessionProvider } from "next-auth/react";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
-import Navbar from "@/app/Components/navigasi/navbar.jsx";
+import Navbar from "@/app/Components/navbar.jsx";
 
 const queryClient = new QueryClient();
 
