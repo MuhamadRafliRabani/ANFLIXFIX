@@ -36,15 +36,15 @@ const Home_Page = () => {
         <div class="mt-3 flex space-x-4 tracking-wide md:mt-5 md:tracking-normal">
           <Link
             href="/anime/detail/chainsaw man/44511"
-            class="rounded-lg bg-yellow-400 px-3 py-2 text-sm font-medium text-white shadow-md transition-all hover:bg-yellow-500 md:text-[0.91rem] md:text-black/80 md:hover:text-white"
+            class="rounded-lg bg-yellow-400 px-3 py-2 text-[0.65rem] font-medium text-white shadow-md transition-all hover:bg-yellow-500 md:text-[0.81rem] md:text-black/80 md:hover:text-white"
           >
-            <span>Learn More</span>
+            <span className="pt-1">Learn More</span>
           </Link>
-          <button class="flex items-center justify-center gap-2 rounded-lg border border-white px-3 py-2 text-[0.91rem] font-medium transition-all">
+          <button class="flex items-center justify-center gap-2 rounded-lg border border-white px-3 py-2 text-[0.65rem] font-medium transition-all md:text-[0.81rem]">
             <span>
-              <BookmarkSimple size={16} className="mix-blend-darken" />
+              <BookmarkSimple className="size-4 mix-blend-darken" />
             </span>
-            <span>Favorit Saya</span>
+            <span>To Watch</span>
           </button>
         </div>
       </div>

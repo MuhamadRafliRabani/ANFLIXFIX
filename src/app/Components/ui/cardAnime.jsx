@@ -1,16 +1,32 @@
 import Link from "next/link";
 
-const AnimeCard = ({ mal_id, image, title, year, score, type }) => {
+const AnimeCard = ({
+  mal_id,
+  image,
+  title = "Unknown Title",
+  year = "N/A",
+  score,
+  type,
+  header,
+}) => {
+  // Buat conditional class untuk ukuran berdasarkan header
+  const containerClass =
+    header === "Rekomendation Anime"
+      ? "h-[100vh] max-h-[155px] w-[110.5px]"
+      : "h-[40vh] max-h-[160px] w-[30vw] min-w-[115px] max-w-[130px]";
+
   return (
     <Link
-      href={`/${type}/detail/${title == "[Oshi no Ko]" ? "Oshi no Ko" : title}/${mal_id}`}
-      className="w-fit"
+      href={`/${type}/detail/${title === "[Oshi no Ko]" ? "Oshi no Ko" : title}/${mal_id}`}
+      className="h-fit w-auto"
     >
-      <div className="relative h-[60vh] max-h-[180px] min-h-44 w-[30vw] min-w-[120px] max-w-[140px] md:h-[80vh] md:w-[50vw]">
+      <div
+        className={`relative md:h-[80vh] md:max-h-[180px] md:w-[50vw] md:min-w-[120px] md:max-w-[140px] ${containerClass}`}
+      >
         {/* Bagian Gambar */}
         <img
           src={image}
-          alt={title || "Anime Poster"}
+          alt={title}
           className="h-full w-full rounded-lg object-cover"
           loading="lazy"
         />
@@ -26,7 +42,7 @@ const AnimeCard = ({ mal_id, image, title, year, score, type }) => {
             {/* Tahun dan Skor */}
             {(year || score) && (
               <span className="truncate text-xs text-gray-300">
-                {year || "N/A"} {score ? `· ${score} ` : ""}
+                {year} {score && `· ${score}`}
               </span>
             )}
           </div>

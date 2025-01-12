@@ -27,12 +27,12 @@ const ListAnimes = ({ icon, header, animes, isLoading }) => {
   }, [handleDataRekomed]);
 
   return (
-    <div className="w-full space-y-2 text-base font-medium text-white">
+    <div className="w-full min-w-full space-y-2 text-base font-medium text-white">
       <TitleHead header={header} icon={icon} />
-      <div className="md:grid-responsive flex h-auto w-full flex-wrap justify-center gap-1.5 md:gap-4">
+      <div className="flex h-auto w-full flex-wrap justify-center gap-1 md:grid md:grid-cols-[repeat(auto-fit,minmax(120px,1fr))] md:gap-x-5 md:gap-y-3 md:pe-[1.80rem] md:ps-0">
         {!isLoading ? (
           dataRekomendationsAnime?.map((anime, i) => (
-            <div className="h-auto w-auto flex-shrink-0 shadow-lg" key={i}>
+            <div className="h-fit w-fit flex-shrink-0 shadow-lg" key={i}>
               <Card
                 mal_id={anime?.mal_id}
                 image={anime?.images?.jpg.large_image_url}
@@ -40,6 +40,7 @@ const ListAnimes = ({ icon, header, animes, isLoading }) => {
                 year={anime.year}
                 score={anime.score}
                 type={icon ? "anime" : anime?.genres[0]?.type}
+                header={header}
               />
             </div>
           ))

@@ -45,7 +45,7 @@ const Search = () => {
         </button>
         <button
           type="button"
-          className="h-[38px] rounded-br-md rounded-tr-md bg-white/30 px-2"
+          className="h-[38px] rounded-br-md rounded-tr-md bg-yellow-400 px-2 md:bg-white/30"
           onClick={handleSubmit}
         >
           <MagnifyingGlass size={16} className="z-50 size-6" />

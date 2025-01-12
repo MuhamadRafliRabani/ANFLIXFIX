@@ -38,6 +38,10 @@ const Navbar = () => {
       }`}
     >
       <div className="flex h-full max-w-fit items-center space-x-4">
+        <button onClick={toggleMenu} className="max-w-fit text-white md:hidden">
+          <List size={32} />
+        </button>
+
         {/* Logo */}
         <Link
           href="/"
@@ -53,9 +57,6 @@ const Navbar = () => {
       <Search />
 
       {/* Login Button */}
-      <button onClick={toggleMenu} className="max-w-fit text-white md:hidden">
-        <List size={32} />
-      </button>
 
       <div className="hidden min-w-60 text-base md:flex md:items-center md:justify-evenly md:gap-2">
         <Button action={toggleMenu} text="Sign In" width="w-full " />

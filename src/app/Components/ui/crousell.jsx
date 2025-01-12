@@ -70,7 +70,7 @@ const Carousel = ({ data, header, isLoading, icon, mangaCard }) => {
       <div className="embla relative h-full w-full overflow-hidden">
         <div className="embla__viewport" ref={emblaRef}>
           <Guide message="← Slide →" />
-          <div className="embla__container flex w-full gap-2 shadow-lg md:gap-3.5">
+          <div className="embla__container flex w-full gap-1.5 shadow-lg md:gap-3.5">
             {!isLoading ? (
               data?.map(renderSlide)
             ) : (
