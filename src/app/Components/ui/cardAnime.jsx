@@ -7,13 +7,8 @@ const AnimeCard = ({
   year = "N/A",
   score,
   type,
-  header,
 }) => {
   // Buat conditional class untuk ukuran berdasarkan header
-  const containerClass =
-    header === "Rekomendation Anime"
-      ? "h-[100vh] max-h-[155px] w-[110.5px]"
-      : "h-[40vh] max-h-[160px] w-[30vw] min-w-[115px] max-w-[130px]";
 
   return (
     <Link
@@ -21,7 +16,7 @@ const AnimeCard = ({
       className="h-fit w-auto"
     >
       <div
-        className={`relative md:h-[80vh] md:max-h-[180px] md:w-[50vw] md:min-w-[120px] md:max-w-[140px] ${containerClass}`}
+        className={`relative h-[100vh] max-h-[155px] w-[110.5px] md:h-[80vh] md:max-h-[180px] md:w-[50vw] md:min-w-[120px] md:max-w-[140px]`}
       >
         {/* Bagian Gambar */}
         <img

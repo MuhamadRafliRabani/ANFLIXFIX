@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useCustomState } from "@/libs/useCustomState";
 import Search from "./Navigasi/search/Search";
-import Button from "./ui/button";
 import NavigationLink from "./navigationLink";
+import Auth from "./auth";
 
 const Navbar = () => {
   const [open, setIsopen] = useCustomState(false);
@@ -58,10 +58,7 @@ const Navbar = () => {
 
       {/* Login Button */}
 
-      <div className="hidden min-w-60 text-base md:flex md:items-center md:justify-evenly md:gap-2">
-        <Button action={toggleMenu} text="Sign In" width="w-full " />
-        <Button action={toggleMenu} text="Sign Out" width="w-full " second />
-      </div>
+      <Auth />
     </nav>
   );
 };

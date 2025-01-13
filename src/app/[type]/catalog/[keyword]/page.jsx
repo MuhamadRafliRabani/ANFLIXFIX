@@ -19,7 +19,6 @@ const CatalogPage = ({ params }) => {
 
   const decodeKeyword = decodeURI(keyword);
 
-  // Helper Functions
   const generateEndpoint = () => {
     const baseParams = [
       `type=${Type || ""}`,

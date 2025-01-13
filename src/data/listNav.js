@@ -29,7 +29,7 @@ export const listNav = [
   },
   {
     name: "Dashboard",
-    url: "/",
+    url: "/user/dashboard",
     icon: <PersonSimple size={16} weight="fill" />,
   },
 ];
