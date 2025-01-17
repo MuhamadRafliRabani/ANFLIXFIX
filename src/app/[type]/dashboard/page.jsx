@@ -89,7 +89,7 @@ export default function Library() {
             <ListAnimes
               animes={anime?.filteredDataAnime}
               header="anime"
-              icon={<TelevisionSimple size={16} />}
+              icon={<TelevisionSimple size={16} weight="fill" />}
               isLoading={isLoadingAnime}
             />
           </div>
@@ -97,7 +97,7 @@ export default function Library() {
             <ListAnimes
               animes={anime?.filteredDataManga}
               header="manga"
-              icon={<BookOpen size={16} />}
+              icon={<BookOpen size={16} weight="fill" />}
               isLoading={isLoadingManga}
             />
           </div>
@@ -105,7 +105,7 @@ export default function Library() {
             <ListAnimes
               animes={anime.filteredDataPeople}
               header="people"
-              icon={<User size={16} />}
+              icon={<User size={16} weight="fill" />}
               isLoading={isLoadingPeople}
             />
           </div>
