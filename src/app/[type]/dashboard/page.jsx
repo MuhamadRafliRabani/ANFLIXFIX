@@ -4,7 +4,11 @@ import ListAnimes from "@/app/Components/ui/listAnime";
 import { userSessions } from "@/libs/auth-session";
 import { useContent } from "@/store/store";
 import { FetchAnime } from "@/utility/Get";
-import { TelevisionSimple } from "@phosphor-icons/react/dist/ssr";
+import {
+  BookOpen,
+  TelevisionSimple,
+  User,
+} from "@phosphor-icons/react/dist/ssr";
 import { useRouter } from "next/navigation";
 import { useEffect, useCallback, useState } from "react";
 
@@ -93,7 +97,7 @@ export default function Library() {
             <ListAnimes
               animes={anime?.filteredDataManga}
               header="manga"
-              icon={<TelevisionSimple size={16} />}
+              icon={<BookOpen size={16} />}
               isLoading={isLoadingManga}
             />
           </div>
@@ -101,7 +105,7 @@ export default function Library() {
             <ListAnimes
               animes={anime.filteredDataPeople}
               header="people"
-              icon={<TelevisionSimple size={16} />}
+              icon={<User size={16} />}
               isLoading={isLoadingPeople}
             />
           </div>

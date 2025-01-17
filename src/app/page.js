@@ -15,8 +15,8 @@ const Home = () => {
       <Home_Page />
 
       <div className="w-screen space-y-4 overflow-x-hidden p-1 md:absolute md:inset-x-0 md:top-[53%] md:z-30">
+        {/* airing anime */}
         <section id="Airing Now" className="md:px-2">
-          {/* airing anime */}
           <ContainerContent
             header="Airing Now"
             typeContent="crousell"
