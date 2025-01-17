@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useCallback, useEffect } from "react";
 import Card from "./cardAnime";
 import useEmblaCarousel from "embla-carousel-react";
@@ -16,7 +17,6 @@ const Characters = ({ characters, type }) => {
 
   const updateScrollStatus = useCallback(() => {
     if (!emblaApi) return;
-
     setIsAtStart(!emblaApi.canScrollPrev());
     setIsAtEnd(!emblaApi.canScrollNext());
   }, [emblaApi]);
@@ -33,12 +33,38 @@ const Characters = ({ characters, type }) => {
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
+  const renderCardContent = (anime) => {
+    const isPerson = type === "people";
+
+    const image = isPerson
+      ? anime?.anime?.images?.jpg?.image_url
+      : anime?.voice_actors?.[0]?.person?.images?.jpg?.image_url ||
+        "/placeholder.png";
+
+    const title = isPerson
+      ? anime?.anime?.title
+      : anime?.voice_actors?.[0]?.person?.name;
+
+    const year = isPerson ? null : "seiyu / voice actors";
+
+    const url = isPerson ? anime?.url : anime?.voice_actors?.[0]?.person?.url;
+
+    return (
+      <Card
+        idAnime={anime.mal_id}
+        image={image}
+        title={title}
+        year={year}
+        url={url}
+      />
+    );
+  };
+
   return (
     <div className="w-full">
       <h3 className="-mt-2 pb-2 text-xl font-semibold text-white">
         Characters
       </h3>
-
       <div className="embla relative w-full overflow-hidden">
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container flex w-full gap-4">
@@ -50,25 +76,16 @@ const Characters = ({ characters, type }) => {
                 <Card
                   idAnime={anime.mal_id}
                   image={
-                    anime?.character?.images.webp.image_url ||
-                    anime?.character?.images.jpg.image_url
+                    anime?.character?.images?.jpg?.image_url ||
+                    anime?.character?.images?.webp?.image_url
                   }
-                  title={anime?.character.name}
-                  year={anime.role}
+                  title={anime?.character?.name}
+                  year={anime?.role}
                 />
                 <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  {type === "anime" && (
-                    <Card
-                      idAnime={anime.mal_id}
-                      image={
-                        anime?.voice_actors[0]?.person?.images.jpg.image_url ||
-                        "/placeholder.png"
-                      }
-                      title={anime?.voice_actors[0]?.person.name}
-                      year="seiyu / voice actors"
-                      url={anime?.voice_actors[0]?.person.url}
-                    />
-                  )}
+                  {type === "anime" || type === "people"
+                    ? renderCardContent(anime)
+                    : null}
                 </div>
               </div>
             ))}

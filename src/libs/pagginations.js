@@ -5,6 +5,8 @@ import { useState } from "react";
 const Pagination = ({ totalPages, onPageChange, pageNow }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
+  if (!totalPages) return null;
+
   const handlePageChange = (page) => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);

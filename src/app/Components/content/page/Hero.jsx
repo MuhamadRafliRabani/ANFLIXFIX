@@ -1,5 +1,4 @@
-import { BookmarkSimple } from "@phosphor-icons/react/dist/ssr";
-import Link from "next/link";
+import BtnAddAnimeHero from "./btnAddAnimeHero";
 
 const Home_Page = () => {
   return (
@@ -33,20 +32,7 @@ const Home_Page = () => {
           against supernatural forces to survive.
         </p>
 
-        <div class="mt-3 flex space-x-4 tracking-wide md:mt-5 md:tracking-normal">
-          <Link
-            href="/anime/detail/chainsaw man/44511"
-            class="rounded-lg bg-yellow-400 px-3 py-2 text-[0.65rem] font-medium text-white shadow-md transition-all hover:bg-yellow-500 md:text-[0.81rem] md:text-black/80 md:hover:text-white"
-          >
-            <span className="pt-1">Learn More</span>
-          </Link>
-          <button class="flex items-center justify-center gap-2 rounded-lg border border-white px-3 py-2 text-[0.65rem] font-medium transition-all md:text-[0.81rem]">
-            <span>
-              <BookmarkSimple className="size-4 mix-blend-darken" />
-            </span>
-            <span>To Watch</span>
-          </button>
-        </div>
+        <BtnAddAnimeHero />
       </div>
     </div>
   );

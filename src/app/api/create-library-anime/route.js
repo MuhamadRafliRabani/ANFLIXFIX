@@ -1,10 +1,22 @@
-import { prisma } from "@/libs/prismaClient";
+import addAnimeToDb from "@/utility/addAnimeToDb";
+import { checkExistingLibrary } from "@/utility/existingLibrary";
 
 export async function POST(req) {
   try {
     const body = await req.json();
 
-    const { mal_id, email, images, title, score, year, status } = body;
+    const { mal_id, email, images, title, score, year, status, type } = body;
+
+    const data = {
+      mal_id,
+      email,
+      images,
+      title,
+      score,
+      year,
+      status,
+      type,
+    };
 
     if (!mal_id || !email || !title) {
       return new Response(
@@ -12,50 +24,23 @@ export async function POST(req) {
           status: 400,
           success: false,
           message: "Missing required fields: mal_id, email, or title",
+          body,
         }),
         { status: 400 },
       );
     }
 
-    const existingLibrary = await prisma.library.findFirst({
-      where: { mal_id, email },
-    });
+    // check if anime is already exist in database
+    const animeExist = await checkExistingLibrary(mal_id, email);
 
-    if (existingLibrary) {
-      return new Response(
-        JSON.stringify({
-          status: 409,
-          success: false,
-          message: "Anime already exists in your library",
-        }),
-        { status: 409 },
-      );
+    if (animeExist) {
+      return animeExist;
     }
 
-    const createCollection = await prisma.library.create({
-      data: {
-        mal_id,
-        email,
-        images,
-        title,
-        score,
-        year,
-        status,
-      },
-    });
+    const addAnime = await addAnimeToDb(data);
 
-    // Response sukses
-    return new Response(
-      JSON.stringify({
-        status: 200,
-        success: true,
-        data: createCollection,
-      }),
-      { status: 200 },
-    );
+    return addAnime;
   } catch (error) {
-    console.error("Error add collection:", error);
-
     return new Response(
       JSON.stringify({
         status: 500,

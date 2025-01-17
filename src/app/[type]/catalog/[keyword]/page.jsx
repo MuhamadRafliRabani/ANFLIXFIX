@@ -2,18 +2,20 @@
 
 import { CaretDown, CaretUp } from "@phosphor-icons/react";
 import { useFilter, usePage } from "@/store/store";
-import { useCustomState } from "@/libs/useCustomState";
 import FilterComponent from "@/app/Components/ui/filterItem";
 import ContainerContent from "@/app/Components/ui/containerContent";
+import { useRouter } from "next/navigation";
+import { CaretUpDown } from "@phosphor-icons/react/dist/ssr";
+import { useEffect, useState } from "react";
 
 const CatalogPage = ({ params }) => {
   // States and Stores
-  const { page, setPage } = usePage();
-  const { filter, setFilter } = useFilter();
+  const router = useRouter();
   const { keyword, type } = params;
-
-  const [typeData, setTypeData] = useCustomState(type);
-  const [isFilterOpen, setIsFilterOpen] = useCustomState(false);
+  const { page, setPage } = usePage();
+  const { filter, setFilter, resetFilter } = useFilter();
+  const [selectedType, setSelectedType] = useState(type);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const { Genres, Type, Rating, Year, Status, OrderBy, Sort } = filter;
 
@@ -21,6 +23,7 @@ const CatalogPage = ({ params }) => {
 
   const generateEndpoint = () => {
     const baseParams = [
+      `genres=${Genres || ""}`,
       `type=${Type || ""}`,
       `rating=${Rating || ""}`,
       `year=${Year || ""}`,
@@ -30,56 +33,83 @@ const CatalogPage = ({ params }) => {
       `page=${page || 1}`,
     ].join("&");
 
-    const endPointSearch = `/${typeData}?q=${decodeKeyword}&${baseParams}`;
-    const endPointSeries = `/${typeData}?genres=${Genres || ""}&${baseParams}`;
+    const endPointSearch = `/${type}?q=${decodeKeyword}&${baseParams}`;
+    const endPointSeries = `/${type}?&${baseParams}`;
+
+    if (type === "people")
+      return `/people?q=${decodeKeyword == "series" ? "" : decodeKeyword}&page=${page}`;
 
     return keyword === "series" ? endPointSeries : endPointSearch;
   };
 
-  const resetFilterState = () => {
-    setFilter({
-      Genre: null,
-      Type: null,
-      Rating: null,
-      Year: null,
-      Status: null,
-      OrderBy: "score",
-      Sort: "desc",
-    });
-  };
-
   const toggleFilterOpen = () => setIsFilterOpen((prev) => !prev);
 
-  const handleTypeDataSwitch = () => {
-    setTypeData((prev) => (prev === "anime" ? "manga" : "anime"));
+  const handleTypeDataSwitch = (selectedType) => {
+    setSelectedType(selectedType);
     setPage(1);
-    resetFilterState();
     setIsFilterOpen(false);
     window.scrollTo(0, 0);
+    router.push(
+      `/${selectedType}/catalog/${decodeKeyword == "series" ? "series" : decodeKeyword}`,
+    );
   };
 
-  // Render
+  useEffect(() => {
+    if (setFilter) {
+      resetFilter({
+        Genre: null,
+        Type: null,
+        Rating: null,
+        Year: null,
+        Status: null,
+        Order_by: "score",
+        Sort: "desc",
+      });
+    }
+  }, []);
+
   return (
     <div className="relative min-h-screen text-white md:px-10">
       {/* Filter Component */}
       <FilterComponent
         isOpen={isFilterOpen}
         setIsOpen={toggleFilterOpen}
-        typeData={typeData}
+        typeData={type}
       />
 
-      {/* Catalog Header */}
       <div className="container mb-4 mt-16 px-1">
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-bold">
-            Catalog{" "}
-            <span
-              onClick={handleTypeDataSwitch}
-              className="border-slide cursor-pointer bg-gradient-to-b from-yellow-400 to-orange-400 bg-clip-text text-transparent"
+          <div className="relative flex w-fit items-center">
+            <h1 className="text-xl font-bold">Catalog</h1>
+            <select
+              value={selectedType}
+              onChange={(e) => handleTypeDataSwitch(e.target.value)}
+              className="custom-select border-slide relative w-full min-w-[200px] cursor-pointer appearance-none bg-transparent ps-1.5 text-lg font-medium text-yellow-400 focus:outline-none md:min-w-[300px]"
             >
-              {typeData}
-            </span>
-          </h1>
+              <option
+                value="anime"
+                className="bg-primary_color text-sm md:text-lg"
+              >
+                anime
+              </option>
+              <option
+                value="manga"
+                className="bg-primary_color text-sm md:text-lg"
+              >
+                manga
+              </option>
+              <option
+                value="people"
+                className="bg-primary_color text-sm md:text-lg"
+              >
+                people
+              </option>
+            </select>
+            <CaretUpDown
+              size={16}
+              className="absolute right-[40%] -z-10 md:right-[210px] md:top-[0.45rem]"
+            />
+          </div>
 
           <button
             className="border-slide flex cursor-pointer items-center gap-1 bg-transparent"

@@ -51,7 +51,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <NavigationLink open={open} setisopen={setIsopen} />
+      <NavigationLink open={open} setIsopen={setIsopen} />
 
       {/* Search Bar */}
       <Search />

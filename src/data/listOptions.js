@@ -21,10 +21,7 @@ export const ListOptionLibrary = [
     title: "Watching",
   },
   {
-    title: "To Watch",
-  },
-  {
-    title: "Watched",
+    title: "Favorites",
   },
   {
     title: "Collections",

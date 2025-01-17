@@ -1,6 +1,7 @@
 export const FiltersAnime = [
   {
-    Name: "Genres",
+    name: "Genres",
+    nameDetail: "first_row",
     content: [
       { label: "None", value: "" },
       { label: "Action", value: 1 },
@@ -52,7 +53,7 @@ export const FiltersAnime = [
     ],
   },
   // {
-  //   Name: "Season",
+  //   name: "Season",
   //   content: [
   //     { label: "None", value: "" },
   //     { label: "Winter", value: "winter" },
@@ -63,19 +64,21 @@ export const FiltersAnime = [
   //   ],
   // },
   {
-    Name: "Rating",
+    name: "Rating",
+    nameDetail: "first_row",
     content: [
       { label: "None", value: "" },
-      { label: "G - All Ages", value: "g" },
-      { label: "PG - Children", value: "pg" },
-      { label: "PG-13 - Teens 13", value: "pg13" },
-      { label: "R - 17+", value: "r17" },
-      { label: "R+ - Mild Nudity", value: "r" },
-      { label: "Rx - Hentai", value: "rx" },
+      { label: "All Ages", value: "g" },
+      { label: "Children", value: "pg" },
+      { label: "13+", value: "pg13" },
+      { label: "17+", value: "r17" },
+      { label: "Adult", value: "r" },
+      { label: "Hentai", value: "rx" },
     ],
   },
   {
-    Name: "Type",
+    name: "Type",
+    nameDetail: "first_row",
     content: [
       { label: "None", value: "" },
       { label: "TV", value: "tv" },
@@ -88,7 +91,8 @@ export const FiltersAnime = [
   },
 
   {
-    Name: "Status",
+    name: "Status",
+    nameDetail: "second_row",
     content: [
       { label: "None", value: "" },
       { label: "Airing", value: "airing" },
@@ -97,7 +101,8 @@ export const FiltersAnime = [
     ],
   },
   {
-    Name: "Order_by",
+    name: "Order_by",
+    nameDetail: "second_row",
     content: [
       { label: "None", value: "" },
       { label: "Score", value: "score" },
@@ -111,7 +116,8 @@ export const FiltersAnime = [
     ],
   },
   {
-    Name: "Sort",
+    name: "Sort",
+    nameDetail: "second_row",
     content: [
       { label: "None", value: "" },
       { label: "Descending", value: "desc" },
@@ -119,7 +125,8 @@ export const FiltersAnime = [
     ],
   },
   {
-    Name: "Year",
+    name: "Year",
+    nameDetail: "thrid_row",
     content: [
       { label: "None", value: "" },
       // Tambahkan tahun spesifik jika diperlukan
@@ -134,7 +141,8 @@ export const FiltersAnime = [
 
 export const FiltersManga = [
   {
-    Name: "Genres",
+    name: "Genres",
+    nameDetail: "first_row",
     content: [
       { label: "None", value: "" },
       { label: "Action", value: 1 },
@@ -186,7 +194,8 @@ export const FiltersManga = [
     ],
   },
   {
-    Name: "Type",
+    name: "Type",
+    nameDetail: "first_row",
     content: [
       { label: "Manga", value: "Manga" },
       { label: "Novel", value: "Novel" },
@@ -198,7 +207,8 @@ export const FiltersManga = [
     ],
   },
   {
-    Name: "Status",
+    name: "Status",
+    nameDetail: "first_row",
     content: [
       { label: "None", value: "" },
       { label: "publishing", value: "publishing" },
@@ -209,7 +219,8 @@ export const FiltersManga = [
     ],
   },
   {
-    Name: "Order_by",
+    name: "Order_by",
+    nameDetail: "second_row",
     content: [
       { label: "None", value: "" },
       { label: "Score", value: "score" },
@@ -226,7 +237,8 @@ export const FiltersManga = [
     ],
   },
   {
-    Name: "Sort",
+    name: "Sort",
+    nameDetail: "second_row",
     content: [
       { label: "None", value: "" },
       { label: "Descending", value: "desc" },
@@ -234,7 +246,8 @@ export const FiltersManga = [
     ],
   },
   {
-    Name: "Year",
+    name: "Year",
+    nameDetail: "second_row",
     content: [
       { label: "None", value: "" },
       // Tambahkan tahun spesifik jika diperlukan

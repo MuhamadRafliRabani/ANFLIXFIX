@@ -1,6 +1,6 @@
 "use client";
+import { FetchAnime } from "@/utility/Get";
 import Carousel from "./crousell";
-import { FetchAnime } from "@/utility/Api";
 import ListAnimes from "./listAnime";
 
 const ContainerContent = ({ endPoint, header, icon, typeContent }) => {

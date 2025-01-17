@@ -1,46 +1,88 @@
 "use client";
+
 import Content from "@/app/Components/content/anime/content";
 import HeadAnime from "@/app/Components/content/anime/head";
 import HeadContent from "@/app/Components/content/anime/headContent";
 import { useContent } from "@/store/store";
-import { FetchAnime } from "@/utility/Api";
+import { FetchAnime } from "@/utility/Get";
 import { useEffect } from "react";
 
 const Anime = ({ params }) => {
   const { type, mal_id } = params;
   const { setContent } = useContent();
 
-  const { data: anime, isLoading } = FetchAnime(`/${type}/${mal_id}/full`);
-  const { data: Characters } = FetchAnime(`/${type}/${mal_id}/characters`);
-  const { data: Staff } = FetchAnime(
+  const isPerson = type === "people";
+
+  const { data: personData, isLoading: isPersonLoading } = FetchAnime(
+    `/${type}/${mal_id}/full`,
+    null,
+    isPerson,
+  );
+
+  const { data: animeData, isLoading: isAnimeLoading } = FetchAnime(
+    `/${type}/${mal_id}/full`,
+    null,
+    !isPerson,
+  );
+
+  const { data: charactersData } = FetchAnime(
+    `/${type}/${mal_id}/characters`,
+    null,
+    !isPerson,
+  );
+
+  const { data: staffData } = FetchAnime(
     type === "anime"
       ? `/${type}/${mal_id}/staff`
       : `/${type}/${mal_id}/external`,
+    null,
+    !isPerson,
   );
-  const { data: reviews } = FetchAnime(`/${type}/${mal_id}/reviews`);
 
+  const { data: reviewsData } = FetchAnime(
+    `/${type}/${mal_id}/reviews`,
+    null,
+    !isPerson,
+  );
+
+  // Set default content tab
   useEffect(() => {
     setContent("Overview");
-  }, []);
+  }, [setContent]);
+
+  const isLoading = isPerson ? isPersonLoading : isAnimeLoading;
+
+  const data = isPerson ? personData?.data : animeData?.data;
+  const characters = isPerson ? personData?.data?.voices : charactersData?.data;
+  const staff = isPerson ? personData?.data?.anime : staffData?.data;
+  const reviews = isPerson ? [] : reviewsData?.data;
 
   return (
     <section className="min-w-full px-2">
       <div className="mt-16 w-full space-y-5">
         <HeadAnime
-          image={anime?.data?.images.webp.large_image_url}
-          title={anime?.data.title || anime?.data.title_english}
-          score={anime?.data.score}
+          image={
+            isPerson
+              ? data?.images?.jpg?.image_url
+              : data?.images?.webp?.large_image_url
+          }
+          title={
+            isPerson
+              ? data?.alternate_names?.[0] || data?.name
+              : data?.title || data?.title_english
+          }
+          score={isPerson ? data?.favorites : data?.score}
           animeId={mal_id}
-          status={anime?.data.status}
-          trailer={type === "anime" ? anime?.data.trailer.embed_url : null}
+          status={isPerson ? data?.name : data?.status}
+          trailer={type === "anime" ? data?.trailer?.embed_url : null}
           isLoading={isLoading}
         />
         <HeadContent type={type} />
         <Content
-          anime={anime?.data}
-          characters={Characters?.data}
-          staff={Staff?.data}
-          reviews={reviews?.data}
+          anime={data}
+          characters={characters}
+          staff={staff}
+          reviews={reviews}
           isLoading={isLoading}
           type={type}
         />

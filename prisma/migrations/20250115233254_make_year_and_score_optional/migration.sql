@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "library" ALTER COLUMN "year" DROP NOT NULL,
+ALTER COLUMN "score" DROP NOT NULL;

@@ -9,6 +9,7 @@ import { SessionProvider } from "next-auth/react";
 import "./globals.css";
 import Navbar from "@/app/Components/navbar.jsx";
 import axios from "axios";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
             <Navbar />
             <MainContent children={children} />
             <SpeedInsights />
+            <Toaster position="top-right" reverseOrder={false} />
           </SessionProvider>
         </body>
       </html>

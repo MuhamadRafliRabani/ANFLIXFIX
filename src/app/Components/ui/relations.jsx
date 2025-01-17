@@ -1,10 +1,12 @@
-import LoadingSkeleton from "../cardSkeleton";
+import { FetchAnime } from "@/utility/Get";
 import Guide from "../guide/guide";
 import Card from "./cardAnime";
-import { FetchAnime } from "@/utility/Api";
 
 const Relations = ({ relations, score, idAnime, type }) => {
-  const anime = relations?.flatMap((relation) => relation.entry) || [];
+  const anime =
+    type == "people"
+      ? relations
+      : relations?.flatMap((relation) => relation.entry) || [];
 
   const { data } = FetchAnime(`/${type}/${idAnime}/pictures`);
 
@@ -25,11 +27,13 @@ const Relations = ({ relations, score, idAnime, type }) => {
                 <Card
                   idAnime={idAnime}
                   image={
-                    data?.data[i]?.jpg.large_image_url ||
-                    data?.data[i]?.webp.large_image_url
+                    type == "people"
+                      ? item?.anime.images.jpg.large_image_url
+                      : data?.data[i]?.jpg.large_image_url ||
+                        data?.data[i]?.webp.large_image_url
                   }
-                  title={item.name}
-                  year={item.type}
+                  title={type == "people" ? item?.anime.title : item.name}
+                  year={type == "people" ? item.position : item.type}
                   score={score}
                   url={item.url}
                 />

@@ -23,13 +23,13 @@ export const listNav = [
     icon: <BookOpen size={16} weight="fill" />,
   },
   {
+    name: "People",
+    url: "/people/catalog/series",
+    icon: <PersonSimple size={16} weight="fill" />,
+  },
+  {
     name: "News",
     url: "/",
     icon: <Newspaper size={16} weight="fill" />,
-  },
-  {
-    name: "Dashboard",
-    url: "/user/dashboard",
-    icon: <PersonSimple size={16} weight="fill" />,
   },
 ];

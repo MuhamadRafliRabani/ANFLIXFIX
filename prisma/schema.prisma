@@ -16,8 +16,9 @@ model library {
   email         String
   images        String
   title         String
-  year          Int
-  score         Float
+  year          Int?
+  score         Float?
   status        String
+  type          String
   @@unique([mal_id, email, images, title])
 }

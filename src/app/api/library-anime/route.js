@@ -1,22 +1,15 @@
-import { prisma } from "@/libs/prismaClient";
+import { getAnimeFromDb } from "@/utility/animeFromDb";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
-  const q = searchParams.get("q");
+
+  const params = {};
+  searchParams.forEach((value, key) => {
+    params[key] = value;
+  });
 
   try {
-    const dataDb = await prisma.library.findMany({
-      where: { email: q },
-    });
-    return new Response(
-      JSON.stringify({
-        status: 200,
-        data: dataDb,
-      }),
-      {
-        status: 200,
-      },
-    );
+    return getAnimeFromDb(params.q, params.type);
   } catch (error) {
     console.error(error);
     return new Response(

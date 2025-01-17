@@ -26,22 +26,27 @@ const Content = ({ anime, characters, staff, reviews, isLoading, type }) => {
   switch (content) {
     case "Overview":
       return <Overview anime={anime} isLoading={isLoading} type={type} />;
+
     case "Relations":
       return (
         <Relations
-          relations={anime?.relations}
+          relations={type === "people" ? anime?.anime : anime?.relations}
           image={anime?.trailer?.images.medium_image_url}
           score={anime?.score}
           idAnime={anime?.mal_id}
           type={type}
         />
       );
+
     case "Characters":
       return <Characters characters={characters} type={type} />;
+
     case "Staff":
       return <Staff staff={staff} />;
+
     case "Reviews":
       return <Reviews reviews={reviews} />;
+
     default:
       return <Overview anime={anime} />;
   }

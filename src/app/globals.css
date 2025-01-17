@@ -4,6 +4,7 @@
 
 :root {
   --border-color: #facc15;
+  interpolate-size: allow-keywords;
 }
 
 @font-face {
@@ -48,6 +49,46 @@ body {
   transform-origin: left;
   width: 100%;
   animation: border-scale 0.25s ease-in-out forwards;
+}
+
+::details-content {
+  transition:
+    all 0.5s ease,
+    content-visibility 0.5s allow-discrete;
+  height: 0;
+  overflow: clip;
+}
+
+[open]::details-content {
+  height: auto;
+}
+
+/* [open]::details-content > summary > span {
+  transform: rotate(180deg);
+} */
+
+details[open] > summary > span {
+  transform: rotate(180deg);
+}
+
+.contaiers-options-catalog {
+  height: 1.5rem;
+  overflow-y: hidden;
+  transition: height 200ms ease;
+
+  &:hover {
+    height: max-content;
+  }
+}
+
+.overflow-without-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.overflow-without-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 @keyframes border-scale {

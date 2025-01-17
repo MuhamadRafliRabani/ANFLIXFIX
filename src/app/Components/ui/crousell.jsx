@@ -67,10 +67,10 @@ const Carousel = ({ data, header, isLoading, icon, mangaCard }) => {
   return (
     <div className="h-fit w-full space-y-2">
       <TitleHead header={header} icon={icon} />
-      <div className="embla relative h-full w-full overflow-hidden">
+      <div className="embla relative h-full w-full overflow-hidden ps-1 md:ps-0">
         <div className="embla__viewport" ref={emblaRef}>
           <Guide message="← Slide →" />
-          <div className="embla__container flex w-full gap-1.5 shadow-lg md:gap-3.5">
+          <div className="embla__container flex w-full gap-1 shadow-lg md:gap-3.5">
             {!isLoading ? (
               data?.map(renderSlide)
             ) : (

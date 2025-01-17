@@ -10,11 +10,12 @@ const FilterComponent = ({ isOpen, setIsOpen, typeData }) => {
 
   const handleFilterChange = (key, value) => {
     setFilter(key, value);
+    console.log(key, value);
   };
 
   return (
     <div
-      className={`absolute z-50 mx-auto w-full max-w-4xl space-y-3 rounded-lg bg-primary_color px-4 py-2 text-white transition-transform duration-300 ${
+      className={`absolute top-9 z-50 mx-auto w-full space-y-3 rounded-lg bg-primary_color/95 px-4 py-2 text-white transition-transform duration-300 md:left-5 md:max-w-fit ${
         isOpen ? "top-0 opacity-100" : "-top-full hidden opacity-0"
       }`}
     >
@@ -25,13 +26,15 @@ const FilterComponent = ({ isOpen, setIsOpen, typeData }) => {
         </button>
       </div>
       <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {dataListFilter.map((filterOption) => (
-          <FilterInput
-            key={filterOption.Name}
-            option={filterOption}
-            onChange={handleFilterChange}
-            selectedValue={filter[filterOption.Name]}
-          />
+        {dataListFilter.map((filterOption, i) => (
+          <div key={i}>
+            <FilterInput
+              options={filterOption}
+              onChange={handleFilterChange}
+              selectedValue={filter[filterOption.name]}
+              isOpen={isOpen}
+            />
+          </div>
         ))}
       </div>
       {/* <div className="flex items-center justify-between">

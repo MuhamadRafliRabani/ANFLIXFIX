@@ -15,33 +15,46 @@ const Home = () => {
       <Home_Page />
 
       <div className="w-screen space-y-4 overflow-x-hidden p-1 md:absolute md:inset-x-0 md:top-[53%] md:z-30">
-        {/* airing anime */}
-        <ContainerContent
-          header="Airing Now"
-          typeContent="crousell"
-          endPoint="/seasons/now"
-          icon={<TelevisionSimple weight="fill" size={20} />}
-        />
-        <ContainerContent
-          typeContent="manga"
-          endPoint="/top/manga"
-          header="Manga For You"
-          icon={<BookOpen weight="fill" size={20} />}
-        />
+        <section id="Airing Now" className="md:px-2">
+          {/* airing anime */}
+          <ContainerContent
+            header="Airing Now"
+            typeContent="crousell"
+            endPoint="/seasons/now"
+            icon={<TelevisionSimple weight="fill" size={20} />}
+          />
+        </section>
+
+        {/* popular Manga */}
+        <section id="Manga For You" className="md:px-2">
+          <ContainerContent
+            typeContent="manga"
+            endPoint="/top/manga"
+            header="Manga For You"
+            icon={<BookOpen weight="fill" size={20} />}
+          />
+        </section>
+
         {/* special anime */}
-        <ContainerContent
-          typeContent="crousell"
-          header="Special For You"
-          icon={<ShootingStar weight="fill" size={20} />}
-          endPoint="/seasons/2023/fall?limit=10"
-        />
+        <section id="Special For You" className="md:px-2">
+          <ContainerContent
+            typeContent="crousell"
+            header="Special For You"
+            icon={<ShootingStar weight="fill" size={20} />}
+            endPoint="/seasons/2023/fall?limit=10"
+          />
+        </section>
+
         {/* rekomendation anime */}
-        <ContainerContent
-          typeContent="listCard"
-          header="Rekomendation Anime"
-          icon={<StarFour weight="fill" size={20} />}
-          endPoint="/recommendations/anime"
-        />
+        <section id="Rekomendation Anime" className="md:px-4">
+          <ContainerContent
+            typeContent="listCard"
+            header="Rekomendation Anime"
+            icon={<StarFour weight="fill" size={20} />}
+            endPoint="/recommendations/anime"
+          />
+        </section>
+
         <Footer />
       </div>
     </div>

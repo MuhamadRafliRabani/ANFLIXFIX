@@ -4,10 +4,9 @@ import { userSessions } from "@/libs/auth-session";
 import Button from "./ui/button";
 import { signIn, signOut } from "next-auth/react";
 
-const NavigationLink = ({ open }) => {
+const NavigationLink = ({ open, setIsopen }) => {
   const { user } = userSessions();
 
-  // Classes untuk styling
   const mobileClass =
     "fixed top-[99.75%] z-[100] -ms-2 flex h-[calc(100vh-100px)] max-h-screen w-full flex-col gap-3 rounded-tl-md bg-primary_color/95 pt-4 font-medium transition-all duration-300";
 
@@ -38,10 +37,24 @@ const NavigationLink = ({ open }) => {
   return (
     <div className={`${mobileClass} ${laptopClass} ${openClass}`}>
       {listNav.map((item, index) => (
-        <Link key={index} href={item.url} className={linkClass}>
+        <Link
+          key={index}
+          href={item.url}
+          onClick={() => setIsopen(false)}
+          className={linkClass}
+        >
           {item.name}
         </Link>
       ))}
+      {user?.email && (
+        <Link
+          href="/user/dashboard"
+          onClick={() => setIsopen(false)}
+          className="border-slide ms-auto flex w-full items-center gap-2 ps-3 text-base tracking-wider hover:text-yellow-400 md:ms-0 md:hidden md:w-fit md:ps-0"
+        >
+          My Dashboard
+        </Link>
+      )}
       <div className="mt-auto md:hidden">{renderAuthButton()}</div>
     </div>
   );

@@ -12,10 +12,25 @@ export const useFilter = create((set) => ({
     Sort: null,
   },
   setFilter: (filterKey, value) =>
-    set((state) => ({
+    set((state) => {
+      if (filterKey in state.filter) {
+        return {
+          filter: {
+            ...state.filter,
+            [filterKey]: value,
+          },
+        };
+      } else {
+        console.error(
+          `Filter key "${filterKey}" tidak ditemukan di state filter.`,
+        );
+        return state; // Tidak ada perubahan
+      }
+    }),
+  resetFilter: (newFilter) =>
+    set(() => ({
       filter: {
-        ...state.filter,
-        [filterKey]: value,
+        ...newFilter,
       },
     })),
 }));
