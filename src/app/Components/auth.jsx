@@ -14,7 +14,7 @@ const Auth = () => {
       {user ? (
         <Button action={() => signOut()} text="Sign Out" width="w-1/2" second />
       ) : (
-        <Button action={() => signIn()} text="Sign In" width="w-1/2" />
+        <Button action={() => signIn()} second text="Sign In" width="w-1/2" />
       )}
     </div>
   );

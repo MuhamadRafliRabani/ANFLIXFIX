@@ -45,6 +45,12 @@ const Anime = ({ params }) => {
     !isPerson,
   );
 
+  const { data: episodes } = FetchAnime(
+    `https://api.jikan.moe/v4/anime/${mal_id}/videos/episodes`,
+    null,
+    !isPerson,
+  );
+
   // Set default content tab
   useEffect(() => {
     setContent("Overview");
@@ -80,6 +86,7 @@ const Anime = ({ params }) => {
         <HeadContent type={type} />
         <Content
           anime={data}
+          episodes={episodes?.data}
           characters={characters}
           staff={staff}
           reviews={reviews}

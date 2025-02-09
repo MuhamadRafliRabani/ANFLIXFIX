@@ -7,6 +7,10 @@
   interpolate-size: allow-keywords;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 @font-face {
   font-family: "Mona Sans";
   src:

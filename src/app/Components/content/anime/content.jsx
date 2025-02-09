@@ -1,6 +1,7 @@
 import { useContent } from "@/store/store";
 import dynamic from "next/dynamic";
 import LoadingSkeleton from "../../cardSkeleton";
+import Episodes from "../../ui/episodes";
 
 const Overview = dynamic(() => import("@/app/Components/ui/overview"));
 
@@ -20,12 +21,23 @@ const Reviews = dynamic(() => import("@/app/Components/ui/reviews"), {
   loading: () => <LoadingSkeleton crousell length={5} />,
 });
 
-const Content = ({ anime, characters, staff, reviews, isLoading, type }) => {
+const Content = ({
+  anime,
+  episodes,
+  characters,
+  staff,
+  reviews,
+  isLoading,
+  type,
+}) => {
   const { content } = useContent();
 
   switch (content) {
     case "Overview":
       return <Overview anime={anime} isLoading={isLoading} type={type} />;
+
+    case "Episodes":
+      return <Episodes episodes={episodes} />;
 
     case "Relations":
       return (

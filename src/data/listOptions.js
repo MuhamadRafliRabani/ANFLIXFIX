@@ -3,6 +3,9 @@ export const ListOptions = [
     title: "Overview",
   },
   {
+    title: "Episodes",
+  },
+  {
     title: "Relations",
   },
   {

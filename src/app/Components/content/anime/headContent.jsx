@@ -7,8 +7,11 @@ const handleShowOptions = (type) => {
 
   return type === "anime"
     ? ListOptions
-    : ListOptions.filter((option) => option.title !== "Staff");
+    : ListOptions.filter(
+        (option) => option.title !== "Staff" && option.title !== "Episodes",
+      );
 };
+
 const HeadContent = ({ type }) => {
   const { content, setContent } = useContent();
 

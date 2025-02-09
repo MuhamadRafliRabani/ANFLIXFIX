@@ -1,5 +1,6 @@
 import { userSessions } from "@/libs/auth-session";
 import { handleAddAnimeToLibrary } from "@/libs/handleAddAnimeToLibs";
+import { toSnakeCase } from "@/libs/snakeCase";
 import { useAddLibraryMutation } from "@/utility/Post";
 import { Eye, BookmarkSimple, ThumbsUp } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
@@ -21,7 +22,7 @@ const AnimeCard = ({ mal_id, image, title, year, score, type }) => {
 
   return (
     <Link
-      href={`/${type}/detail/${title === "[Oshi no Ko]" ? "Oshi no Ko" : title}/${mal_id}`}
+      href={`/${type}/detail/${title === "[Oshi no Ko]" ? "Oshi no Ko" : toSnakeCase(title)}/${mal_id}`}
       className="h-fit w-auto"
     >
       <div

@@ -20,7 +20,7 @@ const Overview = ({ anime, isLoading, type }) => {
         </h1>
         <ul className="my-2 flex items-center gap-2 text-sm text-white text-opacity-75 md:inline-block md:w-full md:gap-0 md:text-base">
           <div className="space-y-2">
-            <li className="flex items-center gap-2">
+            <li className="flex items-center gap-2 hover:bg-white/10">
               <span className="min-w-14 md:min-w-20">Type</span>
               <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
                 {anime?.type}
