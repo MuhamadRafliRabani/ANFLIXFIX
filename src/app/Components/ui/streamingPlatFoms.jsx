@@ -3,7 +3,7 @@ import { Eye } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function StreamingPlatForms({ title }) {
+const StreamingPlatForms = ({ title }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -51,4 +51,6 @@ export default function StreamingPlatForms({ title }) {
       )}
     </div>
   );
-}
+};
+
+export default StreamingPlatForms;
