@@ -82,7 +82,7 @@ const ListAnimes = ({ icon, header, animes, isLoading }) => {
           />
         ) : (
           <Button
-            action={() => setLastVisibleAnime((prev) => prev + 16)}
+            action={() => setLastVisibleAnime((prev) => prev + 20)}
             text="Show more"
             width="w-full"
           />

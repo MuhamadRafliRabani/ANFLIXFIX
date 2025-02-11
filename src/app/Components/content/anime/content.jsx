@@ -25,19 +25,30 @@ const Content = ({
   anime,
   episodes,
   characters,
+  rekomendations,
   staff,
   reviews,
   isLoading,
+  episodesLoading,
+  rekomendationsLoading,
   type,
 }) => {
   const { content } = useContent();
 
   switch (content) {
     case "Overview":
-      return <Overview anime={anime} isLoading={isLoading} type={type} />;
+      return (
+        <Overview
+          anime={anime}
+          isLoading={isLoading}
+          type={type}
+          rekomendations={rekomendations}
+          rekomendationsLoading={rekomendationsLoading}
+        />
+      );
 
     case "Episodes":
-      return <Episodes episodes={episodes} />;
+      return <Episodes episodes={episodes} episodesLoading={episodesLoading} />;
 
     case "Relations":
       return (

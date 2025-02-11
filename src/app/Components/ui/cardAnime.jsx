@@ -26,7 +26,7 @@ const AnimeCard = ({ mal_id, image, title, year, score, type }) => {
       className="h-fit w-auto"
     >
       <div
-        className={`group relative h-[100vh] max-h-[155px] w-[110.5px] overflow-hidden md:h-[80vh] md:max-h-[180px] md:w-[50vw] md:min-w-[120px] md:max-w-[140px]`}
+        className={`card-anime group relative h-[100vh] max-h-[155px] w-[110.5px] overflow-hidden md:h-[80vh] md:max-h-[180px] md:w-[50vw] md:min-w-[120px] md:max-w-[140px]`}
       >
         {/* Bagian Gambar */}
         <img
@@ -34,6 +34,9 @@ const AnimeCard = ({ mal_id, image, title, year, score, type }) => {
           alt={title}
           className="h-full w-full rounded-lg object-cover"
           loading="lazy"
+          onError={(e) =>
+            (e.target.src = "https://placehold.co/400x500?text=Image+Undefined")
+          }
         />
 
         {/* Bagian Overlay */}

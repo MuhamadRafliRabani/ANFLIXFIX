@@ -45,8 +45,15 @@ const Anime = ({ params }) => {
     !isPerson,
   );
 
-  const { data: episodes } = FetchAnime(
+  const { data: episodes, isLoading: episodesLoading } = FetchAnime(
     `https://api.jikan.moe/v4/anime/${mal_id}/videos/episodes`,
+    null,
+    !isPerson,
+  );
+  console.log("🚀 ~ Anime ~ episodes:", episodes);
+
+  const { data: rekomendations, isLoading: rekomendationsLoading } = FetchAnime(
+    `https://api.jikan.moe/v4/anime/${mal_id}/recommendations`,
     null,
     !isPerson,
   );
@@ -88,9 +95,12 @@ const Anime = ({ params }) => {
           anime={data}
           episodes={episodes?.data}
           characters={characters}
+          rekomendations={rekomendations}
+          rekomendationsLoading={rekomendationsLoading}
           staff={staff}
           reviews={reviews}
           isLoading={isLoading}
+          episodesLoading={episodesLoading}
           type={type}
         />
       </div>

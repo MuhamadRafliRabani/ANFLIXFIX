@@ -37,7 +37,7 @@ const HeadAnime = ({ image, title, score, isLoading, status, trailer }) => {
             </span>
           </div>
           <div className="mt-auto flex w-full space-x-1 font-semibold">
-            <StreamingPlatForms />
+            <StreamingPlatForms title={title} />
 
             <Button
               icon={<BookmarkSimple className="size-4" />}

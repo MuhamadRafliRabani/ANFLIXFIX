@@ -113,14 +113,6 @@ details[open] > summary > span {
   display: none;
 }
 
-.video-js .vjs-control-bar {
-  background-color: #c6a078; /* Ganti dengan warna yang diinginkan */
-}
-
-.video-js .vjs-big-play-button {
-  font-size: 3em; /* Ukuran tombol play */
-}
-
 .synopsis {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -147,27 +139,30 @@ details[open] > summary > span {
   display: grid;
 }
 
-table,
-tr,
-td {
-  border: 1px solid lightslategray;
+/* Appear card animation */
+/* .card-anime { */
+/* Create View Timeline */
+/* view-timeline-name: --revealing-image;
+  view-timeline-axis: block; */
+
+/* Attach animation, linked to the  View Timeline */
+/* animation: linear reveal both;
+  animation-timeline: --revealing-image; */
+
+/* Tweak range when effect should run*/
+/* animation-range: entry 0% cover 20%;
 }
 
-td {
-  padding: 4px 8px;
-  font-weight: 400;
-}
-
-tr {
-  /* font-light w-[70%] px-2 flex items-center */
-  background-color: #f1f5f9;
-}
-
-tr:nth-child(odd) {
-  /* font-light w-[70%] px-2 flex items-center */
-  background-color: #e2e8f0;
-  font-weight: 500;
-}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    clip-path: inset(45% 20% 45% 20%);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0% 0% 0% 0%);
+  }
+} */
 
 /* loader */
 .Loader {

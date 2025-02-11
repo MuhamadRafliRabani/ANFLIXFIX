@@ -11,7 +11,6 @@ const nextConfig = {
       {
         hostname: "i.pinimg.com",
       },
-
       {
         hostname: "placehold.co",
       },

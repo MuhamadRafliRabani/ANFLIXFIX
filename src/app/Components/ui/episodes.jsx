@@ -1,6 +1,7 @@
 import Link from "next/link";
+import EpisodesSkeleton from "../skeleton/episodesSkeleton";
 
-export default function Episodes({ episodes }) {
+export default function Episodes({ episodes, episodesLoading }) {
   if (episodes?.length == 0) {
     return (
       <p className="text-center text-white md:text-lg lg:text-lg">
@@ -9,9 +10,11 @@ export default function Episodes({ episodes }) {
     );
   }
 
+  if (episodesLoading) return <EpisodesSkeleton />;
+
   return (
-    <div className="grid w-fit grid-cols-[minmax(150px,_1fr)] gap-3.5 px-1 sm:gap-4 sm:px-4 md:grid-cols-2 md:gap-4 md:p-4 lg:grid-cols-4 lg:gap-4 lg:px-4">
-      {episodes.map((episode) => (
+    <div className="grid w-full grid-cols-[minmax(150px,_1fr)] gap-3.5 rounded-md px-1 sm:container md:container lg:container sm:grid-cols-2 sm:gap-4 sm:px-4 md:grid-cols-2 md:gap-4 md:p-4 lg:grid-cols-4 lg:gap-4 lg:px-4">
+      {[...episodes]?.reverse().map((episode) => (
         <Link
           key={episode.id}
           href={episode.url}
@@ -19,13 +22,21 @@ export default function Episodes({ episodes }) {
           rel="noopener noreferrer"
           className="block"
         >
-          <div className="w relative overflow-hidden rounded-lg shadow-lg">
+          <div className="relative w-fit overflow-hidden rounded-lg shadow-lg">
             <img
-              src={episode.images.jpg.image_url}
+              src={
+                episode.images.jpg.image_url ||
+                "https://placehold.co/800x400?text=Image+Undifined"
+              }
               alt={episode.title}
               className="h-40 w-full object-contain"
+              loading="lazy"
+              onError={(e) =>
+                (e.target.src =
+                  "https://placehold.co/800x400?text=Image+Undefined")
+              }
             />
-            <div className="absolute inset-0 flex items-end bg-black/35 bg-opacity-50 p-2 duration-200 hover:bg-black/10">
+            <div className="absolute inset-0 flex items-end bg-black/15 bg-opacity-50 p-2 duration-200 hover:bg-black/0 hover:backdrop-brightness-110">
               <p className="text-sm font-semibold text-white">
                 {episode.episode} - {episode.title}
               </p>

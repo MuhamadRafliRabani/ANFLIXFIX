@@ -1,125 +1,124 @@
+import LoadingSkeleton from "../cardSkeleton";
 import OverviewSkeleton from "../skeleton/overviewSkeleton";
+import TitleHead from "./titleHead";
+import Card from "./cardAnime";
+import Link from "next/link";
 
-const Overview = ({ anime, isLoading, type }) => {
+const Overview = ({
+  anime,
+  isLoading,
+  type,
+  rekomendations,
+  rekomendationsLoading,
+}) => {
   if (isLoading) return <OverviewSkeleton />;
 
-  const handleCondition = (option1, option2) => {
-    if (type === "anime") {
-      return option1 || "N/A";
-    } else if (type === "manga") {
-      return option2 || "N/A";
-    }
-    return "N/A";
+  const getAnimeDetail = (animeData, mangaData) =>
+    type === "anime" ? animeData || "N/A" : mangaData || "N/A";
+
+  const dataDetail = [
+    { label: "Type", value: anime?.type },
+    {
+      label: getAnimeDetail("Episodes", "Rank"),
+      value: getAnimeDetail(anime?.episodes, anime?.rank),
+    },
+    {
+      label: "Genres",
+      value: anime?.genres?.map((genre) => genre.name).join(", ") || "N/A",
+    },
+    {
+      label: "Year",
+      value: getAnimeDetail(anime?.year, anime?.published?.prop?.from?.year),
+    },
+    { label: "Status", value: anime?.status },
+    {
+      label: getAnimeDetail("Season", "Members"),
+      value: getAnimeDetail(anime?.season, anime?.members),
+    },
+    {
+      label: getAnimeDetail("Studios", "Chapters"),
+      value: getAnimeDetail(anime?.studios?.[0]?.name, anime?.chapters),
+    },
+    {
+      label: getAnimeDetail("Source", "Authors"),
+      value: getAnimeDetail(anime?.source, anime?.authors?.[0]?.name),
+    },
+    { label: "Rating", value: anime?.score },
+    {
+      label: getAnimeDetail("Duration", "Volumes"),
+      value: getAnimeDetail(anime?.duration, anime?.volumes),
+    },
+  ];
+
+  const renderRekomendations = () => {
+    if (rekomendationsLoading) return <LoadingSkeleton crousell length={8} />;
+
+    if (!rekomendations.data?.length)
+      return (
+        <p className="text-center text-white">No recommendations available</p>
+      );
+
+    return rekomendations.data.map((anime, i) => {
+      const entry = anime?.entry;
+      return (
+        <Link
+          href={entry.url}
+          className="-ms-1 h-fit w-fit flex-shrink-0 shadow-lg md:ms-0"
+          key={i}
+        >
+          <Card
+            mal_id={entry?.mal_id}
+            image={entry?.images?.jpg?.large_image_url}
+            title={entry?.title}
+            type={type}
+          />
+        </Link>
+      );
+    });
   };
 
   return (
-    <div className="flex w-[95vw] max-w-sm flex-wrap gap-4 overflow-hidden px-1 md:w-full md:max-w-full md:flex-nowrap">
-      <div className="w-full flex-1 md:w-[20%] md:flex-none">
-        <h1 className="text-xl font-semibold text-white md:text-2xl md:tracking-wide">
-          Details
-        </h1>
-        <ul className="my-2 flex items-center gap-2 text-sm text-white text-opacity-75 md:inline-block md:w-full md:gap-0 md:text-base">
-          <div className="space-y-2">
-            <li className="flex items-center gap-2 hover:bg-white/10">
-              <span className="min-w-14 md:min-w-20">Type</span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
-                {anime?.type}
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="min-w-14 md:min-w-20">
-                {handleCondition("Episodes", "Rank")}:
-              </span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
-                {handleCondition(anime?.episodes, anime?.rank)}
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="min-w-14 md:min-w-20">Genres</span>
-              <span className="max-w-[60%] flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white md:overflow-visible md:whitespace-normal">
-                {anime?.genres?.map((genre, i) => (
-                  <span key={i}>
-                    {i + 1 != anime?.genres.length
-                      ? `${genre?.name}, `
-                      : genre?.name}
-                  </span>
-                ))}
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="min-w-14 md:min-w-20">Year</span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
-                {handleCondition(
-                  type === "anime" ? anime?.year : "N/A",
-                  type === "manga" ? anime?.published.prop?.from.year : "N/A",
-                )}
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="min-w-14 md:min-w-20">Status</span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
-                {anime?.status}
-              </span>
-            </li>
-          </div>
-          <div className="space-y-2 md:mt-2">
-            <li className="flex items-center gap-2">
-              <span className="min-w-14 md:min-w-20">
-                {handleCondition("Season", "Members")}
-              </span>
-              <span className="overflow-autow hitespace-nowrap flex-1 text-[0.95rem] text-white">
-                {handleCondition(anime?.season, anime?.members)}
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="min-w-14 md:min-w-20">
-                {handleCondition("Studios", "Chapters")}
-              </span>
-              <span className="max-w-[45%] flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white md:overflow-visible md:whitespace-normal">
-                {handleCondition(
-                  type === "anime" ? anime?.studios[0].name : "N/A",
-                  type === "manga" ? anime?.chapters : "N/A",
-                )}
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="min-w-14 md:min-w-20">
-                {handleCondition("Source", "Authors")}
-              </span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.9rem] text-white">
-                {handleCondition(
-                  type === "anime" ? anime?.source : "N/A",
-                  type === "manga" ? anime?.authors[0].name : "N/A",
-                )}
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="min-w-14 md:min-w-20">Rating</span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
-                {anime?.score}
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="min-w-14 md:min-w-20">
-                {handleCondition("Duration", "Volumes")}
-              </span>
-              <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
-                {handleCondition(anime?.duration, anime?.volumes)}
-              </span>
-            </li>
-          </div>
+    <div className="flex w-full max-w-sm flex-wrap gap-4 pb-2 md:max-w-full md:flex-nowrap md:pb-4">
+      {/* Anime Details Section */}
+      <div className="w-full flex-1 px-1 md:w-[20%] md:flex-none">
+        <div className="md:ps-2">
+          <TitleHead header="Details" />
+        </div>
+        <ul className="my-2 space-y-2 text-sm text-white text-opacity-75 md:text-base">
+          <ul className="my-2 space-y-2 text-sm text-white text-opacity-75 md:text-base">
+            {dataDetail.map((item, i) => (
+              <AnimeDetailItem key={i} label={item.label} value={item.value} />
+            ))}
+          </ul>
         </ul>
       </div>
-      <div className="w-full flex-1 space-y-2 pe-1 md:w-[70%] md:px-0">
-        <h1 className="text-xl font-semibold text-white md:text-2xl md:tracking-wide">
-          Description
-        </h1>
+
+      {/* Description & Recommendations */}
+      <div className="w-full flex-1 space-y-2 px-1 pe-1 md:w-[70%] md:px-0">
+        <TitleHead header="Description" />
         <p className="text-sm text-white text-opacity-75 md:text-base">
-          {anime?.synopsis}
+          {anime?.synopsis || "No description available"}
         </p>
+
+        <div className="-ms-2 w-screen space-y-2 text-base font-medium text-white md:ms-0 md:w-full">
+          <TitleHead header="Recommendations" />
+          <div className="flex w-full flex-wrap justify-center gap-3 md:grid md:grid-cols-[repeat(auto-fit,minmax(120px,1fr))] md:gap-x-6 md:gap-y-4 md:pe-[1rem]">
+            {renderRekomendations()}
+          </div>
+        </div>
       </div>
     </div>
   );
 };
+
+// Komponen Kecil untuk Detail Anime
+const AnimeDetailItem = ({ label, value }) => (
+  <li className="flex items-center gap-2 px-2 py-1 odd:bg-white/10 even:bg-white/5 md:py-0.5 md:odd:bg-transparent md:even:bg-transparent">
+    <span className="min-w-14 md:min-w-20">{label}</span>
+    <span className="flex-1 overflow-auto whitespace-nowrap text-[0.95rem] text-white">
+      {value || "N/A"}
+    </span>
+  </li>
+);
 
 export default Overview;
