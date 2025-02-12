@@ -67,10 +67,6 @@ body {
   height: auto;
 }
 
-/* [open]::details-content > summary > span {
-  transform: rotate(180deg);
-} */
-
 details[open] > summary > span {
   transform: rotate(180deg);
 }

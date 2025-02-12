@@ -3,8 +3,15 @@ import { Eye } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { useState } from "react";
 
-const Streaming = ({ title }) => {
+const Streaming = ({ title, streaming }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const streamingData =
+    streaming && Array.isArray(streaming)
+      ? streamingPlatforms.filter((myItem) =>
+          streaming.some((streamingItem) => streamingItem.name === myItem.name),
+        )
+      : [];
 
   return (
     <div>
@@ -29,7 +36,7 @@ const Streaming = ({ title }) => {
             </h2>
             <p className="mb-2 font-semibold text-white">{title}</p>
             <div className="flex flex-col gap-2">
-              {streamingPlatforms.map((platform) => (
+              {streamingData?.map((platform) => (
                 <Link
                   key={platform.name}
                   href={platform.url}
