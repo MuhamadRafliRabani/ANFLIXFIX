@@ -31,10 +31,6 @@ export default function Episodes({ episodes, episodesLoading }) {
               alt={episode.title}
               className="h-40 w-full object-contain"
               loading="lazy"
-              onError={(e) =>
-                (e.target.src =
-                  "https://placehold.co/800x400?text=Image+Undefined")
-              }
             />
             <div className="absolute inset-0 flex items-end bg-black/15 bg-opacity-50 p-2 duration-200 hover:bg-black/0 hover:backdrop-brightness-110">
               <p className="text-sm font-semibold text-white">

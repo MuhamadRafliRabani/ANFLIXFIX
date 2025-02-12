@@ -85,10 +85,6 @@ details[open] > summary > span {
   }
 }
 
-.overflow-without-scroll::-webkit-scrollbar {
-  display: none;
-}
-
 /* Hide scrollbar for IE, Edge and Firefox */
 .overflow-without-scroll {
   -ms-overflow-style: none; /* IE and Edge */
@@ -138,31 +134,6 @@ details[open] > summary > span {
 .G {
   display: grid;
 }
-
-/* Appear card animation */
-/* .card-anime { */
-/* Create View Timeline */
-/* view-timeline-name: --revealing-image;
-  view-timeline-axis: block; */
-
-/* Attach animation, linked to the  View Timeline */
-/* animation: linear reveal both;
-  animation-timeline: --revealing-image; */
-
-/* Tweak range when effect should run*/
-/* animation-range: entry 0% cover 20%;
-}
-
-@keyframes reveal {
-  from {
-    opacity: 0;
-    clip-path: inset(45% 20% 45% 20%);
-  }
-  to {
-    opacity: 1;
-    clip-path: inset(0% 0% 0% 0%);
-  }
-} */
 
 /* loader */
 .Loader {
