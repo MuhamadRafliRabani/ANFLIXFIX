@@ -5,7 +5,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import Button from "@/app/Components/ui/button";
 import HeaderAnimeSkeleton from "@/app/Components/skeleton/headerAnimeSkeleton";
-import StreamingPlatForms from "../../ui/streamingPlatfoms";
+import Streaming from "../../ui/streaming";
 
 const HeadAnime = ({ image, title, score, isLoading, status, trailer }) => {
   if (isLoading) return <HeaderAnimeSkeleton />;
@@ -37,7 +37,7 @@ const HeadAnime = ({ image, title, score, isLoading, status, trailer }) => {
             </span>
           </div>
           <div className="mt-auto flex w-full space-x-1 font-semibold">
-            <StreamingPlatForms title={title} />
+            <Streaming title={title} />
 
             <Button
               icon={<BookmarkSimple className="size-4" />}
