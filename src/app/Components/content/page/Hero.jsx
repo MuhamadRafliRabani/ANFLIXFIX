@@ -1,3 +1,4 @@
+"use server";
 import BtnAddAnimeHero from "./btnAddAnimeHero";
 
 const Home_Page = () => {

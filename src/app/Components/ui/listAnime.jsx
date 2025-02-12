@@ -48,11 +48,8 @@ const ListAnimes = ({ icon, header, animes, isLoading }) => {
         )}
 
         {!isLoading ? (
-          filteredAnimes?.map((anime, index) => (
-            <div
-              className="h-fit w-fit flex-shrink-0 shadow-lg"
-              key={anime?.mal_id || index}
-            >
+          filteredAnimes?.map((anime, i) => (
+            <div className="h-fit w-fit flex-shrink-0 shadow-lg" key={i}>
               <Card
                 mal_id={anime?.mal_id}
                 image={
@@ -69,7 +66,7 @@ const ListAnimes = ({ icon, header, animes, isLoading }) => {
             </div>
           ))
         ) : (
-          <LoadingSkeleton length={20} animeCard />
+          <LoadingSkeleton length={12} animeCard />
         )}
       </div>
 

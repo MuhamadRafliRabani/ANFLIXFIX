@@ -1,6 +1,7 @@
 import { useContent } from "@/store/store";
 import dynamic from "next/dynamic";
 import LoadingSkeleton from "../../cardSkeleton";
+import EpisodesSkeleton from "../../skeleton/episodesSkeleton";
 
 const Overview = dynamic(() => import("@/app/Components/ui/overview"));
 

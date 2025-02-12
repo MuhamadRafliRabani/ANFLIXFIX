@@ -1,11 +1,13 @@
 import Guide from "../guide/guide";
 import Card from "./cardAnime";
+import TitleHead from "./titleHead";
 
 const staff = ({ staff }) => {
   return (
     <div>
-      <h3 className="-mt-2 pb-2 text-xl font-semibold text-white">Staff</h3>
-      <div className="relative w-full overflow-hidden">
+      <TitleHead header="Staff" />
+
+      <div className="relative mt-2 w-full overflow-hidden">
         <Guide message="← Slide →" />
         <div className="scrollbar-hide flex w-full gap-4 overflow-auto">
           {staff?.length != 0 ? (

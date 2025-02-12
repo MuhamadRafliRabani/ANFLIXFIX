@@ -1,6 +1,7 @@
 import { FetchAnime } from "@/utility/Get";
 import Guide from "../guide/guide";
 import Card from "./cardAnime";
+import TitleHead from "./titleHead";
 
 const Relations = ({ relations, score, idAnime, type }) => {
   const anime =
@@ -12,10 +13,9 @@ const Relations = ({ relations, score, idAnime, type }) => {
 
   return (
     <div className="">
-      <h3 className="-mt-2 w-full pb-2 text-xl font-bold tracking-wide text-white">
-        Chronology
-      </h3>
-      <div className="relative w-full overflow-hidden">
+      <TitleHead header="Chronology" />
+
+      <div className="relative mt-2 w-full overflow-hidden">
         <Guide message="← Slide →" />
         <div className="scrollbar-hide flex w-full gap-4 overflow-auto">
           {relations?.length != 0 ? (

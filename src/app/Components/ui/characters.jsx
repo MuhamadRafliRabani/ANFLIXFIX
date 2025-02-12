@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import Card from "./cardAnime";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import TitleHead from "./titleHead";
 
 const Characters = ({ characters, type }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -61,11 +62,10 @@ const Characters = ({ characters, type }) => {
   };
 
   return (
-    <div className="w-full">
-      <h3 className="-mt-2 pb-2 text-xl font-semibold text-white">
-        Characters
-      </h3>
-      <div className="embla relative w-full overflow-hidden">
+    <div>
+      <TitleHead header="Characters" />
+
+      <div className="embla relative mt-2 w-full overflow-hidden">
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container flex w-full gap-4">
             {characters?.map((anime, i) => (

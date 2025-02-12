@@ -55,7 +55,7 @@ const AnimeCard = ({ mal_id, image, title, year, score, type }) => {
             )}
 
             {/* Tombol */}
-            <span className="z-[100] hidden h-auto w-full translate-y-full items-center gap-2 text-xs text-gray-300 transition-all group-hover:flex group-hover:translate-y-0">
+            <span className="z-[100] hidden h-auto w-full translate-y-full items-center gap-2 text-xs text-gray-300 transition-all duration-500 group-hover:flex group-hover:translate-y-0">
               <Eye
                 size={24}
                 onClick={(e) =>

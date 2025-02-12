@@ -135,53 +135,32 @@ details[open] > summary > span {
   display: grid;
 }
 
-/* loader */
-.Loader {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background:
-    radial-gradient(farthest-side, #e50914 94%, #0000) top/9px 9px no-repeat,
-    conic-gradient(#0000 30%, #e50914);
-  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 9px), #000 0);
-  animation: spinner-c7wet2 1s infinite linear;
+.bar {
+  display: inline-block;
+  width: 3px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  animation: scale-up4 1s linear infinite;
 }
 
-@keyframes spinner-c7wet2 {
-  100% {
-    transform: rotate(1turn);
+.bar:nth-child(2) {
+  height: 35px;
+  margin: 0 5px;
+  animation-delay: 0.25s;
+}
+
+.bar:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+@keyframes scale-up4 {
+  20% {
+    background-color: #ffff;
+    transform: scaleY(1.5);
   }
-}
 
-.mainLoader {
-  width: 56px;
-  height: 56px;
-  display: grid;
-  animation: spinner-plncf9 4s infinite;
-}
-
-.mainLoader::before,
-.mainLoader::after {
-  content: "";
-  grid-area: 1/1;
-  border: 9px solid;
-  border-radius: 50%;
-  border-color: #e50914 #e50914 #0000 #0000;
-  mix-blend-mode: darken;
-  animation: spinner-plncf9 1s infinite linear;
-}
-
-.mainLoader::after {
-  border-color: #0000 #0000 #dbdcef #dbdcef;
-  animation-direction: reverse;
-}
-
-@keyframes spinner-plncf9 {
-  100% {
-    transform: rotate(1turn);
+  40% {
+    transform: scaleY(1);
   }
-}
-
-#section-form {
-  background-color: #676279;
 }

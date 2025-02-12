@@ -50,7 +50,6 @@ const Anime = ({ params }) => {
     null,
     !isPerson,
   );
-  console.log("🚀 ~ Anime ~ episodes:", episodes);
 
   const { data: rekomendations, isLoading: rekomendationsLoading } = FetchAnime(
     `https://api.jikan.moe/v4/anime/${mal_id}/recommendations`,

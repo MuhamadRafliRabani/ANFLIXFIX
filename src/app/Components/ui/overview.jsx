@@ -55,7 +55,9 @@ const Overview = ({
 
     if (!rekomendations.data?.length)
       return (
-        <p className="text-center text-white">No recommendations available</p>
+        <p className="grid min-h-44 place-items-center text-center text-white md:min-h-72">
+          No recommendations available
+        </p>
       );
 
     return rekomendations.data.map((anime, i) => {

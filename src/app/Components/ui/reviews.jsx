@@ -3,14 +3,13 @@ import Button from "./button";
 import { Plus } from "@phosphor-icons/react/dist/ssr";
 import { formatDate } from "@/libs/date";
 import Link from "next/link";
+import TitleHead from "./titleHead";
 
 const Reviews = ({ reviews }) => {
   return (
     <div className="pb-2">
       <div className="-mt-4 mb-4 space-y-2">
-        <h3 className="-mt-2 pb-2 text-xl font-semibold text-white">
-          Recent Reviews
-        </h3>
+        <TitleHead header="Recent Reviews" />
         <Button
           text="Write a Review"
           icon={<Plus size={16} />}

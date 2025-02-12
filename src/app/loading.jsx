@@ -1,7 +1,9 @@
 const Page = () => {
   return (
-    <div className="w-full flex justify-center items-center h-svh bg-black">
-      <div className="mainLoader"></div>
+    <div class="loader flex min-h-screen w-full items-center justify-center">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </div>
   );
 };
