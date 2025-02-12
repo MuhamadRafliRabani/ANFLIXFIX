@@ -10,8 +10,6 @@ export default function Episodes({ episodes, episodesLoading }) {
     );
   }
 
-  if (episodesLoading) return <EpisodesSkeleton />;
-
   return (
     <div className="grid w-full grid-cols-[minmax(150px,_1fr)] gap-3.5 rounded-md px-1 sm:container md:container lg:container sm:grid-cols-2 sm:gap-4 sm:px-4 md:grid-cols-2 md:gap-4 md:p-4 lg:grid-cols-4 lg:gap-4 lg:px-4">
       {[...episodes]?.reverse().map((episode) => (
