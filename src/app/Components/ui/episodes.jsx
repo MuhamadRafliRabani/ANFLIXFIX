@@ -5,9 +5,13 @@ import TitleHead from "./titleHead";
 export default function Episodes({ episodes, episodesLoading }) {
   if (episodes?.length == 0) {
     return (
-      <p className="grid min-h-44 place-items-center text-center text-white md:text-lg lg:text-lg">
-        no entry found
-      </p>
+      <>
+        <TitleHead header="Episodes" />
+
+        <p className="grid min-h-44 place-items-center text-center text-white md:text-lg lg:text-lg">
+          no entry found
+        </p>
+      </>
     );
   }
 
