@@ -23,14 +23,14 @@ const HeadAnime = ({
     <div className="h-full w-full">
       <div className="flex h-48 w-full items-center md:h-56">
         {/* // images */}
-        <div className="relative h-full w-1/3 bg-black md:w-[13%]">
+        <div className="relative h-full w-1/3 rounded-md bg-black md:w-[13%]">
           <Image
             src={image}
             alt="Description of image"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
             priority
-            className="h-full w-full rounded-md object-cover"
+            className="h-full w-full object-cover"
           />
         </div>
         {/* content headers */}
