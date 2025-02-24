@@ -59,7 +59,7 @@ const Characters = ({ characters, type }) => {
   return (
     <>
       <TitleHead header="Characters" />
-      <div className="embla relative mt-2 w-full overflow-hidden">
+      <div className="embla relative my-2 w-full overflow-hidden">
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container flex w-full gap-4">
             {characters?.map((anime, i) => (

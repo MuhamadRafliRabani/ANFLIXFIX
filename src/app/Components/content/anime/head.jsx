@@ -30,7 +30,7 @@ const HeadAnime = ({
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
             priority
-            className="h-full w-full object-cover"
+            className="h-full w-full rounded-md object-cover"
           />
         </div>
         {/* content headers */}
