@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import TitleHead from "./titleHead";
 
 const Characters = ({ characters, type }) => {
+  console.log("🚀 ~ Characters ~ characters:", characters);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     dragFree: true,
     align: "start",
@@ -42,7 +43,7 @@ const Characters = ({ characters, type }) => {
       ? anime?.anime?.title
       : anime?.voice_actors?.[0]?.person?.name;
     const year = isPerson ? null : "seiyu / voice actors";
-    const url = isPerson ? anime?.url : anime?.voice_actors?.[0].person?.url;
+    const url = isPerson ? anime?.url : anime?.voice_actors?.[0]?.person?.url;
 
     return (
       <Card
