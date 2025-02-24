@@ -8,6 +8,7 @@ import { signIn, signOut } from "next-auth/react";
 
 const Search = () => {
   const { user } = userSessions();
+  console.log("🚀 ~ Search ~ user:", user);
   const router = useRouter();
   const inputRef = useRef(null);
 
@@ -51,13 +52,13 @@ const Search = () => {
         </button>
       </form>
       <div className="">
-        {user ? (
-          <button onClick={() => signIn()}>
-            <User className="size-6 md:hidden" />
-          </button>
-        ) : (
+        {!user ? (
           <button onClick={() => signOut()}>
             <SignOut className="size-6 md:hidden" />
+          </button>
+        ) : (
+          <button onClick={() => signIn()}>
+            <User className="size-6 md:hidden" />
           </button>
         )}
       </div>
