@@ -71,7 +71,8 @@ const Overview = ({
   const renderRekomendations = () => {
     if (rekomendationsLoading) return <LoadingSkeleton crousell length={8} />;
 
-    const datas = type === "people" ? rekomendations : rekomendations?.data;
+    const datas =
+      type === "people" ? rekomendations.splice(21) : rekomendations?.data;
     if (!datas?.length)
       return (
         <p className="grid min-h-44 place-items-center text-center text-white md:min-h-72">
