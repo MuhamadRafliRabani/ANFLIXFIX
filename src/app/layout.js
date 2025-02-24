@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
           <link rel="icon" href="/logo.png" type="image/x-icon" />
           <title>Unoffcial Mal Library</title>
         </head>
-        <body className="bgyell overflow-x-hidden bg-primary_color dark:bg-white">
+        <body className="overflow-x-hidden bg-primary_color">
           <SessionProvider>
             <Navbar />
             <MainContent children={children} />
