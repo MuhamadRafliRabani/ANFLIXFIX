@@ -7,6 +7,7 @@ import Button from "@/app/Components/ui/button";
 import HeaderAnimeSkeleton from "@/app/Components/skeleton/headerAnimeSkeleton";
 import Streaming from "../../ui/streaming";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeadAnime = ({
   image,
@@ -15,6 +16,7 @@ const HeadAnime = ({
   isLoading,
   status,
   trailer,
+  url,
   streaming,
 }) => {
   if (isLoading) return <HeaderAnimeSkeleton />;
@@ -35,9 +37,11 @@ const HeadAnime = ({
         </div>
         {/* content headers */}
         <div className="flex h-full w-4/6 flex-col px-2 pt-6 text-sm font-medium text-white md:w-2/6">
-          <h3 className="text-xl font-semibold hover:text-yellow-400 md:text-2xl">
-            {title}
-          </h3>
+          <Link href={url}>
+            <h3 className="border-slide w-fit text-xl font-semibold hover:text-yellow-400 md:text-2xl">
+              {title}
+            </h3>
+          </Link>
           <div className="mt-1 flex items-center space-x-3 md:text-base">
             <span className="flex items-center gap-1 text-text_color">
               <TelevisionSimple className="size-4" />

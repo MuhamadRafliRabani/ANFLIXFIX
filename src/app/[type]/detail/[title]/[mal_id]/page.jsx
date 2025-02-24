@@ -88,6 +88,7 @@ const Anime = ({ params }) => {
           status={isPerson ? data?.name : data?.status}
           trailer={type === "anime" ? data?.trailer?.embed_url : null}
           streaming={type === "anime" ? data?.streaming : []}
+          url={data?.url}
           isLoading={isLoading}
         />
         <HeadContent type={type} />
