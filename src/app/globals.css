@@ -162,3 +162,13 @@ details[open] > summary > span {
     transform: scaleY(1);
   }
 }
+
+.search {
+  width: 0;
+  transition: width 0.35s ease;
+
+  &:hover,
+  &:focus-visible {
+    width: 100%;
+  }
+}

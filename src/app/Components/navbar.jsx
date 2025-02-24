@@ -33,7 +33,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 z-[9999] flex max-h-11 w-full translate-x-0 items-center justify-between bg-transparent px-2 py-3 text-white shadow-sm transition-all duration-300 md:justify-normal md:gap-8 md:px-8 ${
+      className={`fixed top-0 z-[9999] flex max-h-11 w-full translate-x-0 items-center justify-between bg-transparent px-2 py-3 text-white shadow-sm transition-all duration-300 md:w-full md:max-w-full md:gap-8 md:px-3 ${
         change ? "border-b border-white border-opacity-35" : "border-opacity-0"
       }`}
     >
@@ -53,12 +53,14 @@ const Navbar = () => {
 
       <NavigationLink open={open} setIsopen={setIsopen} />
 
-      {/* Search Bar */}
-      <Search />
+      <div className="flex">
+        {/* Search Bar */}
+        <Search />
 
-      {/* Login Button */}
+        {/* Login Button */}
 
-      <Auth />
+        <Auth />
+      </div>
     </nav>
   );
 };
