@@ -52,7 +52,7 @@ const Anime = ({ params }) => {
   );
 
   const { data: rekomendations, isLoading: rekomendationsLoading } = FetchAnime(
-    `https://api.jikan.moe/v4/anime/${mal_id}/recommendations`,
+    `https://api.jikan.moe/v4/${type}/${mal_id}/recommendations`,
     null,
     !isPerson,
   );
@@ -95,7 +95,7 @@ const Anime = ({ params }) => {
           anime={data}
           episodes={episodes?.data}
           characters={characters}
-          rekomendations={rekomendations}
+          rekomendations={isPerson ? characters : rekomendations}
           rekomendationsLoading={rekomendationsLoading}
           staff={staff}
           reviews={reviews}

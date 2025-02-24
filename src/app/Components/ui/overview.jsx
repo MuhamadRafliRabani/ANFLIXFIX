@@ -3,6 +3,7 @@ import OverviewSkeleton from "../skeleton/overviewSkeleton";
 import TitleHead from "./titleHead";
 import Card from "./cardAnime";
 import Link from "next/link";
+import { formatDate } from "@/libs/date";
 
 const Overview = ({
   anime,
@@ -16,55 +17,72 @@ const Overview = ({
   const getAnimeDetail = (animeData, mangaData) =>
     type === "anime" ? animeData || "N/A" : mangaData || "N/A";
 
-  const dataDetail = [
-    { label: "Type", value: anime?.type },
-    {
-      label: getAnimeDetail("Episodes", "Rank"),
-      value: getAnimeDetail(anime?.episodes, anime?.rank),
-    },
-    {
-      label: "Genres",
-      value: anime?.genres?.map((genre) => genre.name).join(", ") || "N/A",
-    },
-    {
-      label: "Year",
-      value: getAnimeDetail(anime?.year, anime?.published?.prop?.from?.year),
-    },
-    { label: "Status", value: anime?.status },
-    {
-      label: getAnimeDetail("Season", "Members"),
-      value: getAnimeDetail(anime?.season, anime?.members),
-    },
-    {
-      label: getAnimeDetail("Studios", "Chapters"),
-      value: getAnimeDetail(anime?.studios?.[0]?.name, anime?.chapters),
-    },
-    {
-      label: getAnimeDetail("Source", "Authors"),
-      value: getAnimeDetail(anime?.source, anime?.authors?.[0]?.name),
-    },
-    { label: "Rating", value: anime?.score },
-    {
-      label: getAnimeDetail("Duration", "Volumes"),
-      value: getAnimeDetail(anime?.duration, anime?.volumes),
-    },
-  ];
+  const generateOverview = () => {
+    if (type === "people") {
+      return [
+        { label: "Name", value: anime?.name },
+        { label: "Given Name", value: anime?.given_name },
+        { label: "Family Name", value: anime?.family_name },
+        {
+          label: "Alternate Names",
+          value: anime?.alternate_names?.join(", ") || "N/A",
+        },
+        { label: "Birthday", value: formatDate(anime?.birthday) },
+        { label: "Favorites", value: anime?.favorites },
+        { label: "Website", value: anime?.website_url || "N/A" },
+      ];
+    }
+
+    return [
+      { label: "Type", value: anime?.type },
+      {
+        label: getAnimeDetail("Episodes", "Rank"),
+        value: getAnimeDetail(anime?.episodes, anime?.rank),
+      },
+      {
+        label: "Genres",
+        value: anime?.genres?.map((genre) => genre.name).join(", ") || "N/A",
+      },
+      {
+        label: "Year",
+        value: getAnimeDetail(anime?.year, anime?.published?.prop?.from?.year),
+      },
+      { label: "Status", value: anime?.status },
+      {
+        label: getAnimeDetail("Season", "Members"),
+        value: getAnimeDetail(anime?.season, anime?.members),
+      },
+      {
+        label: getAnimeDetail("Studios", "Chapters"),
+        value: getAnimeDetail(anime?.studios?.[0]?.name, anime?.chapters),
+      },
+      {
+        label: getAnimeDetail("Source", "Authors"),
+        value: getAnimeDetail(anime?.source, anime?.authors?.[0]?.name),
+      },
+      { label: "Rating", value: anime?.score },
+      {
+        label: getAnimeDetail("Duration", "Volumes"),
+        value: getAnimeDetail(anime?.duration, anime?.volumes),
+      },
+    ];
+  };
 
   const renderRekomendations = () => {
     if (rekomendationsLoading) return <LoadingSkeleton crousell length={8} />;
 
-    if (!rekomendations.data?.length)
+    const datas = type === "people" ? rekomendations : rekomendations?.data;
+    if (!datas?.length)
       return (
         <p className="grid min-h-44 place-items-center text-center text-white md:min-h-72">
           No recommendations available
         </p>
       );
 
-    return rekomendations.data.map((anime, i) => {
-      const entry = anime?.entry;
+    return datas.map((item, i) => {
+      const entry = type === "people" ? item.anime : item?.entry;
       return (
-        <Link
-          href={entry.url}
+        <div
           className="-ms-1 h-fit w-fit flex-shrink-0 shadow-lg md:ms-0"
           key={i}
         >
@@ -72,9 +90,9 @@ const Overview = ({
             mal_id={entry?.mal_id}
             image={entry?.images?.jpg?.large_image_url}
             title={entry?.title}
-            type={type}
+            type="anime"
           />
-        </Link>
+        </div>
       );
     });
   };
@@ -87,11 +105,9 @@ const Overview = ({
           <TitleHead header="Details" />
         </div>
         <ul className="my-2 space-y-2 text-sm text-white text-opacity-75 md:text-base">
-          <ul className="my-2 space-y-2 text-sm text-white text-opacity-75 md:text-base">
-            {dataDetail.map((item, i) => (
-              <AnimeDetailItem key={i} label={item.label} value={item.value} />
-            ))}
-          </ul>
+          {generateOverview().map((item, i) => (
+            <AnimeDetailItem key={i} label={item.label} value={item.value} />
+          ))}
         </ul>
       </div>
 
@@ -99,7 +115,7 @@ const Overview = ({
       <div className="w-full flex-1 space-y-2 px-1 pe-1 md:w-[70%] md:px-0">
         <TitleHead header="Description" />
         <p className="text-sm text-white text-opacity-75 md:text-base">
-          {anime?.synopsis || "No description available"}
+          {anime?.synopsis || anime?.about || "No description available"}
         </p>
 
         <div className="-ms-2 w-screen space-y-2 text-base font-medium text-white md:ms-0 md:w-full">

@@ -6,6 +6,7 @@ import {
 import Button from "@/app/Components/ui/button";
 import HeaderAnimeSkeleton from "@/app/Components/skeleton/headerAnimeSkeleton";
 import Streaming from "../../ui/streaming";
+import Image from "next/image";
 
 const HeadAnime = ({
   image,
@@ -23,10 +24,12 @@ const HeadAnime = ({
       <div className="flex h-48 w-full items-center md:h-56">
         {/* // images */}
         <div className="relative h-full w-1/3 bg-black md:w-[13%]">
-          <img
+          <Image
             src={image}
             alt="Description of image"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+            priority
             className="h-full w-full rounded-md object-cover"
           />
         </div>

@@ -5,7 +5,7 @@ import { useAddLibraryMutation } from "@/utility/Post";
 import { Eye, BookmarkSimple, ThumbsUp } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 
-const AnimeCard = ({ mal_id, image, title, year, score, type }) => {
+const AnimeCard = ({ mal_id, image, title, year, score, type, url }) => {
   const { user } = userSessions();
   const { mutate } = useAddLibraryMutation();
   const email = user?.email;
@@ -22,7 +22,10 @@ const AnimeCard = ({ mal_id, image, title, year, score, type }) => {
 
   return (
     <Link
-      href={`/${type}/detail/${title === "[Oshi no Ko]" ? "Oshi no Ko" : toSnakeCase(title)}/${mal_id}`}
+      href={
+        url ||
+        `/${type}/detail/${title === "[Oshi no Ko]" ? "Oshi no Ko" : toSnakeCase(title)}/${mal_id}`
+      }
       className="h-fit w-auto"
     >
       <div

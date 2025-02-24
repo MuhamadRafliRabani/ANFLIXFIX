@@ -24,9 +24,7 @@ const Characters = ({ characters, type }) => {
 
   useEffect(() => {
     if (!emblaApi) return;
-
     updateScrollStatus();
-
     emblaApi.on("select", updateScrollStatus);
     emblaApi.on("reInit", updateScrollStatus);
   }, [emblaApi, updateScrollStatus]);
@@ -36,19 +34,15 @@ const Characters = ({ characters, type }) => {
 
   const renderCardContent = (anime) => {
     const isPerson = type === "people";
-
     const image = isPerson
-      ? anime?.anime?.images?.jpg?.image_url
+      ? anime?.anime.images?.jpg.large_image_url
       : anime?.voice_actors?.[0]?.person?.images?.jpg?.image_url ||
         "/placeholder.png";
-
     const title = isPerson
       ? anime?.anime?.title
       : anime?.voice_actors?.[0]?.person?.name;
-
     const year = isPerson ? null : "seiyu / voice actors";
-
-    const url = isPerson ? anime?.url : anime?.voice_actors?.[0]?.person?.url;
+    const url = isPerson ? anime?.url : anime?.voice_actors?.[0].person?.url;
 
     return (
       <Card
@@ -62,9 +56,8 @@ const Characters = ({ characters, type }) => {
   };
 
   return (
-    <div>
+    <>
       <TitleHead header="Characters" />
-
       <div className="embla relative mt-2 w-full overflow-hidden">
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container flex w-full gap-4">
@@ -76,16 +69,15 @@ const Characters = ({ characters, type }) => {
                 <Card
                   idAnime={anime.mal_id}
                   image={
-                    anime?.character?.images?.jpg?.image_url ||
-                    anime?.character?.images?.webp?.image_url
+                    anime?.character.images?.jpg.image_url ||
+                    anime?.character.images?.webp.image_url
                   }
                   title={anime?.character?.name}
                   year={anime?.role}
                 />
                 <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  {type === "anime" || type === "people"
-                    ? renderCardContent(anime)
-                    : null}
+                  {(type === "anime" || type === "people") &&
+                    renderCardContent(anime)}
                 </div>
               </div>
             ))}
@@ -110,7 +102,7 @@ const Characters = ({ characters, type }) => {
           <ArrowRight size={16} />
         </button>
       </div>
-    </div>
+    </>
   );
 };
 
