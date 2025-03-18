@@ -21,5 +21,5 @@ Anflix adalah platform streaming anime yang terinspirasi dari MyAnimeList, Otaku
 
 ## Website & Repo:
 
-- [website](https://anflx.vercel.app/)
+- [website](https://anflix.vercel.app/)
 - [repository](https://github.com/konoham/ANFLIXFIX)
