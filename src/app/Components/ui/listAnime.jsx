@@ -30,16 +30,16 @@ const ListAnimes = ({ icon, header, animes, isLoading }) => {
     return animes?.data || [];
   }, [header, animes, lastVisibleAnime]);
 
-  const styleLessThenNine = "md:flex md:justify-center md:items-center ";
+  const styleLessThenNine = "md:flex md:items-center ";
   const styleMoreThenNine =
-    "md:grid md:grid-cols-[repeat(auto-fit,minmax(120px,1fr))] md:justify-items-center ";
+    "md:grid md:grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  ";
 
   return (
     <div className="w-full min-w-full space-y-2 text-base font-medium text-white">
       <TitleHead header={header} icon={icon} />
 
       <div
-        className={`flex flex-wrap justify-center gap-[9.6px] md:gap-x-6 md:gap-y-4 md:pe-[1rem] ${animes?.length <= 9 ? styleLessThenNine : styleMoreThenNine}`}
+        className={`flex flex-wrap gap-[9.6px] md:gap-x-6 md:gap-y-4 md:pe-[1rem] ${animes?.length <= 9 ? styleLessThenNine : styleMoreThenNine}`}
       >
         {animes?.length == 0 && (
           <div className="w-full text-center text-xl font-medium text-white">

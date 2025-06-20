@@ -8,13 +8,25 @@ const Auth = () => {
 
   return (
     <div className="hidden min-w-60 text-base md:flex md:items-center md:justify-evenly md:gap-2">
-      <Link href="/user/dashboard">
-        <p className="whitespace-nowrap text-[0.91rem]">My dasbord</p>
-      </Link>
       {user ? (
-        <Button action={() => signOut()} text="Sign Out" width="w-1/2" second />
+        <>
+          <Link href="/user/dashboard">
+            <p className="whitespace-nowrap text-[0.91rem]">My dasbord</p>
+          </Link>
+          <Button
+            action={() => signOut()}
+            text="Sign Out"
+            width="w-1/2"
+            second
+          />
+        </>
       ) : (
-        <Button action={() => signIn()} second text="Sign In" width="w-1/2" />
+        <Button
+          action={() => signIn()}
+          second
+          text="Sign In"
+          width="w-1/2 ms-auto"
+        />
       )}
     </div>
   );

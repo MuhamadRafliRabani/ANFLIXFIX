@@ -5,6 +5,7 @@ import ListAnimes from "./listAnime";
 
 const ContainerContent = ({ endPoint, header, icon, typeContent }) => {
   const { data: animes, isLoading } = FetchAnime(endPoint);
+  console.log("🚀 ~ ContainerContent ~ animes:", animes);
 
   if (typeContent === "crousell") {
     return (
